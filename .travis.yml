@@ -1,0 +1,19 @@
+language: r
+sudo: required
+r_packages:
+- knitr
+- drat
+- covr
+after_failure:
+  email:
+    recipients:
+    - thosjleeper@gmail.com
+    on_success: change
+    on_failure: change
+after_success:
+- Rscript -e 'library("covr");codecov()'
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+  drat.sh
+env:
+  global:
+    secure: SI2SHKYjQuSAFiKXCNyofMODehtgngpTM5qMXBM8dRrsnqH0eEiA+KaB2zlE3DsXdwkJK/dTrU6MFc9pC/V+MUftd36A7zC+EGSiiQNAnGU71yP/IHjly1IVc3XqJL5U7NC1NN0ryxOtaxLTIIi+YCurJ1zCiWa9hSBCPF5iMmyYk2YncUDWNQXruyne8pKrcIG0DLUtMDWO3l6e2/vx6c1Cdd5TBgI8DXdU/LVsUvHiV6pteTeUMrwK8RZiqaTgD41T5ZXP11E6vHzM7W+KGoIgHWjQQZAiR9TIapgnTb6foEujk9gDvj/RD6Pk7B0iWuPALl+0pDqPjntTo314Swt/H3HLSpxKSwXp8Fls66K9I0QIRStr/90LuCr658d0DHzuSYTFMzM7MLfeXKHkUjFbDFtZDpnjdD6GuVXSVH1WzUxFQKJp6ma90eB7su5hKH0sEF2HLfczO5TlxTEoAcRv4U46TpKlF4iHeD5aOJhHgkHz/gblLlqW4slnw94NW7HkVAk827rNzp2q165nK6dxhDdrbo15Z6W+qHUVeQCSCw9C9MhDYqBf+i7ePm22N/JEWvVVa9l+bE6O28zm9MkAwDi1/svC1onvG/it4VKmF2g6KHTZ5vUBEviZNhBvAnoMI5TVWkVYWvgPxHCeYfhioZ1QkmJ2JmtB8K6kjqc=

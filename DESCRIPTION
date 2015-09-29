@@ -1,0 +1,14 @@
+Package: circleci
+Type: Package
+Title: Circle CI API Client Package
+Version: 0.1.1
+Date: 2015-09-29
+Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
+                    email = "thosjleeper@gmail.com"))
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
+Description: A simple client package for the Circle CI <https://circleci.com/> REST API.
+License: GPL (>= 2)
+URL: https://github.com/cloudyr/circleci
+BugReports: https://github.com/cloudyr/circleci/issues
+Imports: httr
+Suggests: testthat

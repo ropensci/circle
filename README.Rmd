@@ -1,0 +1,28 @@
+# Circle CI API Client Package #
+
+**circleci** is a simple client package for the [Circle CI](https://circleci.com/) [REST API](https://circleci.com/docs/api). It can control containerized builds of R packages and other software projects as part of a continuous integration workflow.
+
+## Installation ##
+
+[![CRAN](http://www.r-pkg.org/badges/version/circleci)](http://cran.r-project.org/package=circleci)
+[![Build Status](https://travis-ci.org/cloudyr/circleci.png?branch=master)](https://travis-ci.org/cloudyr/circleci) [![codecov.io](http://codecov.io/github/cloudyr/circleci/coverage.svg?branch=master)](http://codecov.io/github/cloudyr/circleci?branch=master)
+
+This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
+
+```R
+if(!require("devtools")){
+    install.packages("devtools")
+    library("devtools")
+}
+install_github("cloudyr/circleci")
+```
+
+## Code Examples ##
+
+To use the Circle CI API, you will need an account and an API key. Keys can be created [on the Circle CI account dashboard](https://circleci.com/account/api). 
+
+Coming soon...
+
+
+---
+[![cloudyr project logo](http://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
