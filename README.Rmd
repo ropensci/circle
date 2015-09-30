@@ -19,10 +19,75 @@ install_github("cloudyr/circleci")
 
 ## Code Examples ##
 
-To use the Circle CI API, you will need an account and an API key. Keys can be created [on the Circle CI account dashboard](https://circleci.com/account/api). 
+To use the Circle CI API, you will need an account and an API key. Keys can be created [on the Circle CI account dashboard](https://circleci.com/account/api). This value should then be set as an environment variable:
 
-Coming soon...
+```R
+Sys.setenv("CIRCLE_CI_KEY" = "examplecirclekey123")
+```
 
+A simple "Hello World!" test of authentication is to retrieve one's own user data using:
+
+```{r}
+str(get_user())
+```
+
+### Listing projects and builds ###
+
+It's then quite simple to list your projects or builds:
+
+```{r}
+# list projects
+p <- list_projects()
+p
+
+# list builds
+b <- list_builds()
+b
+
+# list builds for a given project
+list_builds(project = p[[1]])
+```
+
+You can also retrieve details of a given build:
+
+```{r}
+# using a build object:
+get_build(b[[1]])
+
+# using a build number, project, and username:
+get_build(b[[1]]$build_num, b[[1]]$reponame, b[[1]]$username)
+```
+
+### Starting, restarting, and canceling builds ###
+
+The most useful aspects of the package (and the API) relate to the ability to control builds:
+
+```{r}
+# retry a build
+new <- retry_build(b[[1]])
+
+# cancel that build
+cancel_build(new)
+
+# trigger a new build for a project
+p <- list_projects()
+new_build(p[[1]])
+```
+
+### Adding and deleting environment variables ###
+
+Another useful feature of the package is the ability to add and remove environment variables from the build environment. These [environment variables](https://circleci.com/docs/environment-variables) control the build environment and can be used within a build, for example for unit testing.
+
+```{r}
+p <- list_projects()
+
+# add environment variable
+add_env(project = p[[1]], var = list(Variable1 = "abc", Variable2 = "def"))
+
+# delete an environment variable (one per call)
+delete_env(project = p[[1]], var = "Variable1")
+delete_env(project = p[[1]], var = "Variable2")
+```
 
 ---
 [![cloudyr project logo](http://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
