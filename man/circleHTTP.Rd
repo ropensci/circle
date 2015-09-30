@@ -17,6 +17,8 @@ circleHTTP(verb = "GET", path = "", query = list(), body = "",
 
 \item{body}{character string of request body data.}
 
+\item{base}{A character string specifying the base URL for the API.}
+
 \item{key}{A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.}

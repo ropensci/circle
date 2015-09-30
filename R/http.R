@@ -9,6 +9,7 @@
 #' @param path A character string with the API endpoint (should begin with a slash).
 #' @param query A list specifying any query string arguments to pass to the API.
 #' @param body character string of request body data.
+#' @param base A character string specifying the base URL for the API.
 #' @param key A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.
 #'
@@ -45,5 +46,5 @@ circleHTTP <- function(verb = "GET",
         r <- httr::PUT(url, body = body, query = query, ...)
       }
     }
-    return(content(r, "parsed"))
+    return(httr::contents(r, "parsed"))
 }

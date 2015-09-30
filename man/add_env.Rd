@@ -14,8 +14,6 @@ add_env(project, user, var, ...)
 \item{var}{A named list containing key-value pairs of environment variable and value.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.}
-
-\item{branch}{A character string specifying the repository branch.}
 }
 \value{
 Something...

@@ -14,8 +14,6 @@ delete_env(project, user, var, ...)
 \item{var}{A character string specifying the name of an environment variable}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.}
-
-\item{branch}{A character string specifying the repository branch.}
 }
 \value{
 A logical.

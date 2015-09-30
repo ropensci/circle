@@ -284,7 +284,6 @@ function(project, user, ...) {
 #' @details Add one or more Circle CI environment variable for a specific project.
 #' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
 #' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
-#' @param branch A character string specifying the repository branch.
 #' @param var A named list containing key-value pairs of environment variable and value.
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return Something...
@@ -307,7 +306,7 @@ function(project, user, var, ...) {
         user <- project$username
         project <- project$reponame
     }        
-    out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/envvar"), body = v, encode = "json", ...)
+    out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/envvar"), body = var, encode = "json", ...)
     return(out)
 }
 
@@ -316,7 +315,6 @@ function(project, user, var, ...) {
 #' @details Delete a Circle CI environment variable for a specific project.
 #' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
 #' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
-#' @param branch A character string specifying the repository branch.
 #' @param var A character string specifying the name of an environment variable
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return A logical.
@@ -342,7 +340,7 @@ function(project, user, var, ...) {
         user <- project$username
         project <- project$reponame
     }        
-    out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/envvar", var), body = v, encode = "json", ...)
+    out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/envvar", var), body = var, encode = "json", ...)
     return(out)
 }
 
