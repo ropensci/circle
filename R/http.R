@@ -46,5 +46,5 @@ circleHTTP <- function(verb = "GET",
         r <- httr::PUT(url, body = body, query = query, ...)
       }
     }
-    return(httr::contents(r, "parsed"))
+    return(httr::content(r, "parsed"))
 }
