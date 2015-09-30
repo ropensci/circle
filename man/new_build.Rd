@@ -24,4 +24,13 @@ Trigger a new build for a specific project branch
 \details{
 Trigger a new Circle CI build for a specific project branch.
 }
+\examples{
+\dontrun{
+p <- list_projects()
+new_build(p[[1]])
+}
+}
+\seealso{
+\code{\link{cancel_build}}, \code{\link{retry_build}}
+}
 

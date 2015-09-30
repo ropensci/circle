@@ -24,4 +24,13 @@ Cancel a Circle CI build.
 \details{
 Cancel a Circle CI build.
 }
+\examples{
+\dontrun{
+b <- retry_build(list_builds(limit = 1)[[1]])
+cancel_build(b)
+}
+}
+\seealso{
+\code{\link{new_build}}, \code{\link{retry_build}}
+}
 

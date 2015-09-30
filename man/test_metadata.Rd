@@ -24,4 +24,9 @@ Retrieve test metadata for a build.
 \details{
 Retrieve test metadata for a build.
 }
+\examples{
+\dontrun{
+test_metadata(list_builds(limit = 1)[[1]])
+}
+}
 

@@ -24,4 +24,16 @@ Retrieve a specific build.
 \details{
 Retrieves details of a specific build.
 }
+\examples{
+\dontrun{
+# get build from a build object
+get_build(list_builds(limit = 1)[[1]])
+
+# get build by number, project, and user
+get_build("buildnumber", "circleci", "cloudyr")
+}
+}
+\seealso{
+\code{\link{list_builds}}
+}
 

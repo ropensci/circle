@@ -26,4 +26,20 @@ Retrieve a list of Circle CI project builds (among those available to the user) 
 \details{
 Retrieves a very detailed list of projects and project-related information for all Circle CI projects attached to the current user.
 }
+\examples{
+\dontrun{
+# list most recent 5 builds across all projects
+list_builds(limit = 5)
+
+# list first 10 and next 10 builds
+list_builds(limit = 10)
+list_builds(limit = 10, offset = 10)
+
+# list builds for a specific project
+list_builds(list_projects[[1]])
+}
+}
+\seealso{
+\code{\link{get_build}}, \code{\link{list_projects}}
+}
 

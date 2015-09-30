@@ -24,4 +24,9 @@ Retrieve artifacts from a specific build.
 \details{
 Retrieves details about artifacts from a specific build.
 }
+\examples{
+\dontrun{
+list_artifacts(list_builds(limit = 1)[[1]])
+}
+}
 

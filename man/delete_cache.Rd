@@ -22,4 +22,9 @@ Delete project cache
 \details{
 Delete the project cache for a specified Circle CI project.
 }
+\examples{
+\dontrun{
+delete_cache(list_projects()[[1]])
+}
+}
 

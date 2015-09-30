@@ -26,4 +26,17 @@ Add Circle CI environment variable(s) for a specific project.
 \details{
 Add one or more Circle CI environment variable for a specific project.
 }
+\examples{
+\dontrun{
+# add environment variables
+add_env(list_projects()[[1]], var = list(A = "123", B = "abc"))
+
+# remove environment variables, one at a time
+delete_env(list_projects()[[1]], var = "A")
+delete_env(list_projects()[[1]], var = "B")
+}
+}
+\seealso{
+\code{\link{delete_env}}
+}
 

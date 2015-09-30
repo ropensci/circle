@@ -18,4 +18,7 @@ Retrieve details about the authenticated Circle CI user.
 \details{
 This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in \code{Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")}.
 }
+\examples{
+\dontrun{get_user()}
+}
 

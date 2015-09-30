@@ -18,4 +18,10 @@ Retrieve a list of Circle CI projects for the authenticated user.
 \details{
 Retrieves a very detailed list of projects and project-related information for all Circle CI projects attached to the current user.
 }
+\examples{
+\dontrun{list_projects()}
+}
+\seealso{
+\code{\link{get_build}}, \code{\link{list_builds}}
+}
 
