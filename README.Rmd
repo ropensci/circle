@@ -1,6 +1,8 @@
 # Circle CI API Client Package #
 
-**circleci** is a simple client package for the [Circle CI](https://circleci.com/) [REST API](https://circleci.com/docs/api). It can control containerized builds of R packages and other software projects as part of a continuous integration workflow.
+**circleci** is a simple client package for the [Circle CI](https://circleci.com/) [REST API](https://circleci.com/docs/api). It can control containerized builds of R packages and other software projects as part of a continuous integration workflow. Builds are controlled by the `circle.yml` file in your project repository, though build settings and environment variables can additionally be managed through this package. The package also provides functionality for monitoring past builds, as well as canceling and retrying builds. 
+
+The [documentation for Travis-CI](https://github.com/craigcitro/r-travis) may be particularly useful for configuring a `circle.yml` file. Note that Circle has native R support, but does not run the latest R version. This means it may be a particularly useful platform R development, but packages will require the installation of R-devel (as is provided by the R Travis community support) or by running tests within a Docker container.
 
 ## Installation ##
 

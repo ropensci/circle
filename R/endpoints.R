@@ -1,3 +1,23 @@
+#' @title Circle CI API Client
+#' @description This package provides functionality for interacting with the Circle CI API. Circle is a continuous integration service that allows for automated testing of software each time that software is publicly committed to a repository on GitHub. Setting up Circle is quite simple, requiring only a GitHub account, some public (or private) repository hosted on GitHub, and logging into to Circle to link it to that repository. 
+#'
+#' Once you have your Circle account configured online, you can use this package to interact with and perform all operations on your Circle builds that you would normally perform via the website. This includes monitoring builds, modifying build environment settings and environment variables, and cancelling or restarting builds.
+#'
+#' Use of this package requires a Circle API key, which can be found \href{https://circleci.com/account/api}{on the Circle CI website}. API keys are disposable, but should still be treated securely. To use the key in R, store it as an environment variable using either \code{Sys.setenv("CIRCLE_CI_KEY" = "examplekey")} or by storing the key in your .Renviron file
+#'
+#' @examples
+#' \dontrun{
+#' # authenticate using a stored environment variables
+#' Sys.setenv("CIRCLE_CI_KEY" = "examplekey")
+#' 
+#' # check to see if you've authenticated correctly
+#' get_user()
+#' }
+#'
+#' @docType package
+#' @name circleci
+NULL
+
 #' @title Get Circle CI user
 #' @description Retrieve details about the authenticated Circle CI user.
 #' @details This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in \code{Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")}.
