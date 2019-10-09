@@ -1,5 +1,103 @@
+auth_circle <- function() {
+
+    yml = tryCatch({
+        readLines("~/.circleci/cli.yml")
+    },
+    warning=function(cond) {
+        cli::cat_bullet(
+            bullet = "pointer", bullet_col = "yellow",
+            c("To interact with the Circle CI API, an API is required.",
+              "This is a one-time procedure. The token will be stored in your home directory in the '.circleci' directory.")
+        )
+        message("Querying API token...")
+        browseURL("https://circleci.com/account/api")
+        wait_for_clipboard_token()
+        return(readLines("~/.circleci/cli.yml"))
+    })
+
+    # create api token if none is found but config file exists
+    if (!any(grepl("token", yml))) {
+        browseURL("https://circleci.com/account/api")
+        wait_for_clipboard_token()
+    }
+}
+
+wait_for_clipboard_token <- function() {
+
+    cli::cat_bullet(
+        bullet = "info", bullet_col = "yellow",
+        " Waiting for API token to appear on the clipboard."
+    )
+    Sys.sleep(3)
+
+    repeat {
+        #token <- clipr::read_clip()
+        token = readline("Please paste the API token to the console.\n")
+        if (is_token(token)) break
+        Sys.sleep(0.1)
+    }
+    cli::cat_bullet(
+        bullet = "pointer", bullet_col = "yellow",
+        " Detected token, clearing clipboard."
+    )
+    tryCatch(
+        clipr::write_clip(""),
+        error = function(e) {
+            warningc("Error clearing clipboard: ", conditionMessage(e))
+        }
+    )
+    fs::dir_create("~/.circleci")
+    writeLines(sprintf(c("host: https://circleci.com", "endpoint: graphql-unstable",
+                 "token: %s"), token), "~/.circleci/cli.yml")
+}
+
+is_token <- function(token) {
+    grepl("^[0-9a-f]{40}$", token)
+}
+
+circle_token_ <- function(repo = NULL) {
+
+    cli::cat_bullet(
+        bullet = "pointer", bullet_col = "yellow",
+        "Querying your circle CI Personal Access Token."
+    )
+
+    token <- auth_circle()
+    if (!is.null(repo)) {
+        if (!circle_has_repo(repo, token)) {
+            circle_sync(token = token)
+            if (!circle_has_repo(repo, token)) {
+                review_circle_app_permission(repo)
+            }
+        }
+    }
+    token
+}
+
+review_circle_app_permission <- function(repo) {
+    url_stop(
+        "You may need to retry in a few seconds. ",
+        "If your repo ", repo, " belongs to an organization, you may need to allow circle access to that organization",
+        url = "https://github.com/settings/connections/applications/f244293c729d5066cf27"
+    )
+}
+
+CIRCLE_POST <- function(url, ..., encode = "json", token) {
+    browser()
+    httr::POST(circle(url),
+               httr::user_agent("ropenscilabs/travis"),
+               httr::accept("application/json"),
+               if (!is.null(token)) httr::add_headers(Authorization = paste("token", token)),
+               ...
+    )
+}
+
+circle <- function(endpoint = "") {
+    paste0("https://circleci.com/api/v1.1", endpoint)
+}
+
 #' @title Circle CI API Client
-#' @description This package provides functionality for interacting with the Circle CI API. Circle is a continuous integration service that allows for automated testing of software each time that software is publicly committed to a repository on GitHub. Setting up Circle is quite simple, requiring only a GitHub account, some public (or private) repository hosted on GitHub, and logging into to Circle to link it to that repository. 
+#' @description This package provides functionality for interacting with the Circle CI API. Circle is a continuous integration service that allows for automated testing of software each time that software is publicly committed to a repository on GitHub. Setting up Circle is quite simple, requiring only a GitHub account, some public (or private) repository hosted on GitHub, and logging into to Circle to link it to that repository.
 #'
 #' Once you have your Circle account configured online, you can use this package to interact with and perform all operations on your Circle builds that you would normally perform via the website. This includes monitoring builds, modifying build environment settings and environment variables, and cancelling or restarting builds.
 #'
@@ -9,7 +107,7 @@
 #' \dontrun{
 #' # authenticate using a stored environment variables
 #' Sys.setenv("CIRCLE_CI_KEY" = "examplekey")
-#' 
+#'
 #' # check to see if you've authenticated correctly
 #' get_user()
 #' }
@@ -23,10 +121,10 @@ NULL
 #' @details This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in \code{Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")}.
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return A list of class \dQuote{circle_user}.
-#' @examples 
+#' @examples
 #' \dontrun{get_user()}
 #' @export
-get_user <- 
+get_user <-
 function(...) {
     # GET: /me
     # Provides information about the signed in user.
@@ -40,14 +138,15 @@ function(...) {
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return A list of class \dQuote{circle_projects}, wherein each element is a \dQuote{circle_project}.
 #' @seealso \code{\link{get_build}}, \code{\link{list_builds}}
-#' @examples 
+#' @examples
 #' \dontrun{list_projects()}
 #' @export
-list_projects <- 
+list_projects <-
 function(...) {
     # GET: /projects
     # List of all the projects you're following on CircleCI, with build information organized by branch.
     out <- circleHTTP("GET", path = "/projects", ...)
+    browser()
     structure(lapply(out, structure, class = "circle_project"), class = "circle_projects")
 }
 
@@ -61,22 +160,22 @@ function(...) {
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return A list of class \dQuote{circle_builds}, wherein each element is a \dQuote{circle_build}.
 #' @seealso \code{\link{get_build}}, \code{\link{list_projects}}
-#' @examples 
+#' @examples
 #' \dontrun{
 #' # list most recent 5 builds across all projects
 #' list_builds(limit = 5)
-#' 
+#'
 #' # list first 10 and next 10 builds
 #' list_builds(limit = 10)
 #' list_builds(limit = 10, offset = 10)
-#' 
+#'
 #' # list builds for a specific project
 #' list_builds(list_projects[[1]])
 #' }
 #' @export
 list_builds <-
 function(project = NULL, user = NULL, limit = 30, offset = 0, ...) {
-    
+
     if (!is.null(project)) {
         # GET: /project/:username/:project
         # Build summary for each of the last 30 builds for a single git repo.
@@ -92,7 +191,7 @@ function(project = NULL, user = NULL, limit = 30, offset = 0, ...) {
         out <- circleHTTP("GET", path = "/recent-builds", query = list(limit = limit, offset = offset), ...)
         structure(lapply(out, structure, class = "circle_build"), class = "circle_builds")
     }
-    
+
 }
 
 #' @title Get build
@@ -108,12 +207,12 @@ function(project = NULL, user = NULL, limit = 30, offset = 0, ...) {
 #' \dontrun{
 #' # get build from a build object
 #' get_build(list_builds(limit = 1)[[1]])
-#' 
+#'
 #' # get build by number, project, and user
 #' get_build("buildnumber", "circleci", "cloudyr")
 #' }
 #' @export
-get_build <- 
+get_build <-
 function(build, project, user, ...) {
     # GET: /project/:username/:project/:build_num
     # Full details for a single build. The response includes all of the fields from the build summary. This is also the payload for the notification webhooks, in which case this object is the value to a key named 'payload'.
@@ -124,7 +223,7 @@ function(build, project, user, ...) {
     } else if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("GET", path = paste0("/project/", user, "/", project, "/", build), ...)
     structure(out, class = "circle_build")
 }
@@ -142,7 +241,7 @@ function(build, project, user, ...) {
 #' list_artifacts(list_builds(limit = 1)[[1]])
 #' }
 #' @export
-list_artifacts <- 
+list_artifacts <-
 function(build, project, user, ...) {
     # GET: /project/:username/:project/:build_num/artifacts
     # List the artifacts produced by a given build.
@@ -153,7 +252,7 @@ function(build, project, user, ...) {
     } else if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("GET", path = paste0("/project/", user, "/", project, "/", build), ...)
     structure(out, class = "circle_artifacts")
 }
@@ -183,7 +282,7 @@ function(build, project, user, ...) {
     } else if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/", build, "/retry"), ...)
     structure(out, class = "circle_build")
 }
@@ -203,7 +302,7 @@ function(build, project, user, ...) {
 #' cancel_build(b)
 #' }
 #' @export
-cancel_build <- 
+cancel_build <-
 function(build, project, user, ...) {
     # POST: /project/:username/:project/:build_num/cancel
     # Cancels the build, returns a summary of the build.
@@ -214,7 +313,7 @@ function(build, project, user, ...) {
     } else if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/", build, "/cancel"), ...)
     structure(out, class = "circle_build")
 }
@@ -234,14 +333,14 @@ function(build, project, user, ...) {
 #' new_build(p[[1]])
 #' }
 #' @export
-new_build <- 
+new_build <-
 function(project, user, branch, ...) {
     # POST: /project/:username/:project/tree/:branch
     # Triggers a new build, returns a summary of the build. Optional build parameters can be set using an experimental API.
     if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/tree/", branch), ...)
     structure(out, class = "circle_build")
 }
@@ -259,7 +358,7 @@ function(project, user, branch, ...) {
 #' test_metadata(list_builds(limit = 1)[[1]])
 #' }
 #' @export
-test_metadata <- 
+test_metadata <-
 function(build, project, user, ...) {
     # GET: /project/:username/:project/:build_num/tests
     # Provides test metadata for a build
@@ -270,7 +369,7 @@ function(build, project, user, ...) {
     } else if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/", build, "/tests"), ...)
     structure(out, class = "circle_test_metadata")
 }
@@ -287,14 +386,14 @@ function(build, project, user, ...) {
 #' delete_cache(list_projects()[[1]])
 #' }
 #' @export
-delete_cache <- 
+delete_cache <-
 function(project, user, ...) {
     # DELETE: /project/:username/:project/build-cache
     # Clears the cache for a project
     if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/build_cache"), ...)
     return(out)
 }
@@ -318,14 +417,14 @@ function(project, user, ...) {
 #' delete_env(list_projects()[[1]], var = "B")
 #' }
 #' @export
-add_env <- 
+add_env <-
 function(project, user, var, ...) {
     # POST: /project/:username/:project/envvar
     # Creates a new environment variable
     if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/envvar"), body = var, encode = "json", ...)
     return(out)
 }
@@ -349,7 +448,7 @@ function(project, user, var, ...) {
 #' delete_env(list_projects()[[1]], var = "B")
 #' }
 #' @export
-delete_env <- 
+delete_env <-
 function(project, user, var, ...) {
     # POST: /project/:username/:project/envvar
     # Creates a new environment variable
@@ -359,7 +458,7 @@ function(project, user, var, ...) {
     if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/envvar", var), body = var, encode = "json", ...)
     return(out)
 }
@@ -372,14 +471,14 @@ function(project, user, var, ...) {
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return Something...
 #' @export
-generate_ssh_key <- 
+generate_ssh_key <-
 function(project, user, ...) {
     # POST: /project/:username/:project/ssh-key
     # Create an ssh key used to access external systems that require SSH key-based authentication
     if (inherits(project, "circle_project")) {
         user <- project$username
         project <- project$reponame
-    }        
+    }
     out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/ssh-key"), ...)
     out
 }
@@ -390,7 +489,7 @@ function(project, user, ...) {
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return Something...
 #' @export
-authenticate_github <- 
+authenticate_github <-
 function(...) {
     # POST: /user/ssh-key
     # Adds a CircleCI key to your Github User account.
@@ -404,7 +503,7 @@ function(...) {
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
 #' @return Something...
 #' @export
-add_heroku_key <- 
+add_heroku_key <-
 function(...) {
     # POST: /user/heroku-key
     # Adds your Heroku API key to CircleCI, takes apikey as form param name.
