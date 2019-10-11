@@ -1,10 +1,10 @@
 #' @title Circle CI HTTP Requests
-#' 
+#'
 #' @description This is the workhorse function for executing API requests for Circle CI.
 #'
-#' @details This is mostly an internal function for executing API requests. 
+#' @details This is mostly an internal function for executing API requests.
 #' In almost all cases, users do not need to access this directly.
-#' 
+#'
 #' @param verb A character string containing an HTTP verb, defaulting to \dQuote{GET}.
 #' @param path A character string with the API endpoint (should begin with a slash).
 #' @param query A list specifying any query string arguments to pass to the API.
@@ -14,20 +14,19 @@
 #' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.
 #'
 #' @return The JSON response, or the relevant error.
-#' 
+#'
 #' @export
 circleHTTP <- function(verb = "GET",
-                       path = "", 
+                       path = "",
                        query = list(),
                        body = "",
-                       base = "https://circleci.com/api/v1",
-                       key = Sys.getenv("CIRCLE_CI_KEY"),
+                       base = "https://circleci.com/api/v2",
                        ...) {
     url <- paste0(base, path)
-    if (key == "") {
-        stop("'key' is required but missing and not specified in environment variable CIRCLE_CI_KEY")
-    }
-    query$"circle-token" <- key
+
+    auth_circle()
+    query$"circle-token" = read_token()
+
     if (verb == "GET") {
       r <- httr::GET(url, query = query, ...)
     } else if (verb == "DELETE") {
