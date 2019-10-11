@@ -13,3 +13,4 @@ BugReports: https://github.com/cloudyr/circleci/issues
 Imports: httr, jsonlite
 Enhances: devtools
 Suggests: testthat
+RoxygenNote: 6.1.1
