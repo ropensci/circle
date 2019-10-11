@@ -40,9 +40,9 @@ circleHTTP <- function(verb = "GET",
       }
     } else if (verb == "POST") {
       if(body == "") {
-        r <- httr::PUT(url, query = query, ...)
+        r <- httr::POST(url, query = query, ...)
       } else {
-        r <- httr::PUT(url, body = body, query = query, ...)
+        r <- httr::POST(url, body = body, query = query, ...)
       }
     }
     return(httr::content(r, "parsed"))

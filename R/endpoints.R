@@ -185,71 +185,6 @@ list_artifacts <-
         structure(out, class = "circle_artifacts")
     }
 
-#' @title Retry build
-#' @description Retry a Circle CI build.
-#' @details Retry a Circle CI build.
-#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify \code{project} or \code{user}.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return A list of class \dQuote{circle_build}.
-#' @seealso \code{\link{cancel_build}}, \code{\link{new_build}}
-#' @examples
-#' \dontrun{
-#' retry_build(get_pipelines(limit = 1)[[1]])
-#' }
-#' @export
-retry_build <-
-    function(build = NULL, ...) {
-
-        if (is.null(build)) {
-            build = get_pipelines()[[1]]
-        } else {
-            build = build[[1]]
-        }
-        project = build$reponame
-        user = build$username
-        vcs_type = build$vcs_type
-        build_number = build$build_num
-        browser()
-
-        out = circleHTTP("POST", path = sprintf("/project/%s/%s/%s/%s/retry",
-                                                vcs_type, user,
-                                                project, build_number), ...)
-        structure(out, class = "circle_build")
-    }
-
-#' @title Cancel build
-#' @description Cancel a Circle CI build.
-#' @details Cancel a Circle CI build.
-#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify \code{project} or \code{user}.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return A list of class \dQuote{circle_build}.
-#' @seealso \code{\link{new_build}}, \code{\link{retry_build}}
-#' @examples
-#' \dontrun{
-#' b <- retry_build(get_pipelines(limit = 1)[[1]])
-#' cancel_build(b)
-#' }
-#' @export
-cancel_build <-
-    function(build, project, user, ...) {
-        # POST: /project/:username/:project/:build_num/cancel
-        # Cancels the build, returns a summary of the build.
-        if (inherits(build, "circle_build")) {
-            user <- build$username
-            project <- build$reponame
-            build <- build$build_num
-        } else if (inherits(project, "circle_project")) {
-            user <- project$username
-            project <- project$reponame
-        }
-        out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/", build, "/cancel"), ...)
-        structure(out, class = "circle_build")
-    }
-
 #' @title Trigger build
 #' @description Trigger a new build for a specific project branch
 #' @details Trigger a new Circle CI build for a specific project branch.
@@ -404,13 +339,16 @@ delete_env <-
 #' @return Something...
 #' @export
 generate_ssh_key <-
-    function(project, user, ...) {
+    function(user = NULL, project = NULL, type = "github-user-key",
+             base = "https://circleci.com/api/v1.1", vcs_type = "gh", ...) {
         # POST: /project/:username/:project/ssh-key
         # Create an ssh key used to access external systems that require SSH key-based authentication
-        if (inherits(project, "circle_project")) {
-            user <- project$username
-            project <- project$reponame
+        if (is.null(user)) {
+            user <- get_user()$login
         }
-        out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/ssh-key"), ...)
-        out
+        if (is.null(project)) {
+            project <- basename(getwd())
+        }
+        circleHTTP("POST", path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, project),
+                          body = list(type = type), base = base, ...)
     }

@@ -4,12 +4,14 @@
 \alias{generate_ssh_key}
 \title{Generate SSH Key}
 \usage{
-generate_ssh_key(project, user, ...)
+generate_ssh_key(user = NULL, project = NULL,
+  type = "github-user-key", base = "https://circleci.com/api/v1.1",
+  vcs_type = "gh", ...)
 }
 \arguments{
-\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.}
-
 \item{user}{A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .}
+
+\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.}
 }
