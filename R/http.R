@@ -11,7 +11,7 @@
 #' @param body character string of request body data.
 #' @param base A character string specifying the base URL for the API.
 #' @param key A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()].
 #'
 #' @return The JSON response, or the relevant error.
 #'
@@ -20,30 +20,52 @@ circleHTTP <- function(verb = "GET",
                        path = "",
                        query = list(),
                        body = "",
-                       base = "https://circleci.com/api/v2",
+                       api_version = "v2",
+                       encode = "json",
                        ...) {
-    url <- paste0(base, path)
+    url <- paste0("https://circleci.com/api/", api_version, path)
 
     auth_circle()
     query$"circle-token" = read_token()
 
+    # set user agent
+    ua <- user_agent("http://github.com/pat-s/circle")
+
     if (verb == "GET") {
-      r <- httr::GET(url, query = query, ...)
+      resp <- httr::GET(url, query = query, encode = encode, ua, accept_json(),
+                        content_type_json(), ...)
     } else if (verb == "DELETE") {
-      r <- httr::DELETE(url, query = query, ...)
-      s <- httr::http_status(r)
-      if (s$category == "success") {
-          return(TRUE)
-      } else {
-          message(s$message)
-          return(FALSE)
-      }
+      resp <- httr::DELETE(url, query = query, encode = encode, ua, accept_json(),
+                           content_type_json(), ...)
     } else if (verb == "POST") {
-      if(body == "") {
-        r <- httr::POST(url, query = query, ...)
-      } else {
-        r <- httr::POST(url, body = body, query = query, ...)
-      }
+      resp <- httr::POST(url, body = body, query = query, encode = encode, ua,
+                         accept_json(), content_type_json(), ...)
     }
-    return(httr::content(r, "parsed"))
+    if (http_type(resp) != "application/json") {
+      stop("API did not return json", call. = FALSE)
+    }
+
+    parsed <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
+
+    if (status_code(resp) != 200 && status_code(resp) != 201) {
+      stop(
+        sprintf(
+          "GitHub API request failed [%s]\n%s\n<%s>",
+          status_code(resp),
+          parsed$message,
+          parsed$documentation_url
+        ),
+        call. = FALSE
+      )
+    }
+
+    structure(
+      list(
+        content = parsed,
+        path = path,
+        response = resp
+      ),
+      class = "circle_api"
+    )
+
 }
