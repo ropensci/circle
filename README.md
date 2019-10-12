@@ -1,7 +1,7 @@
 
 # circle
 
-R API client package for the Circle CI REST API
+R client package for the Circle CI REST API
 
 ## What works
 
