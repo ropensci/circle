@@ -3,7 +3,7 @@
 #'
 #' Once you have your Circle account configured online, you can use this package to interact with and perform all operations on your Circle builds that you would normally perform via the website. This includes monitoring builds, modifying build environment settings and environment variables, and cancelling or restarting builds.
 #'
-#' Use of this package requires a Circle API key, which can be found \href{https://circleci.com/account/api}{on the Circle CI website}. API keys are disposable, but should still be treated securely. To use the key in R, store it as an environment variable using either \code{Sys.setenv("CIRCLE_CI_KEY" = "examplekey")} or by storing the key in your .Renviron file
+#' Use of this package requires a Circle API key, which can be found [on the Circle CI website](https://circleci.com/account/api). API keys are disposable, but should still be treated securely. To use the key in R, store it as an environment variable using either `Sys.setenv("CIRCLE_CI_KEY" = "examplekey")` or by storing the key in your .Renviron file
 #'
 #' @examples
 #' \dontrun{
@@ -20,8 +20,8 @@ NULL
 
 #' @title Get Circle CI user
 #' @description Retrieve details about the authenticated Circle CI user.
-#' @details This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in \code{Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")}.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @details This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in `Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")`.
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A list of class \dQuote{circle_user}.
 #' @examples
 #' \dontrun{get_user()}
@@ -37,9 +37,9 @@ get_user <-
 #' @title List projects
 #' @description Retrieve a list of Circle CI projects for the authenticated user.
 #' @details Retrieves a very detailed list of projects and project-related information for all Circle CI projects attached to the current user.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A list of class \dQuote{circle_projects}, wherein each element is a \dQuote{circle_project}.
-#' @seealso \code{\link{get_build}}, \code{\link{get_pipelines}}
+#' @seealso [get_build()], [get_pipelines()]
 #' @examples
 #' \dontrun{list_projects()}
 #' @export
@@ -52,115 +52,14 @@ list_projects <-
         structure(lapply(out, structure, class = "circle_project"), class = "circle_projects")
     }
 
-#' @title List builds
-#' @description Retrieve a list of Circle CI project builds (among those available to the user) or for a specific project. Pagination paramaters allow one to retrieve all builds for a user or for a specific project.
-#' @details Retrieves a very detailed list of projects and project-related information for all Circle CI projects attached to the current user.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}. If \code{NULL}, all builds for all user projects are returned.
-#' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
-#' @param limit An integer specifying the number of builds to return, with a maximum of 100.
-#' @param offset An integer used as a paging parameter.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return A list of class \dQuote{circle_builds}, wherein each element is a \dQuote{circle_build}.
-#' @seealso \code{\link{get_build}}, \code{\link{list_projects}}
-#' @examples
-#' \dontrun{
-#' # list most recent 5 builds across all projects
-#' get_pipelines(limit = 5)
-#'
-#' # list first 10 and next 10 builds
-#' get_pipelines(limit = 10)
-#' get_pipelines(limit = 10, offset = 10)
-#'
-#' # list builds for a specific project
-#' get_pipelines(list_projects[[1]])
-#' }
-#' @export
-get_pipelines <-
-    function(project = NULL, user = NULL, limit = 30, build_number = NULL, offset = 0,
-             all = FALSE, vcs_type = "gh", ...) {
-
-        if (all) {
-            out <- circleHTTP("GET", path = "/recent-builds",
-                              query = list(limit = limit, offset = offset), ...)
-        } else if (is.null(project)) {
-            # GET: /project/:username/:project
-            # Build summary for each of the last 30 builds for a single git repo.
-            user <- get_user()$login
-            project <- basename(getwd())
-            if (is.null(build_number)) {
-                out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline", vcs_type, user, project), ...)
-            } else {
-                out <- list(circleHTTP("GET", path = sprintf("/project/%s/%s/%s/%s/pipeline", vcs_type, user, project, build_number), ...))
-            }
-        } else if (!is.null(project) && is.null(user)) {
-            user <- get_user()$login
-            project <- project
-            if (is.null(build_number)) {
-                out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline", vcs_type, user, project), ...)
-            } else {
-                out <- list(circleHTTP("GET", path = sprintf("/project/%s/%s/%s/%s/pipeline", vcs_type, user, project, build_number), ...))
-            }
-        } else if (!is.null(project) && !is.null(user)) {
-            user <- user
-            project <- project
-            if (is.null(build_number)) {
-                out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline", vcs_type, user, project), ...)
-            } else {
-                out <- list(circleHTTP("GET", path = sprintf("/project/%s/%s/%s/%s/pipeline", vcs_type, user, project, build_number), ...))
-            }
-        }
-
-        if (length(out) == 0) {
-            stop(sprintf("No project named '%s' found for user '%s'.", project, user))
-        }
-
-        return(out)
-    }
-
-get_workflows = function(pipelines = NULL) {
-
-    pipeline_id = sapply(pipelines$items, function(x) x$id)
-    # retrieve from pipeline/id endpoint
-    workflows = lapply(pipeline_id, function(id) circleHTTP("GET", path = sprintf("/pipeline/%s", id)))
-    # retrieve from workflow/id endpoint
-    workflows2 = lapply(workflows, function(workflows) circleHTTP("GET", path = sprintf("/workflow/%s", workflows$workflows[[1]]$id)))
-
-    return(workflows2)
-}
-
-# cron builds are not shown
-get_jobs = function(workflow = NULL, id_only = FALSE) {
-
-    jobs = lapply(workflow, function(workflow) circleHTTP("GET", path = sprintf("/workflow/%s/jobs", workflow$id)))
-
-    # simplify
-    jobs = lapply(jobs, function(x) x$items)
-
-    # set names
-    names(jobs) = sapply(jobs, function(x) x[[1]]$job_number)
-
-    # set names of jobs to have a more descriptive return
-    for (i in 1:length(jobs)) {
-        job_names = sapply(jobs[[i]], function(x) x$name)
-        names(jobs[[i]]) = job_names
-    }
-
-    if (id_only) {
-        jobs = lapply(jobs, function(x) jobs)
-    }
-
-    return(jobs)
-}
-
-
 
 #' @title Get build artifacts
 #' @description Retrieve artifacts from a specific build.
 #' @details Retrieves details about artifacts from a specific build.
-#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify \code{project} or \code{user}.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify `project` or `user`.
+#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.
+#' @param user A character string specifying the user name. This is not required if `build` is of class \dQuote{circle_build} and/or if `project` is of class \dQuote{circle_project} .
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A list of class \dQuote{circle_artifacts}.
 #' @examples
 #' \dontrun{
@@ -188,12 +87,12 @@ list_artifacts <-
 #' @title Trigger build
 #' @description Trigger a new build for a specific project branch
 #' @details Trigger a new Circle CI build for a specific project branch.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
+#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.
+#' @param user A character string specifying the user name. This is not required if `project` is of class \dQuote{circle_project}.
 #' @param branch A character string specifying the repository branch.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A list of class \dQuote{circle_build}.
-#' @seealso \code{\link{cancel_build}}, \code{\link{retry_build}}
+#' @seealso [cancel_build()], [retry_build()]
 #' @examples
 #' \dontrun{
 #' p <- list_projects()
@@ -215,10 +114,10 @@ new_build <-
 #' @title Retrieve test metadata
 #' @description Retrieve test metadata for a build.
 #' @details Retrieve test metadata for a build.
-#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify \code{project} or \code{user}.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @param build A character string specifying the project name, or an object of class \dQuote{circle_build}. If the latter, there is no need to specify `project` or `user`.
+#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.
+#' @param user A character string specifying the user name. This is not required if `build` is of class \dQuote{circle_build} and/or if `project` is of class \dQuote{circle_project} .
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A list of class \dQuote{circle_test_metadata}.
 #' @examples
 #' \dontrun{
@@ -244,9 +143,9 @@ test_metadata <-
 #' @title Delete Project Cache
 #' @description Delete project cache
 #' @details Delete the project cache for a specified Circle CI project.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
+#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.
+#' @param user A character string specifying the user name. This is not required if `build` is of class \dQuote{circle_build} and/or if `project` is of class \dQuote{circle_project} .
+#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].
 #' @return A logical.
 #' @examples
 #' \dontrun{
@@ -265,90 +164,3 @@ delete_cache <-
         return(out)
     }
 
-#' @title Add Environment Variable(s)
-#' @description Add Circle CI environment variable(s) for a specific project.
-#' @details Add one or more Circle CI environment variable for a specific project.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
-#' @param var A named list containing key-value pairs of environment variable and value.
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return Something...
-#' @seealso \code{\link{delete_env}}
-#' @examples
-#' \dontrun{
-#' # add environment variables
-#' add_env(list_projects()[[1]], var = list(A = "123", B = "abc"))
-#'
-#' # remove environment variables, one at a time
-#' delete_env(list_projects()[[1]], var = "A")
-#' delete_env(list_projects()[[1]], var = "B")
-#' }
-#' @export
-add_env <-
-    function(project, user, var, ...) {
-        # POST: /project/:username/:project/envvar
-        # Creates a new environment variable
-        if (inherits(project, "circle_project")) {
-            user <- project$username
-            project <- project$reponame
-        }
-        out <- circleHTTP("POST", path = paste0("/project/", user, "/", project, "/envvar"), body = var, encode = "json", ...)
-        return(out)
-    }
-
-#' @title Delete Environment Variable
-#' @description Delete a Circle CI environment variable for a specific project.
-#' @details Delete a Circle CI environment variable for a specific project.
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.
-#' @param var A character string specifying the name of an environment variable
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return A logical.
-#' @seealso \code{\link{add_env}}
-#' @examples
-#' \dontrun{
-#' # add environment variables
-#' add_env(list_projects()[[1]], var = list(A = "123", B = "abc"))
-#'
-#' # remove environment variables, one at a time
-#' delete_env(list_projects()[[1]], var = "A")
-#' delete_env(list_projects()[[1]], var = "B")
-#' }
-#' @export
-delete_env <-
-    function(project, user, var, ...) {
-        # POST: /project/:username/:project/envvar
-        # Creates a new environment variable
-        if (length(var) > 1) {
-            stop("Only one environment variable can be specified at a time")
-        }
-        if (inherits(project, "circle_project")) {
-            user <- project$username
-            project <- project$reponame
-        }
-        out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/envvar", var), body = var, encode = "json", ...)
-        return(out)
-    }
-
-#' @title Generate SSH Key
-#' @description Generate an SSH Key
-#' @details Generate an SSH Key for a specific project
-#' @param project A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.
-#' @param user A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .
-#' @param ... Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.
-#' @return Something...
-#' @export
-generate_ssh_key <-
-    function(user = NULL, project = NULL, type = "github-user-key",
-             base = "https://circleci.com/api/v1.1", vcs_type = "gh", ...) {
-        # POST: /project/:username/:project/ssh-key
-        # Create an ssh key used to access external systems that require SSH key-based authentication
-        if (is.null(user)) {
-            user <- get_user()$login
-        }
-        if (is.null(project)) {
-            project <- basename(getwd())
-        }
-        circleHTTP("POST", path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, project),
-                          body = list(type = type), base = base, ...)
-    }
