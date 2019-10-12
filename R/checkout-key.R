@@ -17,7 +17,7 @@ create_ssh_key <-
              base = "https://circleci.com/api/v1.1", vcs_type = "gh", ...) {
     # does not yet support api v2
     if (is.null(user)) {
-      user <- get_user()$login
+      user <- get_user()$content$login
     }
     if (is.null(project)) {
       project <- basename(getwd())
@@ -35,7 +35,7 @@ create_ssh_key <-
 get_ssh_keys <-
   function(project = NULL, user = NULL, vcs_type = "gh", ...) {
     if (is.null(user)) {
-      user <- get_user()$login
+      user <- get_user()$content$login
     }
     if (is.null(project)) {
       project <- basename(getwd())
@@ -54,25 +54,21 @@ get_ssh_keys <-
 #' @rdname ssh_key
 #' @export
 delete_ssh_key <-
-  function(key, project = NULL, user = NULL, type = "github-user-key",
+  function(project = NULL, user = NULL, fingerprint, type = "github-user-key",
              base = "https://circleci.com/api/v1.1", vcs_type = "gh", ...) {
-
-    if (!grepl("key", test[[1]]$type)) {
-      stop("The key provided does not seem to be a valid 'key' object.")
-    }
 
     # does not yet support api v2
     if (is.null(user)) {
-      user <- get_user()$login
+      user <- get_user()$content$login
     }
     if (is.null(project)) {
       project <- basename(getwd())
     }
-    invisible(circleHTTP("DELETE",
+    circleHTTP("DELETE",
       path = sprintf(
         "/project/%s/%s/%s/checkout-key/%s",
-        vcs_type, user, project, key$fingerprint
+        vcs_type, user, project, fingerprint
       ),
       base = base, ...
-    ))
+    )
   }

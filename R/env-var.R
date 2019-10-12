@@ -14,15 +14,15 @@
 #' @export
 set_env_var <-
   function(project = NULL, user = NULL, vcs_type = "gh", var,
-           base = "https://circleci.com/api/v1", ...) {
+           base = "https://circleci.com/api/v1.1", encode = "json", ...) {
     if (is.null(user)) {
-      user <- get_user()$login
+      user <- get_user()$content$login
     }
     if (is.null(project)) {
       project <- basename(getwd())
     }
     circleHTTP("POST", path = sprintf("/project/%s/%s/%s/envvar", vcs_type, user, project),
-               base = base, httr::content_type_json(), body = var,
+               base = base, body = var, encode = encode,
                ...)
   }
 
@@ -31,7 +31,7 @@ set_env_var <-
 get_env_var <-
   function(project = NULL, user = NULL, vcs_type = "gh", ...) {
     if (is.null(user)) {
-      user <- get_user()$login
+      user <- get_user()$content$login
     }
     if (is.null(project)) {
       project <- basename(getwd())
@@ -43,16 +43,15 @@ get_env_var <-
 #' @rdname env_var
 #' @export
 delete_env <-
-  function(project, user, var, ...) {
-    # POST: /project/:username/:project/envvar
-    # Creates a new environment variable
-    if (length(var) > 1) {
-      stop("Only one environment variable can be specified at a time")
+  function(project = NULL, user = NULL, vcs_type = "gh", var,
+           base = "https://circleci.com/api/v1.1", ...) {
+    if (is.null(user)) {
+      user <- get_user()$content$login
     }
-    if (inherits(project, "circle_project")) {
-      user <- project$username
-      project <- project$reponame
+    if (is.null(project)) {
+      project <- basename(getwd())
     }
-    out <- circleHTTP("DELETE", path = paste0("/project/", user, "/", project, "/envvar", var), body = var, encode = "json", ...)
-    return(out)
+      circleHTTP("DELETE", path = sprintf("/project/%s/%s/%s/envvar/%s", vcs_type, user, project, var),
+                 base = base, httr::content_type_json(),
+                 ...)
   }
