@@ -13,7 +13,7 @@ new_build(project, user, branch, ...)
 
 \item{branch}{A character string specifying the repository branch.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
 }
 \value{
 A list of class \dQuote{circle_build}.
@@ -31,5 +31,5 @@ new_build(p[[1]])
 }
 }
 \seealso{
-\code{\link{cancel_build}}, \code{\link{retry_build}}
+\code{\link[=cancel_build]{cancel_build()}}, \code{\link[=retry_build]{retry_build()}}
 }

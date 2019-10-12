@@ -5,7 +5,7 @@
 \title{Circle CI HTTP Requests}
 \usage{
 circleHTTP(verb = "GET", path = "", query = list(), body = "",
-  base = "https://circleci.com/api/v2", ...)
+  api_version = "v2", encode = "json", ...)
 }
 \arguments{
 \item{verb}{A character string containing an HTTP verb, defaulting to \dQuote{GET}.}
@@ -16,9 +16,9 @@ circleHTTP(verb = "GET", path = "", query = list(), body = "",
 
 \item{body}{character string of request body data.}
 
-\item{base}{A character string specifying the base URL for the API.}
+\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}.}
+\item{base}{A character string specifying the base URL for the API.}
 
 \item{key}{A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.}
 }

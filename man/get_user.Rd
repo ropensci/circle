@@ -7,7 +7,7 @@
 get_user(...)
 }
 \arguments{
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr]{GET}}, via \code{\link{circleHTTP}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
 }
 \value{
 A list of class \dQuote{circle_user}.

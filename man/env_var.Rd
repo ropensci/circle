@@ -8,11 +8,12 @@
 \title{Add/Get/Set Environment Variable(s)}
 \usage{
 set_env_var(project = NULL, user = NULL, vcs_type = "gh", var,
-  base = "https://circleci.com/api/v1", ...)
+  base = "https://circleci.com/api/v1.1", encode = "json", ...)
 
 get_env_var(project = NULL, user = NULL, vcs_type = "gh", ...)
 
-delete_env(project, user, var, ...)
+delete_env(project = NULL, user = NULL, vcs_type = "gh", var,
+  base = "https://circleci.com/api/v1.1", ...)
 }
 \arguments{
 \item{project}{A character string specifying the project name, or an object
