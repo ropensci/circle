@@ -1,95 +1,27 @@
-# Circle CI API Client Package #
-
-**circleci** is a simple client package for the [Circle CI](https://circleci.com/) [REST API](https://circleci.com/docs/api). It can control containerized builds of R packages and other software projects as part of a continuous integration workflow. Builds are controlled by the `circle.yml` file in your project repository, though build settings and environment variables can additionally be managed through this package. The package also provides functionality for monitoring past builds, as well as canceling and retrying builds. 
-
-The [documentation for Travis-CI](https://github.com/craigcitro/r-travis) may be particularly useful for configuring a `circle.yml` file. Note that Circle has native R support, but does not run the latest R version. This means it may be a particularly useful platform R development, but packages will require the installation of R-devel (as is provided by the R Travis community support) or by running tests within a Docker container.
-
-## Installation ##
-
-[![CRAN](http://www.r-pkg.org/badges/version/circleci)](http://cran.r-project.org/package=circleci)
-[![Build Status](https://travis-ci.org/cloudyr/circleci.png?branch=master)](https://travis-ci.org/cloudyr/circleci) [![codecov.io](http://codecov.io/github/cloudyr/circleci/coverage.svg?branch=master)](http://codecov.io/github/cloudyr/circleci?branch=master)
-
-This package is not yet on CRAN. To install the latest development version from GitHub, run the following:
-
-```R
-if(!require("devtools")){
-    install.packages("devtools")
-    library("devtools")
-}
-install_github("cloudyr/circleci")
-```
-
-## Code Examples ##
-
-To use the Circle CI API, you will need an account and an API key. Keys can be created [on the Circle CI account dashboard](https://circleci.com/account/api). This value should then be set as an environment variable:
-
-```R
-Sys.setenv("CIRCLE_CI_KEY" = "examplecirclekey123")
-```
-
-A simple "Hello World!" test of authentication is to retrieve one's own user data using:
-
-```{r}
-str(get_user())
-```
-
-### Listing projects and builds ###
-
-It's then quite simple to list your projects or builds:
-
-```{r}
-# list projects
-p <- list_projects()
-p
-
-# list builds
-b <- list_builds()
-b
-
-# list builds for a given project
-list_builds(project = p[[1]])
-```
-
-You can also retrieve details of a given build:
-
-```{r}
-# using a build object:
-get_build(b[[1]])
-
-# using a build number, project, and username:
-get_build(b[[1]]$build_num, b[[1]]$reponame, b[[1]]$username)
-```
-
-### Starting, restarting, and canceling builds ###
-
-The most useful aspects of the package (and the API) relate to the ability to control builds:
-
-```{r}
-# retry a build
-new <- retry_build(b[[1]])
-
-# cancel that build
-cancel_build(new)
-
-# trigger a new build for a project
-p <- list_projects()
-new_build(p[[1]])
-```
-
-### Adding and deleting environment variables ###
-
-Another useful feature of the package is the ability to add and remove environment variables from the build environment. These [environment variables](https://circleci.com/docs/environment-variables) control the build environment and can be used within a build, for example for unit testing.
-
-```{r}
-p <- list_projects()
-
-# add environment variable
-add_env(project = p[[1]], var = list(Variable1 = "abc", Variable2 = "def"))
-
-# delete an environment variable (one per call)
-delete_env(project = p[[1]], var = "Variable1")
-delete_env(project = p[[1]], var = "Variable2")
-```
-
 ---
-[![cloudyr project logo](http://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
+output: github_document
+---
+
+# circle
+
+R API client package for the Circle CI REST API
+
+## What works
+
+- [x] Get env vars
+- [x] Delete env vars
+
+- [x] Set ssh key
+- [x] Get ssh key
+- [x] Delete ssh key
+
+- [x] Get pipelines
+- [x] Get workflows
+- [x] Get builds
+
+- [ ] Trigger build
+- [ ] Retry build
+
+# What does not work
+
+- Set env vars
