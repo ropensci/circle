@@ -9,6 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-0748-6624"))
 Description: Tools for interacting with the 'Circle' API for setting up 
   continuous integration for R packages.
+URL: https://github.com/pat-s/circle
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
