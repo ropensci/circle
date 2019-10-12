@@ -7,13 +7,13 @@
 new_build(project, user, branch, ...)
 }
 \arguments{
-\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.}
+\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.}
 
-\item{user}{A character string specifying the user name. This is not required if \code{project} is of class \dQuote{circle_project}.}
+\item{user}{A character string specifying the user name. This is not required if `project` is of class \dQuote{circle_project}.}
 
 \item{branch}{A character string specifying the repository branch.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].}
 }
 \value{
 A list of class \dQuote{circle_build}.
@@ -31,5 +31,5 @@ new_build(p[[1]])
 }
 }
 \seealso{
-\code{\link[=cancel_build]{cancel_build()}}, \code{\link[=retry_build]{retry_build()}}
+[cancel_build()], [retry_build()]
 }

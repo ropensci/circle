@@ -7,7 +7,7 @@
 get_user(...)
 }
 \arguments{
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].}
 }
 \value{
 A list of class \dQuote{circle_user}.
@@ -16,7 +16,7 @@ A list of class \dQuote{circle_user}.
 Retrieve details about the authenticated Circle CI user.
 }
 \details{
-This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in \code{Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")}.
+This can be used to retrieve your own user profile details and/or as a \dQuote{Hello World!} to test authentication of Circle CI API key specified in `Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")`.
 }
 \examples{
 \dontrun{get_user()}

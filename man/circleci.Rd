@@ -10,7 +10,7 @@ This package provides functionality for interacting with the Circle CI API. Circ
 
 Once you have your Circle account configured online, you can use this package to interact with and perform all operations on your Circle builds that you would normally perform via the website. This includes monitoring builds, modifying build environment settings and environment variables, and cancelling or restarting builds.
 
-Use of this package requires a Circle API key, which can be found \href{https://circleci.com/account/api}{on the Circle CI website}. API keys are disposable, but should still be treated securely. To use the key in R, store it as an environment variable using either \code{Sys.setenv("CIRCLE_CI_KEY" = "examplekey")} or by storing the key in your .Renviron file
+Use of this package requires a Circle API key, which can be found [on the Circle CI website](https://circleci.com/account/api). API keys are disposable, but should still be treated securely. To use the key in R, store it as an environment variable using either `Sys.setenv("CIRCLE_CI_KEY" = "examplekey")` or by storing the key in your .Renviron file
 }
 \examples{
 \dontrun{

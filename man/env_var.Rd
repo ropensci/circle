@@ -18,20 +18,20 @@ delete_env(project = NULL, user = NULL, vcs_type = "gh", var,
 \arguments{
 \item{project}{A character string specifying the project name, or an object
 of class \dQuote{circle_project}. If the latter, there is no need to
-specify \code{user}.}
+specify `user`.}
 
 \item{user}{A character string specifying the user name. This is not required
-if \code{project} is of class \dQuote{circle_project}.}
+if `project` is of class \dQuote{circle_project}.}
 
 \item{var}{A named list containing key-value pairs of environment variable
 and value.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as
-\code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+[httr::GET()], via [circleHTTP()].}
 }
 \description{
 Add/Get/Set Circle CI environment variable(s) for a specific project on Circle CI.
 }
 \details{
-Currently setting env variables via \code{set_env_var()} does not work.
+Currently setting env variables via `set_env_var()` does not work.
 }

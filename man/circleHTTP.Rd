@@ -16,7 +16,7 @@ circleHTTP(verb = "GET", path = "", query = list(), body = "",
 
 \item{body}{character string of request body data.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()].}
 
 \item{base}{A character string specifying the base URL for the API.}
 

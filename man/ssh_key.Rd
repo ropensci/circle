@@ -18,21 +18,21 @@ delete_ssh_key(project = NULL, user = NULL, fingerprint,
 }
 \arguments{
 \item{project}{A character string specifying the project name, or an object
-of class \code{circle_project}. If the latter, there is no need to
-specify \code{user}}
+of class `circle_project`. If the latter, there is no need to
+specify `user`}
 
 \item{user}{A character string specifying the user name. By default the user name
-will be queried by \code{get_user()} and does not need to be set explicitly.}
+will be queried by `get_user()` and does not need to be set explicitly.}
 
 \item{...}{Additional arguments passed to an HTTP request function, such as
-\code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+[httr::GET()], via [circleHTTP()].}
 
-\item{key}{A SSH key object as returned by \code{get_ssh_keys()}}
+\item{key}{A SSH key object as returned by `get_ssh_keys()`}
 }
 \description{
 Generate/get or delete an SSH Key
 }
 \details{
 These functions provide the ability to deal with user SSH keys on
-Circle CI.
+  Circle CI.
 }

@@ -10,7 +10,7 @@ get_builds(project = NULL, user = NULL, vcs_type = "gh",
 \arguments{
 \item{project}{The Circle CI project. By default the current directory name will be used.}
 
-\item{user}{The username for the repository. By default queried using \code{get_user()}.}
+\item{user}{The username for the repository. By default queried using `get_user()`.}
 
 \item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
 Other possible values are "bitbucket".}
@@ -25,5 +25,5 @@ Queries single builds from Circle CI pipeline runs
 }
 \details{
 To set a different API version, use the following scheme:
-\code{https://circleci.com/api/v<api version>} The current default is "v2".
+  `https://circleci.com/api/v<api version>` The current default is "v2".
 }

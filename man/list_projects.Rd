@@ -7,7 +7,7 @@
 list_projects(...)
 }
 \arguments{
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].}
 }
 \value{
 A list of class \dQuote{circle_projects}, wherein each element is a \dQuote{circle_project}.
@@ -22,5 +22,5 @@ Retrieves a very detailed list of projects and project-related information for a
 \dontrun{list_projects()}
 }
 \seealso{
-\code{\link[=get_build]{get_build()}}, \code{\link[=get_pipelines]{get_pipelines()}}
+[get_build()], [get_pipelines()]
 }

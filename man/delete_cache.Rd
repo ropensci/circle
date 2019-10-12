@@ -7,11 +7,11 @@
 delete_cache(project, user, ...)
 }
 \arguments{
-\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify \code{user}.}
+\item{project}{A character string specifying the project name, or an object of class \dQuote{circle_project}. If the latter, there is no need to specify `user`.}
 
-\item{user}{A character string specifying the user name. This is not required if \code{build} is of class \dQuote{circle_build} and/or if \code{project} is of class \dQuote{circle_project} .}
+\item{user}{A character string specifying the user name. This is not required if `build` is of class \dQuote{circle_build} and/or if `project` is of class \dQuote{circle_project} .}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as \code{\link[httr:GET]{httr::GET()}}, via \code{\link[=circleHTTP]{circleHTTP()}}.}
+\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()], via [circleHTTP()].}
 }
 \value{
 A logical.
