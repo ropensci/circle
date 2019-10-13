@@ -5,7 +5,7 @@
 \title{Get builds from Circle CI}
 \usage{
 get_builds(project = NULL, user = NULL, vcs_type = "gh",
-  all = FALSE, limit = 30, offset = 30, api_version = "v2")
+  limit = 30, offset = 30, api_version = "v2")
 }
 \arguments{
 \item{project}{The Circle CI project. By default the current directory name will be used.}

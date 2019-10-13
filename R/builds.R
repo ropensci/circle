@@ -11,7 +11,7 @@
 #' @details To set a different API version, use the following scheme:
 #'   `https://circleci.com/api/v<api version>` The current default is "v2".
 #' @export
-get_builds = function(project = NULL, user = NULL, vcs_type = "gh", all = FALSE,
+get_builds = function(project = NULL, user = NULL, vcs_type = "gh",
                       limit = 30, offset = 30, api_version = "v2") {
 
   out = get_jobs(get_workflows(get_pipelines(project = project, user = user,
@@ -23,11 +23,13 @@ get_builds = function(project = NULL, user = NULL, vcs_type = "gh", all = FALSE,
 
 get_pipelines <-
   function(project = NULL, user = NULL, limit = 30, build_number = NULL, offset = 0,
-           all = FALSE, vcs_type = "gh", api_version = "v2",
-           ...) {
+            vcs_type = "gh", api_version = "v2") {
+
+    if (is.null(user)) {
+    user <- get_user()$content$login
+    }
 
     if (is.null(project)) {
-      user <- get_user()$content$login
       project <- basename(getwd())
       if (is.null(build_number)) {
         out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline",
@@ -40,37 +42,21 @@ get_pipelines <-
                                                      vcs_type, user, project,
                                                      build_number),
                                api_version = api_version,
-                               query = list(limit = limit, offset = offset), ...))
+                               query = list(limit = limit, offset = offset)))
       }
-    } else if (!is.null(project) && is.null(user)) {
-      user <- get_user()$content$login
+    } else if (!is.null(project)) {
       project <- project
       if (is.null(build_number)) {
         out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline",
                                                 vcs_type, user, project),
                           api_version = api_version,
-                          query = list(limit = limit, offset = offset), ...)
+                          query = list(limit = limit, offset = offset))
       } else {
         out <- list(circleHTTP("GET", path = sprintf("/project/%s/%s/%s/%s/pipeline",
                                                      vcs_type, user, project,
                                                      build_number),
                                api_version = api_version,
-                               query = list(limit = limit, offset = offset), ...))
-      }
-    } else if (!is.null(project) && !is.null(user)) {
-      user <- user
-      project <- project
-      if (is.null(build_number)) {
-        out <- circleHTTP("GET", path = sprintf("/project/%s/%s/%s/pipeline",
-                                                vcs_type, user, project),
-                          api_version = api_version,
-                          query = list(limit = limit, offset = offset), ...)
-      } else {
-        out <- list(circleHTTP("GET", path = sprintf("/project/%s/%s/%s/%s/pipeline",
-                                                     vcs_type, user, project,
-                                                     build_number),
-                               api_version = api_version,
-                               query = list(limit = limit, offset = offset), ...))
+                               query = list(limit = limit, offset = offset)))
       }
     }
 
@@ -114,7 +100,6 @@ get_jobs = function(workflow = NULL, id_only = FALSE) {
   # set names
   names(jobs) = sapply(jobs, function(jobs) jobs[[1]]$job_number)
 
-  browser()
   # set names of jobs to have a more descriptive return
   for (i in 1:length(jobs)) {
     job_names = sapply(jobs[[i]], function(x) x$name)
