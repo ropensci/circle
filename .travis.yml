@@ -1,21 +1,43 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# Default configuration for use with tic package
+# tic documentation to get started: https://ropenscilabs.github.io/tic/
+# Usually you shouldn't need to change the first part of the file
+
+# DO NOT CHANGE THE CODE BELOW
+before_install:
+  - R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
+  - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
+  - R -q -e 'remotes::install_github("ropenscilabs/tic", upgrade = "always"); print(tic::dsl_load()); tic::prepare_all_stages()'
+  - R -q -e 'tic::before_install()'
+install: R -q -e 'tic::install()'
+after_install: R -q -e 'tic::after_install()'
+before_script: R -q -e 'tic::before_script()'
+script: R -q -e 'tic::script()'
+after_success: R -q -e 'tic::after_success()'
+after_failure: R -q -e 'tic::after_failure()'
+before_deploy: R -q -e 'tic::before_deploy()'
+deploy:
+  provider: script
+  script: R -q -e 'tic::deploy()'
+  on:
+    all_branches: true
+after_deploy: R -q -e 'tic::after_deploy()'
+after_script: R -q -e 'tic::after_script()'
+# DO NOT CHANGE THE CODE ABOVE
+
+# Custom parts:
+
+# Header
 language: r
 sudo: false
+dist: xenial
 cache: packages
-r_packages:
-- knitr
-- drat
-- covr
-after_failure:
-  email:
-    recipients:
-    - thosjleeper@gmail.com
-    on_success: change
-    on_failure: change
-after_success:
-- Rscript -e 'library("covr");codecov()'
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
-  drat.sh
+latex: false
+
+#env
 env:
   global:
-  - secure: SI2SHKYjQuSAFiKXCNyofMODehtgngpTM5qMXBM8dRrsnqH0eEiA+KaB2zlE3DsXdwkJK/dTrU6MFc9pC/V+MUftd36A7zC+EGSiiQNAnGU71yP/IHjly1IVc3XqJL5U7NC1NN0ryxOtaxLTIIi+YCurJ1zCiWa9hSBCPF5iMmyYk2YncUDWNQXruyne8pKrcIG0DLUtMDWO3l6e2/vx6c1Cdd5TBgI8DXdU/LVsUvHiV6pteTeUMrwK8RZiqaTgD41T5ZXP11E6vHzM7W+KGoIgHWjQQZAiR9TIapgnTb6foEujk9gDvj/RD6Pk7B0iWuPALl+0pDqPjntTo314Swt/H3HLSpxKSwXp8Fls66K9I0QIRStr/90LuCr658d0DHzuSYTFMzM7MLfeXKHkUjFbDFtZDpnjdD6GuVXSVH1WzUxFQKJp6ma90eB7su5hKH0sEF2HLfczO5TlxTEoAcRv4U46TpKlF4iHeD5aOJhHgkHz/gblLlqW4slnw94NW7HkVAk827rNzp2q165nK6dxhDdrbo15Z6W+qHUVeQCSCw9C9MhDYqBf+i7ePm22N/JEWvVVa9l+bE6O28zm9MkAwDi1/svC1onvG/it4VKmF2g6KHTZ5vUBEviZNhBvAnoMI5TVWkVYWvgPxHCeYfhioZ1QkmJ2JmtB8K6kjqc=
-  - secure: AFO917M+qnJfUabl9GMs8oCRtE3lLED93Ws0xQBGTmjzb3EzCCOpRtv2OvCWmVcpMt/PNt38dgq02lFkEbnT8P2JgBxpdJs5e2K3nhrzvbhImp9f9zWfrcZmyCAbHmG0+xnBo/aznwwr9ilaiz2GMmCgZ/N3SitvBQVo21AC4/j9QN1NyHtKGGVGX+YgqvyQwgjIF6ZUKjtI2+ZLgE+v6qxxKSiprzNx5VS/rk5IbS5Mz0zlwKqKaThvl5l9W0xkNBQuwLqg4IZyfo1aU8+oDsQwBI0e2KowY0ExooVrdwilKNgsM9Qf3aqiEJ/rlHQaNWvsn41s8Kdk4pIkxEDmE7zUt0lCvTJixFFgw46aNLbxEhMT/M3diVRmmqXvuRaDCh4AlrpscxzQLK1pye2B4PZHMHaDu7eZvm5T28isSeEbkkfB1h3llHTFmeurX6fTRxj9wcuPk64zP6HvXHCzLmEmqZfu4pYGKa7z5Vq28LbrS6+gAAJ6sRiZg75RhBicasgT4+bK3osGypfTaQB5+k+iEePanHl5NBmD7KAWiukfrui6Uu7VdCFRWFnd3z7LgP2U0rn1guO9PfOOfS8hCSunhDpyt+3gwCmXydl4GTT7qH7hl7BAzrUqvK5pmdfKQEWfEia2H69SJbMkE0wOsFyrOMk/Ydf7MxI8bE84OIk=
+  - MAKEFLAGS="-j 2"
+
+#services
+services:

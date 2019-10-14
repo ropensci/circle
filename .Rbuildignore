@@ -9,3 +9,6 @@ knitreadme.sh
 ^codecov\.yml$
 ^man-roxygen$
 ^\.pre-commit-config\.yaml$
+^\.travis\.yml$
+^appveyor\.yml$
+^tic\.R$
