@@ -1,4 +1,10 @@
 
+<!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/pat-s/circle?branch=master)
+<!-- badges: end -->
+
 # circle
 
 R client package for the Circle CI REST API

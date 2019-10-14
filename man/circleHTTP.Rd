@@ -5,30 +5,31 @@
 \title{Circle CI HTTP Requests}
 \usage{
 circleHTTP(verb = "GET", path = "", query = list(), body = "",
-  api_version = "v2", encode = "json", ...)
+  api_version = "v2")
 }
 \arguments{
-\item{verb}{A character string containing an HTTP verb, defaulting to \dQuote{GET}.}
+\item{verb}{A character string containing an HTTP verb, defaulting to `GET`.}
 
-\item{path}{A character string with the API endpoint (should begin with a slash).}
+\item{path}{A character string with the API endpoint (should begin with a
+slash).}
 
-\item{query}{A list specifying any query string arguments to pass to the API.}
+\item{query}{A list specifying any query string arguments to pass to the API.
+This is used to pass the API token.}
 
-\item{body}{character string of request body data.}
+\item{body}{A named list or character string of what should be passed in the
+request. Corresponds to the "-d" argument of the `curl` command.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as [httr::GET()].}
-
-\item{base}{A character string specifying the base URL for the API.}
-
-\item{key}{A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.}
+\item{api_version}{A character string specifying the Circle CI API version.
+This usually does not need to be changed by the user.}
 }
 \value{
 The JSON response, or the relevant error.
 }
 \description{
-This is the workhorse function for executing API requests for Circle CI.
+This is the workhorse function for executing API requests for
+  Circle CI.
 }
 \details{
-This is mostly an internal function for executing API requests.
-In almost all cases, users do not need to access this directly.
+This is mostly an internal function for executing API requests. In
+  almost all cases, users do not need to access this directly.
 }

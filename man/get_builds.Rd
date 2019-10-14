@@ -5,7 +5,7 @@
 \title{Get builds from Circle CI}
 \usage{
 get_builds(project = NULL, user = NULL, vcs_type = "gh",
-  limit = 30, offset = 30, api_version = "v2")
+  limit = 30, api_version = "v2")
 }
 \arguments{
 \item{project}{The Circle CI project. By default the current directory name will be used.}
@@ -18,7 +18,8 @@ Other possible values are "bitbucket".}
 \item{limit}{How many builds should be returned? Maximum allowed by Circle is
 30.}
 
-\item{offset}{}
+\item{api_version}{A character string specifying the Circle CI API version.
+This usually does not need to be changed by the user.}
 }
 \description{
 Queries single builds from Circle CI pipeline runs

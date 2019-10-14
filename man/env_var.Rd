@@ -2,35 +2,36 @@
 % Please edit documentation in R/env-var.R
 \name{env_var}
 \alias{env_var}
-\alias{set_env_var}
 \alias{get_env_var}
+\alias{set_env_var}
 \alias{delete_env}
 \title{Add/Get/Set Environment Variable(s)}
 \usage{
-set_env_var(project = NULL, user = NULL, vcs_type = "gh", var,
-  base = "https://circleci.com/api/v1.1", encode = "json", ...)
+get_env_var(project = NULL, user = NULL, vcs_type = "gh")
 
-get_env_var(project = NULL, user = NULL, vcs_type = "gh", ...)
+set_env_var(project = NULL, user = NULL, vcs_type = "gh", var,
+  api_version = "v1.1")
 
 delete_env(project = NULL, user = NULL, vcs_type = "gh", var,
-  base = "https://circleci.com/api/v1.1", ...)
+  api_version = "v1.1")
 }
 \arguments{
-\item{project}{A character string specifying the project name, or an object
-of class \dQuote{circle_project}. If the latter, there is no need to
-specify `user`.}
+\item{project}{The Circle CI project. By default the current directory name will be used.}
 
-\item{user}{A character string specifying the user name. This is not required
-if `project` is of class \dQuote{circle_project}.}
+\item{user}{The username for the repository. By default queried using `get_user()`.}
+
+\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
+Other possible values are "bitbucket".}
 
 \item{var}{A named list containing key-value pairs of environment variable
 and value.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as
-[httr::GET()], via [circleHTTP()].}
+\item{api_version}{A character string specifying the Circle CI API version.
+This usually does not need to be changed by the user.}
 }
 \description{
-Add/Get/Set Circle CI environment variable(s) for a specific project on Circle CI.
+Add/Get/Set Circle CI environment variable(s) for a specific
+  project on Circle CI.
 }
 \details{
 Currently setting env variables via `set_env_var()` does not work.

@@ -1,17 +1,21 @@
 #' @title Circle CI HTTP Requests
 #'
-#' @description This is the workhorse function for executing API requests for Circle CI.
+#' @description This is the workhorse function for executing API requests for
+#'   Circle CI.
 #'
-#' @details This is mostly an internal function for executing API requests.
-#' In almost all cases, users do not need to access this directly.
+#' @import httr
 #'
-#' @param verb A character string containing an HTTP verb, defaulting to \dQuote{GET}.
-#' @param path A character string with the API endpoint (should begin with a slash).
+#' @details This is mostly an internal function for executing API requests. In
+#'   almost all cases, users do not need to access this directly.
+#'
+#' @param verb A character string containing an HTTP verb, defaulting to `GET`.
+#' @param path A character string with the API endpoint (should begin with a
+#'   slash).
 #' @param query A list specifying any query string arguments to pass to the API.
-#' @param body character string of request body data.
-#' @param base A character string specifying the base URL for the API.
-#' @param key A character string containing a Circle CI API token. If missing, defaults to value stored in environment variable \dQuote{CIRCLE_CI_KEY}.
-#' @param ... Additional arguments passed to an HTTP request function, such as [httr::GET()].
+#'   This is used to pass the API token.
+#' @param body A named list or character string of what should be passed in the
+#'   request. Corresponds to the "-d" argument of the `curl` command.
+#' @template api_version
 #'
 #' @return The JSON response, or the relevant error.
 #'
@@ -20,9 +24,8 @@ circleHTTP <- function(verb = "GET",
                        path = "",
                        query = list(),
                        body = "",
-                       api_version = "v2",
-                       encode = "json",
-                       ...) {
+                       api_version = "v2"
+                       ) {
     url <- paste0("https://circleci.com/api/", api_version, path)
 
     auth_circle()
@@ -32,14 +35,14 @@ circleHTTP <- function(verb = "GET",
     ua <- user_agent("http://github.com/pat-s/circle")
 
     if (verb == "GET") {
-      resp <- httr::GET(url, query = query, encode = encode, ua, accept_json(),
-                        content_type_json(), ...)
+      resp <- GET(url, query = query, encode = "json", ua, accept_json(),
+                        content_type_json())
     } else if (verb == "DELETE") {
-      resp <- httr::DELETE(url, query = query, encode = encode, ua, accept_json(),
-                           content_type_json(), ...)
+      resp <- DELETE(url, query = query, encode = "json", ua, accept_json(),
+                           content_type_json())
     } else if (verb == "POST") {
-      resp <- httr::POST(url, body = body, query = query, encode = encode, ua,
-                         accept_json(), content_type_json(), ...)
+      resp <- POST(url, body = body, query = query, encode = "json", ua,
+                         accept_json(), content_type_json())
     }
     if (http_type(resp) != "application/json") {
       stop("API did not return json", call. = FALSE)

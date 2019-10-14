@@ -6,3 +6,6 @@ knitreadme.sh
 ^\.Rproj\.user$
 ^\.httr-oauth$
 ^LICENSE\.md$
+^codecov\.yml$
+^man-roxygen$
+^\.pre-commit-config\.yaml$

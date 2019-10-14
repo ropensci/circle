@@ -10,14 +10,15 @@ auth_circle <- function() {
         "This is a one-time procedure. The token will be stored in your home directory in the '.circleci' directory.")
     )
     message("Querying API token...")
-    browseURL("https://circleci.com/account/api")
+    utils::browseURL("https://circleci.com/account/api")
     wait_for_clipboard_token()
     return(readLines("~/.circleci/cli.yml"))
   })
 
   # create api token if none is found but config file exists
   if (!any(grepl("token", yml))) {
-    browseURL("https://circleci.com/account/api")
+    requireNamespace("utils", quietly = TRUE)
+    utils::browseURL("https://circleci.com/account/api")
     wait_for_clipboard_token()
   }
 }
@@ -39,13 +40,14 @@ wait_for_clipboard_token <- function() {
     bullet = "pointer", bullet_col = "yellow",
     " Detected token, clearing clipboard."
   )
+  requireNamespace("clipr", quietly = TRUE)
   tryCatch(
     clipr::write_clip(""),
     error = function(e) {
-      warningc("Error clearing clipboard: ", conditionMessage(e))
+      warning("Error clearing clipboard: ", conditionMessage(e))
     }
   )
-  fs::dir_create("~/.circleci")
+  dir.create("~/.circleci")
   writeLines(sprintf(c("host: https://circleci.com", "endpoint: graphql-unstable",
                        "token: %s"), token), "~/.circleci/cli.yml")
 }

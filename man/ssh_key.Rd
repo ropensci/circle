@@ -8,26 +8,29 @@
 \title{Generate/get or delete an SSH Key}
 \usage{
 create_ssh_key(project = NULL, user = NULL, type = "github-user-key",
-  base = "https://circleci.com/api/v1.1", vcs_type = "gh", ...)
+  api_version = "https://circleci.com/api/v1.1", vcs_type = "gh")
 
-get_ssh_keys(project = NULL, user = NULL, vcs_type = "gh", ...)
+get_ssh_keys(project = NULL, user = NULL, vcs_type = "gh")
 
 delete_ssh_key(project = NULL, user = NULL, fingerprint,
-  type = "github-user-key", base = "https://circleci.com/api/v1.1",
-  vcs_type = "gh", ...)
+  type = "github-user-key",
+  api_version = "https://circleci.com/api/v1.1", vcs_type = "gh")
 }
 \arguments{
-\item{project}{A character string specifying the project name, or an object
-of class `circle_project`. If the latter, there is no need to
-specify `user`}
+\item{project}{The Circle CI project. By default the current directory name will be used.}
 
-\item{user}{A character string specifying the user name. By default the user name
-will be queried by `get_user()` and does not need to be set explicitly.}
+\item{user}{The username for the repository. By default queried using `get_user()`.}
 
-\item{...}{Additional arguments passed to an HTTP request function, such as
-[httr::GET()], via [circleHTTP()].}
+\item{type}{Type of key to add. Options are "github-user-key" and
+"deploy-key".}
 
-\item{key}{A SSH key object as returned by `get_ssh_keys()`}
+\item{api_version}{A character string specifying the Circle CI API version.
+This usually does not need to be changed by the user.}
+
+\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
+Other possible values are "bitbucket".}
+
+\item{fingerprint}{The fingerprint of the SSH key which should be deleted.}
 }
 \description{
 Generate/get or delete an SSH Key
