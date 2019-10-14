@@ -1,6 +1,10 @@
 
 <!-- badges: start -->
 
+[![Travis-CI Build
+Status](https://travis-ci.org/pat-s/circle.svg?branch=master)](https://travis-ci.org/pat-s/circle)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/r8w1psd0f5r4hs6t/branch/master?svg=true)](https://ci.appveyor.com/project/pat-s/circle/branch/master)
 [![Codecov test
 coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/pat-s/circle?branch=master)
 <!-- badges: end -->
