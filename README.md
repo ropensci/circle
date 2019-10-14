@@ -34,3 +34,8 @@ R client package for the Circle CI REST API
 # What doesn’t work
 
   - \[ \] Set env vars
+
+# Acknowledgments
+
+Inspired by the work of [Thomas J. Leeper](https://github.com/leeper) on
+the [cloudyr/circleci](https://github.com/cloudyr/circleci) package.
