@@ -18,7 +18,9 @@ Retrieves a very detailed list of projects and project-related
   information for all Circle CI projects attached to the current user.
 }
 \examples{
+\dontrun{
 projects = list_projects()
+}
 }
 \seealso{
 [get_builds()], [get_pipelines()]
