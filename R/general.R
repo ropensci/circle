@@ -23,7 +23,9 @@ get_user <- function() {
 #' @return A list of `circle_project`s.
 #' @seealso [get_builds()], [get_pipelines()]
 #' @examples
+#' \dontrun{
 #' projects = list_projects()
+#' }
 #' @export
 list_projects <- function() {
 
