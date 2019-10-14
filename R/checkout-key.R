@@ -12,7 +12,7 @@
 #' @name ssh_key
 #' @export
 create_ssh_key <- function(project = NULL, user = NULL, type = "github-user-key",
-             api_version = "https://circleci.com/api/v1.1", vcs_type = "gh") {
+             api_version = "v1.1", vcs_type = "gh") {
     if (is.null(user)) {
       user <- get_user()$content$login
     }
@@ -50,7 +50,7 @@ get_ssh_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
 #' @export
 delete_ssh_key <- function(project = NULL, user = NULL, fingerprint,
                            type = "github-user-key",
-                           api_version = "https://circleci.com/api/v1.1",
+                           api_version = "v1.1",
                            vcs_type = "gh") {
 
   # does not yet support api v2

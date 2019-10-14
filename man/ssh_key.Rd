@@ -8,13 +8,12 @@
 \title{Generate/get or delete an SSH Key}
 \usage{
 create_ssh_key(project = NULL, user = NULL, type = "github-user-key",
-  api_version = "https://circleci.com/api/v1.1", vcs_type = "gh")
+  api_version = "v1.1", vcs_type = "gh")
 
 get_ssh_keys(project = NULL, user = NULL, vcs_type = "gh")
 
 delete_ssh_key(project = NULL, user = NULL, fingerprint,
-  type = "github-user-key",
-  api_version = "https://circleci.com/api/v1.1", vcs_type = "gh")
+  type = "github-user-key", api_version = "v1.1", vcs_type = "gh")
 }
 \arguments{
 \item{project}{The Circle CI project. By default the current directory name will be used.}
