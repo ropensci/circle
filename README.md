@@ -31,6 +31,8 @@ R client package for the Circle CI REST API
 
   - \[x\] Retry build
 
+  - \[x\] Enable a repo
+
 # What doesn’t work
 
   - \[ \] Set env vars
