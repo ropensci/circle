@@ -36,15 +36,13 @@ jobs:
           paths:
             - /usr/local/lib/R/site-library
   deploy:
-    environment:
-      id_rsa: true
     docker:
       - image: rocker/verse
     steps:
       - checkout
       - run: echo "$(date -d "$D" '+%d')" > /tmp/_tmp_file
       - restore_cache:
-          key: R-package-library-{{ checksum "/tmp/_tmp_file" }}
+          key: R-package-library-{{ checksum "/tmp/_tmp_file" o}
       - run:
           name: Deploy Over SSH
           command: |
