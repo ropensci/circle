@@ -1,4 +1,4 @@
-library("testthat")
-library("circleci")
+library(testthat)
+library(circleci)
 
 test_check("circleci")
