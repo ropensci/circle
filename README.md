@@ -27,10 +27,10 @@ R client package for the Circle CI REST API
 
   - \[x\] Get builds
 
-  - \[ \] Trigger build
+  - \[x\] Trigger build
 
-  - \[ \] Retry build
+  - \[x\] Retry build
 
-# What does not work
+# What doesn’t work
 
-  - Set env vars
+  - \[ \] Set env vars
