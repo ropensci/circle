@@ -119,6 +119,42 @@ new_build <- function(project = NULL, user = NULL, vcs_type = "gh", branch = "ma
     return(invisible(out))
 }
 
+#' @title Enable a repo on Circle CI
+#' @description Follows a repo on Circle CI so that builds can be triggered
+#' @template project
+#' @template user
+#' @template vcs
+#' @template api_version
+#' @examples
+#' \dontrun{
+#' enable_project()
+#' }
+#' @export
+enable_project <- function(project = NULL, user = NULL, vcs_type = "gh",
+                           api_version = "v1.1") {
+
+    if (is.null(project)) {
+        project <- basename(getwd())
+    }
+    if (is.null(user)) {
+        user <- get_user()$content$login
+    }
+
+    out <- circleHTTP("POST", path = sprintf("/project/%s/%s/%s/follow",
+                                             vcs_type,
+                                             user,
+                                             project),
+                      api_version = api_version
+    )
+
+    if (status_code(out$response) == 200) {
+        message(sprintf("Successfully enabled project '%s' on Circle CI.",
+                        project))
+    }
+
+    return(invisible(out))
+}
+
 #' @title Delete Project Cache
 #' @description Delete project cache
 #' @details Delete the project cache for a specified Circle CI project.
