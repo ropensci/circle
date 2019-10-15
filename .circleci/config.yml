@@ -42,7 +42,7 @@ jobs:
       - checkout
       - run: echo "$(date -d "$D" '+%d')" > /tmp/_tmp_file
       - restore_cache:
-          key: R-package-library-{{ checksum "/tmp/_tmp_file" }
+          key: R-package-library-{{ checksum "/tmp/_tmp_file" }}
       - run:
           name: Deploy Over SSH
           command: |
