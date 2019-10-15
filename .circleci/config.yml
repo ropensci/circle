@@ -36,6 +36,8 @@ jobs:
           paths:
             - /usr/local/lib/R/site-library
   deploy:
+    environment:
+      id_rsa: true
     docker:
       - image: rocker/verse
     steps:
