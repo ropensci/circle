@@ -1,17 +1,17 @@
-#' @title Generate/get or delete an SSH Key
-#' @description Generate/get or delete an SSH Key
-#' @details These functions provide the ability to deal with user SSH keys on
+#' @title Generate/get or delete an checkout Key
+#' @description Generate/get or delete an checkout Key
+#' @details These functions provide the ability to deal with user checkout keys on
 #'   Circle CI.
 #' @template project
 #' @template user
 #' @template vcs
 #' @param type Type of key to add. Options are "github-user-key" and
 #'   "deploy-key".
-#' @param fingerprint The fingerprint of the SSH key which should be deleted.
+#' @param fingerprint The fingerprint of the checkout key which should be deleted.
 #' @template api_version
-#' @name ssh_key
+#' @name checkout_key
 #' @export
-create_ssh_key <- function(project = NULL, user = NULL, type = "deploy-key",
+create_checkout_key <- function(project = NULL, user = NULL, type = "deploy-key",
              api_version = "v1.1", vcs_type = "gh") {
     if (is.null(user)) {
       user <- get_user()$content$login
@@ -25,11 +25,11 @@ create_ssh_key <- function(project = NULL, user = NULL, type = "deploy-key",
     )
   }
 
-#' Get SSH key
+#' Get checkout key
 #'
-#' @rdname ssh_key
+#' @rdname checkout_key
 #' @export
-get_ssh_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
+get_checkout_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
     if (is.null(user)) {
       user <- get_user()$content$login
     }
@@ -44,11 +44,11 @@ get_ssh_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
     )
   }
 
-#' Delete SSH key
+#' Delete checkout key
 #'
-#' @rdname ssh_key
+#' @rdname checkout_key
 #' @export
-delete_ssh_key <- function(project = NULL, user = NULL, fingerprint,
+delete_checkout_key <- function(project = NULL, user = NULL, fingerprint,
                            type = "github-user-key",
                            api_version = "v1.1",
                            vcs_type = "gh") {
