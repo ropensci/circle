@@ -11,7 +11,7 @@
 #' @template api_version
 #' @name ssh_key
 #' @export
-create_ssh_key <- function(project = NULL, user = NULL, type = "github-user-key",
+create_ssh_key <- function(project = NULL, user = NULL, type = "deploy-key",
              api_version = "v1.1", vcs_type = "gh") {
     if (is.null(user)) {
       user <- get_user()$content$login
