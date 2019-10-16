@@ -12,3 +12,4 @@ knitreadme.sh
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^tic\.R$
+^\.circleci$
