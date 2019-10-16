@@ -5,7 +5,7 @@
 \title{Circle CI HTTP Requests}
 \usage{
 circleHTTP(verb = "GET", path = "", query = list(), body = "",
-  api_version = "v2")
+  api_version = "v2", encode = "json")
 }
 \arguments{
 \item{verb}{A character string containing an HTTP verb, defaulting to `GET`.}
@@ -21,6 +21,8 @@ request. Corresponds to the "-d" argument of the `curl` command.}
 
 \item{api_version}{A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
+
+\item{encode}{Encoding format. See [httr::POST].}
 }
 \value{
 The JSON response, or the relevant error.
