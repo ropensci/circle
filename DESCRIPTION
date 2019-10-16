@@ -1,4 +1,4 @@
-Package: circleci
+Package: circle
 Title: R client package for the Circle CI REST API
 Version: 0.1.0.9000
 Authors@R: 
