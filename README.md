@@ -15,18 +15,28 @@ coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](htt
 
 R client package for the Circle CI REST API
 
-# Deployment keys
+# Deployment
 
 The easiest way to get deployment from Circle CI builds to Github repos
-running is by using `use_circle_deploy()`.
+running is by using `use_circle_deploy()`:
+
+``` r
+❯ Adding deploy keys on GitHub and Circle CI for repo '<repo>'.
+─────────────────────────────────────────────────────────────────────────────
+✔ Added a public deploy key to GitHub for '<repo>'.
+─────────────────────────────────────────────────────────────────────────────
+✔ Added a private deploy key to project '<repo>' on Circle CI as secure environment variable 'id_rsa'.
+```
+
+## Deployment keys
 
 There two different types of keys on Circle CI:
 
-  - checkout keys
+  - Checkout keys
 
   - SSH keys
 
-## Checkout keys
+### Checkout keys
 
 The former are used to checkout your repository so that the build is
 starting. If you’ve connected Circle CI to Github already, you will have
@@ -37,7 +47,7 @@ There is no advantage in adding a “github-user-key” to the checkout
 section. This key would not give you any more rights regarding
 deployment.
 
-## SSH keys
+### SSH keys
 
 These are actually used to grant deployment access from the build to
 your repository. The private key will be added to your repo setting on
