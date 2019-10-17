@@ -26,51 +26,55 @@ circleHTTP <- function(verb = "GET",
                        query = list(),
                        body = "",
                        api_version = "v2",
-                       encode = "json"
-                       ) {
-    url <- paste0("https://circleci.com/api/", api_version, path)
+                       encode = "json") {
+  url <- paste0("https://circleci.com/api/", api_version, path)
 
-    auth_circle()
-    query$"circle-token" = read_token()
+  auth_circle()
+  query$"circle-token" <- read_token()
 
-    # set user agent
-    ua <- user_agent("http://github.com/pat-s/circle")
+  # set user agent
+  ua <- user_agent("http://github.com/pat-s/circle")
 
-    if (verb == "GET") {
-      resp <- GET(url, query = query, encode = encode, ua, accept_json(),
-                        content_type_json())
-    } else if (verb == "DELETE") {
-      resp <- DELETE(url, query = query, encode = encode, ua, accept_json(),
-                           content_type_json())
-    } else if (verb == "POST") {
-      resp <- POST(url, body = body, query = query, encode = encode, ua,
-                         accept_json(), content_type_json())
-    }
-    if (http_type(resp) != "application/json") {
-      stop("API did not return json", call. = FALSE)
-    }
-
-    parsed <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
-
-    if (status_code(resp) != 200 && status_code(resp) != 201) {
-      stop(
-        sprintf(
-          "GitHub API request failed [%s]\n%s\n<%s>",
-          status_code(resp),
-          parsed$message,
-          parsed$documentation_url
-        ),
-        call. = FALSE
-      )
-    }
-
-    structure(
-      list(
-        content = parsed,
-        path = path,
-        response = resp
-      ),
-      class = "circle_api"
+  if (verb == "GET") {
+    resp <- GET(url,
+      query = query, encode = encode, ua, accept_json(),
+      content_type_json()
     )
+  } else if (verb == "DELETE") {
+    resp <- DELETE(url,
+      query = query, encode = encode, ua, accept_json(),
+      content_type_json()
+    )
+  } else if (verb == "POST") {
+    resp <- POST(url,
+      body = body, query = query, encode = encode, ua,
+      accept_json(), content_type_json()
+    )
+  }
+  if (http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
 
+  parsed <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
+
+  if (status_code(resp) != 200 && status_code(resp) != 201 && status_code(resp) != 202) {
+    stop(
+      sprintf(
+        "GitHub API request failed [%s]\n%s\n<%s>",
+        status_code(resp),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+
+  structure(
+    list(
+      content = parsed,
+      path = path,
+      response = resp
+    ),
+    class = "circle_api"
+  )
 }
