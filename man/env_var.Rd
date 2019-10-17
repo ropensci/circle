@@ -10,7 +10,7 @@
 get_env_var(project = NULL, user = NULL, vcs_type = "gh")
 
 set_env_var(project = NULL, user = NULL, vcs_type = "gh", var,
-  api_version = "v1.1")
+  api_version = "v2", encode = "json")
 
 delete_env(project = NULL, user = NULL, vcs_type = "gh", var,
   api_version = "v1.1")

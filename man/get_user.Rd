@@ -18,5 +18,7 @@ This can be used to retrieve your own user profile details and/or as
   specified in `Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")`.
 }
 \examples{
-\dontrun{get_user()}
+\dontrun{
+get_user()
+}
 }

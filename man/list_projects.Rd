@@ -19,7 +19,7 @@ Retrieves a very detailed list of projects and project-related
 }
 \examples{
 \dontrun{
-projects = list_projects()
+projects <- list_projects()
 }
 }
 \seealso{
