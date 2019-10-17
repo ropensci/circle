@@ -22,16 +22,31 @@ get_env_var <- function(project = NULL, user = NULL, vcs_type = "gh") {
 
 #' @rdname env_var
 set_env_var <- function(project = NULL, user = NULL, vcs_type = "gh", var,
-                        api_version = "v1.1") {
+                        api_version = "v2", encode = "json") {
   if (is.null(user)) {
     user <- get_user()$content$login
   }
   if (is.null(project)) {
     project <- basename(getwd())
   }
-  circleHTTP("POST", path = sprintf("/project/%s/%s/%s/envvar",
-                                    vcs_type, user, project),
-             api_version = api_version, body = var)
+
+  if (length(var) != 1) {
+    stop("Please supply only one environment variable at a time.")
+  }
+  # format into correct format for the body call
+  var <- list(
+    name = names(var),
+    value = var[[1]]
+  )
+
+  resp <- circleHTTP("POST",
+    path = sprintf(
+      "/project/%s/%s/%s/envvar",
+      vcs_type, user, project
+    ),
+    api_version = api_version, body = jsonlite::toJSON(var, auto_unbox = TRUE),
+    encode = encode
+  )
 }
 
 #' @rdname env_var
@@ -44,7 +59,11 @@ delete_env <- function(project = NULL, user = NULL, vcs_type = "gh", var,
   if (is.null(project)) {
     project <- basename(getwd())
   }
-  circleHTTP("DELETE", path = sprintf("/project/%s/%s/%s/envvar/%s",
-                                      vcs_type, user, project, var),
-             api_version = api_version)
+  circleHTTP("DELETE",
+    path = sprintf(
+      "/project/%s/%s/%s/envvar/%s",
+      vcs_type, user, project, var
+    ),
+    api_version = api_version
+  )
 }
