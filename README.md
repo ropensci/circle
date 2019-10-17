@@ -15,6 +15,8 @@ R client package for the Circle CI REST API
 
 ## What works
 
+  - \[x\] Set env vars
+
   - \[x\] Get env vars
 
   - \[x\] Delete env vars
@@ -37,17 +39,18 @@ R client package for the Circle CI REST API
 
   - \[x\] Enable a repo
 
+  - \[x\] Set ssh key
+
+  - \[x\] Get ssh key
+
+  - \[x\] Delete ssh key
+
 # What doesn’t work
 
-  - \[ \] Set env vars
-
-  - \[ \] Set ssh key
-
-  - \[ \] Get ssh key
-
-  - \[ \] Delete ssh key
-
 # Deployment keys
+
+The easiest way to get deployment from Circle CI builds to Github repos
+running is by using `use_circle_deploy()`.
 
 There two different types of keys on Circle CI:
 
@@ -73,11 +76,12 @@ your repository. The private key will be added to your repo setting on
 Circle CI while the public key will be stored as a “deploy key” in your
 repository on Github.
 
-As of October 2019 Circle CI does not accept Openssl RSA keys. Keys need
-to be created using the `- PEM` flag. See [this
-discussion](https://discuss.circleci.com/t/adding-ssh-keys-fails/7747).
+If you do not want to use \`use\_circle\_deploy() and go the manual way
+of adding a SSH key to Circle CI, please be aware of \[this
+issue\]((<https://discuss.circleci.com/t/adding-ssh-keys-fails/7747>).
 
 # Acknowledgments
 
-Inspired by the work of [Thomas J. Leeper](https://github.com/leeper) on
-the [cloudyr/circleci](https://github.com/cloudyr/circleci) package.
+This package was inspired by the work of [Thomas J.
+Leeper](https://github.com/leeper) on the
+[cloudyr/circleci](https://github.com/cloudyr/circleci) package.
