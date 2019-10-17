@@ -7,45 +7,13 @@ Status](https://travis-ci.org/pat-s/circle.svg?branch=master)](https://travis-ci
 status](https://ci.appveyor.com/api/projects/status/r8w1psd0f5r4hs6t/branch/master?svg=true)](https://ci.appveyor.com/project/pat-s/circle/branch/master)
 [![Codecov test
 coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/pat-s/circle?branch=master)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/pat-s/circle?branch=master&svg=true)](https://ci.appveyor.com/project/pat-s/circle)
 <!-- badges: end -->
 
 # circle
 
 R client package for the Circle CI REST API
-
-## What works
-
-  - \[x\] Set env vars
-
-  - \[x\] Get env vars
-
-  - \[x\] Delete env vars
-
-  - \[x\] Set checkout key
-
-  - \[x\] Get checkout key
-
-  - \[x\] Delete checkout key
-
-  - \[x\] Get pipelines
-
-  - \[x\] Get workflows
-
-  - \[x\] Get builds
-
-  - \[x\] Trigger build
-
-  - \[x\] Retry build
-
-  - \[x\] Enable a repo
-
-  - \[x\] Set ssh key
-
-  - \[x\] Get ssh key
-
-  - \[x\] Delete ssh key
-
-# What doesn’t work
 
 # Deployment keys
 
@@ -76,9 +44,9 @@ your repository. The private key will be added to your repo setting on
 Circle CI while the public key will be stored as a “deploy key” in your
 repository on Github.
 
-If you do not want to use \`use\_circle\_deploy() and go the manual way
-of adding a SSH key to Circle CI, please be aware of \[this
-issue\]((<https://discuss.circleci.com/t/adding-ssh-keys-fails/7747>).
+If you do not want to use `use_circle_deploy()` and go the manual way of
+adding a SSH key to Circle CI, please be aware of [this
+issue](https://discuss.circleci.com/t/adding-ssh-keys-fails/7747).
 
 # Acknowledgments
 
