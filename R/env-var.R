@@ -22,7 +22,7 @@ get_env_var <- function(project = NULL, user = NULL, vcs_type = "gh") {
 
 #' @rdname env_var
 set_env_var <- function(project = NULL, user = NULL, vcs_type = "gh", var,
-                        api_version = "v2", encode = "json") {
+                        api_version = "v2") {
   if (is.null(user)) {
     user <- get_user()$content$login
   }
@@ -44,9 +44,9 @@ set_env_var <- function(project = NULL, user = NULL, vcs_type = "gh", var,
       "/project/%s/%s/%s/envvar",
       vcs_type, user, project
     ),
-    api_version = api_version, body = jsonlite::toJSON(var, auto_unbox = TRUE),
-    encode = encode
+    api_version = api_version, body = jsonlite::toJSON(var, auto_unbox = TRUE)
   )
+  invisible(resp)
 }
 
 #' @rdname env_var

@@ -19,8 +19,11 @@ Suggests:
     cli,
     clipr,
     covr,
+    gh,
+    openssl,
     stats,
     testthat,
+    usethis,
     utils
 Encoding: UTF-8
 LazyData: true
