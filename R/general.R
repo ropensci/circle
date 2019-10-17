@@ -5,13 +5,15 @@
 #'   specified in `Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")`.
 #' @return A list of class `circle_user`.
 #' @examples
-#' \dontrun{get_user()}
+#' \dontrun{
+#' get_user()
+#' }
 #' @export
 get_user <- function() {
-    # GET: /me
-    # Provides information about the signed in user.
-    out <- circleHTTP("GET", path = "/me")
-    return(structure(out, class = "circle_user"))
+  # GET: /me
+  # Provides information about the signed in user.
+  out <- circleHTTP("GET", path = "/me")
+  return(structure(out, class = "circle_user"))
 }
 
 #' @title List projects
@@ -24,18 +26,18 @@ get_user <- function() {
 #' @seealso [get_builds()], [get_pipelines()]
 #' @examples
 #' \dontrun{
-#' projects = list_projects()
+#' projects <- list_projects()
 #' }
 #' @export
 list_projects <- function() {
 
-    # GET: /projects
-    # List of all the projects you're following on CircleCI, with build information organized by branch.
-    out <- circleHTTP("GET", path = "/projects", api_version = "v1.1")
-    out = out$content
-    requireNamespace("stats", quietly = TRUE)
-    out = setNames(out, sapply(out, function(x) x$reponame))
-    return(out)
+  # GET: /projects
+  # List of all the projects you're following on CircleCI, with build information organized by branch.
+  out <- circleHTTP("GET", path = "/projects", api_version = "v1.1")
+  out <- out$content
+  requireNamespace("stats", quietly = TRUE)
+  out <- setNames(out, sapply(out, function(x) x$reponame))
+  return(out)
 }
 
 #' @title Get build artifacts
@@ -49,39 +51,47 @@ list_projects <- function() {
 #' }
 #' @export
 list_artifacts <- function(build = NULL) {
+  if (is.null(build)) {
+    build <- get_pipelines()[[1]]
+  }
 
-    if (is.null(build)) {
-        build = get_pipelines()[[1]]
-    }
+  out <- circleHTTP("GET", path = sprintf(
+    "/project/%s/%s/artifacts",
+    build$project_slug,
+    build$job_number
+  ))
 
-    out <- circleHTTP("GET", path = sprintf("/project/%s/%s/artifacts",
-                                            build$project_slug,
-                                            build$job_number))
-
-    if (length(out$content$items) == 0) {
-        stop(sprintf("No build artifacts found for build number '%s'.",
-                     build$job_number), call. = FALSE)
-    }
-    return(out$content$items)
+  if (length(out$content$items) == 0) {
+    stop(sprintf(
+      "No build artifacts found for build number '%s'.",
+      build$job_number
+    ), call. = FALSE)
+  }
+  return(out$content$items)
 }
 
 #' @importFrom httr status_code
 retry_build <- function(build = NULL) {
+  if (is.null(build)) {
+    build <- get_pipelines()[[1]]
+  }
 
-    if (is.null(build)) {
-        build = get_pipelines()[[1]]
-    }
+  out <- circleHTTP("POST",
+    path = sprintf(
+      "/project/%s/%s/retry",
+      build$project_slug,
+      build$job_number
+    ),
+    api_version = "v1.1"
+  )
+  if (status_code(out$response) == 200) {
+    message(sprintf(
+      "Successfully restarted build '#%s'.",
+      build$job_number
+    ))
+  }
 
-    out <- circleHTTP("POST", path = sprintf("/project/%s/%s/retry",
-                                            build$project_slug,
-                                            build$job_number),
-                      api_version = "v1.1")
-    if (status_code(out$response) == 200) {
-        message(sprintf("Successfully restarted build '#%s'.",
-                        build$job_number))
-    }
-
-    return(invisible(out))
+  return(invisible(out))
 }
 
 #' @title Trigger build
@@ -98,27 +108,31 @@ retry_build <- function(build = NULL) {
 #' }
 #' @export
 new_build <- function(project = NULL, user = NULL, vcs_type = "gh", branch = "master") {
+  if (is.null(project)) {
+    project <- basename(getwd())
+  }
+  if (is.null(user)) {
+    user <- get_user()$content$login
+  }
 
-    if (is.null(project)) {
-        project <- basename(getwd())
-    }
-    if (is.null(user)) {
-        user <- get_user()$content$login
-    }
+  out <- circleHTTP("POST",
+    path = sprintf(
+      "/project/%s/%s/%s/pipeline",
+      vcs_type,
+      user,
+      project
+    ),
+    body = list(branch = branch)
+  )
 
-    out <- circleHTTP("POST", path = sprintf("/project/%s/%s/%s/pipeline",
-                                             vcs_type,
-                                             user,
-                                             project),
-                      body = list(branch = branch)
-    )
+  if (status_code(out$response) == 202) {
+    message(sprintf(
+      "Successfully triggered a build for project '%s' on branch '%s'.",
+      project, branch
+    ))
+  }
 
-    if (status_code(out$response) == 202) {
-        message(sprintf("Successfully triggered a build for project '%s' on branch '%s'.",
-                        project, branch))
-    }
-
-    return(invisible(out))
+  return(invisible(out))
 }
 
 #' @title Enable a repo on Circle CI
@@ -134,27 +148,31 @@ new_build <- function(project = NULL, user = NULL, vcs_type = "gh", branch = "ma
 #' @export
 enable_project <- function(project = NULL, user = NULL, vcs_type = "gh",
                            api_version = "v1.1") {
+  if (is.null(project)) {
+    project <- basename(getwd())
+  }
+  if (is.null(user)) {
+    user <- get_user()$content$login
+  }
 
-    if (is.null(project)) {
-        project <- basename(getwd())
-    }
-    if (is.null(user)) {
-        user <- get_user()$content$login
-    }
+  out <- circleHTTP("POST",
+    path = sprintf(
+      "/project/%s/%s/%s/follow",
+      vcs_type,
+      user,
+      project
+    ),
+    api_version = api_version
+  )
 
-    out <- circleHTTP("POST", path = sprintf("/project/%s/%s/%s/follow",
-                                             vcs_type,
-                                             user,
-                                             project),
-                      api_version = api_version
-    )
+  if (status_code(out$response) == 200) {
+    message(sprintf(
+      "Successfully enabled project '%s' on Circle CI.",
+      project
+    ))
+  }
 
-    if (status_code(out$response) == 200) {
-        message(sprintf("Successfully enabled project '%s' on Circle CI.",
-                        project))
-    }
-
-    return(invisible(out))
+  return(invisible(out))
 }
 
 #' @title Delete Project Cache
@@ -170,18 +188,21 @@ enable_project <- function(project = NULL, user = NULL, vcs_type = "gh",
 #' }
 #' @export
 delete_cache <- function(project = NULL, user = NULL, vcs_type = "gh") {
-    if (is.null(project)) {
-        project <- basename(getwd())
-    }
-    if (is.null(user)) {
-        user <- get_user()$content$login
-    }
-    out <- circleHTTP("DELETE", path = sprintf("/project/%s/%s/%s/build-cache",
-                                               vcs_type,
-                                               user,
-                                               project),
-                      api_version = "v1.1"
-    )
-    out = jsonlite::fromJSON(content(out$response, "text"), simplifyVector = FALSE)
-    return(out$status)
+  if (is.null(project)) {
+    project <- basename(getwd())
+  }
+  if (is.null(user)) {
+    user <- get_user()$content$login
+  }
+  out <- circleHTTP("DELETE",
+    path = sprintf(
+      "/project/%s/%s/%s/build-cache",
+      vcs_type,
+      user,
+      project
+    ),
+    api_version = "v1.1"
+  )
+  out <- jsonlite::fromJSON(content(out$response, "text"), simplifyVector = FALSE)
+  return(out$status)
 }
