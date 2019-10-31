@@ -4,8 +4,8 @@
 \alias{enable_repo}
 \title{Enable a repo on Circle CI}
 \usage{
-enable_repo(repo = NULL, user = NULL, vcs_type = "gh",
-  api_version = "v1.1")
+enable_repo(repo = github_info()$name, user = get_user()$content$login,
+  vcs_type = "gh", api_version = "v1.1")
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}

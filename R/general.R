@@ -107,13 +107,10 @@ retry_build <- function(build = NULL) {
 #' new_build()
 #' }
 #' @export
-new_build <- function(repo = NULL, user = NULL, vcs_type = "gh", branch = "master") {
-  if (is.null(repo)) {
-    repo <- basename(getwd())
-  }
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
+new_build <- function(repo = github_info()$name,
+                      user = get_user()$content$login,
+                      vcs_type = "gh",
+                      branch = "master") {
 
   out <- circleHTTP("POST",
     path = sprintf(
@@ -146,18 +143,14 @@ new_build <- function(repo = NULL, user = NULL, vcs_type = "gh", branch = "maste
 #' enable_repo()
 #' }
 #' @export
-enable_repo <- function(repo = NULL, user = NULL, vcs_type = "gh",
+enable_repo <- function(repo = github_info()$name,
+                        user = get_user()$content$login,
+                        vcs_type = "gh",
                         api_version = "v1.1") {
-  if (is.null(repo)) {
-    repo <- basename(getwd())
-  }
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
 
   out <- circleHTTP("POST",
     path = sprintf(
-      "/repo/%s/%s/%s/follow",
+      "/project/%s/%s/%s/follow",
       vcs_type,
       user,
       repo
@@ -167,7 +160,8 @@ enable_repo <- function(repo = NULL, user = NULL, vcs_type = "gh",
 
   if (status_code(out$response) == 200) {
     message(sprintf(
-      "Successfully enabled repo '%s' on Circle CI.",
+      "Successfully enabled repo '%s/%s' on Circle CI.",
+      github_info()$owner$login,
       repo
     ))
   }
@@ -187,13 +181,10 @@ enable_repo <- function(repo = NULL, user = NULL, vcs_type = "gh",
 #' delete_cache(list_repos()[[1]])
 #' }
 #' @export
-delete_cache <- function(repo = NULL, user = NULL, vcs_type = "gh") {
-  if (is.null(repo)) {
-    repo <- basename(getwd())
-  }
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
+delete_cache <- function(repo = github_info()$name,
+                         user = get_user()$content$login,
+                         vcs_type = "gh") {
+
   out <- circleHTTP("DELETE",
     path = sprintf(
       "/repo/%s/%s/%s/build-cache",

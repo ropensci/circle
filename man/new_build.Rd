@@ -4,8 +4,8 @@
 \alias{new_build}
 \title{Trigger build}
 \usage{
-new_build(repo = NULL, user = NULL, vcs_type = "gh",
-  branch = "master")
+new_build(repo = github_info()$name, user = get_user()$content$login,
+  vcs_type = "gh", branch = "master")
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}
