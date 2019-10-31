@@ -2,24 +2,24 @@
 % Please edit documentation in R/general.R
 \name{list_projects}
 \alias{list_projects}
-\title{List projects}
+\title{List repos}
 \usage{
 list_projects()
 }
 \value{
-A list of `circle_project`s.
+A list of `circle_repo`s.
 }
 \description{
-Retrieve a list of Circle CI projects for the authenticated
+Retrieve a list of Circle CI repos for the authenticated
   user.
 }
 \details{
-Retrieves a very detailed list of projects and project-related
-  information for all Circle CI projects attached to the current user.
+Retrieves a very detailed list of repos and repo-related
+  information for all Circle CI repos attached to the current user.
 }
 \examples{
 \dontrun{
-projects <- list_projects()
+repos <- list_repos()
 }
 }
 \seealso{

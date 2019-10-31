@@ -4,10 +4,11 @@
 \alias{use_circle_deploy}
 \title{Set up deployment from Circle CI to Github repo}
 \usage{
-use_circle_deploy(project = NULL, user = NULL)
+use_circle_deploy(repo = github_info()$name,
+  user = get_user()$content$login)
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 }
@@ -24,10 +25,10 @@ respective Github repo. In detail, the following tasks are executed:
 2. The public key will be stored in the Github repo
   with the title "Deploy key for Circle CI".
 3. The private key will be stored as a secure environment variable within
-  the Circle CI project.
+  the Circle CI repo.
 
-If the project has not been enabled yet on Circle CI, please run
-`enable_project()` first. Also to be able to log in to Github, you will need
+If the repo has not been enabled yet on Circle CI, please run
+`enable_repo()` first. Also to be able to log in to Github, you will need
 to have a `GITHUB_PAT` or `GITHUB_TOKEN` being set. You can check this using
 `usethis::github_token()` and create one (if missing) via `usethis::browse_github_token()`.
 }
