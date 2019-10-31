@@ -1,6 +1,6 @@
 # circle 0.3.0.9000
 
-- Same as previous version.
+- update "cache" function with new user/owner logic from v0.3.0
 
 
 # circle 0.3.0
