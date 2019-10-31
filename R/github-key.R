@@ -21,8 +21,10 @@ github_add_key <- function(repo = github_info()$name, user = get_user()$content$
   cli::cat_rule()
   cli::cat_bullet(
     bullet = "tick", bullet_col = "green",
-    sprintf("Added a public deploy key to GitHub for '%s/%s'.",
-            github_info()$owner$login, repo)
+    sprintf(
+      "Added a public deploy key to GitHub for '%s/%s'.",
+      github_info()$owner$login, repo
+    )
   )
 
   invisible(ret)
@@ -55,7 +57,7 @@ add_key <- function(key_data, owner, repo) {
 get_role_in_repo <- function(owner, user, repo) {
 
   req <- gh::gh("/repos/:owner/:repo/collaborators/:username/permission",
-                owner = owner, repo = repo, username = user
+    owner = owner, repo = repo, username = user
   )
   req$permission
 }

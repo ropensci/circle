@@ -1,20 +1,21 @@
 auth_circle <- function() {
-  yml <- tryCatch({
-    readLines("~/.circleci/cli.yml")
-  },
-  warning = function(cond) {
-    cli::cat_bullet(
-      bullet = "pointer", bullet_col = "yellow",
-      c(
-        "To interact with the Circle CI API, an API is required.",
-        "This is a one-time procedure. The token will be stored in your home directory in the '.circleci' directory."
+  yml <- tryCatch(
+    {
+      readLines("~/.circleci/cli.yml")
+    },
+    warning = function(cond) {
+      cli::cat_bullet(
+        bullet = "pointer", bullet_col = "yellow",
+        c(
+          "To interact with the Circle CI API, an API is required.",
+          "This is a one-time procedure. The token will be stored in your home directory in the '.circleci' directory."
+        )
       )
-    )
-    message("Querying API token...")
-    utils::browseURL("https://circleci.com/account/api")
-    wait_for_clipboard_token()
-    return(readLines("~/.circleci/cli.yml"))
-  }
+      message("Querying API token...")
+      utils::browseURL("https://circleci.com/account/api")
+      wait_for_clipboard_token()
+      return(readLines("~/.circleci/cli.yml"))
+    }
   )
 
   # create api token if none is found but config file exists

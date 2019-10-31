@@ -147,7 +147,7 @@ new_build <- function(repo = NULL, user = NULL, vcs_type = "gh", branch = "maste
 #' }
 #' @export
 enable_repo <- function(repo = NULL, user = NULL, vcs_type = "gh",
-                           api_version = "v1.1") {
+                        api_version = "v1.1") {
   if (is.null(repo)) {
     repo <- basename(getwd())
   }
