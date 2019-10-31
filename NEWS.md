@@ -1,7 +1,8 @@
 # circle 0.2.0.9000
 
-- Same as previous version.
+- Rename argument `project` to `repo` to stay consistent with _travis_ pkg.
 
+- Add Github helper functions to easily query owners and users for the repository operating on. This change requires the _git2r_ package from now on.
 
 # circle 0.2.0
 

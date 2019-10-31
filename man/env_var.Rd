@@ -7,16 +7,17 @@
 \alias{delete_env}
 \title{Add/Get/Set Environment Variable(s)}
 \usage{
-get_env_var(project = NULL, user = NULL, vcs_type = "gh")
+get_env_var(repo = github_info()$name, user = get_user()$content$login,
+  vcs_type = "gh")
 
-set_env_var(project = NULL, user = NULL, vcs_type = "gh", var,
-  api_version = "v2")
+set_env_var(repo = github_info()$name, user = get_user()$content$login,
+  vcs_type = "gh", var, api_version = "v2")
 
-delete_env(project = NULL, user = NULL, vcs_type = "gh", var,
-  api_version = "v1.1")
+delete_env(repo = github_info()$name, user = get_user()$content$login,
+  vcs_type = "gh", var, api_version = "v1.1")
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 
@@ -31,7 +32,7 @@ This usually does not need to be changed by the user.}
 }
 \description{
 Add/Get/Set Circle CI environment variable(s) for a specific
-  project on Circle CI.
+  repo on Circle CI.
 }
 \details{
 Currently setting env variables via `set_env_var()` does not work.

@@ -1,11 +1,5 @@
-github_add_key <- function(project = NULL, user = NULL,
+github_add_key <- function(repo = github_info()$name, user = get_user()$content$login,
                            pubkey, title = "circle") {
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
-  if (is.null(project)) {
-    project <- basename(getwd())
-  }
 
   if (inherits(pubkey, "key")) {
     pubkey <- as.list(pubkey)$pubkey
@@ -15,53 +9,53 @@ github_add_key <- function(project = NULL, user = NULL,
   }
 
   # check if we have enough rights to add a key
-  check_admin_repo(user, project)
+  check_admin_repo(owner = github_info()$owner$login, user = user, repo = repo)
 
   key_data <- create_key_data(pubkey, title)
 
   # remove existing key
-  remove_key_if_exists(key_data, user, project)
+  remove_key_if_exists(key_data, user = user, repo)
   # add public key to repo deploy keys on GitHub
-  ret <- add_key(key_data, user, project)
+  ret <- add_key(key_data, owner = github_info()$owner$login, repo)
 
   cli::cat_rule()
   cli::cat_bullet(
     bullet = "tick", bullet_col = "green",
-    sprintf("Added a public deploy key to GitHub for '%s'.", project)
+    sprintf("Added a public deploy key to GitHub for '%s/%s'.",
+            github_info()$owner$login, repo)
   )
 
   invisible(ret)
 }
 
-check_admin_repo <- function(owner, repo) {
-  role_in_repo <- get_role_in_repo(owner, repo)
+check_admin_repo <- function(owner, user, repo) {
+  role_in_repo <- get_role_in_repo(owner, user, repo)
   if (role_in_repo != "admin") {
     stop("Must have role admin to add deploy key to repo ", repo, ", not ", role_in_repo)
   }
 }
 
-add_key <- function(key_data, user, project) {
+add_key <- function(key_data, owner, repo) {
 
   # FIXME: catch status returns to process errors
   resp <- gh::gh("POST /repos/:owner/:repo/keys",
-    owner = user, repo = project,
+    owner = owner, repo = repo,
     title = key_data$title,
     key = key_data$key, read_only = key_data$read_only
   )
 
   cli::cat_bullet(
     bullet = "pointer", bullet_col = "yellow",
-    sprintf("Adding deploy keys on GitHub and Circle CI for repo '%s'.", project)
+    sprintf("Adding deploy keys on GitHub and Circle CI for repo '%s/%s'.", owner, repo)
   )
 
   invisible(resp)
 }
 
-get_role_in_repo <- function(owner, repo) {
-  user <- github_user()$login
+get_role_in_repo <- function(owner, user, repo) {
 
   req <- gh::gh("/repos/:owner/:repo/collaborators/:username/permission",
-    owner = owner, repo = repo, username = user
+                owner = owner, repo = repo, username = user
   )
   req$permission
 }

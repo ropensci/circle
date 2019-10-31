@@ -4,11 +4,11 @@
 \alias{get_builds}
 \title{Get builds from Circle CI}
 \usage{
-get_builds(project = NULL, user = NULL, vcs_type = "gh",
-  limit = 30, api_version = "v2")
+get_builds(repo = NULL, user = get_user()$content$login,
+  vcs_type = "gh", limit = 30, api_version = "v2")
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 

@@ -7,16 +7,19 @@
 \alias{delete_checkout_key}
 \title{Generate/get or delete an checkout Key}
 \usage{
-create_checkout_key(project = NULL, user = NULL, type = "deploy-key",
+create_checkout_key(repo = github_info()$name,
+  user = get_user()$content$login, type = "deploy-key",
   api_version = "v1.1", vcs_type = "gh")
 
-get_checkout_keys(project = NULL, user = NULL, vcs_type = "gh")
+get_checkout_keys(repo = github_info()$name,
+  user = get_user()$content$login, vcs_type = "gh")
 
-delete_checkout_key(project = NULL, user = NULL, fingerprint,
+delete_checkout_key(repo = github_info()$name,
+  user = get_user()$content$login, fingerprint,
   type = "github-user-key", api_version = "v1.1", vcs_type = "gh")
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 

@@ -19,6 +19,7 @@ Suggests:
     cli,
     clipr,
     covr,
+    git2r,
     gh,
     openssl,
     stats,

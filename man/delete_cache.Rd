@@ -2,12 +2,12 @@
 % Please edit documentation in R/general.R
 \name{delete_cache}
 \alias{delete_cache}
-\title{Delete Project Cache}
+\title{Delete repo Cache}
 \usage{
-delete_cache(project = NULL, user = NULL, vcs_type = "gh")
+delete_cache(repo = NULL, user = NULL, vcs_type = "gh")
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 
@@ -18,13 +18,13 @@ Other possible values are "bitbucket".}
 A logical.
 }
 \description{
-Delete project cache
+Delete repo cache
 }
 \details{
-Delete the project cache for a specified Circle CI project.
+Delete the repo cache for a specified Circle CI repo.
 }
 \examples{
 \dontrun{
-delete_cache(list_projects()[[1]])
+delete_cache(list_repos()[[1]])
 }
 }

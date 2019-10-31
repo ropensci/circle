@@ -2,7 +2,7 @@
 #' @description Generate/get or delete an checkout Key
 #' @details These functions provide the ability to deal with user checkout keys on
 #'   Circle CI.
-#' @template project
+#' @template repo
 #' @template user
 #' @template vcs
 #' @param type Type of key to add. Options are "github-user-key" and
@@ -11,16 +11,13 @@
 #' @template api_version
 #' @name checkout_key
 #' @export
-create_checkout_key <- function(project = NULL, user = NULL, type = "deploy-key",
+create_checkout_key <- function(repo = github_info()$name,
+                                user = get_user()$content$login,
+                                type = "deploy-key",
                                 api_version = "v1.1", vcs_type = "gh") {
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
-  if (is.null(project)) {
-    project <- basename(getwd())
-  }
+
   circleHTTP("POST",
-    path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, project),
+    path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, repo),
     body = list(type = type), api_version = api_version
   )
 }
@@ -29,17 +26,14 @@ create_checkout_key <- function(project = NULL, user = NULL, type = "deploy-key"
 #'
 #' @rdname checkout_key
 #' @export
-get_checkout_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
-  if (is.null(project)) {
-    project <- basename(getwd())
-  }
+get_checkout_keys <- function(repo = github_info()$name,
+                              user = get_user()$content$login,
+                              vcs_type = "gh") {
+
   circleHTTP("GET",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key",
-      vcs_type, user, project
+      vcs_type, user, repo
     )
   )
 }
@@ -48,22 +42,16 @@ get_checkout_keys <- function(project = NULL, user = NULL, vcs_type = "gh") {
 #'
 #' @rdname checkout_key
 #' @export
-delete_checkout_key <- function(project = NULL, user = NULL, fingerprint,
+delete_checkout_key <- function(repo = github_info()$name,
+                                user = get_user()$content$login, fingerprint,
                                 type = "github-user-key",
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  # does not yet support api v2
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
-  if (is.null(project)) {
-    project <- basename(getwd())
-  }
   circleHTTP("DELETE",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key/%s",
-      vcs_type, user, project, fingerprint
+      vcs_type, user, repo, fingerprint
     ),
     api_version = api_version
   )

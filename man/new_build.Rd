@@ -4,11 +4,11 @@
 \alias{new_build}
 \title{Trigger build}
 \usage{
-new_build(project = NULL, user = NULL, vcs_type = "gh",
+new_build(repo = NULL, user = NULL, vcs_type = "gh",
   branch = "master")
 }
 \arguments{
-\item{project}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 
@@ -18,10 +18,10 @@ Other possible values are "bitbucket".}
 \item{branch}{A character string specifying the repository branch.}
 }
 \description{
-Trigger a new build for a specific project branch
+Trigger a new build for a specific repo branch
 }
 \details{
-Trigger a new Circle CI build for a specific project branch.
+Trigger a new Circle CI build for a specific repo branch.
 }
 \examples{
 \dontrun{

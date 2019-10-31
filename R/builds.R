@@ -1,7 +1,7 @@
 #' @title Get builds from Circle CI
 #' @description Queries single builds from Circle CI pipeline runs
 #'
-#' @template project
+#' @template repo
 #' @template user
 #' @template vcs
 #' @param limit How many builds should be returned? Maximum allowed by Circle is
@@ -11,30 +11,27 @@
 #' @details To set a different API version, use the following scheme:
 #'   `https://circleci.com/api/v<api version>` The current default is "v2".
 #' @export
-get_builds <- function(project = NULL, user = NULL, vcs_type = "gh",
+get_builds <- function(repo = NULL, user = get_user()$content$login, vcs_type = "gh",
                        limit = 30, api_version = "v2") {
   out <- get_jobs(get_workflows(get_pipelines(
-    project = project, user = user,
+    repo = repo, user = user,
     vcs_type = vcs_type, limit = limit,
     api_version = api_version
   )))
   return(out)
 }
 
-get_pipelines <-
-  function(project = NULL, user = NULL, limit = 30, build_number = NULL,
+get_pipelines <- function(repo = NULL, user = get_user()$content$login,
+                          limit = 30, build_number = NULL,
              vcs_type = "gh", api_version = "v2") {
-    if (is.null(user)) {
-      user <- get_user()$content$login
-    }
 
-    if (is.null(project)) {
-      project <- basename(getwd())
+    if (is.null(repo)) {
+      repo = github_info()$name
       if (is.null(build_number)) {
         out <- circleHTTP("GET",
           path = sprintf(
             "/project/%s/%s/%s/pipeline",
-            vcs_type, user, project
+            vcs_type, user, repo
           ),
           api_version = api_version,
           query = list(limit = limit)
@@ -43,20 +40,20 @@ get_pipelines <-
         out <- list(circleHTTP("GET",
           path = sprintf(
             "/project/%s/%s/%s/%s/pipeline",
-            vcs_type, user, project,
+            vcs_type, user, repo,
             build_number
           ),
           api_version = api_version,
           query = list(limit = limit)
         ))
       }
-    } else if (!is.null(project)) {
-      project <- project
+    } else if (!is.null(repo)) {
+      repo <- repo
       if (is.null(build_number)) {
         out <- circleHTTP("GET",
           path = sprintf(
             "/project/%s/%s/%s/pipeline",
-            vcs_type, user, project
+            vcs_type, user, repo
           ),
           api_version = api_version,
           query = list(limit = limit)
@@ -65,7 +62,7 @@ get_pipelines <-
         out <- list(circleHTTP("GET",
           path = sprintf(
             "/project/%s/%s/%s/%s/pipeline",
-            vcs_type, user, project,
+            vcs_type, user, repo,
             build_number
           ),
           api_version = api_version,
@@ -75,7 +72,7 @@ get_pipelines <-
     }
 
     if (length(out) == 0) {
-      stop(sprintf("No project named '%s' found for user '%s'.", project, user))
+      stop(sprintf("No repo named '%s' found for user '%s'.", repo, user))
     }
 
     return(out)

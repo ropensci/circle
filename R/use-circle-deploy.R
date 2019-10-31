@@ -1,7 +1,7 @@
 #' @title Set up deployment from Circle CI to Github repo
 #' @description Workhorse function to create a SSH key pair for use on Github
 #'   and Circle CI.
-#' @template project
+#' @template repo
 #' @template user
 #'
 #' @details This function simplifies the process of setting up a SSH key pair in
@@ -12,10 +12,10 @@
 #' 2. The public key will be stored in the Github repo
 #'   with the title "Deploy key for Circle CI".
 #' 3. The private key will be stored as a secure environment variable within
-#'   the Circle CI project.
+#'   the Circle CI repo.
 #'
-#' If the project has not been enabled yet on Circle CI, please run
-#' `enable_project()` first. Also to be able to log in to Github, you will need
+#' If the repo has not been enabled yet on Circle CI, please run
+#' `enable_repo()` first. Also to be able to log in to Github, you will need
 #' to have a `GITHUB_PAT` or `GITHUB_TOKEN` being set. You can check this using
 #' `usethis::github_token()` and create one (if missing) via `usethis::browse_github_token()`.
 #'
@@ -24,13 +24,7 @@
 #' use_circle_deploy()
 #' }
 #' @export
-use_circle_deploy <- function(project = NULL, user = NULL) {
-  if (is.null(user)) {
-    user <- get_user()$content$login
-  }
-  if (is.null(project)) {
-    project <- basename(getwd())
-  }
+use_circle_deploy <- function(repo = github_info()$name, user = get_user()$content$login) {
 
   # authenticate on github and circle and set up keys/vars
   token <- usethis::github_token()
@@ -49,7 +43,6 @@ use_circle_deploy <- function(project = NULL, user = NULL) {
 
   # generate deploy key pair
   key <- openssl::rsa_keygen()
-  # key = openssl::rsa_keygen() %>% openssl::write_pkcs1()
 
   # encrypt private key using tempkey and iv
   pub_key <- get_public_key(key)
@@ -57,16 +50,16 @@ use_circle_deploy <- function(project = NULL, user = NULL) {
 
   # add to GitHub first, because this can fail because of missing org permissions
   title <- "Deploy key for Circle CI"
-  github_add_key(pubkey = pub_key, user = user, project = project, title = title)
+  github_add_key(pubkey = pub_key, user = user, repo = repo, title = title)
 
-  set_env_var(var = list(id_rsa = private_key), project = project, user = user)
+  set_env_var(var = list(id_rsa = private_key), repo = repo, user = github_info()$owner$login)
 
   cli::cat_rule()
   cli::cat_bullet(
     bullet = "tick", bullet_col = "green",
     sprintf(
-      "Added a private deploy key to project '%s' on Circle CI as secure environment variable 'id_rsa'.",
-      project
+      "Added a private deploy key to repo '%s' on Circle CI as secure environment variable 'id_rsa'.",
+      repo
     )
   )
 }
