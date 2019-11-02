@@ -48,9 +48,10 @@ use_circle_deploy <- function(repo = github_info()$name, user = get_user()$conte
   pub_key <- get_public_key(key)
   private_key <- encode_private_key(key)
 
+  create_checkout_key(type = "github-user-key")
   # add to GitHub first, because this can fail because of missing org permissions
-  title <- "Deploy key for Circle CI"
-  github_add_key(pubkey = pub_key, user = user, repo = repo, title = title)
+  #title <- "Deploy key for Circle CI"
+  #github_add_key(pubkey = pub_key, user = user, repo = repo, title = title)
 
   set_env_var(var = list(id_rsa = private_key), repo = repo, user = github_info()$owner$login)
 
