@@ -73,7 +73,7 @@ has_checkout_key <- function(repo = github_info()$name,
   if (!key) {
     cli::cat_bullet(
       bullet = "cross", bullet_col = "red",
-      sprintf("No %s found.", type)
+      sprintf("No '%s' found.", type)
     )
     return(FALSE)
   }

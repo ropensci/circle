@@ -54,8 +54,7 @@ use_circle_deploy <- function(repo = github_info()$name,
     cli::cat_bullet(
       bullet = "tick", bullet_col = "green",
       sprintf(
-        c("Added a 'github user key' to project '%s/%s' on Circle CI.",
-          " This enables deployment from builds."),
+        "Added a 'github user key' to project '%s/%s' on Circle CI. This enables deployment from builds.",
         user,
         repo
       )
