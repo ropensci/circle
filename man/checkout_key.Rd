@@ -5,6 +5,7 @@
 \alias{create_checkout_key}
 \alias{get_checkout_keys}
 \alias{delete_checkout_key}
+\alias{has_checkout_key}
 \title{Generate/get or delete an checkout Key}
 \usage{
 create_checkout_key(repo = github_info()$name,
@@ -17,6 +18,10 @@ get_checkout_keys(repo = github_info()$name,
 delete_checkout_key(repo = github_info()$name,
   user = get_user()$content$login, fingerprint,
   type = "github-user-key", api_version = "v1.1", vcs_type = "gh")
+
+has_checkout_key(repo = github_info()$name,
+  user = get_user()$content$login, type = "github-user-key",
+  vcs_type = "gh", preferred = "true")
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}
@@ -33,11 +38,9 @@ This usually does not need to be changed by the user.}
 Other possible values are "bitbucket".}
 
 \item{fingerprint}{The fingerprint of the checkout key which should be deleted.}
+
+\item{preferred}{Checks whether the requested type is the "preferred" key.}
 }
 \description{
-Generate/get or delete an checkout Key
-}
-\details{
-These functions provide the ability to deal with user checkout keys on
-  Circle CI.
+Functions to interact with "checkout keys" on Circle CI.
 }

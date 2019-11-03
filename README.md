@@ -1,12 +1,11 @@
 
 <!-- badges: start -->
 
-[![Travis-CI Build
-Status](https://travis-ci.org/pat-s/circle.svg?branch=master)](https://travis-ci.org/pat-s/circle)
+[![Build
+Status](https://img.shields.io/travis/pat-s/circle/master?label=macOS&logo=travis&style=flat-square)](https://travis-ci.org/pat-s/circle3)
+[![CircleCI](https://img.shields.io/circleci/build/gh/pat-s/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/pat-s/circle)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/pat-s/circle?branch=master&svg=true)](https://ci.appveyor.com/project/pat-s/circle)
-[![Circle-CI build
-status](https://circleci.com/gh/pat-s/circle.svg?style=svg)](https://circleci.com/project/gh/pat-s/circle)
+status](https://img.shields.io/appveyor/ci/pat-s/circle?label=Windows&logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/pat-s/circle)
 [![Codecov test
 coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/pat-s/circle?branch=master)
 <!-- badges: end -->
@@ -38,21 +37,22 @@ There two different types of keys on Circle CI:
 
 ### Checkout keys
 
-The former are used to checkout your repository so that the build is
+Checkout keys are used to checkout your repository so that the build is
 starting. If you’ve connected Circle CI to Github already, you will have
 a “deploy key” stored in every repository to be able to checkout the
 code.
 
-There is no advantage in adding a “github-user-key” to the checkout
-section. This key would not give you any more rights regarding
-deployment.
+However, this key does not have enough permissions to also deploy from
+builds. To enable this, a “github-user-key” is needed. This key is added
+when calling `use_circle_deploy()`.
 
 ### SSH keys
 
-These are actually used to grant deployment access from the build to
-your repository. The private key will be added to your repo setting on
-Circle CI while the public key will be stored as a “deploy key” in your
-repository on Github.
+The private key will be added to your repo setting on Circle CI while
+the public key will be stored as a “deploy key” in your repository on
+Github.
+
+-----
 
 If you do not want to use `use_circle_deploy()` and go the manual way of
 adding a SSH key to Circle CI, please be aware of [this

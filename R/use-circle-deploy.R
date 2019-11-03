@@ -24,7 +24,8 @@
 #' use_circle_deploy()
 #' }
 #' @export
-use_circle_deploy <- function(repo = github_info()$name, user = get_user()$content$login) {
+use_circle_deploy <- function(repo = github_info()$name,
+                              user = get_user()$content$login) {
 
   # authenticate on github and circle and set up keys/vars
   token <- usethis::github_token()
@@ -41,26 +42,24 @@ use_circle_deploy <- function(repo = github_info()$name, user = get_user()$conte
     stop("Circle: Please restart your R session after setting the token and try again.")
   }
 
-  # generate deploy key pair
-  key <- openssl::rsa_keygen()
-
-  # encrypt private key using tempkey and iv
-  pub_key <- get_public_key(key)
-  private_key <- encode_private_key(key)
-
-  create_checkout_key(type = "github-user-key")
-  # add to GitHub first, because this can fail because of missing org permissions
-  #title <- "Deploy key for Circle CI"
-  #github_add_key(pubkey = pub_key, user = user, repo = repo, title = title)
-
-  set_env_var(var = list(id_rsa = private_key), repo = repo, user = github_info()$owner$login)
-
-  cli::cat_rule()
-  cli::cat_bullet(
-    bullet = "tick", bullet_col = "green",
-    sprintf(
-      "Added a private deploy key to repo '%s' on Circle CI as secure environment variable 'id_rsa'.",
-      repo
+  if (circle::has_checkout_key(preferred = TRUE)) {
+    cli::cat_bullet(
+      bullet = "info", bullet_col = "yellow",
+      paste0("A 'github-user-key' already exists is set as 'preferred'.",
+       " You are able to deploy from builds.", collapse = "")
     )
-  )
+  } else {
+    create_checkout_key(type = "github-user-key")
+    cli::cat_rule()
+    cli::cat_bullet(
+      bullet = "tick", bullet_col = "green",
+      sprintf(
+        c("Added a 'github user key' to project '%s/%s' on Circle CI.",
+          " This enables deployment from builds."),
+        user,
+        repo
+      )
+    )
+  }
+
 }
