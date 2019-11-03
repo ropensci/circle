@@ -1,4 +1,4 @@
-# circle 0.3.0.9000
+# circle 0.4.0
 
 - update "cache" function with new user/owner logic from v0.3.0
 - new `has_checkout_key()` to check if a specific checkout key exists in the project
