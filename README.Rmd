@@ -18,11 +18,11 @@ R client package for the Circle CI REST API
 The easiest way to get deployment from Circle CI builds to Github repos running is by using `use_circle_deploy()`:
 
 ```r
-❯ Adding deploy keys on GitHub and Circle CI for repo '<repo>'.
-─────────────────────────────────────────────────────────────────────────────
-✔ Added a public deploy key to GitHub for '<repo>'.
-─────────────────────────────────────────────────────────────────────────────
-✔ Added a private deploy key to project '<repo>' on Circle CI as secure environment variable 'id_rsa'.
+circle::use_circle_deploy()
+✖ No 'github-user-key' found.
+──────────────────────────────────────────────────────────────────────────────────────────────────
+✔ Added a 'github user key' to project '<repo-slug>' on Circle CI. 
+This enables deployment from builds.
 ```
 
 ## Deployment keys
