@@ -10,7 +10,7 @@
 #' @name checkout_key
 #' @export
 create_checkout_key <- function(repo = github_info()$name,
-                                user = get_user()$content$login,
+                                user = github_info()$owner$login,
                                 type = "deploy-key",
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
@@ -26,7 +26,7 @@ create_checkout_key <- function(repo = github_info()$name,
 #' @rdname checkout_key
 #' @export
 get_checkout_keys <- function(repo = github_info()$name,
-                              user = get_user()$content$login,
+                              user = github_info()$owner$login,
                               vcs_type = "gh") {
 
   circleHTTP("GET",
@@ -42,7 +42,7 @@ get_checkout_keys <- function(repo = github_info()$name,
 #' @rdname checkout_key
 #' @export
 delete_checkout_key <- function(repo = github_info()$name,
-                                user = get_user()$content$login, fingerprint,
+                                user = github_info()$owner$login, fingerprint,
                                 type = "github-user-key",
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
@@ -62,7 +62,7 @@ delete_checkout_key <- function(repo = github_info()$name,
 #' @rdname checkout_key
 #' @export
 has_checkout_key <- function(repo = github_info()$name,
-                             user = get_user()$content$login,
+                             user = github_info()$owner$login,
                              type = "github-user-key",
                              vcs_type = "gh",
                              preferred = "true") {

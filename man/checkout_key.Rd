@@ -9,18 +9,18 @@
 \title{Generate/get or delete an checkout Key}
 \usage{
 create_checkout_key(repo = github_info()$name,
-  user = get_user()$content$login, type = "deploy-key",
+  user = github_info()$owner$login, type = "deploy-key",
   api_version = "v1.1", vcs_type = "gh")
 
 get_checkout_keys(repo = github_info()$name,
-  user = get_user()$content$login, vcs_type = "gh")
+  user = github_info()$owner$login, vcs_type = "gh")
 
 delete_checkout_key(repo = github_info()$name,
-  user = get_user()$content$login, fingerprint,
+  user = github_info()$owner$login, fingerprint,
   type = "github-user-key", api_version = "v1.1", vcs_type = "gh")
 
 has_checkout_key(repo = github_info()$name,
-  user = get_user()$content$login, type = "github-user-key",
+  user = github_info()$owner$login, type = "github-user-key",
   vcs_type = "gh", preferred = "true")
 }
 \arguments{

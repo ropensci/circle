@@ -25,7 +25,7 @@
 #' }
 #' @export
 use_circle_deploy <- function(repo = github_info()$name,
-                              user = get_user()$content$login) {
+                              user = github_info()$owner$login) {
 
   # authenticate on github and circle and set up keys/vars
   token <- usethis::github_token()
@@ -49,7 +49,7 @@ use_circle_deploy <- function(repo = github_info()$name,
        " You are able to deploy from builds.", collapse = "")
     )
   } else {
-    create_checkout_key(type = "github-user-key")
+    create_checkout_key(user = user, repo = repo, type = "github-user-key")
     cli::cat_rule()
     cli::cat_bullet(
       bullet = "tick", bullet_col = "green",
