@@ -5,7 +5,7 @@
 \title{Set up deployment from Circle CI to Github repo}
 \usage{
 use_circle_deploy(repo = github_info()$name,
-  user = get_user()$content$login)
+  user = github_info()$owner$login)
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}
