@@ -108,7 +108,7 @@ retry_build <- function(build = NULL) {
 #' }
 #' @export
 new_build <- function(repo = github_info()$name,
-                      user = get_user()$content$login,
+                      user = github_info()$owner$login,
                       vcs_type = "gh",
                       branch = "master") {
 
@@ -144,7 +144,7 @@ new_build <- function(repo = github_info()$name,
 #' }
 #' @export
 enable_repo <- function(repo = github_info()$name,
-                        user = get_user()$content$login,
+                        user = github_info()$owner$login,
                         vcs_type = "gh",
                         api_version = "v1.1") {
 
@@ -182,7 +182,7 @@ enable_repo <- function(repo = github_info()$name,
 #' }
 #' @export
 delete_cache <- function(repo = github_info()$name,
-                         user = get_user()$content$login,
+                         user = github_info()$owner$login,
                          vcs_type = "gh") {
 
   out <- circleHTTP("DELETE",

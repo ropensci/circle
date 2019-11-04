@@ -11,7 +11,7 @@
 #' @details To set a different API version, use the following scheme:
 #'   `https://circleci.com/api/v<api version>` The current default is "v2".
 #' @export
-get_builds <- function(repo = NULL, user = get_user()$content$login, vcs_type = "gh",
+get_builds <- function(repo = NULL, user = github_info()$owner$login, vcs_type = "gh",
                        limit = 30, api_version = "v2") {
   out <- get_jobs(get_workflows(get_pipelines(
     repo = repo, user = user,
@@ -21,7 +21,7 @@ get_builds <- function(repo = NULL, user = get_user()$content$login, vcs_type = 
   return(out)
 }
 
-get_pipelines <- function(repo = NULL, user = get_user()$content$login,
+get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
                           limit = 30, build_number = NULL,
                           vcs_type = "gh", api_version = "v2") {
 
@@ -88,9 +88,14 @@ get_workflows <- function(pipelines = NULL) {
   workflows <- lapply(pipeline_id, function(id) {
     circleHTTP("GET", path = sprintf("/pipeline/%s", id))
   })
+
+  # remove pipelines with empty workflows (e.g. cron builds)
+  no_wf = sapply(workflows, function (x) length(x[["content"]][["workflows"]]) != 0)
+  workflows = workflows[no_wf]
+
   # retrieve from workflow/id endpoint
-  workflows_id <- lapply(workflows, function(workflows) {
-    circleHTTP("GET", path = sprintf("/workflow/%s", workflows$content$workflows[[1]]$id))
+  workflows_id <- lapply(workflows, function(x) {
+    circleHTTP("GET", path = sprintf("/workflow/%s", x[["content"]][["workflows"]][[1]][["id"]]))
   })
 
   return(workflows_id)

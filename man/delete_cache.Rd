@@ -5,7 +5,7 @@
 \title{Delete repo Cache}
 \usage{
 delete_cache(repo = github_info()$name,
-  user = get_user()$content$login, vcs_type = "gh")
+  user = github_info()$owner$login, vcs_type = "gh")
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}

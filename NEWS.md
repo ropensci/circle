@@ -1,7 +1,6 @@
 # circle 0.4.0.9000
 
-- Same as previous version.
-
+- Bufgix: Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
 
 # circle 0.4.0
 

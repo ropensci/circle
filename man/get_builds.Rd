@@ -4,7 +4,7 @@
 \alias{get_builds}
 \title{Get builds from Circle CI}
 \usage{
-get_builds(repo = NULL, user = get_user()$content$login,
+get_builds(repo = NULL, user = github_info()$owner$login,
   vcs_type = "gh", limit = 30, api_version = "v2")
 }
 \arguments{

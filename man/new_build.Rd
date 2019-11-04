@@ -4,7 +4,7 @@
 \alias{new_build}
 \title{Trigger build}
 \usage{
-new_build(repo = github_info()$name, user = get_user()$content$login,
+new_build(repo = github_info()$name, user = github_info()$owner$login,
   vcs_type = "gh", branch = "master")
 }
 \arguments{
