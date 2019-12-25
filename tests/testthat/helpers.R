@@ -6,4 +6,4 @@ if (!dir.exists("travis-testthat")) {
 setwd("./travis-testthat")
 
 repo <- "travis-testthat"
-user <- github_info()$owner$login
+user <- github_info(".")$owner$login
