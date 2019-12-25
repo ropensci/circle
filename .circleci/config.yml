@@ -29,6 +29,7 @@ jobs:
           command: |
             R -q -e 'tic::before_script()'
             R -q -e 'tic::script()'
+            R -q -e 'tic::after_success()'
 
       # save R pkg cache -------------------------------------------------------
       - save_cache:
