@@ -15,7 +15,7 @@ create_checkout_key <- function(repo = github_info()$name,
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  circleHTTP("POST",
+  circle("POST",
     path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, repo),
     body = list(type = type), api_version = api_version
   )
@@ -29,7 +29,7 @@ get_checkout_keys <- function(repo = github_info()$name,
                               user = github_info()$owner$login,
                               vcs_type = "gh") {
 
-  circleHTTP("GET",
+  circle("GET",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key",
       vcs_type, user, repo
@@ -47,7 +47,7 @@ delete_checkout_key <- function(repo = github_info()$name,
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  circleHTTP("DELETE",
+  circle("DELETE",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key/%s",
       vcs_type, user, repo, fingerprint

@@ -7,14 +7,27 @@
 \alias{delete_env}
 \title{Add/Get/Set Environment Variable(s)}
 \usage{
-get_env_var(repo = github_info()$name, user = get_user()$content$login,
-  vcs_type = "gh")
+get_env_var(
+  repo = github_info()$name,
+  user = get_user()$content$login,
+  vcs_type = "gh"
+)
 
-set_env_var(repo = github_info()$name, user = get_user()$content$login,
-  vcs_type = "gh", var, api_version = "v2")
+set_env_var(
+  repo = github_info()$name,
+  user = get_user()$content$login,
+  vcs_type = "gh",
+  var,
+  api_version = "v2"
+)
 
-delete_env(repo = github_info()$name, user = get_user()$content$login,
-  vcs_type = "gh", var, api_version = "v1.1")
+delete_env(
+  repo = github_info()$name,
+  user = get_user()$content$login,
+  vcs_type = "gh",
+  var,
+  api_version = "v1.1"
+)
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}

@@ -4,8 +4,13 @@
 \alias{get_builds}
 \title{Get builds from Circle CI}
 \usage{
-get_builds(repo = NULL, user = github_info()$owner$login,
-  vcs_type = "gh", limit = 30, api_version = "v2")
+get_builds(
+  repo = NULL,
+  user = github_info()$owner$login,
+  vcs_type = "gh",
+  limit = 30,
+  api_version = "v2"
+)
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}

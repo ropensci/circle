@@ -12,7 +12,7 @@
 get_user <- function() {
   # GET: /me
   # Provides information about the signed in user.
-  out <- circleHTTP("GET", path = "/me")
+  out <- circle("GET", path = "/me")
   return(structure(out, class = "circle_user"))
 }
 
@@ -33,7 +33,7 @@ list_projects <- function() {
 
   # GET: /repos
   # List of all the repos you're following on CircleCI, with build information organized by branch.
-  out <- circleHTTP("GET", path = "/projects", api_version = "v1.1")
+  out <- circle("GET", path = "/projects", api_version = "v1.1")
   out <- out$content
   requireNamespace("stats", quietly = TRUE)
   out <- setNames(out, sapply(out, function(x) x$reponame))
@@ -55,7 +55,7 @@ list_artifacts <- function(build = NULL) {
     build <- get_pipelines()[[1]]
   }
 
-  out <- circleHTTP("GET", path = sprintf(
+  out <- circle("GET", path = sprintf(
     "/repo/%s/%s/artifacts",
     build$repo_slug,
     build$job_number
@@ -76,7 +76,7 @@ retry_build <- function(build = NULL) {
     build <- get_pipelines()[[1]]
   }
 
-  out <- circleHTTP("POST",
+  out <- circle("POST",
     path = sprintf(
       "/repo/%s/%s/retry",
       build$repo_slug,
@@ -112,7 +112,7 @@ new_build <- function(repo = github_info()$name,
                       vcs_type = "gh",
                       branch = "master") {
 
-  out <- circleHTTP("POST",
+  out <- circle("POST",
     path = sprintf(
       "/repo/%s/%s/%s/pipeline",
       vcs_type,
@@ -134,6 +134,7 @@ new_build <- function(repo = github_info()$name,
 
 #' @title Enable a repo on Circle CI
 #' @description Follows a repo on Circle CI so that builds can be triggered
+#' @importFrom cli cli_text
 #' @template repo
 #' @template user
 #' @template vcs
@@ -148,7 +149,7 @@ enable_repo <- function(repo = github_info()$name,
                         vcs_type = "gh",
                         api_version = "v1.1") {
 
-  out <- circleHTTP("POST",
+  req <- circle("POST",
     path = sprintf(
       "/project/%s/%s/%s/follow",
       vcs_type,
@@ -158,15 +159,14 @@ enable_repo <- function(repo = github_info()$name,
     api_version = api_version
   )
 
-  if (status_code(out$response) == 200) {
-    message(sprintf(
-      "Successfully enabled repo '%s/%s' on Circle CI.",
-      github_info()$owner$login,
-      repo
-    ))
-  }
+  stop_for_status(
+    req$response,
+    sprintf("enable repo %s on Circle CI", repo)
+  )
 
-  return(invisible(out))
+  cli_text("Successfully enabled repo '{user}/{repo}' on Circle CI.")
+
+  return(invisible(TRUE))
 }
 
 #' @title Delete repo Cache
@@ -185,7 +185,7 @@ delete_cache <- function(repo = github_info()$name,
                          user = github_info()$owner$login,
                          vcs_type = "gh") {
 
-  out <- circleHTTP("DELETE",
+  out <- circle("DELETE",
     path = sprintf(
       "/repo/%s/%s/%s/build-cache",
       vcs_type,

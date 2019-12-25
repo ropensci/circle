@@ -14,6 +14,20 @@ github_info <- function(path = rprojroot::find_package_root_file()) {
   get_repo_data(repo)
 }
 
+#' @description
+#' `github_repo()` returns the true repository name as string.
+#' @param info `[list]`\cr
+#'   GitHub information for the repository, by default obtained through
+#'   [github_info()].
+#'
+#' @export
+#' @keywords internal
+#' @rdname github_info
+github_repo <- function(path = usethis::proj_get(),
+                        info = github_info(path)) {
+  paste(info$owner$login, info$name, sep = "/")
+}
+
 get_repo_data <- function(repo) {
   req <- gh::gh("/repos/:repo", repo = repo)
   return(req)

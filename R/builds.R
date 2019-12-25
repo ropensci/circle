@@ -28,7 +28,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
   if (is.null(repo)) {
     repo <- github_info()$name
     if (is.null(build_number)) {
-      out <- circleHTTP("GET",
+      out <- circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/pipeline",
           vcs_type, user, repo
@@ -37,7 +37,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
         query = list(limit = limit)
       )
     } else {
-      out <- list(circleHTTP("GET",
+      out <- list(circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/%s/pipeline",
           vcs_type, user, repo,
@@ -50,7 +50,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
   } else if (!is.null(repo)) {
     repo <- repo
     if (is.null(build_number)) {
-      out <- circleHTTP("GET",
+      out <- circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/pipeline",
           vcs_type, user, repo
@@ -59,7 +59,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
         query = list(limit = limit)
       )
     } else {
-      out <- list(circleHTTP("GET",
+      out <- list(circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/%s/pipeline",
           vcs_type, user, repo,
@@ -86,16 +86,16 @@ get_workflows <- function(pipelines = NULL) {
   pipeline_id <- sapply(pipelines$content$items, function(x) x$id)
   # retrieve from pipeline/id endpoint
   workflows <- lapply(pipeline_id, function(id) {
-    circleHTTP("GET", path = sprintf("/pipeline/%s", id))
+    circle("GET", path = sprintf("/pipeline/%s", id))
   })
 
   # remove pipelines with empty workflows (e.g. cron builds)
-  no_wf = sapply(workflows, function (x) length(x[["content"]][["workflows"]]) != 0)
-  workflows = workflows[no_wf]
+  no_wf <- sapply(workflows, function(x) length(x[["content"]][["workflows"]]) != 0)
+  workflows <- workflows[no_wf]
 
   # retrieve from workflow/id endpoint
   workflows_id <- lapply(workflows, function(x) {
-    circleHTTP("GET", path = sprintf("/workflow/%s", x[["content"]][["workflows"]][[1]][["id"]]))
+    circle("GET", path = sprintf("/workflow/%s", x[["content"]][["workflows"]][[1]][["id"]]))
   })
 
   return(workflows_id)
@@ -108,7 +108,7 @@ get_jobs <- function(workflow = NULL, id_only = FALSE) {
   }
 
   jobs <- lapply(workflow, function(workflow) {
-    circleHTTP("GET", path = sprintf("/workflow/%s/jobs", workflow$content$id))
+    circle("GET", path = sprintf("/workflow/%s/jobs", workflow$content$id))
   })
 
   # simplify

@@ -1,72 +1,96 @@
-auth_circle <- function() {
-  yml <- tryCatch(
-    {
-      readLines("~/.circleci/cli.yml")
-    },
-    warning = function(cond) {
-      cli::cat_bullet(
-        bullet = "pointer", bullet_col = "yellow",
-        c(
-          "To interact with the Circle CI API, an API is required.",
-          "This is a one-time procedure. The token will be stored in your home directory in the '.circleci' directory."
-        )
-      )
-      message("Querying API token...")
-      utils::browseURL("https://circleci.com/account/api")
-      wait_for_clipboard_token()
-      return(readLines("~/.circleci/cli.yml"))
-    }
-  )
+#' Authenticate to circle
+#' @description
+#'   A circle API Key is needed to interact with the circle API.
+#'   `browse_circle_token()` opens a browser window for the respective circle
+#'   endpoint. On this site, you can copy your personal API key and then follow
+#'   the instructions of the console output or the ones shown below.
+#'
+#' @import cli
+#' @section Store API Key:
+#'
+#'   The `circle` package supports two ways of storing the circle API key(s):
+#'
+#'   - via env vars `R_CIRCLE`
+#'   - via `~/.circleci/cli.yml`
+#'
+#'   The latter should already be present if you already used the `circle` CLI
+#'   tool at some point in the past. If not, its up to your preference which
+#'   approach to use.
+#'
+#'   The following instructions should help to set up `~/.circleci/cli.yml`
+#'   correctly:
+#'   1. Copy the token from the browser window which just opened. You can use
+#'   `edit_circle_config()` to open `~/.circleci/cli.yml`.
+#'   2. The token should be stored using the following structure
+#'
+#'      ```
+#'      host: https://circleci.com
+#'      endpoint: graphql-unstable
+#'      token: <token>
+#'      ```
+#'
+#' @export
+#'
+browse_circle_token <- function() {
 
-  # create api token if none is found but config file exists
-  if (!any(grepl("token", yml))) {
-    requireNamespace("utils", quietly = TRUE)
-    utils::browseURL("https://circleci.com/account/api")
-    wait_for_clipboard_token()
-  }
+  cli_alert("Querying API token...")
+  cli_text("Opening URL {.url
+    https://circle-ci{endpoint}/account/preferences}.")
+  utils::browseURL("https://circleci.com/account/api")
+  cli_alert("Call {.fun circle::edit_circle_config} to open
+    {.file ~/.circleci/cli.yml} or {.fun edit_r_environ} to open
+    {.file ~/.Renviron}, depending on how
+    you want to store the API key. See {.code ?browse_circle_token()} for
+    details.", wrap = TRUE)
+  return(invisible(TRUE))
 }
 
-wait_for_clipboard_token <- function() {
-  cli::cat_bullet(
-    bullet = "info", bullet_col = "yellow",
-    " Waiting for API token to appear on the clipboard."
-  )
-  Sys.sleep(3)
+#' @title Open circle Configuration file
+#' @description
+#'   Opens `~/.circleci/cli.yml`.
+#' @export
+edit_circle_config <- function() {
+  usethis::edit_file("~/.circleci/cli.yml")
+}
 
-  repeat {
-    token <- readline("Please paste the API token to the console.\n")
-    if (is_token(token)) break
-    Sys.sleep(0.1)
-  }
-  cli::cat_bullet(
-    bullet = "pointer", bullet_col = "yellow",
-    " Detected token, clearing clipboard."
-  )
-  requireNamespace("clipr", quietly = TRUE)
-  tryCatch(
-    clipr::write_clip(""),
-    error = function(e) {
-      warning("Error clearing clipboard: ", conditionMessage(e))
+# check if API key is stored in ~/.circleci/cli.yml
+circle_check_api_key <- function() {
+
+  if (!Sys.getenv("R_CIRCLE_ORG") == "") {
+    return(Sys.getenv("R_CIRCLE_ORG"))
+  } else {
+
+    # some checks for ~/.circleci/cli.yml
+
+    if (!file.exists("~/.circleci/cli.yml")) {
+
+      cli_alert_danger("To interact with the Circle CI API, an API token is
+        required. Please call {.fun browse_circle_token} first.
+        Alternatively, set the API key via env vars {.var R_CIRCLE}.",
+        wrap = TRUE
+      )
+      stop("Circle API key missing.", call. = FALSE)
+    } else {
+      yml <- readLines("~/.circleci/cli.yml")
+      if (!any(grepl("token", yml))) {
+        cli_alert_danger("No circle API key found.
+        Please call {.code browse_circle_token()} first.", wrap = TRUE)
+        stop("Circle API key missing.", call. = FALSE)
+      }
     }
-  )
-  dir.create("~/.circleci")
-  writeLines(sprintf(c(
-    "host: https://circleci.com", "endpoint: graphql-unstable",
-    "token: %s"
-  ), token), "~/.circleci/cli.yml")
+    return(read_token())
+  }
+
 }
 
 is_token <- function(token) {
   grepl("^[0-9a-f]{40}$", token)
 }
 
-circle <- function(endpoint = "") {
-  paste0("https://circleci.com/api/v1.1", endpoint)
-}
-
 read_token <- function() {
   yml <- readLines("~/.circleci/cli.yml")
-  token <- yml[which(grepl("token", yml))]
+  endpoint_line <- which(grepl("token", yml))
+  token <- yml[endpoint_line]
   token <- strsplit(token, " ")[[1]][2]
   return(token)
 }

@@ -8,20 +8,36 @@
 \alias{has_checkout_key}
 \title{Generate/get or delete an checkout Key}
 \usage{
-create_checkout_key(repo = github_info()$name,
-  user = github_info()$owner$login, type = "deploy-key",
-  api_version = "v1.1", vcs_type = "gh")
+create_checkout_key(
+  repo = github_info()$name,
+  user = github_info()$owner$login,
+  type = "deploy-key",
+  api_version = "v1.1",
+  vcs_type = "gh"
+)
 
-get_checkout_keys(repo = github_info()$name,
-  user = github_info()$owner$login, vcs_type = "gh")
+get_checkout_keys(
+  repo = github_info()$name,
+  user = github_info()$owner$login,
+  vcs_type = "gh"
+)
 
-delete_checkout_key(repo = github_info()$name,
-  user = github_info()$owner$login, fingerprint,
-  type = "github-user-key", api_version = "v1.1", vcs_type = "gh")
+delete_checkout_key(
+  repo = github_info()$name,
+  user = github_info()$owner$login,
+  fingerprint,
+  type = "github-user-key",
+  api_version = "v1.1",
+  vcs_type = "gh"
+)
 
-has_checkout_key(repo = github_info()$name,
-  user = github_info()$owner$login, type = "github-user-key",
-  vcs_type = "gh", preferred = "true")
+has_checkout_key(
+  repo = github_info()$name,
+  user = github_info()$owner$login,
+  type = "github-user-key",
+  vcs_type = "gh",
+  preferred = "true"
+)
 }
 \arguments{
 \item{repo}{The Circle CI project. By default the current directory name will be used.}

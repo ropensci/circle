@@ -1,5 +1,12 @@
 # circle 0.4.0.9000
 
+## Major
+
+- Add new authentication mechanism: `browse_circle_token()` to to query the API token and store it in an env variable `R_CIRCLE` as an alternative method to store it in `~/.circleci/cli.yml`
+- Remove `auth_travis()`
+- Rename `circleHTTP()` to `circle()`
+- add `github_repo()`
+
 - Bufgix: Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
 
 # circle 0.4.0

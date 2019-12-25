@@ -1,9 +1,24 @@
+#' Circle CI client package for R
+#'
+#' Use [github_repo()] to get the name of the current repository
+#' as determined from the `origin` remote.
+#' The following functions simplify integrating R package testing and deployment
+#' with GitHub and Circle CI:
+#' - [circle_enable()] enables Circle CI for your repository,
+#' - [use_circle_deploy()] installs a public deploy key on GitHub and the
+#'   corresponding private key on Circle CI to simplify deployments to GitHub
+#'   from Circle CI.
+#' @docType package
+#' @name circle-package
+NULL
+
 #' @title Circle CI HTTP Requests
 #'
 #' @description This is the workhorse function for executing API requests for
 #'   Circle CI.
 #'
 #' @import httr
+#' @importFrom jsonlite fromJSON
 #'
 #' @details This is mostly an internal function for executing API requests. In
 #'   almost all cases, users do not need to access this directly.
@@ -21,53 +36,34 @@
 #' @return The JSON response, or the relevant error.
 #'
 #' @export
-circleHTTP <- function(verb = "GET",
-                       path = "",
-                       query = list(),
-                       body = "",
-                       api_version = "v2",
-                       encode = "json") {
+circle <- function(verb = "GET",
+                   path = "",
+                   query = list(),
+                   body = "",
+                   api_version = "v2",
+                   encode = "json") {
+
   url <- paste0("https://circleci.com/api/", api_version, path)
 
-  auth_circle()
-  query$"circle-token" <- read_token()
+  # check for api key
+  query$"circle-token" <- circle_check_api_key()
 
   # set user agent
   ua <- user_agent("http://github.com/pat-s/circle")
 
-  if (verb == "GET") {
-    resp <- GET(url,
-      query = query, encode = encode, ua, accept_json(),
-      content_type_json()
-    )
-  } else if (verb == "DELETE") {
-    resp <- DELETE(url,
-      query = query, encode = encode, ua, accept_json(),
-      content_type_json()
-    )
-  } else if (verb == "POST") {
-    resp <- POST(url,
-      body = body, query = query, encode = encode, ua,
-      accept_json(), content_type_json()
-    )
-  }
+  resp <- VERB(
+    verb = verb, url = url, body = body,
+    query = query, encode = encode, ua, accept_json()
+  )
+
   if (http_type(resp) != "application/json") {
     stop("API did not return json", call. = FALSE)
   }
 
-  parsed <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
-
-  if (status_code(resp) != 200 && status_code(resp) != 201 && status_code(resp) != 202) {
-    stop(
-      sprintf(
-        "GitHub API request failed [%s]\n%s\n<%s>",
-        status_code(resp),
-        parsed$message,
-        parsed$documentation_url
-      ),
-      call. = FALSE
-    )
-  }
+  # parse response into readable object
+  parsed <- fromJSON(content(resp, "text", encoding = "UTF-8"),
+    simplifyVector = FALSE
+  )
 
   structure(
     list(

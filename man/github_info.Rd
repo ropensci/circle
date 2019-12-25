@@ -2,17 +2,27 @@
 % Please edit documentation in R/github-helpers.R
 \name{github_info}
 \alias{github_info}
+\alias{github_repo}
 \title{Github information}
 \usage{
 github_info(path = rprojroot::find_package_root_file())
+
+github_repo(path = usethis::proj_get(), info = github_info(path))
 }
 \arguments{
 \item{path}{`[string]`\cr
 The path to a GitHub-enabled Git repository (or a subdirectory thereof).}
+
+\item{info}{`[list]`\cr
+GitHub information for the repository, by default obtained through
+[github_info()].}
 }
 \description{
 Retrieves metadata about a Git repository from GitHub.
 
 `github_info()` returns a list as obtained from the GET "/repos/:repo" API.
+
+`github_repo()` returns the true repository name as string.
 }
 \concept{GitHub functions}
+\keyword{internal}

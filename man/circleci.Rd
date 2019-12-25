@@ -3,7 +3,6 @@
 \docType{package}
 \name{circleci}
 \alias{circleci}
-\alias{circleci-package}
 \title{Circle CI API Client}
 \description{
 This package provides functionality for interacting with the

@@ -12,7 +12,7 @@
 #' @export
 get_env_var <- function(repo = github_info()$name, user = get_user()$content$login, vcs_type = "gh") {
 
-  circleHTTP("GET", path = sprintf("/project/%s/%s/%s/envvar", vcs_type, user, repo))
+  circle("GET", path = sprintf("/project/%s/%s/%s/envvar", vcs_type, user, repo))
 }
 
 #' @rdname env_var
@@ -28,7 +28,7 @@ set_env_var <- function(repo = github_info()$name, user = get_user()$content$log
     value = var[[1]]
   )
 
-  resp <- circleHTTP("POST",
+  resp <- circle("POST",
     path = sprintf(
       "/project/%s/%s/%s/envvar",
       vcs_type, user, repo
@@ -44,7 +44,7 @@ delete_env <- function(repo = github_info()$name, user = get_user()$content$logi
                        vcs_type = "gh", var,
                        api_version = "v1.1") {
 
-  circleHTTP("DELETE",
+  circle("DELETE",
     path = sprintf(
       "/project/%s/%s/%s/envvar/%s",
       vcs_type, user, repo, var
