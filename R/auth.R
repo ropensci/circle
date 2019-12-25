@@ -56,8 +56,8 @@ edit_circle_config <- function() {
 # check if API key is stored in ~/.circleci/cli.yml
 circle_check_api_key <- function() {
 
-  if (!Sys.getenv("R_CIRCLE_ORG") == "") {
-    return(Sys.getenv("R_CIRCLE_ORG"))
+  if (!Sys.getenv("R_CIRCLE") == "") {
+    return(Sys.getenv("R_CIRCLE"))
   } else {
 
     # some checks for ~/.circleci/cli.yml
