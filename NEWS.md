@@ -6,8 +6,11 @@
 - Remove `auth_travis()`
 - Rename `circleHTTP()` to `circle()`
 - add `github_repo()`
+- `get_pipelines()` is now formatted as class `circle_builds`, `circle_collection()` and has a somewhat pretty print output
 
-- Bufgix: Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
+## Bugfixes
+
+- Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
 
 # circle 0.4.0
 

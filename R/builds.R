@@ -13,22 +13,25 @@
 #' @export
 get_builds <- function(repo = NULL, user = github_info()$owner$login, vcs_type = "gh",
                        limit = 30, api_version = "v2") {
-  out <- get_jobs(get_workflows(get_pipelines(
+  req <- get_jobs(get_workflows(get_pipelines(
     repo = repo, user = user,
     vcs_type = vcs_type, limit = limit,
     api_version = api_version
   )))
-  return(out)
+  return(req)
 }
 
-get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
-                          limit = 30, build_number = NULL,
-                          vcs_type = "gh", api_version = "v2") {
+get_pipelines <- function(repo = NULL,
+                          user = github_info()$owner$login,
+                          limit = 30,
+                          build_number = NULL,
+                          vcs_type = "gh",
+                          api_version = "v2") {
 
   if (is.null(repo)) {
     repo <- github_info()$name
     if (is.null(build_number)) {
-      out <- circle("GET",
+      req <- circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/pipeline",
           vcs_type, user, repo
@@ -37,7 +40,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
         query = list(limit = limit)
       )
     } else {
-      out <- list(circle("GET",
+      req <- list(circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/%s/pipeline",
           vcs_type, user, repo,
@@ -50,7 +53,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
   } else if (!is.null(repo)) {
     repo <- repo
     if (is.null(build_number)) {
-      out <- circle("GET",
+      req <- circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/pipeline",
           vcs_type, user, repo
@@ -59,7 +62,7 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
         query = list(limit = limit)
       )
     } else {
-      out <- list(circle("GET",
+      req <- list(circle("GET",
         path = sprintf(
           "/project/%s/%s/%s/%s/pipeline",
           vcs_type, user, repo,
@@ -71,11 +74,12 @@ get_pipelines <- function(repo = NULL, user = github_info()$owner$login,
     }
   }
 
-  if (length(out) == 0) {
-    stop(sprintf("No repo named '%s' found for user '%s'.", repo, user))
-  }
+  stop_for_status(
+    req$response,
+    sprintf("get pipelines for repo %s on Circle CI.", repo)
+  )
 
-  return(out)
+  return(new_circle_builds(content(req$response)))
 }
 
 get_workflows <- function(pipelines = NULL) {
