@@ -82,31 +82,57 @@ get_pipelines <- function(repo = NULL,
   return(new_circle_builds(content(req$response)))
 }
 
-get_workflows <- function(pipelines = NULL) {
-  if (is.null(pipelines)) {
-    pipelines <- get_pipelines()
+get_workflows <- function(repo = github_info()$name,
+                          user = github_info()$owner$login,
+                          name_only = FALSE,
+                          branch = "master",
+                          vcs_type = "gh",
+                          api_version = "v2") {
+
+  # FIXME
+  stop("Currently not supported upstream by Circle CI. Please be patient.")
+
+  # query infos about default workflow name
+  # FIXME: subset to first WF name
+  wf_name <- circle("GET",
+    path = sprintf(
+      "/insights/%s/%s/%s/workflows?branch='%s'",
+      vcs_type, user, repo, branch
+    ),
+    api_version = api_version
+  )
+
+  stop_for_status(
+    wf_name$response,
+    sprintf("get workflows for repo %s/%s on Circle CI.", user, repo)
+  )
+
+  if (!name_only) {
+    req <- circle("GET",
+      path = sprintf(
+        "/insights/%s/%s/%s/workflows/%s?branch='%s'",
+        vcs_type, user, repo, wf_name, branch
+      ),
+      api_version = api_version
+    )
+    stop_for_status(
+      req$response,
+      sprintf("get workflows for repo %s/%s on Circle CI.", user, repo)
+    )
+
+    return(content(req$response))
+  } else {
+    return(wf_name)
   }
-
-  pipeline_id <- sapply(pipelines$content$items, function(x) x$id)
-  # retrieve from pipeline/id endpoint
-  workflows <- lapply(pipeline_id, function(id) {
-    circle("GET", path = sprintf("/pipeline/%s", id))
-  })
-
-  # remove pipelines with empty workflows (e.g. cron builds)
-  no_wf <- sapply(workflows, function(x) length(x[["content"]][["workflows"]]) != 0)
-  workflows <- workflows[no_wf]
-
-  # retrieve from workflow/id endpoint
-  workflows_id <- lapply(workflows, function(x) {
-    circle("GET", path = sprintf("/workflow/%s", x[["content"]][["workflows"]][[1]][["id"]]))
-  })
-
-  return(workflows_id)
 }
 
 # cron builds are not shown
-get_jobs <- function(workflow = NULL, id_only = FALSE) {
+get_jobs <- function(workflow = NULL,
+                     id_only = FALSE) {
+
+  # FIXME
+  stop("Currently not supported upstream by Circle CI. Please be patient.")
+
   if (is.null(workflow)) {
     workflow <- get_workflows()
   }
