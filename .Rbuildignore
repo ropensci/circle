@@ -14,3 +14,4 @@ knitreadme.sh
 ^tic\.R$
 ^\.circleci$
 ^\.lintr$
+^codemeta\.json$

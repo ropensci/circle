@@ -12,6 +12,7 @@ Description: Tools for interacting with the 'Circle' API for
 License: GPL-3
 URL: https://github.com/pat-s/circle
     https://pat-s.github.io/circle
+BugReports: https://github.com/pat-s/circle/issues
 Imports: 
     cli (>= 2.0.0),
     httr,
@@ -21,12 +22,16 @@ Suggests:
     covr,
     gh,
     git2r,
+    knitr,
     openssl,
     purrr,
+    rmarkdown,
     stats,
     testthat,
     usethis,
     utils
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
