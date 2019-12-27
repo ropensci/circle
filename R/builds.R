@@ -11,8 +11,12 @@
 #' @details To set a different API version, use the following scheme:
 #'   `https://circleci.com/api/v<api version>` The current default is "v2".
 #' @export
-get_builds <- function(repo = NULL, user = github_info()$owner$login, vcs_type = "gh",
-                       limit = 30, api_version = "v2") {
+get_builds <- function(repo = NULL,
+                       user = github_info()$owner$login,
+                       vcs_type = "gh",
+                       limit = 30,
+                       api_version = "v2") {
+
   req <- get_jobs(get_workflows(get_pipelines(
     repo = repo, user = user,
     vcs_type = vcs_type, limit = limit,
@@ -76,7 +80,7 @@ get_pipelines <- function(repo = NULL,
 
   stop_for_status(
     req$response,
-    sprintf("get pipelines for repo %s on Circle CI.", repo)
+    sprintf("get pipelines for repo %s/%s on Circle CI.", user, repo)
   )
 
   return(new_circle_builds(content(req$response)))
