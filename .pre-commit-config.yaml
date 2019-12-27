@@ -5,6 +5,7 @@ repos:
     -   id: style-files
         args: [--style_fun=tidyverse_style]
     -   id: parsable-R
+    -   id: lintr
     -   id: no-browser-statement
     -   id: readme-rmd-rendered
     #-   id: roxygenize
