@@ -11,21 +11,22 @@
 create_checkout_key(
   repo = github_info()$name,
   user = github_info()$owner$login,
-  type = "deploy-key",
-  api_version = "v1.1",
+  type = "github-user-key",
+  api_version = "v2",
   vcs_type = "gh"
 )
 
 get_checkout_keys(
   repo = github_info()$name,
   user = github_info()$owner$login,
-  vcs_type = "gh"
+  vcs_type = "gh",
+  api_version = "v2"
 )
 
 delete_checkout_key(
+  fingerprint = NULL,
   repo = github_info()$name,
   user = github_info()$owner$login,
-  fingerprint,
   type = "github-user-key",
   api_version = "v1.1",
   vcs_type = "gh"

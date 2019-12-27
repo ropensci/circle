@@ -12,14 +12,22 @@
 #' @export
 create_checkout_key <- function(repo = github_info()$name,
                                 user = github_info()$owner$login,
-                                type = "deploy-key",
+                                type = "github-user-key",
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  circle("POST",
+  if (type == "deploy-key") {
+    cli_alert_warning("Note that, despite the name, a 'deploy-key' does not
+    grant permissions for build deployments to Github. Use a 'github-user-key'
+    instead.")
+  }
+
+  resp <- circle("POST",
     path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, repo),
     body = list(type = type), api_version = api_version
   )
+
+  return(resp)
 }
 
 #' Get checkout key
@@ -28,33 +36,66 @@ create_checkout_key <- function(repo = github_info()$name,
 #' @export
 get_checkout_keys <- function(repo = github_info()$name,
                               user = github_info()$owner$login,
-                              vcs_type = "gh") {
+                              vcs_type = "gh",
+                              api_version = "v2") {
 
-  circle("GET",
+  resp <- circle("GET",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key",
       vcs_type, user, repo
-    )
+    ),
+    api_version = api_version
   )
+
+  stop_for_status(
+    resp$response,
+    sprintf("get checkout keys for repo %s/%s on Circle CI", user, repo)
+  )
+
+  return(resp)
 }
 
 #' Delete checkout key
 #'
 #' @rdname checkout_key
 #' @export
-delete_checkout_key <- function(repo = github_info()$name,
-                                user = github_info()$owner$login, fingerprint,
+delete_checkout_key <- function(fingerprint = NULL,
+                                repo = github_info()$name,
+                                user = github_info()$owner$login,
                                 type = "github-user-key",
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  circle("DELETE",
+  if (is.null(fingerprint)) {
+    stop("Please provide the fingerprint of the key which should be deleted.")
+  }
+
+  resp <- circle("DELETE",
     path = sprintf(
       "/project/%s/%s/%s/checkout-key/%s",
       vcs_type, user, repo, fingerprint
     ),
     api_version = api_version
   )
+
+  stop_for_status(
+    resp$response,
+    sprintf("get checkout keys for repo %s/%s on Circle CI", user, repo)
+  )
+
+  # We cannot delete the corresponding key on Github because we do not have
+  # the fingerprint or any other matching information. Issuing a warning..
+  if (type == "deploy-key") {
+    cli_alert_warning("Make sure to also delete the corresponding SSH key on
+                    Github at {.url
+                    https://github.com/{user}/{repo}/settings/keys}!")
+  } else {
+    cli_alert_warning("Make sure to also delete the corresponding SSH key on
+                    Github at {.url
+                    https://github.com/settings/keys}!")
+  }
+
+  return(resp)
 }
 
 #' Check if a specific key type exists in the Circle CI project
