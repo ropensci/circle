@@ -25,7 +25,7 @@ Some are also about to be removed soon [according to the Circle CI team](https:/
 
 ## Get Started
 
-See the [Getting Started](https://pat-s.github.io/circle/articles/circle.html) for an overview.
+See the [Getting Started](https://pat-s.github.io/circle/articles/circle.html) vignette for an introduction.
 
 # Acknowledgments
 

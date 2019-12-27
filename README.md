@@ -32,8 +32,8 @@ team](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-c
 ## Get Started
 
 See the [Getting
-Started](https://pat-s.github.io/circle/articles/circle.html) for an
-overview.
+Started](https://pat-s.github.io/circle/articles/circle.html) vignette
+for an introduction.
 
 # Acknowledgments
 
