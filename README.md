@@ -2,7 +2,7 @@
 <!-- badges: start -->
 
 [![Build
-Status](https://img.shields.io/travis/pat-s/circle/master?label=macOS&logo=travis&style=flat-square)](https://travis-ci.org/pat-s/circle3)
+Status](https://img.shields.io/travis/pat-s/circle/master?label=macOS&logo=travis&style=flat-square)](https://travis-ci.org/pat-s/circle)
 [![CircleCI](https://img.shields.io/circleci/build/gh/pat-s/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/pat-s/circle)
 [![AppVeyor build
 status](https://img.shields.io/appveyor/ci/pat-s/circle?label=Windows&logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/pat-s/circle)
