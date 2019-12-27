@@ -17,6 +17,9 @@ get_builds <- function(repo = NULL,
                        limit = 30,
                        api_version = "v2") {
 
+  # FIXME
+  stop("Currently not supported upstream by Circle CI. Please be patient.")
+
   req <- get_jobs(get_workflows(get_pipelines(
     repo = repo, user = user,
     vcs_type = vcs_type, limit = limit,
@@ -80,7 +83,7 @@ get_pipelines <- function(repo = NULL,
 
   stop_for_status(
     req$response,
-    sprintf("get pipelines for repo %s/%s on Circle CI.", user, repo)
+    sprintf("get pipelines for repo %s/%s on Circle CI", user, repo)
   )
 
   return(new_circle_builds(content(req$response)))
@@ -121,7 +124,7 @@ get_workflows <- function(repo = github_info()$name,
     )
     stop_for_status(
       req$response,
-      sprintf("get workflows for repo %s/%s on Circle CI.", user, repo)
+      sprintf("get workflows for repo %s/%s on Circle CI", user, repo)
     )
 
     return(content(req$response))
