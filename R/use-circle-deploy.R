@@ -32,7 +32,6 @@ use_circle_deploy <- function(repo = github_info()$name,
       "No Github token found. Opening a browser window to create one."
     )
     usethis::browse_github_token()
-    cat_bullet(bullet = "cross", bullet_col = "red")
     stop("Circle: Please restart your R session after setting the token and try again.") # nolint
   }
 
