@@ -36,8 +36,6 @@ circle::use_circle_deploy()
 This enables deployment from builds.
 ```
 
-This function will add a so called "github user key" to the settings of the repo on Circle CI.
-
 ## Deployment keys
 
 There two different types of keys on Circle CI: 
@@ -54,6 +52,8 @@ If you've connected Circle CI to Github already, you will have a "deploy key" st
 However, this key does not have enough permissions to also deploy from builds.
 To enable deployment, a "github-user-key" is needed. 
 This key can be added using `use_circle_deploy()`.
+This function will add a so called "github user key" to the settings of the repo on Circle CI.
+In addition, a SSH key with read/write permissions will be added to your Github profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
 
 ### SSH keys
 
