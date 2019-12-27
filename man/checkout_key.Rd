@@ -12,7 +12,7 @@ create_checkout_key(
   repo = github_info()$name,
   user = github_info()$owner$login,
   type = "github-user-key",
-  api_version = "v2",
+  api_version = "v1.1",
   vcs_type = "gh"
 )
 

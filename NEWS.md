@@ -7,7 +7,7 @@
 - Rename `circleHTTP()` to `circle()`
 - add `github_repo()`
 - `get_pipelines()` is now formatted as class `circle_builds`, `circle_collection()` and has a somewhat pretty print output
-- `*_checkout_key()`: Optimize printer, catch errors, add info messages
+- `*_checkout_key()`: Optimize printer, catch errors, add info messages, add test
 
 ## Bugfixes
 
