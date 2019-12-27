@@ -4,3 +4,4 @@
 .RData
 .httr-oauth
 tests/testthat/travis-testthat
+inst/doc
