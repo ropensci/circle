@@ -2,34 +2,41 @@
 % Please edit documentation in R/env-var.R
 \name{env_var}
 \alias{env_var}
-\alias{get_env_var}
+\alias{get_env_vars}
 \alias{set_env_var}
-\alias{delete_env}
+\alias{delete_env_var}
 \title{Add/Get/Set Environment Variable(s)}
 \usage{
-get_env_var(
-  repo = github_info()$name,
-  user = get_user()$content$login,
-  vcs_type = "gh"
-)
-
-set_env_var(
+get_env_vars(
+  name = NULL,
   repo = github_info()$name,
   user = get_user()$content$login,
   vcs_type = "gh",
-  var,
   api_version = "v2"
 )
 
-delete_env(
+set_env_var(
+  var,
   repo = github_info()$name,
   user = get_user()$content$login,
   vcs_type = "gh",
+  api_version = "v2",
+  quiet = FALSE
+)
+
+delete_env_var(
   var,
-  api_version = "v1.1"
+  repo = github_info()$name,
+  user = get_user()$content$login,
+  vcs_type = "gh",
+  api_version = "v2",
+  quiet = FALSE
 )
 }
 \arguments{
+\item{name}{The name of an environment variable. If not set, all env vars
+are returned.}
+
 \item{repo}{The Circle CI project. By default the current directory name will be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
@@ -37,16 +44,15 @@ delete_env(
 \item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
 Other possible values are "bitbucket".}
 
-\item{var}{A named list containing key-value pairs of environment variable
-and value.}
-
 \item{api_version}{A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
+
+\item{var}{A list containing key-value pairs of environment variable
+and its value.}
+
+\item{quiet}{If `TRUE`, console output is suppressed.}
 }
 \description{
 Add/Get/Set Circle CI environment variable(s) for a specific
   repo on Circle CI.
-}
-\details{
-Currently setting env variables via `set_env_var()` does not work.
 }

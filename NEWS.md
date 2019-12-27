@@ -11,6 +11,7 @@
 ## Bugfixes
 
 - Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
+- setting env vars now works
 
 # circle 0.4.0
 
