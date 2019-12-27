@@ -46,7 +46,7 @@ circle <- function(verb = "GET",
   url <- paste0("https://circleci.com/api/", api_version, path)
 
   # check for api key
-  query$"circle-token" <- circle_check_api_key()
+  query$"circle-token" <- circle_check_api_key() # nolint
 
   # set user agent
   ua <- user_agent("http://github.com/pat-s/circle")

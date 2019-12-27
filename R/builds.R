@@ -152,7 +152,7 @@ get_jobs <- function(workflow = NULL,
   names(jobs) <- sapply(jobs, function(jobs) jobs[[1]]$job_number)
 
   # set names of jobs to have a more descriptive return
-  for (i in 1:length(jobs)) {
+  for (i in seq_len(jobs)) {
     job_names <- sapply(jobs[[i]], function(x) x$name)
     names(jobs[[i]]) <- job_names
   }

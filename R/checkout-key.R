@@ -5,7 +5,8 @@
 #' @template vcs
 #' @param type Type of key to add. Options are "github-user-key" and
 #'   "deploy-key".
-#' @param fingerprint The fingerprint of the checkout key which should be deleted.
+#' @param fingerprint The fingerprint of the checkout key which should be
+#'   deleted.
 #' @template api_version
 #' @name checkout_key
 #' @export

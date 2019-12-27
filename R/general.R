@@ -31,8 +31,8 @@ get_user <- function() {
 #' @export
 list_projects <- function() {
 
-  # GET: /repos
-  # List of all the repos you're following on CircleCI, with build information organized by branch.
+  # GET: /repos List of all the repos you're following on CircleCI, with build
+  # information organized by branch.
   out <- circle("GET", path = "/projects", api_version = "v1.1")
   out <- out$content
   requireNamespace("stats", quietly = TRUE)
@@ -194,6 +194,8 @@ delete_cache <- function(repo = github_info()$name,
     ),
     api_version = "v1.1"
   )
-  out <- jsonlite::fromJSON(content(out$response, "text"), simplifyVector = FALSE)
+  out <- jsonlite::fromJSON(content(out$response, "text"),
+    simplifyVector = FALSE
+  )
   return(out$status)
 }

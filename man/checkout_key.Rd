@@ -53,7 +53,8 @@ This usually does not need to be changed by the user.}
 \item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
 Other possible values are "bitbucket".}
 
-\item{fingerprint}{The fingerprint of the checkout key which should be deleted.}
+\item{fingerprint}{The fingerprint of the checkout key which should be
+deleted.}
 
 \item{preferred}{Checks whether the requested type is the "preferred" key.}
 }

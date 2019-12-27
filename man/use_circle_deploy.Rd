@@ -2,7 +2,7 @@
 % Please edit documentation in R/use-circle-deploy.R
 \name{use_circle_deploy}
 \alias{use_circle_deploy}
-\title{Set up deployment from Circle CI to Github repo}
+\title{Set up deployment between Circle CI builds and Github repositories}
 \usage{
 use_circle_deploy(repo = github_info()$name, user = github_info()$owner$login)
 }
@@ -12,24 +12,21 @@ use_circle_deploy(repo = github_info()$name, user = github_info()$owner$login)
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 }
 \description{
-Workhorse function to create a SSH key pair for use on Github
-  and Circle CI.
+Checks and eventually creates a "github user key" to enable
+  deployment from Circle CI builds.
 }
 \details{
-This function simplifies the process of setting up a SSH key pair in
-order to have sufficient rights for a deployment of Circle CI jobs to the
-respective Github repo. In detail, the following tasks are executed:
+The easiest way to achieve a deployment from Circle CI builds to a Github
+repo is by creating a so called "github user key" with your Circle CI
+account.
 
-1. A SSH key pair is created.
-2. The public key will be stored in the Github repo
-  with the title "Deploy key for Circle CI".
-3. The private key will be stored as a secure environment variable within
-  the Circle CI repo.
+This function checks for the presence of such and creates one, if missing.
 
-If the repo has not been enabled yet on Circle CI, please run
-`enable_repo()` first. Also to be able to log in to Github, you will need
-to have a `GITHUB_PAT` or `GITHUB_TOKEN` being set. You can check this using
-`usethis::github_token()` and create one (if missing) via `usethis::browse_github_token()`.
+If the repo has not been enabled yet on Circle CI, please run `enable_repo()`
+first. Also to be able to log in to Github, you will need to have a
+`GITHUB_TOKEN` being set as an environment variable. If you are unsure
+if you have done this already, call `usethis::github_token()`.
+If none is set, this function will prompt you to create one.
 }
 \examples{
 \dontrun{

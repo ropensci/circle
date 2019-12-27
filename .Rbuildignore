@@ -13,3 +13,4 @@ knitreadme.sh
 ^appveyor\.yml$
 ^tic\.R$
 ^\.circleci$
+^\.lintr$
