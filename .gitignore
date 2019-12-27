@@ -3,5 +3,4 @@
 .Rhistory
 .RData
 .httr-oauth
-.pre-commit-config.yaml
 tests/testthat/travis-testthat
