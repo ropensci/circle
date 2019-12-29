@@ -1,8 +1,5 @@
 #' @title Get Circle CI user
 #' @description Retrieve details about the authenticated Circle CI user.
-#' @details This can be used to retrieve your own user profile details and/or as
-#'   a `Hello World!` to test authentication of Circle CI API key
-#'   specified in `Sys.setenv("CIRCLE_CI_KEY" = "exampleapikey")`.
 #' @return A list of class `circle_user`.
 #' @examples
 #' \dontrun{
@@ -13,13 +10,13 @@ get_user <- function() {
   # GET: /me
   # Provides information about the signed in user.
   out <- circle("GET", path = "/me")
-  return(structure(out, class = "circle_user"))
+  out <- structure(out, class = "circle_user")
+  return(out)
 }
 
 #' @title List repos
 #' @description Retrieve a list of Circle CI repos for the authenticated
 #'   user.
-#' @importFrom stats setNames
 #' @details Retrieves a very detailed list of repos and repo-related
 #'   information for all Circle CI repos attached to the current user.
 #' @return A list of `circle_repo`s.
@@ -31,13 +28,19 @@ get_user <- function() {
 #' @export
 list_projects <- function() {
 
+  repo <- github_info()$name
+  user <- github_info()$owner$login
+
   # GET: /repos List of all the repos you're following on CircleCI, with build
   # information organized by branch.
-  out <- circle("GET", path = "/projects", api_version = "v1.1")
-  out <- out$content
-  requireNamespace("stats", quietly = TRUE)
-  out <- setNames(out, sapply(out, function(x) x$reponame))
-  return(out)
+  resp <- circle("GET", path = "/projects", api_version = "v1.1")
+
+  stop_for_status(
+    resp$response,
+    sprintf("get projects for repo '%s/%s' on Circle CI.", user, repo)
+  )
+
+  return(resp)
 }
 
 #' @title Get build artifacts
@@ -55,19 +58,18 @@ list_artifacts <- function(build = NULL) {
     build <- get_pipelines()[[1]]
   }
 
-  out <- circle("GET", path = sprintf(
+  resp <- circle("GET", path = sprintf(
     "/repo/%s/%s/artifacts",
     build$repo_slug,
     build$job_number
   ))
 
-  if (length(out$content$items) == 0) {
-    stop(sprintf(
-      "No build artifacts found for build number '%s'.",
-      build$job_number
-    ), call. = FALSE)
-  }
-  return(out$content$items)
+  stop_for_status(
+    resp$response,
+    sprintf("getting build artifacts for build '%s' on Circle CI", build)
+  )
+
+  return(resp)
 }
 
 #' @importFrom httr status_code
@@ -112,9 +114,9 @@ new_build <- function(repo = github_info()$name,
                       vcs_type = "gh",
                       branch = "master") {
 
-  out <- circle("POST",
+  resp <- circle("POST",
     path = sprintf(
-      "/repo/%s/%s/%s/pipeline",
+      "/project/%s/%s/%s/pipeline",
       vcs_type,
       user,
       repo
@@ -122,14 +124,11 @@ new_build <- function(repo = github_info()$name,
     body = list(branch = branch)
   )
 
-  if (status_code(out$response) == 202) {
-    message(sprintf(
-      "Successfully triggered a build for repo '%s' on branch '%s'.",
-      repo, branch
-    ))
-  }
-
-  return(invisible(out))
+  stop_for_status(
+    resp$response,
+    sprintf("start a new build for repo %s/%s on Circle CI", user, repo)
+  )
+  return(resp)
 }
 
 #' @title Enable a repo on Circle CI
@@ -149,7 +148,7 @@ enable_repo <- function(repo = github_info()$name,
                         vcs_type = "gh",
                         api_version = "v1.1") {
 
-  req <- circle("POST",
+  resp <- circle("POST",
     path = sprintf(
       "/project/%s/%s/%s/follow",
       vcs_type,
@@ -160,7 +159,7 @@ enable_repo <- function(repo = github_info()$name,
   )
 
   stop_for_status(
-    req$response,
+    resp$response,
     sprintf("enable repo %s on Circle CI", repo)
   )
 
@@ -185,7 +184,7 @@ delete_cache <- function(repo = github_info()$name,
                          user = github_info()$owner$login,
                          vcs_type = "gh") {
 
-  out <- circle("DELETE",
+  resp <- circle("DELETE",
     path = sprintf(
       "/repo/%s/%s/%s/build-cache",
       vcs_type,
@@ -194,6 +193,12 @@ delete_cache <- function(repo = github_info()$name,
     ),
     api_version = "v1.1"
   )
+
+  stop_for_status(
+    resp$response,
+    sprintf("enable repo %s on Circle CI", repo)
+  )
+
   out <- jsonlite::fromJSON(content(out$response, "text"),
     simplifyVector = FALSE
   )
