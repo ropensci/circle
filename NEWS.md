@@ -13,6 +13,7 @@
 
 - Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
 - setting env vars now works
+- make `create_checkout_key()` work with API v2
 
 # circle 0.4.0
 

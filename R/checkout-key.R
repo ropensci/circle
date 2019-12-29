@@ -12,8 +12,8 @@
 #' @export
 create_checkout_key <- function(repo = github_info()$name,
                                 user = github_info()$owner$login,
-                                type = "github-user-key",
-                                api_version = "v1.1",
+                                type = "user-key",
+                                api_version = "v2",
                                 vcs_type = "gh") {
 
   if (type == "deploy-key") {
@@ -122,6 +122,7 @@ has_checkout_key <- function(repo = github_info()$name,
 
   key_name <- purrr::map_chr(info$content$items, ~ .x$type)
   is_pref <- purrr::map_lgl(info$content$items, ~ .x$preferred)
+
   df <- data.frame(key_name, is_pref)
 
   if (preferred) {
