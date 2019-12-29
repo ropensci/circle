@@ -11,16 +11,12 @@ test_that("setting checkout keys works", {
   )
 })
 
-test_that("getting checkout keys works", {
-  skip_on_travis()
-  skip_on_appveyor()
-  keys <- get_checkout_keys(repo = repo, user = user)
-  expect_s3_class(keys, "circle_api")
-})
-
 test_that("deleting checkout keys works", {
   skip_on_travis()
   skip_on_appveyor()
+
+  keys <- get_checkout_keys(repo = repo, user = user)
+  expect_s3_class(keys, "circle_api")
 
   fp <- content(keys$response)$items[[1]]$fingerprint
 
