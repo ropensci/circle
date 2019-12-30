@@ -25,3 +25,9 @@ test_that("triggering a new build works", {
     "circle_api"
   )
 })
+
+test_that("checking the existence of checkout keys works", {
+  expect_true(
+    has_checkout_key(repo = repo, user = user)
+  )
+})

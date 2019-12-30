@@ -37,7 +37,7 @@ use_circle_deploy <- function(repo = github_info()$name,
 
   if (has_checkout_key(preferred = TRUE)) {
     cli_alert_info(
-      "A 'github-user-key' already exists and is set as 'preferred' in your
+      "A 'user-key' already exists and is set as 'preferred' in your
       Circle CI settings.
       You are all set for build deployment.",
       wrap = TRUE
