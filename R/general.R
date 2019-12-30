@@ -17,6 +17,8 @@ get_user <- function() {
 #' @title List repos
 #' @description Retrieve a list of Circle CI repos for the authenticated
 #'   user.
+#' @template repo
+#' @template user
 #' @details Retrieves a very detailed list of repos and repo-related
 #'   information for all Circle CI repos attached to the current user.
 #' @return A list of `circle_repo`s.
@@ -26,10 +28,8 @@ get_user <- function() {
 #' repos <- list_repos()
 #' }
 #' @export
-list_projects <- function() {
-
-  repo <- github_info()$name
-  user <- github_info()$owner$login
+list_projects <- function(repo = github_info()$name,
+                          user = github_info()$owner$login) {
 
   # GET: /repos List of all the repos you're following on CircleCI, with build
   # information organized by branch.
