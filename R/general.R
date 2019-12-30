@@ -9,8 +9,8 @@
 get_user <- function() {
   # GET: /me
   # Provides information about the signed in user.
-  out <- circle("GET", path = "/me")
-  out <- structure(out, class = "circle_user")
+  resp <- circle("GET", path = "/me")
+  out <- structure(resp, class = "circle_user")
   return(out)
 }
 
@@ -57,21 +57,23 @@ list_projects <- function(repo = github_info()$name,
 #' list_artifacts(get_builds()[["1"]]$build)
 #' }
 #' @export
-list_artifacts <- function(build = NULL,
-                           api_version = "v2") {
-  if (is.null(build)) {
-    build <- get_pipelines()[[1]]
+get_build_artifacts <- function(job_id = NULL,
+                                repo = github_info()$name,
+                                user = github_info()$owner$login,
+                                vcs_type = "gh",
+                                api_version = "v2") {
+  if (is.null(job_id)) {
+    job_id <- get_jobs(repo = repo, user = user)[[1]]$job_number
   }
 
   resp <- circle("GET", path = sprintf(
-    "/repo/%s/%s/artifacts",
-    build$repo_slug,
-    build$job_number
+    "/project/%s/%s/%s/%s/artifacts",
+    vcs_type, user, repo, job_id
   ), api_version = api_version)
 
   stop_for_status(
     resp$response,
-    sprintf("getting build artifacts for build '%s' on Circle CI", build)
+    sprintf("getting build artifacts for job '%s' on Circle CI", build)
   )
 
   return(resp)
@@ -83,7 +85,7 @@ retry_build <- function(build = NULL) {
     build <- get_pipelines()[[1]]
   }
 
-  out <- circle("POST",
+  resp <- circle("POST",
     path = sprintf(
       "/repo/%s/%s/retry",
       build$repo_slug,
@@ -91,14 +93,14 @@ retry_build <- function(build = NULL) {
     ),
     api_version = "v1.1"
   )
-  if (status_code(out$response) == 200) {
+  if (status_code(resp$response) == 200) {
     message(sprintf(
       "Successfully restarted build '#%s'.",
       build$job_number
     ))
   }
 
-  return(invisible(out))
+  return(resp)
 }
 
 #' @title Trigger build

@@ -8,3 +8,10 @@ test_that("get_jobs() works", {
 
   expect_is(out, "list")
 })
+
+test_that("getting job artifacts works", {
+  expect_s3_class(
+    get_build_artifacts(repo = repo, user = user),
+    "circle_api"
+  )
+})
