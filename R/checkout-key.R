@@ -16,11 +16,11 @@ create_checkout_key <- function(repo = github_info()$name,
                                 api_version = "v2",
                                 vcs_type = "gh") {
 
-  if (type == "deploy-key") {
+  if (type == "deploy-key") { # nocov start
     cli_alert_warning("Note that, despite the name, a 'deploy-key' does not
     grant permissions for build deployments to Github. Use a 'github-user-key'
     instead.")
-  }
+  } # nocov end
 
   resp <- circle("POST",
     path = sprintf("/project/%s/%s/%s/checkout-key", vcs_type, user, repo),
@@ -66,9 +66,9 @@ delete_checkout_key <- function(fingerprint = NULL,
                                 api_version = "v1.1",
                                 vcs_type = "gh") {
 
-  if (is.null(fingerprint)) {
+  if (is.null(fingerprint)) { # nocov start
     stop("Please provide the fingerprint of the key which should be deleted.")
-  }
+  } # nocov end
 
   resp <- circle("DELETE",
     path = sprintf(
@@ -85,7 +85,7 @@ delete_checkout_key <- function(fingerprint = NULL,
 
   # We cannot delete the corresponding key on Github because we do not have
   # the fingerprint or any other matching information. Issuing a warning..
-  if (type == "deploy-key") {
+  if (type == "deploy-key") { # nocov start
     cli_alert_warning("Make sure to also delete the corresponding SSH key on
                     Github at {.url
                     https://github.com/{user}/{repo}/settings/keys}!")
@@ -93,7 +93,7 @@ delete_checkout_key <- function(fingerprint = NULL,
     cli_alert_warning("Make sure to also delete the corresponding SSH key on
                     Github at {.url
                     https://github.com/settings/keys}!")
-  }
+  } # nocov end
 
   return(resp)
 }
@@ -112,13 +112,13 @@ has_checkout_key <- function(repo = github_info()$name,
   info <- get_checkout_keys(repo = repo, user = user, vcs_type = vcs_type)
   key <- any(grepl(type, info))
 
-  if (!key) {
-    cli::cat_bullet(
+  if (!key) { # nocov start
+    cat_bullet(
       bullet = "cross", bullet_col = "red",
       sprintf("No '%s' found.", type)
     )
     return(FALSE)
-  }
+  } # nocov end
 
   key_name <- purrr::map_chr(info$content$items, ~ .x$type)
   is_pref <- purrr::map_lgl(info$content$items, ~ .x$preferred)

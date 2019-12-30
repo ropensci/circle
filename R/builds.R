@@ -9,23 +9,6 @@
 #' @template api_version
 #'
 #' @export
-get_builds <- function(repo = NULL,
-                       user = github_info()$owner$login,
-                       vcs_type = "gh",
-                       limit = 30,
-                       api_version = "v2") {
-
-  # FIXME
-  stop("Currently not supported upstream by Circle CI. Please be patient.")
-
-  req <- get_jobs(get_workflows(get_pipelines(
-    repo = repo, user = user,
-    vcs_type = vcs_type, limit = limit,
-    api_version = api_version
-  )))
-  return(req)
-}
-
 get_pipelines <- function(repo = NULL,
                           user = github_info()$owner$login,
                           limit = 30,
