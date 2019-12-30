@@ -31,7 +31,7 @@
 #'
 #' @export
 #'
-browse_circle_token <- function() {
+browse_circle_token <- function() { # nocov start
 
   cli_alert("Querying API token...")
   cli_text("Opening URL {.url
@@ -43,22 +43,26 @@ browse_circle_token <- function() {
     you want to store the API key. See {.code ?browse_circle_token()} for
     details.", wrap = TRUE)
   return(invisible(TRUE))
-}
+} # nocov end
 
 #' @title Open circle Configuration file
 #' @description
 #'   Opens `~/.circleci/cli.yml`.
 #' @export
-edit_circle_config <- function() {
+edit_circle_config <- function() { # nocov start
   usethis::edit_file("~/.circleci/cli.yml")
-}
+} # nocov end
 
 # check if API key is stored in ~/.circleci/cli.yml
 circle_check_api_key <- function() {
 
   if (!Sys.getenv("R_CIRCLE") == "") {
-    return(Sys.getenv("R_CIRCLE"))
-  } else {
+    token <- Sys.getenv("R_CIRCLE")
+
+    stopifnot(is_token(token))
+
+    return(token)
+  } else { # nocov start
 
     # some checks for ~/.circleci/cli.yml
 
@@ -78,19 +82,22 @@ circle_check_api_key <- function() {
         stop("Circle API key missing.", call. = FALSE)
       }
     }
-    return(read_token())
+    token <- read_token()
+    stopifnot(is_token(token))
+
+    return(token)
   }
 
-}
+} # nocov end
 
 is_token <- function(token) {
   grepl("^[0-9a-f]{40}$", token)
 }
 
-read_token <- function() {
+read_token <- function() { # nocov start
   yml <- readLines("~/.circleci/cli.yml")
   endpoint_line <- which(grepl("token", yml))
   token <- yml[endpoint_line]
   token <- strsplit(token, " ")[[1]][2]
   return(token)
-}
+} # nocov end
