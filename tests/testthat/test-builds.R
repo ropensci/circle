@@ -15,3 +15,11 @@ test_that("getting job artifacts works", {
     "circle_api"
   )
 })
+
+test_that("restarting a workflow works", {
+  workflow_id <- suppressMessages(get_workflows())[[10]]$id
+  expect_s3_class(
+    retry_workflow(workflow_id),
+    "circle_api"
+  )
+})

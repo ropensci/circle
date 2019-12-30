@@ -8,6 +8,7 @@
 #'   30.
 #' @template api_version
 #'
+#' @name builds
 #' @export
 get_pipelines <- function(repo = NULL,
                           user = github_info()$owner$login,
@@ -35,6 +36,9 @@ get_pipelines <- function(repo = NULL,
   return(new_circle_builds(content(resp$response)))
 }
 
+#' @param pipeline_id [string]\cr
+#'   A Circle CI pipeline ID.
+#' @rdname builds
 get_workflows <- function(pipeline_id = NULL,
                           repo = github_info()$name,
                           user = github_info()$owner$login) {
@@ -69,7 +73,9 @@ get_workflows <- function(pipeline_id = NULL,
   return(unlist(resp, recursive = FALSE))
 }
 
-# cron builds are not shown
+#' @param workflow_id [string]\cr
+#'   A Circle CI workflow ID.
+#' @rdname builds
 get_jobs <- function(workflow_id = NULL,
                      repo = github_info()$name,
                      user = github_info()$owner$login,
@@ -102,4 +108,32 @@ get_jobs <- function(workflow_id = NULL,
   })
 
   return(unlist(resp, recursive = FALSE))
+}
+
+#' @param workflow_id [string]\cr
+#'   A Circle CI workflow ID.
+#' @rdname builds
+retry_workflow <- function(workflow_id = NULL) {
+
+  if (is.null(workflow_id)) { # nocov start
+    cli_text("{.fun retry_workflow}: ID not given, getting the last workflow.")
+
+    workflow_id <- get_workflows(
+      repo = github_info()$name,
+      user = github_info()$owner$login
+    )[[1]]$id
+  } # nocov end
+
+  resp <- circle("POST",
+    path = sprintf(
+      "/workflow/%s/rerun",
+      workflow_id
+    )
+  )
+  stop_for_status(
+    resp$response,
+    sprintf("restarting workflow '%s' on Circle CI", workflow_id)
+  )
+
+  return(resp)
 }

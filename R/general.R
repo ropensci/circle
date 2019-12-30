@@ -82,30 +82,6 @@ get_build_artifacts <- function(job_id = NULL,
   return(resp)
 }
 
-#' @importFrom httr status_code
-retry_build <- function(build = NULL) {
-  if (is.null(build)) {
-    build <- get_pipelines()[[1]]
-  }
-
-  resp <- circle("POST",
-    path = sprintf(
-      "/repo/%s/%s/retry",
-      build$repo_slug,
-      build$job_number
-    ),
-    api_version = "v1.1"
-  )
-  if (status_code(resp$response) == 200) {
-    message(sprintf(
-      "Successfully restarted build '#%s'.",
-      build$job_number
-    ))
-  }
-
-  return(resp)
-}
-
 #' @title Trigger build
 #' @description Trigger a new build for a specific repo branch
 #' @details Trigger a new Circle CI build for a specific repo branch.
