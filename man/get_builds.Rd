@@ -29,7 +29,3 @@ This usually does not need to be changed by the user.}
 \description{
 Queries single builds from Circle CI pipeline runs
 }
-\details{
-To set a different API version, use the following scheme:
-  `https://circleci.com/api/v<api version>` The current default is "v2".
-}

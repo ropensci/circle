@@ -8,8 +8,6 @@
 #'   30.
 #' @template api_version
 #'
-#' @details To set a different API version, use the following scheme:
-#'   `https://circleci.com/api/v<api version>` The current default is "v2".
 #' @export
 get_builds <- function(repo = NULL,
                        user = github_info()$owner$login,
@@ -89,76 +87,69 @@ get_pipelines <- function(repo = NULL,
   return(new_circle_builds(content(req$response)))
 }
 
-get_workflows <- function(repo = github_info()$name,
-                          user = github_info()$owner$login,
-                          name_only = FALSE,
-                          branch = "master",
-                          vcs_type = "gh",
-                          api_version = "v2") {
+get_workflows <- function(pipeline_id = NULL,
+                          repo = github_info()$name,
+                          user = github_info()$owner$login) {
 
-  # FIXME
-  stop("Currently not supported upstream by Circle CI. Please be patient.")
+  if (is.null(pipeline_id)) {
+    cli_text("{.fun get_pipelines}: ID not given, querying 10 most recent
+             pipelines.")
 
-  # query infos about default workflow name
-  # FIXME: subset to first WF name
-  wf_name <- circle("GET",
-    path = sprintf(
-      "/insights/%s/%s/%s/workflows?branch='%s'",
-      vcs_type, user, repo, branch
-    ),
-    api_version = api_version
-  )
+    pipeline_id <- sapply(seq_along(1:10), function(x) get_pipelines()[[x]]$id)
+  }
 
-  stop_for_status(
-    wf_name$response,
-    sprintf("get workflows for repo %s/%s on Circle CI.", user, repo)
-  )
-
-  if (!name_only) {
-    req <- circle("GET",
+  resp <- lapply(pipeline_id, function(x) {
+    resp <- circle("GET",
       path = sprintf(
-        "/insights/%s/%s/%s/workflows/%s?branch='%s'",
-        vcs_type, user, repo, wf_name, branch
+        "/pipeline/%s/workflow",
+        x
       ),
-      api_version = api_version
+      api_version = "v2"
     )
     stop_for_status(
-      req$response,
-      sprintf("get workflows for repo %s/%s on Circle CI", user, repo)
+      resp$response,
+      sprintf(
+        "get workflows for pipeline '%s' for repo %s/%s on Circle CI.",
+        x, user, repo
+      )
     )
+    new_circle_builds(content(resp$response))
+  })
 
-    return(content(req$response))
-  } else {
-    return(wf_name)
-  }
+  return(unlist(resp, recursive = FALSE))
 }
 
 # cron builds are not shown
-get_jobs <- function(workflow = NULL,
-                     id_only = FALSE) {
+get_jobs <- function(workflow_id = NULL,
+                     repo = github_info()$name,
+                     user = github_info()$owner$login,
+                     vcs_type = "gh") {
 
-  # FIXME
-  stop("Currently not supported upstream by Circle CI. Please be patient.")
+  if (is.null(workflow_id)) {
+    cli_text("{.fun get_workflows}: ID not given, querying 10 most
+             recent workflows.")
 
-  if (is.null(workflow)) {
-    workflow <- get_workflows()
+    workflow_id <- get_workflows()
+    workflow_id <- sapply(workflow_id, function(x) x$id)
   }
 
-  jobs <- lapply(workflow, function(workflow) {
-    circle("GET", path = sprintf("/workflow/%s/jobs", workflow$content$id))
+  resp <- lapply(workflow_id, function(x) {
+    resp <- circle("GET",
+      path = sprintf(
+        "/workflow/%s/job",
+        x
+      ),
+      api_version = "v2"
+    )
+    stop_for_status(
+      resp$response,
+      sprintf(
+        "get jobs for workflow '%s' for repo %s/%s on Circle CI.",
+        x, user, repo
+      )
+    )
+    new_circle_builds(content(resp$response))
   })
 
-  # simplify
-  jobs <- lapply(jobs, function(jobs) jobs$content$items)
-
-  # set names
-  names(jobs) <- sapply(jobs, function(jobs) jobs[[1]]$job_number)
-
-  # set names of jobs to have a more descriptive return
-  for (i in seq_len(jobs)) {
-    job_names <- sapply(jobs[[i]], function(x) x$name)
-    names(jobs[[i]]) <- job_names
-  }
-
-  return(jobs)
+  return(unlist(resp, recursive = FALSE))
 }

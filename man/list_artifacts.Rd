@@ -4,10 +4,13 @@
 \alias{list_artifacts}
 \title{Get build artifacts}
 \usage{
-list_artifacts(build = NULL)
+list_artifacts(build = NULL, api_version = "v2")
 }
 \arguments{
 \item{build}{A single Circle CI job object as returned by `get_jobs()`.}
+
+\item{api_version}{A character string specifying the Circle CI API version.
+This usually does not need to be changed by the user.}
 }
 \value{
 A list of build artifacts

@@ -2,8 +2,9 @@ context("builds")
 
 setwd("./travis-testthat")
 
-test_that("get_pipelines() works", {
-  pipelines <- get_pipelines(repo = repo, user = user)
+# calls `get_workflows()` and `get_pipelines()` automatically
+test_that("get_jobs() works", {
+  out <- suppressMessages(get_jobs(repo = repo, user = user))
 
-  expect_is(pipelines, "circle_builds")
+  expect_is(out, "list")
 })

@@ -6,8 +6,9 @@
 - Remove `auth_travis()`
 - Rename `circleHTTP()` to `circle()`
 - add `github_repo()`
-- `get_pipelines()` is now formatted as class `circle_builds`, `circle_collection()` and has a somewhat pretty print output
+- `get_pipelines()`, `get_workflows()` and `get_jobs()` are now formatted as class `circle_builds`, `circle_collection()` and have a somewhat pretty print output
 - `*_checkout_key()`: Optimize printer, catch errors, add info messages, add test
+- make `get_pipelines()`, `get_workflows()` and `get_jobs()` work with API v2
 
 ## Bugfixes
 

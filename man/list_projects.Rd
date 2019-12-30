@@ -21,6 +21,9 @@ Retrieve a list of Circle CI repos for the authenticated
 \details{
 Retrieves a very detailed list of repos and repo-related
   information for all Circle CI repos attached to the current user.
+
+  This endpoint uses API v1.1 and will probably be removed in the near
+  future.
 }
 \examples{
 \dontrun{

@@ -21,6 +21,9 @@ get_user <- function() {
 #' @template user
 #' @details Retrieves a very detailed list of repos and repo-related
 #'   information for all Circle CI repos attached to the current user.
+#'
+#'   This endpoint uses API v1.1 and will probably be removed in the near
+#'   future.
 #' @return A list of `circle_repo`s.
 #' @seealso [get_builds()], [get_pipelines()]
 #' @examples
@@ -47,13 +50,15 @@ list_projects <- function(repo = github_info()$name,
 #' @description Retrieve artifacts from a specific build.
 #' @details Retrieves details about artifacts from a specific build.
 #' @param build A single Circle CI job object as returned by `get_jobs()`.
+#' @template api_version
 #' @return A list of build artifacts
 #' @examples
 #' \dontrun{
 #' list_artifacts(get_builds()[["1"]]$build)
 #' }
 #' @export
-list_artifacts <- function(build = NULL) {
+list_artifacts <- function(build = NULL,
+                           api_version = "v2") {
   if (is.null(build)) {
     build <- get_pipelines()[[1]]
   }
@@ -62,7 +67,7 @@ list_artifacts <- function(build = NULL) {
     "/repo/%s/%s/artifacts",
     build$repo_slug,
     build$job_number
-  ))
+  ), api_version = api_version)
 
   stop_for_status(
     resp$response,
