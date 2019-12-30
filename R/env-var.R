@@ -18,14 +18,14 @@ get_env_vars <- function(name = NULL,
                          vcs_type = "gh",
                          api_version = "v2") {
 
-  if (!is.null(name)) {
+  if (!is.null(name)) { # nocov start
     req <- circle("GET",
       path = sprintf(
         "/project/%s/%s/%s/envvar/%s",
         vcs_type, user, repo, name
       ),
       api_version = api_version
-    )
+    ) # nocov end
 
   } else {
     req <- circle("GET",
@@ -44,7 +44,7 @@ get_env_vars <- function(name = NULL,
 
   if (!is.null(name)) {
 
-    env_var <- unlist(content(req$response))
+    env_var <- unlist(content(req$response)) # nocov
 
   } else {
     env_var <- unlist(content(req$response)[["items"]])
@@ -63,7 +63,7 @@ set_env_var <- function(var,
                         quiet = FALSE) {
 
   if (length(var) != 1) {
-    stop("Please supply only one environment variable at a time.")
+    stop("Please supply only one environment variable at a time.") # nocov
   }
   # format into correct format for "body" part
   var <- list(
@@ -86,10 +86,10 @@ set_env_var <- function(var,
     sprintf("set env vars for repo '%s/%s' on Circle CI", user, repo)
   )
 
-  if (!quiet) {
+  if (!quiet) { # nocov start
     cli_alert_success("Added environment variable {.var {var[['name']]}} for
     {.code {user}/{repo}} on Circle CI.", wrap = TRUE)
-  }
+  } # nocov end
 
   invisible(TRUE)
 }
@@ -115,10 +115,10 @@ delete_env_var <- function(var, repo = github_info()$name,
     sprintf("delete env vars for repo '%s/%s' on Circle CI", user, repo)
   )
 
-  if (!quiet) {
+  if (!quiet) { # nocov start
     cli_alert_success("Deleted environment variable {.var {var}} for
     {.code {user}/{repo}} on Circle CI.", wrap = TRUE)
-  }
+  } # nocov end
 
   return(invisible(TRUE))
 
