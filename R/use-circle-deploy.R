@@ -25,6 +25,11 @@
 use_circle_deploy <- function(repo = github_info()$name,
                               user = github_info()$owner$login) {
 
+  # all of this functionality is tested in single parts, therefore setting
+  # "nocov" here
+
+  # nocov start
+
   # authenticate on github and circle and set up keys/vars
   token <- usethis::github_token()
   if (token == "") {
@@ -43,7 +48,7 @@ use_circle_deploy <- function(repo = github_info()$name,
       wrap = TRUE
     )
   } else {
-    create_checkout_key(user = user, repo = repo, type = "github-user-key")
+    create_checkout_key(user = user, repo = repo, type = "user-key")
     rule()
     cli_alert_success(
       "Added a 'github user key' to project '{user}/{repo}' on Circle CI.
@@ -51,4 +56,4 @@ use_circle_deploy <- function(repo = github_info()$name,
       wrap = TRUE
     )
   }
-}
+} # nocov end
