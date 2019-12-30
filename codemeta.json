@@ -7,8 +7,8 @@
   "identifier": "circle",
   "description": "Tools for interacting with the 'Circle' API for\n    setting up continuous integration for R packages.",
   "name": "circle: R client package for the Circle CI REST API",
-  "codeRepository": "https://github.com/pat-s/circle",
-  "relatedLink": "https://pat-s.github.io/circle",
+  "codeRepository": "https://github.com/ropenscilabs/circle",
+  "relatedLink": ["https://pat-s.github.io/circle", "https://docs.ropensci/circle"],
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.4.0.9000",
   "programmingLanguage": {
@@ -138,11 +138,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "stats",
-      "name": "stats"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "provider": {
@@ -210,9 +205,9 @@
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     }
   ],
-  "releaseNotes": "https://github.com/pat-s/circle/blob/master/NEWS.md",
-  "readme": "https://github.com/pat-s/circle/blob/master/README.md",
-  "fileSize": "16.508KB",
+  "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
+  "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
+  "fileSize": "16.967KB",
   "contIntegration": [
     "https://travis-ci.org/pat-s/circle3",
     "https://circleci.com/gh/pat-s/circle",
@@ -233,5 +228,6 @@
       "description": "R package version "
     }
   ],
-  "issueTracker": "https://github.com/pat-s/circle/issues"
+  "issueTracker": "https://github.com/ropenscilabs/circle/issues",
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing"
 }

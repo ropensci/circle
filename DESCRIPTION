@@ -10,9 +10,9 @@ Authors@R:
 Description: Tools for interacting with the 'Circle' API for
     setting up continuous integration for R packages.
 License: GPL-3
-URL: https://github.com/pat-s/circle
-    https://pat-s.github.io/circle
-BugReports: https://github.com/pat-s/circle/issues
+URL: https://github.com/ropenscilabs/circle
+    https://docs.ropensci/circle
+BugReports: https://github.com/ropenscilabs/circle/issues
 Imports: 
     cli (>= 2.0.0),
     httr,

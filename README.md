@@ -2,12 +2,12 @@
 <!-- badges: start -->
 
 [![Build
-Status](https://img.shields.io/travis/pat-s/circle/master?label=macOS&logo=travis&style=flat-square)](https://travis-ci.org/pat-s/circle)
-[![CircleCI](https://img.shields.io/circleci/build/gh/pat-s/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/pat-s/circle)
+Status](https://img.shields.io/travis/ropenscilabs/circle/master?label=macOS&logo=travis&style=flat-square)](https://travis-ci.org/ropenscilabs/circle)
+[![CircleCI](https://img.shields.io/circleci/build/gh/ropenscilabs/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropenscilabs/circle)
 [![AppVeyor build
-status](https://img.shields.io/appveyor/ci/pat-s/circle?label=Windows&logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/pat-s/circle)
+status](https://img.shields.io/appveyor/ci/ropenscilabs/circle?label=Windows&logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/ropenscilabs/circle)
 [![Codecov test
-coverage](https://codecov.io/gh/pat-s/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/pat-s/circle?branch=master)
+coverage](https://codecov.io/gh/ropenscilabs/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/circle?branch=master)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
@@ -32,8 +32,8 @@ team](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-c
 ## Get Started
 
 See the [Getting
-Started](https://pat-s.github.io/circle/articles/circle.html) vignette
-for an introduction.
+Started](https://ropenscilabs.github.io/circle/articles/circle.html)
+vignette for an introduction.
 
 # Acknowledgments
 

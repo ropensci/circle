@@ -49,7 +49,7 @@ circle <- function(verb = "GET",
   query$"circle-token" <- circle_check_api_key() # nolint
 
   # set user agent
-  ua <- user_agent("http://github.com/pat-s/circle")
+  ua <- user_agent("http://github.com/ropenscilabs/circle")
 
   resp <- VERB(
     verb = verb, url = url, body = body,
