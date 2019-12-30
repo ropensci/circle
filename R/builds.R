@@ -12,62 +12,27 @@
 get_pipelines <- function(repo = NULL,
                           user = github_info()$owner$login,
                           limit = 30,
-                          build_number = NULL,
                           vcs_type = "gh",
                           api_version = "v2") {
 
   if (is.null(repo)) {
     repo <- github_info()$name
-    if (is.null(build_number)) {
-      req <- circle("GET",
-        path = sprintf(
-          "/project/%s/%s/%s/pipeline",
-          vcs_type, user, repo
-        ),
-        api_version = api_version,
-        query = list(limit = limit)
-      )
-    } else {
-      req <- list(circle("GET",
-        path = sprintf(
-          "/project/%s/%s/%s/%s/pipeline",
-          vcs_type, user, repo,
-          build_number
-        ),
-        api_version = api_version,
-        query = list(limit = limit)
-      ))
-    }
-  } else if (!is.null(repo)) {
-    repo <- repo
-    if (is.null(build_number)) {
-      req <- circle("GET",
-        path = sprintf(
-          "/project/%s/%s/%s/pipeline",
-          vcs_type, user, repo
-        ),
-        api_version = api_version,
-        query = list(limit = limit)
-      )
-    } else {
-      req <- list(circle("GET",
-        path = sprintf(
-          "/project/%s/%s/%s/%s/pipeline",
-          vcs_type, user, repo,
-          build_number
-        ),
-        api_version = api_version,
-        query = list(limit = limit)
-      ))
-    }
   }
+  resp <- circle("GET",
+    path = sprintf(
+      "/project/%s/%s/%s/pipeline",
+      vcs_type, user, repo
+    ),
+    api_version = api_version,
+    query = list(limit = limit)
+  )
 
   stop_for_status(
-    req$response,
+    resp$response,
     sprintf("get pipelines for repo %s/%s on Circle CI", user, repo)
   )
 
-  return(new_circle_builds(content(req$response)))
+  return(new_circle_builds(content(resp$response)))
 }
 
 get_workflows <- function(pipeline_id = NULL,

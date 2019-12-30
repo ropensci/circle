@@ -8,7 +8,6 @@ get_pipelines(
   repo = NULL,
   user = github_info()$owner$login,
   limit = 30,
-  build_number = NULL,
   vcs_type = "gh",
   api_version = "v2"
 )
