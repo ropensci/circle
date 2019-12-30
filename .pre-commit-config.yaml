@@ -6,7 +6,7 @@ repos:
         args: [--style_fun=tidyverse_style]
     -   id: parsable-R
     -   id: lintr
-        args: [--warn-only]
+        args: [--warn_only]
     -   id: no-browser-statement
     -   id: readme-rmd-rendered
     #-   id: roxygenize
