@@ -73,7 +73,7 @@ get_build_artifacts <- function(job_id = NULL,
 
   stop_for_status(
     resp$response,
-    sprintf("getting build artifacts for job '%s' on Circle CI", build)
+    sprintf("getting build artifacts for job '%s' on Circle CI", job_id)
   )
 
   return(resp)
