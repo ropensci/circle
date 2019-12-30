@@ -13,10 +13,17 @@ get_build_artifacts(
 )
 }
 \arguments{
+\item{job_id}{A Circle CI job id.}
+
+\item{repo}{The Circle CI project. By default the current directory name will be used.}
+
+\item{user}{The username for the repository. By default queried using `get_user()`.}
+
+\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
+Other possible values are "bitbucket".}
+
 \item{api_version}{A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
-
-\item{build}{A single Circle CI job object as returned by `get_jobs()`.}
 }
 \value{
 A list of build artifacts

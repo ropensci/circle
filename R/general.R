@@ -49,7 +49,10 @@ list_projects <- function(repo = github_info()$name,
 #' @title Get build artifacts
 #' @description Retrieve artifacts from a specific build.
 #' @details Retrieves details about artifacts from a specific build.
-#' @param build A single Circle CI job object as returned by `get_jobs()`.
+#' @param job_id A Circle CI job id.
+#' @template user
+#' @template repo
+#' @template vcs
 #' @template api_version
 #' @return A list of build artifacts
 #' @examples
