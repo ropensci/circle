@@ -6,10 +6,11 @@ Status](https://img.shields.io/travis/ropenscilabs/circle/master?label=macOS&log
 [![CircleCI](https://img.shields.io/circleci/build/gh/ropenscilabs/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropenscilabs/circle)
 [![AppVeyor build
 status](https://img.shields.io/appveyor/ci/ropensci/circle?label=Windows&logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/ropensci/circle)
-[![Codecov test
-coverage](https://codecov.io/gh/ropenscilabs/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/circle?branch=master)
+[![codecov](https://codecov.io/gh/ropenscilabs/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/circle)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![rOpenSci
+footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 <!-- badges: end -->
 
 # circle
