@@ -2,8 +2,6 @@
 
 # circle 0.5.0
 
-# circle 0.4.0.9000
-
 ## Major
 
 - Add new authentication mechanism: `browse_circle_token()` to to query the API token and store it in an env variable `R_CIRCLE` as an alternative method to store it in `~/.circleci/cli.yml`
