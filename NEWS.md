@@ -1,3 +1,7 @@
+# circle 0.5.0.9002
+
+- Same as previous version.
+
 # circle 0.5.0.9001
 
 - Get ready for ropensci review
