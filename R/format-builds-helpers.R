@@ -61,7 +61,7 @@ circle_no_attr <- function(x) {
 
 format.circle_collection <- function(x, ...) {
   if (length(x) == 0) {
-    return(invisible(x))
+    return(invisible(x)) # nocov
   } else {
     if (!class(x[[1]])[1] == "circle_pipeline") {
       text <- vapply(seq_along(x), function(y) {

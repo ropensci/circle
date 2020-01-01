@@ -57,7 +57,7 @@ circle <- function(verb = "GET",
   )
 
   if (http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+    stop("API did not return json", call. = FALSE) # nocov
   }
 
   # parse response into readable object

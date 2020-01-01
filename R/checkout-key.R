@@ -129,6 +129,6 @@ has_checkout_key <- function(repo = github_info()$name,
     ind <- which(df$is_pref == TRUE)
     return(df[ind, "key_name"] == type)
   } else {
-    return(TRUE)
+    return(TRUE) # nocov
   }
 }

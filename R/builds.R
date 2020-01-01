@@ -17,7 +17,7 @@ get_pipelines <- function(repo = NULL,
                           api_version = "v2") {
 
   if (is.null(repo)) {
-    repo <- github_info()$name
+    repo <- github_info()$name # nocov
   }
   resp <- circle("GET",
     path = sprintf(
