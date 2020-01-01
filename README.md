@@ -33,6 +33,14 @@ If you want to get more information, have a look at the [document
 explaining changes between v1.1 and
 v2.](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
 
+## Installation
+
+Development Version:
+
+``` r
+remotes::install_github("ropenscilabs/circle")
+```
+
 ## Get Started
 
 See the [Getting
