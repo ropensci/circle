@@ -33,7 +33,7 @@ get_pipelines <- function(repo = NULL,
     sprintf("get pipelines for repo %s/%s on Circle CI", user, repo)
   )
 
-  return(new_circle_builds(content(resp$response)))
+  return(new_circle_pipelines(content(resp$response)))
 }
 
 #' @param pipeline_id [string]\cr
@@ -67,10 +67,12 @@ get_workflows <- function(pipeline_id = NULL,
         x, user, repo
       )
     )
-    new_circle_builds(content(resp$response))
+    new_circle_workflows(content(resp$response))
   })
 
-  return(unlist(resp, recursive = FALSE))
+  resp <- unlist(resp, recursive = FALSE)
+  class(resp) <- c("circle_collection", "circle")
+  return(resp)
 }
 
 #' @param workflow_id [string]\cr
@@ -104,10 +106,12 @@ get_jobs <- function(workflow_id = NULL,
         x, user, repo
       )
     )
-    new_circle_builds(content(resp$response))
+    new_circle_jobs(content(resp$response))
   })
 
-  return(unlist(resp, recursive = FALSE))
+  resp <- unlist(resp, recursive = FALSE)
+  class(resp) <- c("circle_collection", "circle")
+  return(resp)
 }
 
 #' @param workflow_id [string]\cr
