@@ -25,7 +25,7 @@ github_info <- function(path = rprojroot::find_package_root_file()) {
 #' @rdname github_info
 github_repo <- function(path = usethis::proj_get(),
                         info = github_info(path)) {
-  paste(info$owner$login, info$name, sep = "/")
+  paste(info$owner$login, info$name, sep = "/") # nocov
 }
 
 get_repo_data <- function(repo) {
@@ -40,49 +40,22 @@ get_remote_url <- function(path) {
     stop("Failed to lookup git remotes")
   }
   remote_name <- "origin"
-  if (!("origin" %in% remote_names)) {
+  if (!("origin" %in% remote_names)) { # nocov start
     remote_name <- remote_names[1]
     warning(sprintf("No remote 'origin' found. Using: %s", remote_name))
-  }
+  } # nocov end
   git2r::remote_url(r, remote_name)
 }
 
 extract_repo <- function(url) {
+  # Borrowed from gh:::github_remote_parse
+  re <- "github[^/:]*[/:]([^/]+)/(.*?)(?:\\.git)?$"
+  m <- regexec(re, url)
+  match <- regmatches(url, m)[[1]]
 
-  # account for http
-  if (grepl("http://github.com", url)) {
-    url <- sub("http://", "https://", url)
-  }
-
-  # account for ssh notation
-  if (grepl("^git@github.com:", url)) {
-    url <- sub("^git@github.com:", "https://github.com/", url)
-  } else if (grepl("^git://github.com:", url)) {
-    url <- sub("^git://github.com:", "https://github.com/", url)
-  } else if (grepl("^git://github.com", url)) {
-    url <- sub("^git://github.com", "https://github.com/", url)
-  } else if (grepl("^ssh://git@github.com", url)) {
-    url <- sub("^ssh://git@github.com/", "https://github.com/", url)
-  }
-  # account for "www"
-  if (grepl("http://www.github.com", url)) {
-    url <- sub("http://www.github.com", "https://github.com", url)
-  } else if (grepl("https://www.github.com", url)) {
-    url <- sub("https://www.github.com", "https://github.com", url)
+  if (length(match) == 0) {
+    stopc("Unrecognized repo format: ", url)
   }
 
-  # account for "user/pass"
-  if (grepl("^http://(.+@)?github.com", url)) {
-    url <- sub("^http://(.+@)?github.com", "https://github.com", url)
-  } else if (grepl("^https://(.+@)github.com", url)) {
-    url <- sub("^https://(.+@)github.com", "https://github.com", url)
-  }
-
-  if (!all(grepl("^https://github.com", url))) {
-    stop("Unrecognized repo format: ", url)
-  }
-  # remove .git
-  url <- sub("\\.git$", "", url)
-  # remove https: prefix
-  sub("^https://github.com/", "", url)
+  paste0(match[2], "/", match[3])
 }
