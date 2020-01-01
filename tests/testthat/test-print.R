@@ -9,17 +9,17 @@ test_that("s3 print method for 'circle_pipeline' works", {
 })
 
 test_that("s3 print method for 'circle_workflow' works", {
-  out <- get_workflows(repo = repo, user = user)
+  wf <- get_workflows(repo = repo, user = user)
   capture.output(expect_message(
-    print(out),
-    "A collection of 10 Circle CI workflows"
+    print(wf[[1]]),
+    "A Circle CI workflow:"
   ))
 })
 
 test_that("s3 print method for 'circle_job' works", {
-  out <- get_jobs(repo = repo, user = user)
+  job <- get_jobs(repo = repo, user = user)
   capture.output(expect_message(
-    print(out),
-    "A collection of 10 Circle CI jobs"
+    print(job[[1]]),
+    "A Circle CI job:"
   ))
 })
