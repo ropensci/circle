@@ -17,12 +17,14 @@ R client package for the Circle CI REST API
 
 Most functionality is tailored towards the Circle CI [API v2](https://github.com/CircleCI-Public/api-preview-docs) which follows the 
 
-pipelines -> workflows -> jobs
+**pipelines** -> **workflows** -> **jobs**
 
-principle.
+approach
 
-Some functions use endpoints from the v1.1 API (e.g. `enable_repo()`) because these endpoints do not yet work with the v2 API.
-Some are also about to be removed soon [according to the Circle CI team](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
+Most functions have already been ported to the new API v2.
+The only function which is still running via API v1.1 is `enable_repo()` since no v2 equivalent exists for this function yet.
+
+If you want to get more information, have a look at the [document explaining changes between v1.1 and v2.](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
 
 ## Get Started
 
