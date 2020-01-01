@@ -27,8 +27,8 @@ delete_checkout_key(
   fingerprint = NULL,
   repo = github_info()$name,
   user = github_info()$owner$login,
-  type = "github-user-key",
-  api_version = "v1.1",
+  type = "user-key",
+  api_version = "v2",
   vcs_type = "gh"
 )
 

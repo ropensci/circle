@@ -62,8 +62,8 @@ get_checkout_keys <- function(repo = github_info()$name,
 delete_checkout_key <- function(fingerprint = NULL,
                                 repo = github_info()$name,
                                 user = github_info()$owner$login,
-                                type = "github-user-key",
-                                api_version = "v1.1",
+                                type = "user-key",
+                                api_version = "v2",
                                 vcs_type = "gh") {
 
   if (is.null(fingerprint)) { # nocov start
