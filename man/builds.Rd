@@ -55,9 +55,11 @@ A Circle CI workflow ID.}
 Queries pipelines/workflows/jobs from Circle CI.
 }
 \examples{
+\dontrun{
 pipelines <- get_pipelines()
 
 workflows <- get_workflows()
 
 jobs <- get_jobs()
+}
 }
