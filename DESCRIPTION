@@ -1,5 +1,5 @@
 Package: circle
-Title: R client package for the Circle CI REST API
+Title: R client package for the Circle CI API
 Version: 0.5.0.9000
 Authors@R: 
     person(given = "Patrick",
@@ -7,8 +7,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "patrick.schratz@gmail.com",
            comment = c(ORCID = "0000-0003-0748-6624"))
-Description: Tools for interacting with the 'Circle' API for
-    setting up continuous integration for R packages.
+Description: Tools for interacting with the 'Circle CI' API.
+    Besides executing common tasks such as querying build logs and
+    restarting builds, this package also helps setting up permissions to
+    deploy from builds.
 License: GPL-3
 URL: https://ropenscilabs.github.io/circle,
     https://github.com/ropenscilabs/circle
