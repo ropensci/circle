@@ -61,4 +61,24 @@ deleted.}
 }
 \description{
 Functions to interact with "checkout keys" on Circle CI.
+
+Check if a specific key type exists in the Circle CI project
+}
+\examples{
+\dontrun{
+create_checkout_key()
+
+# create only a 'deploy key' pair
+
+create_checkout_key(type = "deploy-key")
+}
+\dontrun{
+get_checkout_keys()
+}
+\dontrun{
+delete_checkout_key()
+}
+\dontrun{
+has_checkout_key()
+}
 }

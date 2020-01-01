@@ -52,5 +52,12 @@ A Circle CI pipeline ID.}
 A Circle CI workflow ID.}
 }
 \description{
-Queries single builds from Circle CI pipeline runs
+Queries pipelines/workflows/jobs from Circle CI.
+}
+\examples{
+pipelines <- get_pipelines()
+
+workflows <- get_workflows()
+
+jobs <- get_jobs()
 }

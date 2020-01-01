@@ -12,16 +12,16 @@
 #' @template quiet
 #' @name env_var
 #' @export
-#' #' @examples
+#' @examples
 #' \dontrun{
-#'  # get env var
-#'  get_env_vars()
+#' # get env var
+#' get_env_vars()
 #'
-#'  # set env var
-#'  set_env_var(var = list("foo" = "123"))
+#' # set env var
+#' set_env_var(var = list("foo" = "123"))
 #'
-#'  # delete env var
-#'  delete_env_var("foo")
+#' # delete env var
+#' delete_env_var("foo")
 #' }
 get_env_vars <- function(name = NULL,
                          repo = github_info()$name,

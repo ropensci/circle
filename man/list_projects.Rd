@@ -2,7 +2,7 @@
 % Please edit documentation in R/general.R
 \name{list_projects}
 \alias{list_projects}
-\title{List repos}
+\title{List repository}
 \usage{
 list_projects(repo = github_info()$name, user = github_info()$owner$login)
 }
@@ -12,24 +12,24 @@ list_projects(repo = github_info()$name, user = github_info()$owner$login)
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 }
 \value{
-A list of `circle_repo`s.
+An object of class `circle_api`.
 }
 \description{
-Retrieve a list of Circle CI repos for the authenticated
+Retrieve a list of Circle CI repository for the authenticated
   user.
 }
 \details{
-Retrieves a very detailed list of repos and repo-related
-  information for all Circle CI repos attached to the current user.
+Retrieves a very detailed list of repository and repo-related
+  information for all Circle CI repository attached to the current user.
 
   This endpoint uses API v1.1 and will probably be removed in the near
   future.
 }
 \examples{
 \dontrun{
-repos <- list_repos()
+list_projects()
 }
 }
 \seealso{
-[get_builds()], [get_pipelines()]
+[get_pipelines()], [get_workflows()], [get_jobs()]
 }

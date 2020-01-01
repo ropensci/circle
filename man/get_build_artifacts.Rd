@@ -36,6 +36,7 @@ Retrieves details about artifacts from a specific build.
 }
 \examples{
 \dontrun{
-list_artifacts(get_builds()[["1"]]$build)
+job_id <- get_jobs()[[1]]$id
+get_build_artifacts(job_id)
 }
 }

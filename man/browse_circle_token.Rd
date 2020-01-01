@@ -2,12 +2,12 @@
 % Please edit documentation in R/auth.R
 \name{browse_circle_token}
 \alias{browse_circle_token}
-\title{Authenticate to circle}
+\title{Authenticate to Circle CI}
 \usage{
 browse_circle_token()
 }
 \description{
-A circle API Key is needed to interact with the circle API.
+A circle API Key is needed to interact with the Circle CI API.
   `browse_circle_token()` opens a browser window for the respective circle
   endpoint. On this site, you can copy your personal API key and then follow
   the instructions of the console output or the ones shown below.
@@ -15,7 +15,7 @@ A circle API Key is needed to interact with the circle API.
 \section{Store API Key}{
 
 
-  The `circle` package supports two ways of storing the circle API key(s):
+  The `circle` package supports two ways of storing the Circle API key(s):
 
   - via env vars `R_CIRCLE`
   - via `~/.circleci/cli.yml`
@@ -37,3 +37,11 @@ A circle API Key is needed to interact with the circle API.
      ```
 }
 
+\examples{
+
+\dontrun{
+browse_github_token()
+
+edit_circle_config()
+}
+}

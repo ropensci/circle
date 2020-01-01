@@ -34,10 +34,15 @@ This usually does not need to be changed by the user.}
 The JSON response, or the relevant error.
 }
 \description{
-This is the workhorse function for executing API requests for
+Workhorse function for executing API requests on
   Circle CI.
 }
 \details{
 This is mostly an internal function for executing API requests. In
   almost all cases, users do not need to access this directly.
+}
+\examples{
+\dontrun{
+circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
+}
 }

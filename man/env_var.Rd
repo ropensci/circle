@@ -5,7 +5,7 @@
 \alias{get_env_vars}
 \alias{set_env_var}
 \alias{delete_env_var}
-\title{Add/Get/Set Environment Variable(s)}
+\title{Interact with Environment Variable(s)}
 \usage{
 get_env_vars(
   name = NULL,
@@ -34,8 +34,8 @@ delete_env_var(
 )
 }
 \arguments{
-\item{name}{The name of an environment variable. If not set, all env vars
-are returned.}
+\item{name}{Name of an environment variable. If not set, all env vars are
+returned.}
 
 \item{repo}{The Circle CI project. By default the current directory name will be used.}
 
@@ -53,6 +53,18 @@ and its value.}
 \item{quiet}{If `TRUE`, console output is suppressed.}
 }
 \description{
-Add/Get/Set Circle CI environment variable(s) for a specific
-  repo on Circle CI.
+Add/Get/Set Circle CI environment variable(s) for a repo on
+  Circle CI.
+}
+\examples{
+\dontrun{
+ # get env var
+ get_env_vars()
+
+ # set env var
+ set_env_var(var = list("foo" = "123"))
+
+ # delete env var
+ delete_env_var("foo")
+}
 }
