@@ -20,6 +20,6 @@ test_that("s3 print method for 'circle_job' works", {
   out <- get_jobs(repo = repo, user = user)
   capture.output(expect_message(
     print(out),
-    "A collection of 15 Circle CI jobs"
+    "A collection of 10 Circle CI jobs"
   ))
 })
