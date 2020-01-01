@@ -6,7 +6,7 @@ setwd("./travis-testthat")
 test_that("get_jobs() works", {
   out <- suppressMessages(get_jobs(repo = repo, user = user))
 
-  expect_is(out, "list")
+  expect_is(out, "circle_collection")
 })
 
 test_that("getting job artifacts works", {
