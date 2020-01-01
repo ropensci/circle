@@ -8,6 +8,14 @@ test_that("s3 print method for 'circle_pipeline' works", {
   ))
 })
 
+test_that("s3 print method for 'circle_collection' works if class != 'circle_pipelines'", { # nolint
+  out <- get_workflows(repo = repo, user = user)
+  capture.output(expect_message(
+    print(out),
+    "A collection of 10 Circle CI workflows"
+  ))
+})
+
 test_that("s3 print method for 'circle_workflow' works", {
   wf <- get_workflows(repo = repo, user = user)
   capture.output(expect_message(

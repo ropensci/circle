@@ -106,7 +106,7 @@ format.circle_job <- function(x, ...) {
 
 bullets <- function(x) {
   if (length(x) == 0) {
-    return(character())
+    return(character()) # nocov
   }
   paste0("- ", x, "\n\n", collapse = "")
 }
@@ -114,7 +114,7 @@ bullets <- function(x) {
 shorten <- function(x, n_max = 6) {
 
   if (length(x) > n_max) {
-    c(x[seq_len(n_max - 1)], "...")
+    c(x[seq_len(n_max - 1)], "...") # nocov
   } else {
     x
   }
@@ -127,23 +127,7 @@ key_value <- function(x) {
   )
 }
 
-#' @export
-format.circle <- function(x, ..., short = FALSE) {
-  kv <- key_value(shorten(x))
-  if (short) {
-    paste0(kv, collapse = ", ")
-  } else {
-    bullets(kv)
-  }
-}
-
 # ------------------------------------------------------------------------------
-
-#' @export
-print.circle <- function(x, ...) {
-  cat(format(x))
-  invisible(x)
-}
 
 #' @export
 print.circle_job <- function(x, ...) {
