@@ -16,3 +16,4 @@ knitreadme.sh
 ^\.lintr$
 ^codemeta\.json$
 ^\.github$
+^pkgdown$
