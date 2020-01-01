@@ -37,7 +37,7 @@ get_remote_url <- function(path) {
   r <- git2r::repository(path, discover = TRUE)
   remote_names <- git2r::remotes(r)
   if (!length(remote_names)) {
-    stop("Failed to lookup git remotes")
+    stop("Failed to lookup git remotes") # nocov
   }
   remote_name <- "origin"
   if (!("origin" %in% remote_names)) { # nocov start
@@ -54,7 +54,7 @@ extract_repo <- function(url) {
   match <- regmatches(url, m)[[1]]
 
   if (length(match) == 0) {
-    stop("Unrecognized repo format: ", url)
+    stop("Unrecognized repo format: ", url) # nocov
   }
 
   paste0(match[2], "/", match[3])
