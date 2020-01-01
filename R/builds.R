@@ -1,5 +1,5 @@
 #' @title Get builds from Circle CI
-#' @description Queries single builds from Circle CI pipeline runs
+#' @description Queries pipelines/workflows/jobs from Circle CI.
 #'
 #' @template repo
 #' @template user
@@ -10,6 +10,12 @@
 #'
 #' @name builds
 #' @export
+#' @examples
+#' pipelines <- get_pipelines()
+#'
+#' workflows <- get_workflows()
+#'
+#' jobs <- get_jobs()
 get_pipelines <- function(repo = NULL,
                           user = github_info()$owner$login,
                           limit = 30,

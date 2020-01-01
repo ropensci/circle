@@ -1,15 +1,15 @@
 #' @title Set up deployment between Circle CI builds and Github repositories
-#' @description Checks and eventually creates a "github user key" to enable
+#' @description Checks and eventually creates a "user-key" to enable
 #'   deployment from Circle CI builds.
 #' @template repo
 #' @template user
 #'
 #' @details
 #' The easiest way to achieve a deployment from Circle CI builds to a Github
-#' repo is by creating a so called "github user key" with your Circle CI
-#' account.
+#' repo is by creating a so called "user-key" with your Circle CI
+#' account. Essentially, this is a SSH key pair.
 #'
-#' This function checks for the presence of such and creates one, if missing.
+#' This function checks for the presence of such and, if missing, creates one.
 #'
 #' If the repo has not been enabled yet on Circle CI, please run `enable_repo()`
 #' first. Also to be able to log in to Github, you will need to have a

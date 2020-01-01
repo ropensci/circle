@@ -1,8 +1,8 @@
-#' @title Add/Get/Set Environment Variable(s)
-#' @description Add/Get/Set Circle CI environment variable(s) for a specific
-#'   repo on Circle CI.
-#' @param name The name of an environment variable. If not set, all env vars
-#'   are returned.
+#' @title Interact with Environment Variable(s)
+#' @description Add/Get/Set Circle CI environment variable(s) for a repo on
+#'   Circle CI.
+#' @param name Name of an environment variable. If not set, all env vars are
+#'   returned.
 #' @template repo
 #' @template user
 #' @template vcs
@@ -12,6 +12,17 @@
 #' @template quiet
 #' @name env_var
 #' @export
+#' #' @examples
+#' \dontrun{
+#'  # get env var
+#'  get_env_vars()
+#'
+#'  # set env var
+#'  set_env_var(var = list("foo" = "123"))
+#'
+#'  # delete env var
+#'  delete_env_var("foo")
+#' }
 get_env_vars <- function(name = NULL,
                          repo = github_info()$name,
                          user = get_user()$content$login,

@@ -1,6 +1,6 @@
-#' Authenticate to circle
+#' Authenticate to Circle CI
 #' @description
-#'   A circle API Key is needed to interact with the circle API.
+#'   A circle API Key is needed to interact with the Circle CI API.
 #'   `browse_circle_token()` opens a browser window for the respective circle
 #'   endpoint. On this site, you can copy your personal API key and then follow
 #'   the instructions of the console output or the ones shown below.
@@ -8,7 +8,7 @@
 #' @import cli
 #' @section Store API Key:
 #'
-#'   The `circle` package supports two ways of storing the circle API key(s):
+#'   The `circle` package supports two ways of storing the Circle API key(s):
 #'
 #'   - via env vars `R_CIRCLE`
 #'   - via `~/.circleci/cli.yml`
@@ -30,7 +30,13 @@
 #'      ```
 #'
 #' @export
+#' @examples
 #'
+#' \dontrun{
+#' browse_github_token()
+#'
+#' edit_circle_config()
+#' }
 browse_circle_token <- function() { # nocov start
 
   cli_alert("Querying API token...")

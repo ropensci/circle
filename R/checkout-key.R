@@ -10,6 +10,14 @@
 #' @template api_version
 #' @name checkout_key
 #' @export
+#' @examples
+#' \dontrun{
+#' create_checkout_key()
+#'
+#' # create only a 'deploy key' pair
+#'
+#' create_checkout_key(type = "deploy-key")
+#' }
 create_checkout_key <- function(repo = github_info()$name,
                                 user = github_info()$owner$login,
                                 type = "user-key",
@@ -34,6 +42,10 @@ create_checkout_key <- function(repo = github_info()$name,
 #'
 #' @rdname checkout_key
 #' @export
+#' @examples
+#' \dontrun{
+#' get_checkout_keys()
+#' }
 get_checkout_keys <- function(repo = github_info()$name,
                               user = github_info()$owner$login,
                               vcs_type = "gh",
@@ -59,6 +71,10 @@ get_checkout_keys <- function(repo = github_info()$name,
 #'
 #' @rdname checkout_key
 #' @export
+#' @examples
+#' \dontrun{
+#' delete_checkout_key()
+#' }
 delete_checkout_key <- function(fingerprint = NULL,
                                 repo = github_info()$name,
                                 user = github_info()$owner$login,
@@ -98,11 +114,16 @@ delete_checkout_key <- function(fingerprint = NULL,
   return(resp)
 }
 
-#' Check if a specific key type exists in the Circle CI project
+#' Check SSH key existence
+#' @description Check if a specific key type exists in the Circle CI project
 #'
 #' @param preferred Checks whether the requested type is the "preferred" key.
 #' @rdname checkout_key
 #' @export
+#' @examples
+#' \dontrun{
+#' has_checkout_key()
+#' }
 has_checkout_key <- function(repo = github_info()$name,
                              user = github_info()$owner$login,
                              type = "github-user-key",

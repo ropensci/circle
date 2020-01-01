@@ -14,21 +14,21 @@ get_user <- function() {
   return(out)
 }
 
-#' @title List repos
-#' @description Retrieve a list of Circle CI repos for the authenticated
+#' @title List repository
+#' @description Retrieve a list of Circle CI repository for the authenticated
 #'   user.
 #' @template repo
 #' @template user
-#' @details Retrieves a very detailed list of repos and repo-related
-#'   information for all Circle CI repos attached to the current user.
+#' @details Retrieves a very detailed list of repository and repo-related
+#'   information for all Circle CI repository attached to the current user.
 #'
 #'   This endpoint uses API v1.1 and will probably be removed in the near
 #'   future.
-#' @return A list of `circle_repo`s.
-#' @seealso [get_builds()], [get_pipelines()]
+#' @return An object of class `circle_api`.
+#' @seealso [get_pipelines()], [get_workflows()], [get_jobs()]
 #' @examples
 #' \dontrun{
-#' repos <- list_repos()
+#' list_projects()
 #' }
 #' @export
 list_projects <- function(repo = github_info()$name,
@@ -57,7 +57,8 @@ list_projects <- function(repo = github_info()$name,
 #' @return A list of build artifacts
 #' @examples
 #' \dontrun{
-#' list_artifacts(get_builds()[["1"]]$build)
+#' job_id <- get_jobs()[[1]]$id
+#' get_build_artifacts(job_id)
 #' }
 #' @export
 get_build_artifacts <- function(job_id = NULL,
@@ -152,41 +153,4 @@ enable_repo <- function(repo = github_info()$name,
   cli_text("Successfully enabled repo '{user}/{repo}' on Circle CI.")
 
   return(invisible(TRUE))
-}
-
-#' @title Delete repo Cache
-#' @description Delete repo cache
-#' @details Delete the repo cache for a specified Circle CI repo.
-#' @template repo
-#' @template user
-#' @template vcs
-#' @return A logical.
-#' @examples
-#' \dontrun{
-#' delete_cache(list_repos()[[1]])
-#' }
-#' @export
-delete_cache <- function(repo = github_info()$name,
-                         user = github_info()$owner$login,
-                         vcs_type = "gh") {
-
-  resp <- circle("DELETE",
-    path = sprintf(
-      "/repo/%s/%s/%s/build-cache",
-      vcs_type,
-      user,
-      repo
-    ),
-    api_version = "v1.1"
-  )
-
-  stop_for_status(
-    resp$response,
-    sprintf("enable repo %s on Circle CI", repo)
-  )
-
-  out <- jsonlite::fromJSON(content(out$response, "text"),
-    simplifyVector = FALSE
-  )
-  return(out$status)
 }

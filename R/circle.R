@@ -14,7 +14,7 @@ NULL
 
 #' @title Circle CI HTTP Requests
 #'
-#' @description This is the workhorse function for executing API requests for
+#' @description Workhorse function for executing API requests on
 #'   Circle CI.
 #'
 #' @import httr
@@ -36,6 +36,10 @@ NULL
 #' @return The JSON response, or the relevant error.
 #'
 #' @export
+#' @examples
+#' \dontrun{
+#' circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
+#' }
 circle <- function(verb = "GET",
                    path = "",
                    query = list(),
