@@ -10,6 +10,7 @@ repos:
     -   id: no-browser-statement
     -   id: readme-rmd-rendered
     #-   id: roxygenize
+    -   id: codemeta-description-updated
     -   id: use-tidy-description
 -   repo: https://github.com/lorenzwalthert/precommit-markdown-link-check
     rev: v0.0.0.9002  # Use the sha / tag you want to point at
