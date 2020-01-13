@@ -25,7 +25,7 @@
 #' }
 get_env_vars <- function(name = NULL,
                          repo = github_info()$name,
-                         user = get_user()$content$login,
+                         user = github_info()$owner$login,
                          vcs_type = "gh",
                          api_version = "v2") {
 
@@ -69,7 +69,7 @@ get_env_vars <- function(name = NULL,
 #' @export
 set_env_var <- function(var,
                         repo = github_info()$name,
-                        user = get_user()$content$login,
+                        user = github_info()$owner$login,
                         vcs_type = "gh",
                         api_version = "v2",
                         quiet = FALSE) {
@@ -109,7 +109,7 @@ set_env_var <- function(var,
 #' @rdname env_var
 #' @export
 delete_env_var <- function(var, repo = github_info()$name,
-                           user = get_user()$content$login,
+                           user = github_info()$owner$login,
                            vcs_type = "gh",
                            api_version = "v2",
                            quiet = FALSE) {

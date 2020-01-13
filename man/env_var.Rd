@@ -10,7 +10,7 @@
 get_env_vars(
   name = NULL,
   repo = github_info()$name,
-  user = get_user()$content$login,
+  user = github_info()$owner$login,
   vcs_type = "gh",
   api_version = "v2"
 )
@@ -18,7 +18,7 @@ get_env_vars(
 set_env_var(
   var,
   repo = github_info()$name,
-  user = get_user()$content$login,
+  user = github_info()$owner$login,
   vcs_type = "gh",
   api_version = "v2",
   quiet = FALSE
@@ -27,7 +27,7 @@ set_env_var(
 delete_env_var(
   var,
   repo = github_info()$name,
-  user = get_user()$content$login,
+  user = github_info()$owner$login,
   vcs_type = "gh",
   api_version = "v2",
   quiet = FALSE
