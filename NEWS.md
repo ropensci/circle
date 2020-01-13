@@ -1,4 +1,6 @@
-# circle (development version)
+# circle 0.5.0.9001
+
+* `*_env_var()`: Use owner info instead of user info to query repo
 
 # circle 0.5.0
 
