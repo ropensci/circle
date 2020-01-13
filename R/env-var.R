@@ -66,6 +66,7 @@ get_env_vars <- function(name = NULL,
 }
 
 #' @rdname env_var
+#' @export
 set_env_var <- function(var,
                         repo = github_info()$name,
                         user = get_user()$content$login,
