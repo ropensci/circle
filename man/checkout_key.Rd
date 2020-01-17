@@ -45,7 +45,7 @@ has_checkout_key(
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 
-\item{type}{Type of key to add. Options are "github-user-key" and
+\item{type}{Type of key to add. Options are "user-key" and
 "deploy-key".}
 
 \item{api_version}{A character string specifying the Circle CI API version.

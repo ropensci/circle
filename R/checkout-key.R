@@ -3,7 +3,7 @@
 #' @template repo
 #' @template user
 #' @template vcs
-#' @param type Type of key to add. Options are "github-user-key" and
+#' @param type Type of key to add. Options are "user-key" and
 #'   "deploy-key".
 #' @param fingerprint The fingerprint of the checkout key which should be
 #'   deleted.
