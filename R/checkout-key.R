@@ -35,6 +35,11 @@ create_checkout_key <- function(repo = github_info()$name,
     body = list(type = type), api_version = api_version
   )
 
+  stop_for_status(
+    resp$response,
+    sprintf("creating checkout keys for repo %s/%s on Circle CI", user, repo)
+  )
+
   return(resp)
 }
 
