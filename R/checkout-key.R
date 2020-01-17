@@ -131,7 +131,7 @@ delete_checkout_key <- function(fingerprint = NULL,
 #' }
 has_checkout_key <- function(repo = github_info()$name,
                              user = github_info()$owner$login,
-                             type = "github-user-key",
+                             type = "user-key",
                              vcs_type = "gh",
                              preferred = "true") {
 
