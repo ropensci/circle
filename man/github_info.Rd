@@ -5,7 +5,7 @@
 \alias{github_repo}
 \title{Github information}
 \usage{
-github_info(path = rprojroot::find_package_root_file())
+github_info(path = usethis::proj_get())
 
 github_repo(path = usethis::proj_get(), info = github_info(path))
 }

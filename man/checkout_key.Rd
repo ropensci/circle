@@ -35,7 +35,7 @@ delete_checkout_key(
 has_checkout_key(
   repo = github_info()$name,
   user = github_info()$owner$login,
-  type = "user-key",
+  type = "github-user-key",
   vcs_type = "gh",
   preferred = "true"
 )

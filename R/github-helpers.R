@@ -8,7 +8,7 @@
 #' @param path `[string]`\cr
 #'   The path to a GitHub-enabled Git repository (or a subdirectory thereof).
 #' @family GitHub functions
-github_info <- function(path = rprojroot::find_package_root_file()) {
+github_info <- function(path = usethis::proj_get()) {
   remote_url <- get_remote_url(path)
   repo <- extract_repo(remote_url)
   get_repo_data(repo)
