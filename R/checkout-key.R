@@ -26,7 +26,7 @@ create_checkout_key <- function(repo = github_info()$name,
 
   if (type == "deploy-key") { # nocov start
     cli_alert_warning("Note that, despite the name, a 'deploy-key' does not
-    grant permissions for build deployments to Github. Use a 'github-user-key'
+    grant permissions for build deployments to Github. Use a 'user-key'
     instead.")
   } # nocov end
 

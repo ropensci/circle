@@ -51,7 +51,7 @@ use_circle_deploy <- function(repo = github_info()$name,
     create_checkout_key(user = user, repo = repo, type = "user-key")
     rule()
     cli_alert_success(
-      "Added a 'github user key' to project '{user}/{repo}' on Circle CI.
+      "Added a 'user key' to project '{user}/{repo}' on Circle CI.
       This enables deployment from builds.",
       wrap = TRUE
     )
