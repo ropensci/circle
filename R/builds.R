@@ -55,9 +55,9 @@ get_workflows <- function(pipeline_id = NULL,
     cli_text("{.fun get_pipelines}: ID not given, querying 10 most recent
              pipelines.")
 
-    pipeline_id <- sapply(seq_along(1:10), function(x) {
+    pipeline_id <- vapply(seq_along(1:10), function(x) {
       get_pipelines(repo = repo, user = user)[[x]]$id
-    })
+    }, FUN.VALUE = character(1))
   }
 
   resp <- lapply(pipeline_id, function(x) {
@@ -96,7 +96,9 @@ get_jobs <- function(workflow_id = NULL,
              recent workflows.")
 
     workflow_id <- get_workflows(repo = repo, user = user)
-    workflow_id <- sapply(workflow_id, function(x) x$id)
+    workflow_id <- vapply(workflow_id, function(x) x$id,
+      FUN.VALUE = character(1)
+    )
   }
 
   resp <- lapply(workflow_id, function(x) {
