@@ -17,21 +17,31 @@ footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.o
 
 R client package for the Circle CI REST API
 
-Most functionality is tailored towards the Circle CI [API
+This package aims to execute tasks such as build restarts, log queries
+or setting environment variables for the CI service provider [Circlei
+CI](https://circleci.com/) from within R. It also simplifies the setup
+process for build deployments via `use_circle_deploy()`.
+
+{circle} does not come with an option to setup Circle CI YAML files.
+Please see the related [{tic}](https://github.com/ropensci/tic) package
+for such functionality.
+
+## API versions
+
+All functionality uses the Circle CI [API
 v2](https://github.com/CircleCI-Public/api-preview-docs) which follows
-the
+the **pipelines** -\> **workflows** -\> **jobs** approach. This API
+version is still in beta and might undergo some changes in the near
+future.
 
-**pipelines** -\> **workflows** -\> **jobs**
-
-approach
-
-Most functions have already been ported to the new API v2. The only
-function which is still running via API v1.1 is `enable_repo()` since no
-v2 equivalent exists for this function yet.
+Some functions can also be used via API versions v1.1 and v1 via the
+`api_version` argument. However, this will only work if the respective
+endpoints are available for both API versions. There should be no need
+in practice to this.
 
 If you want to get more information, have a look at the [document
 explaining changes between v1.1 and
-v2.](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
+v2](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
 
 ## Installation
 
