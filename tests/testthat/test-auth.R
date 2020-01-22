@@ -1,11 +1,13 @@
-context("authentication")
+withr::with_dir(
+  "travis-testthat",
+  {
+    test_that("Circle enable works", {
+      skip_on_cran()
 
-setwd("./travis-testthat")
+      # enable
+      foo <- suppressMessages(enable_repo())
 
-test_that("Circle enable works", {
-
-  # enable
-  foo <- suppressMessages(enable_repo(repo = repo, user = user))
-
-  expect_true(foo)
-})
+      expect_true(foo)
+    })
+  }
+)

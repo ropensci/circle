@@ -1,28 +1,32 @@
-context("builds")
+withr::with_dir(
+  "travis-testthat",
+  {
+    # calls `get_workflows()` and `get_pipelines()` automatically
+    test_that("get_jobs() works", {
+      skip_on_cran()
 
-setwd("./travis-testthat")
+      out <- suppressMessages(get_jobs())
 
-# calls `get_workflows()` and `get_pipelines()` automatically
-test_that("get_jobs() works", {
-  out <- suppressMessages(get_jobs(repo = repo, user = user))
+      expect_is(out, "circle_collection")
+    })
 
-  expect_is(out, "circle_collection")
-})
+    test_that("getting job artifacts works", {
+      skip_on_cran()
 
-test_that("getting job artifacts works", {
-  expect_s3_class(
-    get_build_artifacts(repo = repo, user = user),
-    "circle_api"
-  )
-})
+      expect_s3_class(
+        get_build_artifacts(),
+        "circle_api"
+      )
+    })
 
-test_that("restarting a workflow works", {
-  workflow_id <- suppressMessages(get_workflows(
-    repo = repo,
-    user = user
-  ))[[10]]$id
-  expect_s3_class(
-    retry_workflow(workflow_id),
-    "circle_api"
-  )
-})
+    test_that("restarting a workflow works", {
+      skip_on_cran()
+
+      workflow_id <- suppressMessages(get_workflows())[[10]]$id
+      expect_s3_class(
+        retry_workflow(workflow_id),
+        "circle_api"
+      )
+    })
+  }
+)

@@ -4,30 +4,32 @@ withr::with_dir(
   "travis-testthat",
   {
     test_that("get_user() works", {
+      skip_on_cran()
+
       expect_s3_class(get_user(), "circle_user")
     })
 
     test_that("list_projects() works", {
+      skip_on_cran()
+
       expect_s3_class(
-        list_projects(
-          repo = repo,
-          user = user
-        ),
+        list_projects(),
         "circle_api"
       )
     })
 
     test_that("triggering a new build works", {
+      skip_on_cran()
+
       expect_s3_class(
-        new_build(
-          repo = repo,
-          user = user
-        ),
+        new_build(),
         "circle_api"
       )
     })
 
     test_that("checking the existence of checkout keys works", {
+      skip_on_cran()
+
       expect_true(
         has_checkout_key()
       )
