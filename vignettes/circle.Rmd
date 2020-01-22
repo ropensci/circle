@@ -16,9 +16,20 @@ knitr::opts_chunk$set(
 
 # Authentication
 
-The first time any function is called, it will check for the existence of a Circle API key (for the respective endpoint).
-This is a one-time procedure and needs to be done for each endpoint `.org` and `.com`.
-The API key will be stored locally in `~/.circleci/cli.yml`.
+To get started with Circle CI on Github, make sure to install the [Circle CI Github App](https://github.com/marketplace/circleci) and configure the "Free" plan for your account.
+
+The first time any {circle} function is called, it will check for the existence of a Circle API key.
+This API key is needed to securely talk to the Circle CI API and make requests.
+There are two ways you can store the API key:
+  - In `~/.circleci/cli.yml` via the following pattern
+   
+   ```yml
+   host: https://circleci.com
+   endpoint: graphql-unstable
+   token: <token>
+   ```
+   
+  - Via environment variable `R_CIRCLE` in `~/.Renviron` (recommended)
 
 In addition, {circle} scrapes information about the current repository from Github.
 To be able to do this, a `GITHUB_TOKEN` is needed.
@@ -50,9 +61,9 @@ Checkout keys are used to checkout your repository so that the build is starting
 If you've connected Circle CI to Github already, you will have a "deploy key" stored in every repository to be able to checkout the code.
 
 However, this key does not have enough permissions to also deploy from builds.
-To enable deployment, a "github-user-key" is needed. 
+To enable deployment, a "user-key" is needed. 
 This key can be added using `use_circle_deploy()`.
-This function will add a so called "github user key" to the settings of the repo on Circle CI.
+This function will add a so called "user key" to the settings of the repo on Circle CI.
 In addition, a SSH key with read/write permissions will be added to your Github profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
 
 ### SSH keys
