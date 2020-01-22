@@ -32,6 +32,15 @@ with test cases included are easier to accept.
 current development version header describing the changes made followed by your
 GitHub username, and links to relevant issue(s)/PR(s).
 
+### Testing the package
+
+This package cannot be tested locally by other people than @pat-s since its functionality relies on private API keys.
+These are stored as secure environment variables on the configured CI providers.
+Hence, to test your build, push your changes and have a look at the CI run whether the test are passing.
+
+During testing, a git repo (`pat-s/travis-testthat`) is initialized and all tests are run on this repo.
+The reasoning for this is that starting new builds and restarting old builds should not happen in a production repository.
+
 ### Code of Conduct
 
 Please note that the circle project is released with a
