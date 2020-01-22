@@ -36,8 +36,8 @@ future.
 
 Some functions can also be used via API versions v1.1 and v1 via the
 `api_version` argument. However, this will only work if the respective
-endpoints are available for both API versions. There should be no need
-in practice to this.
+endpoints are available for both API versions. Usually, there should be
+no need in practice to fall back to API version \< 2.
 
 If you want to get more information, have a look at the [document
 explaining changes between v1.1 and
