@@ -47,6 +47,13 @@ See the [Getting
 Started](https://ropenscilabs.github.io/circle/articles/circle.html)
 vignette for an introduction.
 
+## Note to developers
+
+This packages relies on using API keys to test its functionality. Please
+have a look at section [“Testing the
+package”](https://github.com/ropenscilabs/circle/blob/master/.github/CONTRIBUTING.md#testing-the-package)
+for more information.
+
 # Acknowledgments
 
 This package was inspired by the work of [Thomas J.
