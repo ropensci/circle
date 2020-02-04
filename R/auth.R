@@ -41,7 +41,7 @@ browse_circle_token <- function() { # nocov start
 
   cli_alert("Querying API token...")
   cli_text("Opening URL {.url
-    https://circle-ci{endpoint}/account/preferences}.")
+    https://circleci.com/account/api}.")
   utils::browseURL("https://circleci.com/account/api")
   cli_alert("Call {.fun circle::edit_circle_config} to open
     {.file ~/.circleci/cli.yml} or {.fun edit_r_environ} to open
