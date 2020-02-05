@@ -70,17 +70,23 @@ There two different types of keys on Circle CI:
 ### Checkout keys
 
 Checkout keys are used to checkout your repository so that the build is starting.
+These kind of keys how only "read" permissions but are not allow to "write" to your repository.
 If you've connected Circle CI to Github already, you will have a "deploy key" stored in every repository to be able to checkout the code.
+The name "deploy" key here is a bit misleading since they **cannot** be used for deploying from builds.
 
-However, this key does not have enough permissions to also deploy from builds.
-To enable deployment, a "user-key" is needed. 
+To enable deployment, a "user-key" is needed which has also "write" permissions.
 This key can be added using `use_circle_deploy()`.
 This function will add a so called "user key" to the settings of the repo on Circle CI.
-In addition, a SSH key with read/write permissions will be added to your Github profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
+The private key will be added to your Github profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
+See also [the section about deployment](circle/deployment.html).
 
 ### SSH keys
 
-The private key will be added to your repo setting on Circle CI while the public key will be stored as a "deploy key" in your repository on Github.
+Circle also makes a distinction between "checkout keys" and "SSH keys", both in the API endpoints and in the Circle CI repo settings (menu SSH permissions).
+Since "checkout keys" are also SSH keys, this creates confusion.
+
+So far I could not figure out what the subtle differences here are and what "normal SSH keys" should be used for.
+If you care about build deployments, you are all set when using "checkout keys".
 
 ---
 
