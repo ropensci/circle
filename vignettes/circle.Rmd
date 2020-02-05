@@ -21,6 +21,8 @@ To get started with Circle CI on Github, make sure to install the [Circle CI Git
 The first time any {circle} function is called, it will check for the existence of a Circle API key.
 This API key is needed to securely talk to the Circle CI API and make requests.
 There are two ways you can store the API key:
+
+  - Via environment variable `R_CIRCLE` in `~/.Renviron` (**recommended**)
   - In `~/.circleci/cli.yml` via the following pattern
    
    ```yml
@@ -29,8 +31,6 @@ There are two ways you can store the API key:
    token: <token>
    ```
    
-  - Via environment variable `R_CIRCLE` in `~/.Renviron` (recommended)
-
 In addition, {circle} scrapes information about the current repository from Github.
 To be able to do this, a `GITHUB_TOKEN` is needed.
 You can create one using `usethis::browse_github_token()` if you haven't done so yet.
@@ -46,6 +46,18 @@ circle::use_circle_deploy()
 ✔ Added a 'user key' to project '<repo-slug>' on Circle CI. 
 This enables deployment from builds.
 ```
+
+This will generate an SSH key pair, store the public key in the Circle CI repo and the private key in your Github account under "Settings -> SSH and GPG keys".
+
+To double-check, you now should have a "user-key" in your Circle CI repo settings under the menu point "Checkout keys".
+It does not matter if another "deploy key" exists.
+The important point is that the "user key" is set as "preferred".
+
+```{r, echo=FALSE, fig.cap="Fig.1: Screenshot showing an existing user key for repository 'ropenscilabs/circle'"}
+knitr::include_graphics("../man/figures/user-key.png")
+```
+
+If you haven't set a "user-key" yet, there will be a button on this page "Add User Key" which will do exactly the same as `circle::use_circle_deploy()`.
 
 ## Deployment keys
 
