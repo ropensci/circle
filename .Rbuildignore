@@ -17,3 +17,4 @@ knitreadme.sh
 ^codemeta\.json$
 ^\.github$
 ^pkgdown$
+^\.ccache$
