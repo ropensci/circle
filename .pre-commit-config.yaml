@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/lorenzwalthert/pre-commit-hooks
-    rev: v0.0.0.9027
+    rev: v0.1.2
     hooks:
     -   id: style-files
         args: [--style_fun=tidyverse_style]
