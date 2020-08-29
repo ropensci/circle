@@ -29,7 +29,7 @@ withr::with_dir(
 
       # also delete GH SHH key
       foo <- gh::gh("GET /user/keys",
-        .token = Sys.getenv("GH_TOKEN_CHECKOUT_KEY")
+        .token = Sys.getenv("GH_TOKEN")
       )
       # get id of last added key
       key_id <- vapply(foo, function(x) x$id,
@@ -38,7 +38,7 @@ withr::with_dir(
 
       gh::gh("DELETE /user/keys/:key_id",
         key_id = key_id,
-        .token = Sys.getenv("GH_TOKEN_CHECKOUT_KEY")
+        .token = Sys.getenv("GH_TOKEN")
       )
     })
   }
