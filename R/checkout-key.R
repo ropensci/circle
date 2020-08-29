@@ -35,9 +35,19 @@ create_checkout_key <- function(repo = github_info()$name,
     body = list(type = type), api_version = api_version
   )
 
+  if (status_code(resp$response) == 500) {
+    cli_alert_warning("This error usually occurs if authorization with GitHub
+      was not yet granted for Circle CI projects.
+      Go to {.field Project Settins -> SSH Keys -> User Key ->
+      Authorize with GitHub}.
+      This should only be required once.
+      See {.url https://discuss.circleci.com/t/rest-api-cant-create-a-project-user-checkout-key/934/4}
+      for more information", wrap = TRUE)
+  }
+
   stop_for_status(
     resp$response,
-    sprintf("creating checkout keys for repo %s/%s on Circle CI", user, repo)
+    sprintf("create checkout keys for repo %s/%s on Circle CI", user, repo)
   )
 
   return(resp)
