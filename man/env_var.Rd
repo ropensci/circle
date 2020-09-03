@@ -37,7 +37,8 @@ delete_env_var(
 \item{name}{Name of an environment variable. If not set, all env vars are
 returned.}
 
-\item{repo}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will
+be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 

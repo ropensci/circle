@@ -7,7 +7,8 @@
 list_projects(repo = github_info()$name, user = github_info()$owner$login)
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will be used.}
+\item{repo}{The Circle CI project. By default the current directory name will
+be used.}
 
 \item{user}{The username for the repository. By default queried using `get_user()`.}
 }

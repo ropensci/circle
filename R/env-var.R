@@ -3,7 +3,8 @@
 #'   Circle CI.
 #' @param name Name of an environment variable. If not set, all env vars are
 #'   returned.
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @template vcs
 #' @param var A list containing key-value pairs of environment variable

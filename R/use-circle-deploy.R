@@ -1,7 +1,8 @@
 #' @title Set up deployment between Circle CI builds and Github repositories
 #' @description Checks and eventually creates a "user-key" to enable
 #'   deployment from Circle CI builds.
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #'
 #' @details
