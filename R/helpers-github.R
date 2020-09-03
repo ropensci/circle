@@ -294,3 +294,7 @@ get_repo_slug <- function(remote = "origin") {
     remote = remote
   )$full_name
 }
+
+stopc <- function(...) {
+  stop(..., call. = FALSE, domain = NA)
+}
