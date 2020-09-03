@@ -14,6 +14,6 @@ Retrieve details about the authenticated Circle CI user.
 }
 \examples{
 \dontrun{
-get_user()
+get_circle_user()
 }
 }

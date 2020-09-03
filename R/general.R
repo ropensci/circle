@@ -3,7 +3,7 @@
 #' @return A list of class `circle_user`.
 #' @examples
 #' \dontrun{
-#' get_user()
+#' get_circle_user()
 #' }
 #' @export
 get_circle_user <- function() {
