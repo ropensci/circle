@@ -6,7 +6,7 @@
 #' get_user()
 #' }
 #' @export
-get_user <- function() {
+get_circle_user <- function() {
   # GET: /me
   # Provides information about the signed in user.
   resp <- circle("GET", path = "/me")
