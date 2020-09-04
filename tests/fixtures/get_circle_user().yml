@@ -1,0 +1,41 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/me?circle-token=R_CIRCLE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Fri, 04 Sep 2020 19:27:47 GMT
+      server: nginx
+      set-cookie: ring-session=3uwPn2hvYellqHs9RZixBdyDQVJlabcJ0G%2BdCd7Qp8gaikpFm8vhGnY%2BJDH%2BpZ0j2WkOwLL9A0JVFakOAHoufMa2gzOHJLgk2QVvBphhnlvhhQKIwWqlF1pHTmPFPZ96K8W9yvK%2F735ps7bgNxFpRtxzSbdIv3uNy1XxJayDfBj9hVCUoT2ASaMBT5dX5ikFjwZBHI%2FeL%2FqxStju0RDFqaFk0z3eqSNkbPulHk9%2FI9E%3D--RLLbikS6RWPJLLlp2ewa7e5wAXPlQavJu7Tni1tnovo%3D;Path=/;HttpOnly;Expires=Sat,
+        04 Sep 2021 14:07:17 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-7778bddccf-stkh6
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 8d05635c-0d9f-4c8e-8a1a-53de4b4381e9
+      x-route: /api/v2/me
+      content-length: '101'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"name":"Patrick Schratz","login":"pat-s","id":"9c373331-d0f7-45e1-afe6-4a5c75e00d10"}'
+  recorded_at: 2020-09-04 19:27:47 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
