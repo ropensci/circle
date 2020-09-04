@@ -34,4 +34,3 @@ The Github remote which should be used. Defaults to "origin".}
 - `get_repo_slug()`: Returns the repo slug of a Github repo
 (`<owner>/<repo>`).
 }
-\keyword{internal}
