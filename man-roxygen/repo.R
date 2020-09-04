@@ -1,1 +1,2 @@
-#' @param repo The Circle CI project. By default the current directory name will be used.
+#' @param repo `[string]`\cr
+#'   The repository slug to use. Must follow the "`user/repo`" structure.

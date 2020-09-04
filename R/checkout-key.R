@@ -1,6 +1,7 @@
 #' @title Generate/get or delete an checkout Key
 #' @description Functions to interact with "checkout keys" on Circle CI.
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @template vcs
 #' @param type Type of key to add. Options are "user-key" and

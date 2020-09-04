@@ -1,7 +1,8 @@
 #' @title Get builds from Circle CI
 #' @description Queries pipelines/workflows/jobs from Circle CI.
 #'
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @template vcs
 #' @param limit How many builds should be returned? Maximum allowed by Circle is

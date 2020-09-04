@@ -3,10 +3,10 @@
 #' @return A list of class `circle_user`.
 #' @examples
 #' \dontrun{
-#' get_user()
+#' get_circle_user()
 #' }
 #' @export
-get_user <- function() {
+get_circle_user <- function() {
   # GET: /me
   # Provides information about the signed in user.
   resp <- circle("GET", path = "/me")
@@ -17,7 +17,8 @@ get_user <- function() {
 #' @title List repository
 #' @description Retrieve a list of Circle CI repository for the authenticated
 #'   user.
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @details Retrieves a very detailed list of repository and repo-related
 #'   information for all Circle CI repository attached to the current user.
@@ -51,7 +52,8 @@ list_projects <- function(repo = github_info()$name,
 #' @details Retrieves details about artifacts from a specific build.
 #' @param job_id A Circle CI job id.
 #' @template user
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template vcs
 #' @template api_version
 #' @return A list of build artifacts
@@ -86,7 +88,8 @@ get_build_artifacts <- function(job_id = NULL,
 #' @title Trigger build
 #' @description Trigger a new build for a specific repo branch
 #' @details Trigger a new Circle CI build for a specific repo branch.
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @template vcs
 #' @param branch A character string specifying the repository branch.
@@ -121,7 +124,8 @@ new_build <- function(repo = github_info()$name,
 #' @title Enable a repo on Circle CI
 #' @description Follows a repo on Circle CI so that builds can be triggered
 #' @importFrom cli cli_text
-#' @template repo
+#' @param repo The Circle CI project. By default the current directory name will
+#'   be used.
 #' @template user
 #' @template vcs
 #' @template api_version

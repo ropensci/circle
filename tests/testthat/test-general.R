@@ -3,10 +3,10 @@ context("general")
 withr::with_dir(
   "travis-testthat",
   {
-    test_that("get_user() works", {
+    test_that("get_circle_user() works", {
       skip_on_cran()
 
-      expect_s3_class(get_user(), "circle_user")
+      expect_s3_class(get_circle_user(), "circle_user")
     })
 
     test_that("list_projects() works", {

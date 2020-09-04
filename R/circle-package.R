@@ -18,7 +18,7 @@
 #' @examples
 #' \dontrun{
 #' # check to see if you've authenticated correctly
-#' get_user()
+#' get_circle_user()
 #' }
 #'
 #' @docType package
