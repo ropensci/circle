@@ -1,3 +1,9 @@
+# circle 0.5.0.9002
+
+- Copy over GitHub auth and SSH helpers from {travis}
+- print informative message when creating a user key errors with status code 500
+
+
 # circle 0.5.0.9001
 
 * `*_env_var()`: Use owner info instead of user info to query repo
