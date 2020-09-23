@@ -15,7 +15,7 @@ get_owner(remote = "origin")
 
 get_user()
 
-get_repo(remote = "origin")
+get_repo(remote = "origin", .token = NULL)
 
 get_repo_slug(remote = "origin")
 }

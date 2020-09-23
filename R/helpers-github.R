@@ -253,7 +253,7 @@ get_user <- function() {
 #'
 #' @template remote
 #' @rdname github_helpers
-get_repo <- function(remote = "origin") {
+get_repo <- function(remote = "origin", .token = NULL) {
   github_info(
     path = usethis::proj_get(),
     remote = remote,
