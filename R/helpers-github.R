@@ -122,13 +122,15 @@ github_repo <- function(path = usethis::proj_get(),
 #'
 #' @param path `[string]`\cr
 #'   The path to a GitHub-enabled Git repository (or a subdirectory thereof).
+#' @template token
 #' @template remote
 #' @family GitHub functions
 github_info <- function(path = usethis::proj_get(),
-                        remote = "origin") {
+                        remote = "origin",
+                        .token = NULL) {
   remote_url <- get_remote_url(path, remote)
   repo <- extract_repo(remote_url)
-  get_repo_data(repo)
+  get_repo_data(repo, .token)
 }
 
 #' @rdname github_info
@@ -146,8 +148,8 @@ uses_github <- function(path = usethis::proj_get()) {
   )
 }
 
-get_repo_data <- function(repo) {
-  req <- gh::gh("/repos/:repo", repo = repo)
+get_repo_data <- function(repo, .token = NULL) {
+  req <- gh::gh("/repos/:repo", repo = repo, .token = .token)
   return(req)
 }
 
@@ -254,7 +256,8 @@ get_user <- function() {
 get_repo <- function(remote = "origin") {
   github_info(
     path = usethis::proj_get(),
-    remote = remote
+    remote = remote,
+    .token = .token
   )$name
 }
 

@@ -27,7 +27,10 @@ vcr::use_cassette("new_build()", {
   test_that("triggering a new build works", {
     skip_on_cran()
 
-    resp <- new_build()
+    resp <- new_build(
+      repo = github_info(.token = Sys.getenv("PAT_GITHUB"))$name,
+      user = github_info(.token = Sys.getenv("PAT_GITHUB"))$owner$login
+    )
 
     expect_equal(status_code(resp$response), 201)
     expect_match(resp[["content"]][["state"]], "pending")
