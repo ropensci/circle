@@ -1,0 +1,992 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/ropenscilabs/circle
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: https://github.com/r-lib/gh
+      Accept: application/vnd.github.v3+json
+      Authorization: token <<<PAT_GITHUB>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+        X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
+        Deprecation, Sunset
+      cache-control: private, max-age=60, s-maxage=60
+      content-encoding: gzip
+      content-security-policy: default-src 'none'
+      content-type: application/json; charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:13 GMT
+      etag: W/"15f6923db9759a830f1515a59f12e5308f981ec8de3b4a033967d0d39b028263"
+      last-modified: Fri, 04 Sep 2020 11:36:52 GMT
+      referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
+      server: GitHub.com
+      status: 200 OK
+      strict-transport-security: max-age=31536000; includeSubdomains; preload
+      transfer-encoding: chunked
+      vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      - Accept-Encoding
+      x-accepted-oauth-scopes: repo
+      x-content-type-options: nosniff
+      x-frame-options: deny
+      x-github-media-type: github.v3; format=json
+      x-github-request-id: E27D:7C61:0FA1:1168:5F7CC6AE
+      x-oauth-scopes: repo
+      x-ratelimit-limit: '5000'
+      x-ratelimit-remaining: '4909'
+      x-ratelimit-reset: '1602013530'
+      x-ratelimit-used: '91'
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"id":214703960,"node_id":"MDEwOlJlcG9zaXRvcnkyMTQ3MDM5NjA=","name":"circle","full_name":"ropenscilabs/circle","private":false,"owner":{"login":"ropenscilabs","id":16314060,"node_id":"MDEyOk9yZ2FuaXphdGlvbjE2MzE0MDYw","avatar_url":"https://avatars3.githubusercontent.com/u/16314060?v=4","gravatar_id":"","url":"https://api.github.com/users/ropenscilabs","html_url":"https://github.com/ropenscilabs","followers_url":"https://api.github.com/users/ropenscilabs/followers","following_url":"https://api.github.com/users/ropenscilabs/following{/other_user}","gists_url":"https://api.github.com/users/ropenscilabs/gists{/gist_id}","starred_url":"https://api.github.com/users/ropenscilabs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ropenscilabs/subscriptions","organizations_url":"https://api.github.com/users/ropenscilabs/orgs","repos_url":"https://api.github.com/users/ropenscilabs/repos","events_url":"https://api.github.com/users/ropenscilabs/events{/privacy}","received_events_url":"https://api.github.com/users/ropenscilabs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/ropenscilabs/circle","description":"R
+        client package for the Circle CI API","fork":false,"url":"https://api.github.com/repos/ropenscilabs/circle","forks_url":"https://api.github.com/repos/ropenscilabs/circle/forks","keys_url":"https://api.github.com/repos/ropenscilabs/circle/keys{/key_id}","collaborators_url":"https://api.github.com/repos/ropenscilabs/circle/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/ropenscilabs/circle/teams","hooks_url":"https://api.github.com/repos/ropenscilabs/circle/hooks","issue_events_url":"https://api.github.com/repos/ropenscilabs/circle/issues/events{/number}","events_url":"https://api.github.com/repos/ropenscilabs/circle/events","assignees_url":"https://api.github.com/repos/ropenscilabs/circle/assignees{/user}","branches_url":"https://api.github.com/repos/ropenscilabs/circle/branches{/branch}","tags_url":"https://api.github.com/repos/ropenscilabs/circle/tags","blobs_url":"https://api.github.com/repos/ropenscilabs/circle/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/ropenscilabs/circle/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/ropenscilabs/circle/git/refs{/sha}","trees_url":"https://api.github.com/repos/ropenscilabs/circle/git/trees{/sha}","statuses_url":"https://api.github.com/repos/ropenscilabs/circle/statuses/{sha}","languages_url":"https://api.github.com/repos/ropenscilabs/circle/languages","stargazers_url":"https://api.github.com/repos/ropenscilabs/circle/stargazers","contributors_url":"https://api.github.com/repos/ropenscilabs/circle/contributors","subscribers_url":"https://api.github.com/repos/ropenscilabs/circle/subscribers","subscription_url":"https://api.github.com/repos/ropenscilabs/circle/subscription","commits_url":"https://api.github.com/repos/ropenscilabs/circle/commits{/sha}","git_commits_url":"https://api.github.com/repos/ropenscilabs/circle/git/commits{/sha}","comments_url":"https://api.github.com/repos/ropenscilabs/circle/comments{/number}","issue_comment_url":"https://api.github.com/repos/ropenscilabs/circle/issues/comments{/number}","contents_url":"https://api.github.com/repos/ropenscilabs/circle/contents/{+path}","compare_url":"https://api.github.com/repos/ropenscilabs/circle/compare/{base}...{head}","merges_url":"https://api.github.com/repos/ropenscilabs/circle/merges","archive_url":"https://api.github.com/repos/ropenscilabs/circle/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/ropenscilabs/circle/downloads","issues_url":"https://api.github.com/repos/ropenscilabs/circle/issues{/number}","pulls_url":"https://api.github.com/repos/ropenscilabs/circle/pulls{/number}","milestones_url":"https://api.github.com/repos/ropenscilabs/circle/milestones{/number}","notifications_url":"https://api.github.com/repos/ropenscilabs/circle/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/ropenscilabs/circle/labels{/name}","releases_url":"https://api.github.com/repos/ropenscilabs/circle/releases{/id}","deployments_url":"https://api.github.com/repos/ropenscilabs/circle/deployments","created_at":"2019-10-12T19:32:22Z","updated_at":"2020-09-04T11:36:52Z","pushed_at":"2020-10-06T19:20:10Z","git_url":"git://github.com/ropenscilabs/circle.git","ssh_url":"git@github.com:ropenscilabs/circle.git","clone_url":"https://github.com/ropenscilabs/circle.git","svn_url":"https://github.com/ropenscilabs/circle","homepage":"https://docs.ropensci.org/circle","size":700,"stargazers_count":10,"watchers_count":10,"language":"R","has_issues":true,"has_projects":false,"has_downloads":true,"has_wiki":false,"has_pages":true,"forks_count":2,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":{"key":"gpl-3.0","name":"GNU
+        General Public License v3.0","spdx_id":"GPL-3.0","url":"https://api.github.com/licenses/gpl-3.0","node_id":"MDc6TGljZW5zZTk="},"forks":2,"open_issues":0,"watchers":10,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true},"temp_clone_token":"","allow_squash_merge":true,"allow_merge_commit":true,"allow_rebase_merge":false,"delete_branch_on_merge":true,"organization":{"login":"ropenscilabs","id":16314060,"node_id":"MDEyOk9yZ2FuaXphdGlvbjE2MzE0MDYw","avatar_url":"https://avatars3.githubusercontent.com/u/16314060?v=4","gravatar_id":"","url":"https://api.github.com/users/ropenscilabs","html_url":"https://github.com/ropenscilabs","followers_url":"https://api.github.com/users/ropenscilabs/followers","following_url":"https://api.github.com/users/ropenscilabs/following{/other_user}","gists_url":"https://api.github.com/users/ropenscilabs/gists{/gist_id}","starred_url":"https://api.github.com/users/ropenscilabs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ropenscilabs/subscriptions","organizations_url":"https://api.github.com/users/ropenscilabs/orgs","repos_url":"https://api.github.com/users/ropenscilabs/repos","events_url":"https://api.github.com/users/ropenscilabs/events{/privacy}","received_events_url":"https://api.github.com/users/ropenscilabs/received_events","type":"Organization","site_admin":false},"network_count":2,"subscribers_count":1}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://api.github.com/repos/ropenscilabs/circle
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      User-Agent: https://github.com/r-lib/gh
+      Accept: application/vnd.github.v3+json
+      Authorization: token <<<PAT_GITHUB>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-expose-headers: ETag, Link, Location, Retry-After, X-GitHub-OTP,
+        X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type,
+        Deprecation, Sunset
+      cache-control: private, max-age=60, s-maxage=60
+      content-encoding: gzip
+      content-security-policy: default-src 'none'
+      content-type: application/json; charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:14 GMT
+      etag: W/"15f6923db9759a830f1515a59f12e5308f981ec8de3b4a033967d0d39b028263"
+      last-modified: Fri, 04 Sep 2020 11:36:52 GMT
+      referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
+      server: GitHub.com
+      status: 200 OK
+      strict-transport-security: max-age=31536000; includeSubdomains; preload
+      transfer-encoding: chunked
+      vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      - Accept-Encoding
+      x-accepted-oauth-scopes: repo
+      x-content-type-options: nosniff
+      x-frame-options: deny
+      x-github-media-type: github.v3; format=json
+      x-github-request-id: E27D:7C61:0FA4:1198:5F7CC6B5
+      x-oauth-scopes: repo
+      x-ratelimit-limit: '5000'
+      x-ratelimit-remaining: '4908'
+      x-ratelimit-reset: '1602013530'
+      x-ratelimit-used: '92'
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"id":214703960,"node_id":"MDEwOlJlcG9zaXRvcnkyMTQ3MDM5NjA=","name":"circle","full_name":"ropenscilabs/circle","private":false,"owner":{"login":"ropenscilabs","id":16314060,"node_id":"MDEyOk9yZ2FuaXphdGlvbjE2MzE0MDYw","avatar_url":"https://avatars3.githubusercontent.com/u/16314060?v=4","gravatar_id":"","url":"https://api.github.com/users/ropenscilabs","html_url":"https://github.com/ropenscilabs","followers_url":"https://api.github.com/users/ropenscilabs/followers","following_url":"https://api.github.com/users/ropenscilabs/following{/other_user}","gists_url":"https://api.github.com/users/ropenscilabs/gists{/gist_id}","starred_url":"https://api.github.com/users/ropenscilabs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ropenscilabs/subscriptions","organizations_url":"https://api.github.com/users/ropenscilabs/orgs","repos_url":"https://api.github.com/users/ropenscilabs/repos","events_url":"https://api.github.com/users/ropenscilabs/events{/privacy}","received_events_url":"https://api.github.com/users/ropenscilabs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/ropenscilabs/circle","description":"R
+        client package for the Circle CI API","fork":false,"url":"https://api.github.com/repos/ropenscilabs/circle","forks_url":"https://api.github.com/repos/ropenscilabs/circle/forks","keys_url":"https://api.github.com/repos/ropenscilabs/circle/keys{/key_id}","collaborators_url":"https://api.github.com/repos/ropenscilabs/circle/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/ropenscilabs/circle/teams","hooks_url":"https://api.github.com/repos/ropenscilabs/circle/hooks","issue_events_url":"https://api.github.com/repos/ropenscilabs/circle/issues/events{/number}","events_url":"https://api.github.com/repos/ropenscilabs/circle/events","assignees_url":"https://api.github.com/repos/ropenscilabs/circle/assignees{/user}","branches_url":"https://api.github.com/repos/ropenscilabs/circle/branches{/branch}","tags_url":"https://api.github.com/repos/ropenscilabs/circle/tags","blobs_url":"https://api.github.com/repos/ropenscilabs/circle/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/ropenscilabs/circle/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/ropenscilabs/circle/git/refs{/sha}","trees_url":"https://api.github.com/repos/ropenscilabs/circle/git/trees{/sha}","statuses_url":"https://api.github.com/repos/ropenscilabs/circle/statuses/{sha}","languages_url":"https://api.github.com/repos/ropenscilabs/circle/languages","stargazers_url":"https://api.github.com/repos/ropenscilabs/circle/stargazers","contributors_url":"https://api.github.com/repos/ropenscilabs/circle/contributors","subscribers_url":"https://api.github.com/repos/ropenscilabs/circle/subscribers","subscription_url":"https://api.github.com/repos/ropenscilabs/circle/subscription","commits_url":"https://api.github.com/repos/ropenscilabs/circle/commits{/sha}","git_commits_url":"https://api.github.com/repos/ropenscilabs/circle/git/commits{/sha}","comments_url":"https://api.github.com/repos/ropenscilabs/circle/comments{/number}","issue_comment_url":"https://api.github.com/repos/ropenscilabs/circle/issues/comments{/number}","contents_url":"https://api.github.com/repos/ropenscilabs/circle/contents/{+path}","compare_url":"https://api.github.com/repos/ropenscilabs/circle/compare/{base}...{head}","merges_url":"https://api.github.com/repos/ropenscilabs/circle/merges","archive_url":"https://api.github.com/repos/ropenscilabs/circle/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/ropenscilabs/circle/downloads","issues_url":"https://api.github.com/repos/ropenscilabs/circle/issues{/number}","pulls_url":"https://api.github.com/repos/ropenscilabs/circle/pulls{/number}","milestones_url":"https://api.github.com/repos/ropenscilabs/circle/milestones{/number}","notifications_url":"https://api.github.com/repos/ropenscilabs/circle/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/ropenscilabs/circle/labels{/name}","releases_url":"https://api.github.com/repos/ropenscilabs/circle/releases{/id}","deployments_url":"https://api.github.com/repos/ropenscilabs/circle/deployments","created_at":"2019-10-12T19:32:22Z","updated_at":"2020-09-04T11:36:52Z","pushed_at":"2020-10-06T19:20:10Z","git_url":"git://github.com/ropenscilabs/circle.git","ssh_url":"git@github.com:ropenscilabs/circle.git","clone_url":"https://github.com/ropenscilabs/circle.git","svn_url":"https://github.com/ropenscilabs/circle","homepage":"https://docs.ropensci.org/circle","size":700,"stargazers_count":10,"watchers_count":10,"language":"R","has_issues":true,"has_projects":false,"has_downloads":true,"has_wiki":false,"has_pages":true,"forks_count":2,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":{"key":"gpl-3.0","name":"GNU
+        General Public License v3.0","spdx_id":"GPL-3.0","url":"https://api.github.com/licenses/gpl-3.0","node_id":"MDc6TGljZW5zZTk="},"forks":2,"open_issues":0,"watchers":10,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true},"temp_clone_token":"","allow_squash_merge":true,"allow_merge_commit":true,"allow_rebase_merge":false,"delete_branch_on_merge":true,"organization":{"login":"ropenscilabs","id":16314060,"node_id":"MDEyOk9yZ2FuaXphdGlvbjE2MzE0MDYw","avatar_url":"https://avatars3.githubusercontent.com/u/16314060?v=4","gravatar_id":"","url":"https://api.github.com/users/ropenscilabs","html_url":"https://github.com/ropenscilabs","followers_url":"https://api.github.com/users/ropenscilabs/followers","following_url":"https://api.github.com/users/ropenscilabs/following{/other_user}","gists_url":"https://api.github.com/users/ropenscilabs/gists{/gist_id}","starred_url":"https://api.github.com/users/ropenscilabs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ropenscilabs/subscriptions","organizations_url":"https://api.github.com/users/ropenscilabs/orgs","repos_url":"https://api.github.com/users/ropenscilabs/repos","events_url":"https://api.github.com/users/ropenscilabs/events{/privacy}","received_events_url":"https://api.github.com/users/ropenscilabs/received_events","type":"Organization","site_admin":false},"network_count":2,"subscribers_count":1}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:14 GMT
+      server: nginx
+      set-cookie: ring-session=%2BjnOxOADxVqI7HChwftFbT6hQkGioI73zskxhDPi0dphi6QNDLtioy7w8aoauSQnV9yVc4YTrSSxKtJh%2FntYuIb7Eb%2BpEZLLlq9EX9oWMPp91PoKlTehGqT%2F3QHCCV0gRG90O8DWgS3eIpegkMwyTaL6f9wu%2FIOvr8jOES0UskD6yE9GP6ccVEBvHP9NRF%2F8EUI76dMu97nlvHg0%2BELqV%2BY%2FVmlKz4GXCTFX3OO8eqQ%3D--aaWAYmIH%2F2ROJCbcyVrGcDC7u2L3SwxS1s3D%2B0x4Nlo%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:31 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-lczfq
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: c745ea11-2a94-418b-8b98-45cd463546c2
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwUeQzjewJtlC8oqnJZ6kE15i7HuVrEafwwbSzhLN0yHOb4AOI8KnVKUixGc5oSVceiY5B_umFsbvUOXzlNIcrSHJrt-R8ZHJfMSFPhqJr-1TWxM-T6C14RBQoGdX8TuxCVggCly","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:14 GMT
+      server: nginx
+      set-cookie: ring-session=L1qio6g8c49rYwW3zC3ocjx%2BlEdQQTY4ipw3mve7WW1bTakSgnqkWM1ih315nKAvuny6fY%2BqObwY%2BrPiefMJIvywcD9p%2BzQrzEPQJRDHlOswrGV3ov%2BzzMryErwJIOYkc0YBRrAry%2FUDVqa2lrge9ulFO7ToT66v6ykvU6i0wGrUK%2F35grwgdGwWhGUcGn%2BBm0V2Kg8XTTSzfTiHrjp57G1CvGFUUepwGaxnWjc22WU%3D--REgjccx2dCVOUZuBi%2BmgU2cI85uVJFaii4oplFJ49FA%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:12:27 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-5qskg
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: fa712594-d6e9-4b67-8541-a358690e4409
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwVvzpSR8mRdxM_yI2hlXAFjOpTjzWb62B8cRH87MBqmEkWKhrsjBB6ziMkYLCNcSkF40RhSwdMC49dJWUCnmWb8OjQ59VYanmmrcMOk7dkfT3Gvsnyo4ok-Iz2xL-bJmp3JIEWb","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:14 GMT
+      server: nginx
+      set-cookie: ring-session=DDUapYmqLtnLj92OzJBi82WSWN%2BUmSmLH0iCPJW%2BbdQi1wwBH7mMoE58FB9jNq7PmUedoFRcWSRBGBOuWLyxXRUePwHRZ5Eirl0axaVNJ%2FbY39Kc4Wf4sWiHYZyyIf0qZIkPgOxH7IxlVJHvAVSDJWb5LexVGI2M2ibsEI8su%2FEN8jZysK%2BmkWQhb13ozlPxGyRZbY%2BQVu9mvfVgqXavJFvsQi26tE5%2FCBs8QLsr%2B1o%3D--3DwE%2F83tpopE8AXk426dMcMPRUASFMmYKblVkPUABxA%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:05 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-9vl4x
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 29224d28-14df-4caf-8340-3f4061f892be
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwXAC_aNoWjFTldf8OWKq3r-uFzP-EHe94kVhLaClIIt0zKdDfJS_-A9_VCOHGlGgfQ0_xOGLN0FvUyWywIKdtTBxpmUlNXKqH-vi7tlSkrakCsWPN1Dl0Bpset-_O-MZolgKQwe","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:15 GMT
+      server: nginx
+      set-cookie: ring-session=keiNq5sY3fHyQ9od2vYnOD4XLzeXJTEec8pCFDLzzKQVXrU%2BEwPQxlznjzQrAUGYsfHutkfteWvcn6yPinmM7Ul1wENvoRnF4VCA3%2FcWKw8xqyVXSbpS8MjGvadTgk2VG9Yzy6TmqqiifzPiNeciII%2BXw4uKJctp2n2zMRdvNCpr3Zo4%2BVEnW%2B6KrlTa0K4k5kwXBA5lZ0U8yF%2Bh8aSia0PCo6ZC%2BUpfcBenDdEh7kk%3D--OEuveEcfJo56OeWhBAMKEe7TDPgvT0zfba57BSGGq0M%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:08:12 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-shhmp
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: eb9b72cb-01f2-4734-9308-ce43e789146a
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwWnbsdCKot84_SviEvcSN43r1cPwKN0e2YL1-0_vFkqG4na_T9v4kCssZ5j8i_vNDWawRo8LYaqJ_g9ImnYsrtnf5sZ8N_Lwg2lKwQ44aJY4b-UNXasmYj6jbXAuZ-OgeBo94oT","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:15 GMT
+      server: nginx
+      set-cookie: ring-session=N4GH2N7MadbJCp8WrkvsxhAxz9pogrIWnRCHClQzSdx%2BG8whqeDF%2FxIGxT3c2Pkrh7sBiq4N3WIUTpY6qjMx1ZX4I1%2F7S1%2F3vQFd%2FjGp1CAlpArfMDhuDF6zXmLmZK9%2BtKPYDzmCNn%2BTBBWNlZjDZMlm9ENPmY0CNMw1Ih%2FSxTgFIOcDa03LsP3D3wEaNWl6vLxkCp%2F8xlB2NVwI8jKuT7tl5vm8V49zFCtY02F5Tgk%3D--k7wV9Cwza2Lhj3xJaURd5Advb73E3WgzdiY%2FBfCEQEQ%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:12:36 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-bg8t4
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 2f210ef9-1588-44e0-b82a-7e8558d8e91d
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwXQ--GNWa0IT8dAS-DNcl9BACmuq91V43Ul0vymw3SFO6jd0IVUfZ3g5zbnljI8wcxj8bfR67pLTBPrev7Jiz5mSAfuL0rjjXu3ZV9hxF_w_ALwIoKmn9cDYv4RDT5OJmrxI162","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:15 GMT
+      server: nginx
+      set-cookie: ring-session=BHP7lPAr6K12AYD7DC7DWxD%2BcKqxS6Ctuircy%2BaQnwAadbnjw6Evl4LvtrCX9V0Ij1YItVvbt%2F%2BipTHwc65C66eC%2BA%2BaT7jW1w76hHfH4kCngeyeF0lz1%2FdvOtyfADTxL%2Bk1eE9ikCvuR5B85pxA904VFAF2Uaj19%2FJyJ7eB3S9Mf3eC9NqJHuxqEgfRpgNh%2FMBoX31wYLNe3dU8efKUOjCnzZghhvok%2BEiYUJ%2FUZig%3D--yw0dHGQvCGny3IAQD5gyfEXOI8Bfc26dQUi1B6Zro2w%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:21 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-8s9zb
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: ee3a5e17-54d8-453c-a6ac-e6eb564757ca
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwUv2FF-6sKX__mwbSCJKoaMiBWjw4DhAkh2preY_-WbD1kwHjMUGq4jNVSIw4dyacZbh3L0rG6PIcO5Bf_wUzAgN-xaebzUjgxj0kSfm8F1ePQhWhMOiceeHqJCKqSX25MMq_HJ","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:15 GMT
+      server: nginx
+      set-cookie: ring-session=Rx3Mf4pRCZvxt1P3lkpkg2gCWsKtMS%2FWPtTeSO3fRiIauwXxIWO2bagv2gaqaejsfsE7QfnXRn4gJivHLFU9q5Os7%2BEqh1q7Y0LLDSkACpx1dyFw1xwQtphwsmP5FxMHP5VFBmf5xILHx7rNOcveV3XrYpYmMuUVTwbGRnFD6I0Jx9ElY4HD95WQVV6ALrYL3KQMdf5Jes08FxKvJB9s%2Fb5BB3eqoQ58FAhCrUSmHbk%3D--i%2BrdEGO%2BgJwd0ooeURKhTHnrX9vxETZMziCcrwDehkw%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:05:54 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-rccsc
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 9fd5bcd1-2f98-43cc-83fd-64e403e9af6c
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwXtgE195T_-8Q1eqBLGzpGu6Iydf_Yf6f27tCz0-dly2c5mN3dd6KeHUoTLTStXVXJF9bL3LycvlWi7NpCoTMtJHmHlFccyckLZzh4yCWedVWORUBkB4fil-Q7gidQp-8uwLcs0","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:16 GMT
+      server: nginx
+      set-cookie: ring-session=ELl%2BKT50RXCSk2Lk3y8Q9elUBmsLYh78iSqB1oyDQ9GBLYs%2BXZzFxtgMbKBHdxbiH5sWvz%2BwDjGSmM5b18R8m%2F99bQ2xBLc5Znvm8sOYD7hrtZmd1zSvBBHAcM7nVbOvopxIPeeq886yQ3i47P6pMPK4fXjGqzDTS1N42vuI0INpsJSxoBz2PNPgvxjxmrPWbMwkSEonbNDj4YZPUxlVUFjfxJiO%2FYvqv0ELa6hKYr4%3D--cmHJA9M8mlY30PSGnCzSFdTwKgUu7CxCui0nJfTeuR4%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:08:06 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-lbxpv
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 08ee5942-694f-4195-92fd-f327735d2cf3
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwVJo8fkdPH6-oFHW8JG6A_cx1Ab6Q38WysUB9GmmGtj4TuqCTsCAnyNA2zBRuHJxiBUK0rv_5dVfWpqIWdYGQBnLJ7KctvVsrH7zvgf7Wi59DD3pCH5jT1bSW8eJfzpf4XMUXEM","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:16 GMT
+      server: nginx
+      set-cookie: ring-session=76ab05Qij1xYzPCpU6P2XPlXV0G4VNZ2du7brI%2F8rRaxS3IH3QiSueyJ%2B1PcftPQGH%2BeidnDHH%2B%2FhTmPq2xR9O0uvHTaV58otlO1IuBek8%2BSX20iEvmFBIZrzkrmyNFhZUahQIzhlR52Wsvyxx5hL6HmSsEsbXjps7HT%2Bm%2BVC9MKaV8zfygcV24ipy%2F98EwqHS4hpXTi7HUSiK1u7nHAJvsM%2BFkV1tAdul1FgGQ%2F0Ig%3D--IP1ioeo3eQtY8%2FH2smYe9rbiJO54bSG0CHlVT2tJCK0%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:05:51 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-gfmrf
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: e509b5c2-4f68-424b-a773-8aa55a286c78
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwWiT2JjrKUBTTClN-ylCNcU5T387_q-hBfMu2m1UOW_I9hKMCPld1etdCZNmPQHsHXtxm4QrlIp4AVCSdb-umX8WJ3HORB6Sez2bfg7QIWLSDLLauP1LgOSYXEYVdG-KDfh0IXr","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?limit=30&circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:16 GMT
+      server: nginx
+      set-cookie: ring-session=%2BDwKKyMq44%2BxCCjCWUruxJ%2BtFRkq%2Bu%2BLZtyvh3IbOsq%2BDQdnBEDZU%2FndULMNEXFi%2BqU6HjdAH2QaYOFS90vC6kBaDN1JnxnnQeCWzQxLtqtBZYxLJP%2FoBu6Sp9yfwgfBTxfpqpzYB%2B2qQX8sSpAg0VGQjuF%2FREKRVgEbJ8Kv1Yq7VOH3lqx8T%2FEutL5%2Bsxiz8IsU9JurhnTfhbc3cTFUcH7ZzWvZkmN5%2F7Xt3D3A2ig%3D--%2BO%2F5S%2BN2qti%2BXWC9l5Dl6jougZTglFWCM5dby02qrt4%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:12:31 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-27vdp
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 88fa0785-9eba-4f5c-b867-37776a6ce496
+      x-route: /api/v2/project/:project-slug/pipeline
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":"AARLwwUdlhqMYgv7Pca6GRUugPTuz0f1_xx19pB7X2JE9_U4UPelT4jRwAd8lwikYVOHzNMS6T6mc96S4jD0Cg-Yt06WDBkvB9c9hNctMXd6YfDaaAXFihAYAS4VU5GZNW1I13yW0Fr9","items":[{"id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T19:20:11.838Z","number":424,"state":"created","created_at":"2020-10-06T19:20:11.838Z","trigger":{"received_at":"2020-10-06T19:20:11.801Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"7790dd563e9561fb5aaa2183c1714ff77e081d68","provider_name":"GitHub","commit":{"body":"","subject":"only
+        run vcr tests"},"branch":"vcr"}},{"id":"32ac108f-9ab5-46b1-82f4-4111836682a0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-06T04:00:11.126Z","number":423,"state":"created","created_at":"2020-10-06T04:00:11.126Z","trigger":{"received_at":"2020-10-06T04:00:11.089Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-05T04:00:52.065Z","number":422,"state":"created","created_at":"2020-10-05T04:00:52.065Z","trigger":{"received_at":"2020-10-05T04:00:52.059Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-04T04:00:40.378Z","number":421,"state":"created","created_at":"2020-10-04T04:00:40.378Z","trigger":{"received_at":"2020-10-04T04:00:40.370Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-03T04:00:47.434Z","number":420,"state":"created","created_at":"2020-10-03T04:00:47.434Z","trigger":{"received_at":"2020-10-03T04:00:47.429Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"41d51e61-31ea-4561-b61c-b3ab47c86035","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-02T04:00:18.694Z","number":419,"state":"created","created_at":"2020-10-02T04:00:18.694Z","trigger":{"received_at":"2020-10-02T04:00:18.689Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"def4bd98-967c-414c-b43f-bd22552c409c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-10-01T04:00:10.637Z","number":418,"state":"created","created_at":"2020-10-01T04:00:10.637Z","trigger":{"received_at":"2020-10-01T04:00:10.632Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-30T04:00:42.848Z","number":417,"state":"created","created_at":"2020-09-30T04:00:42.848Z","trigger":{"received_at":"2020-09-30T04:00:42.842Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-29T04:00:39.572Z","number":416,"state":"created","created_at":"2020-09-29T04:00:39.572Z","trigger":{"received_at":"2020-09-29T04:00:39.566Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"9fc4db29-f7a7-4e29-adf3-65493954b610","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-28T04:00:34.940Z","number":415,"state":"created","created_at":"2020-09-28T04:00:34.940Z","trigger":{"received_at":"2020-09-28T04:00:34.935Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"62b98c35-974c-4898-9b73-01ab31ee22d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-27T04:00:41.868Z","number":414,"state":"created","created_at":"2020-09-27T04:00:41.868Z","trigger":{"received_at":"2020-09-27T04:00:41.861Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"2d22d2f0-f69f-4d4e-97dc-d22e61f5b603","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-26T04:00:13.940Z","number":413,"state":"created","created_at":"2020-09-26T04:00:13.940Z","trigger":{"received_at":"2020-09-26T04:00:13.933Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"011325f5-97b0-4fcf-a911-45dfd450ae8d","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-25T04:00:06.927Z","number":412,"state":"created","created_at":"2020-09-25T04:00:06.927Z","trigger":{"received_at":"2020-09-25T04:00:06.921Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"d62d9cd8-17de-4014-b546-39c26ae942d3","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-24T04:00:29.696Z","number":411,"state":"created","created_at":"2020-09-24T04:00:29.696Z","trigger":{"received_at":"2020-09-24T04:00:29.692Z","type":"schedule","actor":{"login":"Scheduled","avatar_url":null}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"8be9a2c3-0e28-44f3-9bf6-1c4c6fc9e190","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:05:06.490Z","number":410,"state":"created","created_at":"2020-09-23T21:05:06.490Z","trigger":{"received_at":"2020-09-23T21:05:06.457Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b88f4c5de8021cf1a7fbef5d935b2f1e4ff90e4d","provider_name":"GitHub","commit":{"body":"","subject":"small
+        fixes"},"branch":"vcr"}},{"id":"0789f3ed-406c-4780-ade0-bd23081074e9","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:11.499Z","number":409,"state":"created","created_at":"2020-09-23T21:04:11.499Z","trigger":{"received_at":"2020-09-23T21:04:11.469Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"0a3b4726-e55d-4188-97ae-e1b29a01d01c","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T21:04:10.611Z","number":408,"state":"created","created_at":"2020-09-23T21:04:10.611Z","trigger":{"received_at":"2020-09-23T21:04:10.567Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}},{"id":"115268e9-b19c-443e-bda4-f86b9a94e744","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:53:19.093Z","number":407,"state":"created","created_at":"2020-09-23T20:53:19.093Z","trigger":{"received_at":"2020-09-23T20:53:19.064Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"b47b98d89f7ec0b68961300ab2b809065b5605e9","provider_name":"GitHub","commit":{"body":"","subject":"try
+        token approach"},"branch":"vcr"}},{"id":"c9ef41cc-2422-4a9b-8d65-efd694cd82af","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:16:42.590Z","number":406,"state":"created","created_at":"2020-09-23T20:16:42.590Z","trigger":{"received_at":"2020-09-23T20:16:42.557Z","type":"webhook","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"933e9add13834f90ca1eb16bcdaf818c071bf163","provider_name":"GitHub","commit":{"body":"","subject":"try
+        new filtering approach"},"branch":"vcr"}},{"id":"c1ed80f0-c351-482e-b717-51d3af0d7dc8","errors":[],"project_slug":"gh/ropenscilabs/circle","updated_at":"2020-09-23T20:13:46.160Z","number":405,"state":"created","created_at":"2020-09-23T20:13:46.160Z","trigger":{"received_at":"2020-09-23T20:13:46.131Z","type":"api","actor":{"login":"pat-s","avatar_url":"https://avatars3.githubusercontent.com/u/8430564?v=4"}},"vcs":{"origin_repository_url":"https://github.com/ropenscilabs/circle","target_repository_url":"https://github.com/ropenscilabs/circle","revision":"c28698d169ac0ae42a8c364b69c07ef1ad89e226","provider_name":"GitHub","branch":"master"}}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/7d2bdc31-a7a0-4cc0-83f2-ea37321db59c/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:16 GMT
+      server: nginx
+      set-cookie: ring-session=QXLW6s8ZPCBtFPFu112BQk%2B2o6zHdp%2Bdfv6naM7tVp3P1BT3DdUbd1yMyTPsgoVe7xXMGyCG6DodR5ExaqS%2FZ6VNdcOsbl9i61juWUlk%2FIUCD9X1HJneuPXscR9UK1T2nRSYkBm5%2BT3mJkAlF6Dqql9un%2FJnqLPt5tGNHav0OyasFS6wpXPMCjzNf0QgnF49AZbXMXsxGUtFUNsLgBizbSSs5ljRkJB9NKVEzBAs5Rc%3D--pzs%2Fj%2BNn%2Fe9QTuPT9%2FLjWBYyt9pe%2Bc0fovKaDztOA%2Fk%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:33 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-74r2d
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: e1838fcf-41d0-4153-98d1-4da3ea50e7c1
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '263'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"7d2bdc31-a7a0-4cc0-83f2-ea37321db59c","id":"63bbae2c-0cb4-42ca-9a65-16b8d58f9289","name":"build","project_slug":"gh/ropenscilabs/circle","status":"failed","started_by":"9c373331-d0f7-45e1-afe6-4a5c75e00d10","pipeline_number":424,"created_at":"2020-10-06T19:20:11Z","stopped_at":"2020-10-06T19:21:33Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/32ac108f-9ab5-46b1-82f4-4111836682a0/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:17 GMT
+      server: nginx
+      set-cookie: ring-session=eH5UgYKMg3Aw96sjXCDELn5DF73o2jiuT2tnd76i1DqWy3fqqQzG%2FEkGJouT4r%2FDj4pf6aXsmIIF0qE7W3cNs946K%2B49yMx55zKZ9KQky4adhelWBoNHHjXT3QmeJ9qFVM%2BQIStFH9OX4upgeCJJNr7MZw4%2BGkwNNX59GR1tjHiX4HmtNXdgRqS%2BZTR9fb8KqF3XInkxYNFyzZhsyUplF713rmkeOcWKBrKNpPeR2Fc%3D--19LyFGURGizVvSRwx8HVUcB2tB6CiOdYRSgtnN1q91g%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:08:12 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-b8xz2
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 355e574b-c180-420d-94c0-aa53b7e52d70
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"32ac108f-9ab5-46b1-82f4-4111836682a0","id":"552dd988-13a1-4b49-a83a-f077e79a8f1c","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"failed","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":423,"created_at":"2020-10-06T04:00:11Z","stopped_at":"2020-10-06T04:01:44Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/1f2d24a2-9d7d-4172-a565-6ad20ba69da0/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:17 GMT
+      server: nginx
+      set-cookie: ring-session=JohDy2RAenWadphq7hlSMjKxjUgL30NtivdEduThnz3lYnz%2BEaC3CdgdbrYiLLamj83VmuIxfX9OfCiGocz96bPW%2Fbg%2FnwWP2zBPr1WjBwS3vU%2B0mjSL2oCQZrNUQ6w4ZnjQz9hgCIHbTme4cNZfCUO6gnGixs2l%2Ft0klGIhAQESDQvXbDPqHB133x5fLLIq29e2%2FcEYT0cjQrqrGxHor3re3k%2FeLj73NlzeAKXjXls%3D--%2Fc1L1BQ6R81FkLtE0aki1kC%2BLYW30a6akE3%2BPlE5Wzk%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:07 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-q2hck
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 96d9a904-68f1-442d-a5a1-22e366258142
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"1f2d24a2-9d7d-4172-a565-6ad20ba69da0","id":"65b1fc0c-43ef-4c7f-89bd-18ad417a686a","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":422,"created_at":"2020-10-05T04:00:52Z","stopped_at":"2020-10-05T04:04:03Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/d6ad707e-968c-4b4e-a100-d0a7d088ab73/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:17 GMT
+      server: nginx
+      set-cookie: ring-session=CuEkTBEjQr4ZnFVK7ZILpAvJyM3SQneq%2F14Y34Hw5adWDPm5sisHIWp44xyg8Ef8oBGLsnjNNsE%2BIx6dlis8CAp3x7c1tsX6yOMQ5%2F7a%2BEk2%2Fe9V7790BnNm3QqvvUUhOhJ%2FOX3YHSQVvqKi7he%2FYAdntEr7hty%2FvdtaONoNxFsaEFo4px7eS5QvcLGb5TtlniBhESQylT9VPaPcwMTVpgvjBGKOMrTUIumXYw8Sr3s%3D--JTVHG40kobpqzjxzcBG3rs7UpFISC2dgbdVUMMXuXgE%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:12:28 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-7kbvz
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 417b82aa-2c92-4494-81f9-1a5d7c926178
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"d6ad707e-968c-4b4e-a100-d0a7d088ab73","id":"2bb15017-5b01-4156-923c-f2cbd129dff8","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":421,"created_at":"2020-10-04T04:00:40Z","stopped_at":"2020-10-04T04:03:53Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/4712f83f-a2a0-41e9-8971-1a155074f8cd/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:17 GMT
+      server: nginx
+      set-cookie: ring-session=%2FU0cCR1bwrJQpQSGHznxDukhi1j7pVOWeomv%2BMUUo920nAuuJG7Xe%2Bpd4kYEUQnQOhlBYH1S%2F3ZpVZXQBYbbKIi7FrQmOVaMIJU6F%2BwaQXkRxwtyrokPsf13434m0tgTD25vgQcahOL4annpLoK5fzrbWcMPW%2FskGM%2BILZVXprK1i0cp%2BiJxjFgqMaCIaLFH%2BteIdQx78REcxpEegISetzOYEwtd2gvNt3MT6XtzcOw%3D--SbWdNlowfTBovLvQmMRXyMD%2FCFGue%2BvbBYbSoD%2BxMVs%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:12:16 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-zf92z
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: ce665321-b005-4b24-bdcd-8ce07ea7b3fb
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"4712f83f-a2a0-41e9-8971-1a155074f8cd","id":"e9030701-de36-4a01-a8c8-bc210ef7b665","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":420,"created_at":"2020-10-03T04:00:47Z","stopped_at":"2020-10-03T04:03:51Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/41d51e61-31ea-4561-b61c-b3ab47c86035/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:17 GMT
+      server: nginx
+      set-cookie: ring-session=98AJ7hs%2F7wWfutAG3geYcth7dOu6gfDd7K46sZ7692MK7J8oSQ3mb9xmkoW8OsUkWHFOwYh3Rx3N6aUpKw8s7nvAiMVSbSJx8VEOTxYoN8BTCnE6wd8mVHkRDKB6XwznPcKq5SVPuoGFknA6l6YDrs51ks%2FDNH603GJBxwuFNCQEHtslebqH7RPFvpT30CWt8trxJj6l7igBJ2b640Y4kRl4oeHKSMr5xwCEBiVLmmI%3D--bt1cbO5c51adBzf6ZjCBfyccc59w08aoLu%2Bjhu4grMw%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:08:11 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-lmxp2
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: b280796a-473c-4602-a995-e52c0a935d8f
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"41d51e61-31ea-4561-b61c-b3ab47c86035","id":"8af500a0-f9e1-40d6-9272-6825b9e96886","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":419,"created_at":"2020-10-02T04:00:18Z","stopped_at":"2020-10-02T04:03:39Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/def4bd98-967c-414c-b43f-bd22552c409c/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:18 GMT
+      server: nginx
+      set-cookie: ring-session=6emb4DqnupSzbXGCaIhyF5dP7TkDxbUQxsfjN1d93ZvM2xWEeGy95kwbdHrCcVNYBhNsGFnwuNfcC5QXlj5lFMlrj%2FfrdwUNsPn2ypm2l9ueAPUfei6B2ngkv9SuLu6GqbePN5bHICRfmk5wh9jyZq1Tp4g%2F3zEmsrzillSEy1OVGZhHGAmJjEx0hCPQWPgO76gpWqsjyNaZh3S34UXByyGBEkghXGEqTH47537XUMc%3D--fi1Ccl2sRUlrB75cs5CbKurPrzdWq0IwgAbAYCabe6I%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:08:23 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-xvkcc
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: aedc2829-d155-40b7-83a6-2ba24ef4ae03
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '267'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"def4bd98-967c-414c-b43f-bd22552c409c","id":"692195b8-55e8-4727-89d0-21f271dd846b","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":418,"created_at":"2020-10-01T04:00:10Z","stopped_at":"2020-10-01T04:03:33Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/b8eb1f01-c9af-4066-b93b-627574e8d48d/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:18 GMT
+      server: nginx
+      set-cookie: ring-session=1SsS4%2Bt4srqwIgFdYlAWPvatosmBw7aDi4L2tfqintcVLjE03CXn3poZPhzh%2FSdvk3u7hEWBI4WfwLcH0YgBqJ7oCBZvXV5RXoBClj6ArttTIAa%2BbQd6d9xv2MLDMjV5f0GFCYxgeMaF1bHVNJ64c0PwGScsJCwQ6SZzYlMmmX%2BOsarkIhIIf7eim1izQAilhze6v76cc59OCyLF0cOZHkNNVLrDQ625CYcuRZMZtKM%3D--4n4hy3YVG%2FnV%2BJeUFfyCMX8aSldHNoqZOQ3BIH4QwwU%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:05:58 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-h486d
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: bce9bb3b-0869-4e27-9ff9-7ab57f725caf
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '265'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"b8eb1f01-c9af-4066-b93b-627574e8d48d","id":"fd253c12-6c41-40d7-a549-5759e51071f6","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":417,"created_at":"2020-09-30T04:00:42Z","stopped_at":"2020-09-30T04:05:52Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/844aaa38-b271-4c6a-ba43-ec12e78d0865/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:18 GMT
+      server: nginx
+      set-cookie: ring-session=ioi3TOlgqlKi%2BhsKy2uWdrcB0dJ5L3KdGoqenJ5JW6tryUDRenDGb2nXFCdPVOxDL79OK6W8Yr5vrSnLXszprn62ABMenBvlR%2FIvput%2BUGP75KPee7By0%2FLYdrhLAF4DZuBATAJE2%2BbQUO66yFy2peHfNCHS8BR3uq5%2Fl1a1cno5tmXrkZvUUwNKsNot818XRnK41fB%2B5PuG2jm1Buz6QOwPGagfih5P65xW5obgkW4%3D--WrIQZSK5y6Si3Rbh%2FKSbbj7CIGzmKFWVRZNXnJW%2FYxg%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:06:01 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-fjqd7
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 85612494-ee49-4a33-9e49-834eea4dbdc9
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '265'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"844aaa38-b271-4c6a-ba43-ec12e78d0865","id":"0b10af0b-3bd3-4f14-8c4b-37ed5ec81151","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":416,"created_at":"2020-09-29T04:00:39Z","stopped_at":"2020-09-29T04:04:37Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: get
+    uri: https://circleci.com/api/v2/pipeline/9fc4db29-f7a7-4e29-adf3-65493954b610/workflow?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      content-encoding: gzip
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:18 GMT
+      server: nginx
+      set-cookie: ring-session=c9BoZDThzsHh%2F6opLbrxpmpcLcHZJs2YjQ4z37bxYOG3wjEUgCzV4ZN9bQpHKIIYHW3cPX8kF9IKTPrGatLsmJJCYkYTXcnWjACsY0CdQk2dTyY2oCW8pd1zdS49G35qdEunGNQEltkgmVMWkQ3Iv41q6krR1PgPJphqXwMmNgsk0NGCBSXZz26xFR9qWBnk%2FkO301wgtpXgvU7K%2BIK8AVnnpIfmhhYDJlr8S87hSHE%3D--bGQI0kTiJyoesETCtkL11q7I%2BAoATekmRWYYzey07zg%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:10:31 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      vary: Origin
+      x-circleci-identity: circle-www-api-v1-78894ccdf-lczfq
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 0ce321a0-4d56-4c3f-8408-42bddabd7050
+      x-route: /api/v2/pipeline/:pipeline-id/workflow
+      content-length: '266'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"next_page_token":null,"items":[{"pipeline_id":"9fc4db29-f7a7-4e29-adf3-65493954b610","id":"099eed58-c924-4271-a987-eec59aed1e44","name":"nightly","project_slug":"gh/ropenscilabs/circle","status":"success","started_by":"d9b3fcaa-6032-405a-8c75-40079ce33c3e","pipeline_number":415,"created_at":"2020-09-28T04:00:35Z","stopped_at":"2020-09-28T04:03:24Z"}]}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
+- request:
+    method: post
+    uri: https://circleci.com/api/v2/workflow/099eed58-c924-4271-a987-eec59aed1e44/rerun?circle-token=<<<R_CIRCLE>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 202
+      category: Success
+      reason: Accepted
+      message: 'Success: (202) Accepted'
+    headers:
+      content-type: application/json;charset=utf-8
+      date: Tue, 06 Oct 2020 19:34:18 GMT
+      server: nginx
+      set-cookie: ring-session=AYjoApcmdoM66kD%2FKuANvLRc0d8eNo4Fhe3cyf8f1IhYUs1kj9S6yJKL8%2FFKDGoUM7Gd2y0SyUwisApBfB35A4RDKP0rI3bcsYL%2Fi9zEeIAr%2BpZkjY9cn0QdN1J9wvQ7W1uohvHufrbM%2F654PUXJp1capS%2B3cwY9Ai1YQZAVBOlFGlJLSAXdwhk9FVjlYVJOMQI27qkgbOO4nDwAJOF3bflpLKhFUsOgpqOO0wEzuSE%3D--TLYTiPlPq6jncE%2F1zYkAJJNqYMdOQgpTACgyibM%2BrNk%3D;Path=/;HttpOnly;Expires=Wed,
+        06 Oct 2021 19:14:47 +0000;Max-Age=1209600;Secure
+      strict-transport-security: max-age=15724800
+      x-circleci-identity: circle-www-api-v1-78894ccdf-mn94s
+      x-frame-options: DENY
+      x-ratelimit-limit: '151'
+      x-ratelimit-remaining: '150'
+      x-ratelimit-reset: '0'
+      x-request-id: 7560a9cf-39d9-4623-b783-04f178676d0d
+      x-route: /api/v2/workflow/:id/rerun
+      content-length: '23'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"message":"Accepted."}'
+  recorded_at: 2020-10-06 19:34:18 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
