@@ -18,3 +18,4 @@ knitreadme.sh
 ^\.github$
 ^pkgdown$
 ^\.ccache$
+^docs$
