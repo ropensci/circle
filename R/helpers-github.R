@@ -252,6 +252,7 @@ get_user <- function() {
 #' - `get_repo()`: Returns the repo name of a Github repo for a given remote.
 #'
 #' @template remote
+#' @template token
 #' @rdname github_helpers
 get_repo <- function(remote = "origin", .token = NULL) {
   github_info(
