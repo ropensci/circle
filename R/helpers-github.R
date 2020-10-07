@@ -41,9 +41,8 @@ github_add_key <- function(pubkey,
     project = repo
   )
 
-  cli::cat_rule()
-  cli::cli_alert_success("Added a public deploy key to GitHub for repo
-                         {.code {get_owner(remote)}/{repo}}.", wrap = TRUE)
+  cli::cli_alert_success("{.fun github_add_key}: Added a public deploy key to
+    GitHub for repo {.field {get_owner(remote)}/{repo}}.", wrap = TRUE)
 
   invisible(ret)
 }
@@ -154,7 +153,10 @@ get_repo_data <- function(repo, .token = NULL) {
 }
 
 get_remote_url <- function(path, remote) {
-  r <- git2r::repository(path, discover = TRUE)
+  withr::with_options(
+    list(usethis.quiet = TRUE),
+    r <- git2r::repository(path, discover = TRUE)
+  )
   remote_names <- git2r::remotes(r)
   if (!length(remote_names)) {
     stopc("Failed to lookup git remotes")
@@ -237,7 +239,10 @@ auth_github <- function() {
 #' @template remote
 #' @rdname github_helpers
 get_owner <- function(remote = "origin") {
-  github_info(path = usethis::proj_get(), remote = remote)$owner$login
+  withr::with_options(
+    list(usethis.quiet = TRUE),
+    github_info(path = usethis::proj_get(), remote = remote)$owner$login
+  )
 }
 
 #' #' @description
@@ -254,12 +259,14 @@ get_user <- function() {
 #' @template remote
 #' @template token
 #' @rdname github_helpers
-get_repo <- function(remote = "origin", .token = NULL) {
-  github_info(
-    path = usethis::proj_get(),
-    remote = remote,
-    .token = .token
-  )$name
+get_repo <- function(remote = "origin") {
+  withr::with_options(
+    list(usethis.quiet = TRUE),
+    github_info(
+      path = usethis::proj_get(),
+      remote = remote
+    )$name
+  )
 }
 
 #' @description
@@ -269,12 +276,11 @@ get_repo <- function(remote = "origin", .token = NULL) {
 #' @template remote
 #' @rdname github_helpers
 get_repo_slug <- function(remote = "origin") {
-  github_info(
-    path = usethis::proj_get(),
-    remote = remote
-  )$full_name
-}
-
-stopc <- function(...) {
-  stop(..., call. = FALSE, domain = NA)
+  withr::with_options(
+    list(usethis.quiet = TRUE),
+    github_info(
+      path = usethis::proj_get(),
+      remote = remote
+    )$full_name
+  )
 }
