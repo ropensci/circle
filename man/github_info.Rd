@@ -12,7 +12,7 @@ github_repo(
   remote = "origin"
 )
 
-github_info(path = usethis::proj_get(), remote = "origin")
+github_info(path = usethis::proj_get(), remote = "origin", .token = NULL)
 
 uses_github(path = usethis::proj_get())
 }
@@ -26,6 +26,12 @@ GitHub information for the repository, by default obtained through
 
 \item{remote}{`[string]`\cr
 The Github remote which should be used. Defaults to "origin".}
+
+\item{.token}{`[character]`\cr
+Authentication token. Defaults to GITHUB_PAT or GITHUB_TOKEN environment
+variables, in this order if any is set. See gh_token() if you need more
+flexibility, e.g. different tokens for different GitHub Enterprise
+deployments.}
 }
 \description{
 `github_repo()` returns the true repository name as string.

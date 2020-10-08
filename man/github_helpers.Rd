@@ -15,13 +15,19 @@ get_owner(remote = "origin")
 
 get_user()
 
-get_repo(remote = "origin")
+get_repo(remote = "origin", .token = NULL)
 
 get_repo_slug(remote = "origin")
 }
 \arguments{
 \item{remote}{`[string]`\cr
 The Github remote which should be used. Defaults to "origin".}
+
+\item{.token}{`[character]`\cr
+Authentication token. Defaults to GITHUB_PAT or GITHUB_TOKEN environment
+variables, in this order if any is set. See gh_token() if you need more
+flexibility, e.g. different tokens for different GitHub Enterprise
+deployments.}
 }
 \description{
 - `auth_github()`: Creates a `GITHUB_TOKEN` and asks to store it in your

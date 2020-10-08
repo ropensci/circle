@@ -46,6 +46,8 @@ jobs:
       R_CIRCLE: ${{ secrets.R_CIRCLE }}
       # [Custom env var] Circle CI API key
       CIRCLE_CHECKOUT_KEY: ${{ secrets.CIRCLE_CHECKOUT_KEY }}
+      # [Custom env var] Circle CI GITHUB PAT
+      PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
 
     steps:
       - uses: actions/checkout@v2.3.1

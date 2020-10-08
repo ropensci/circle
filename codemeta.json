@@ -12,7 +12,7 @@
     "https://ropenscilabs.github.io/circle"
   ],
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5.0.9001",
+  "version": "0.5.0.9002",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -168,6 +168,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "vcr",
+      "name": "vcr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vcr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
       "provider": {
@@ -220,7 +232,7 @@
   ],
   "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
-  "fileSize": "1153.031KB",
+  "fileSize": "1250.642KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -237,5 +249,5 @@
   ],
   "issueTracker": "https://github.com/ropenscilabs/circle/issues",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "contIntegration": ["https://travis-ci.org/ropenscilabs/circle", "https://circleci.com/gh/ropenscilabs/circle", "https://ci.appveyor.com/project/ropensci/circle", "https://codecov.io/gh/ropenscilabs/circle"]
+  "contIntegration": ["https://circleci.com/gh/ropenscilabs/circle", "https://codecov.io/gh/ropenscilabs/circle"]
 }

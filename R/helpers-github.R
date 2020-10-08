@@ -22,7 +22,7 @@ github_add_key <- function(pubkey,
     pubkey <- as.list(pubkey)$pubkey
   }
   if (!inherits(pubkey, "pubkey")) {
-    stopc("`pubkey` must be an RSA/EC public key")
+    stop("`pubkey` must be an RSA/EC public key")
   }
 
   if (check_role) {
@@ -54,7 +54,7 @@ github_add_key <- function(pubkey,
 check_admin_repo <- function(owner, user, repo) {
   role_in_repo <- get_role_in_repo(owner, user, repo)
   if (role_in_repo != "admin") {
-    stopc(
+    stop(
       "Must have role 'admin' to add deploy key to repo ",
       repo, ", not '", role_in_repo, "'."
     )
@@ -121,13 +121,15 @@ github_repo <- function(path = usethis::proj_get(),
 #'
 #' @param path `[string]`\cr
 #'   The path to a GitHub-enabled Git repository (or a subdirectory thereof).
+#' @template token
 #' @template remote
 #' @family GitHub functions
 github_info <- function(path = usethis::proj_get(),
-                        remote = "origin") {
+                        remote = "origin",
+                        .token = NULL) {
   remote_url <- get_remote_url(path, remote)
   repo <- extract_repo(remote_url)
-  get_repo_data(repo)
+  get_repo_data(repo, .token)
 }
 
 #' @rdname github_info
@@ -145,8 +147,8 @@ uses_github <- function(path = usethis::proj_get()) {
   )
 }
 
-get_repo_data <- function(repo) {
-  req <- gh::gh("/repos/:repo", repo = repo)
+get_repo_data <- function(repo, .token = NULL) {
+  req <- gh::gh("/repos/:repo", repo = repo, .token = .token)
   return(req)
 }
 
@@ -157,11 +159,11 @@ get_remote_url <- function(path, remote) {
   )
   remote_names <- git2r::remotes(r)
   if (!length(remote_names)) {
-    stopc("Failed to lookup git remotes")
+    stop("Failed to lookup git remotes")
   }
   remote_name <- remote
   if (!(remote_name %in% remote_names)) {
-    stopc(sprintf(
+    stop(sprintf(
       "No remote named '%s' found in remotes: '%s'.",
       remote_name, remote_names
     ))
@@ -176,7 +178,7 @@ extract_repo <- function(url) {
   match <- regmatches(url, m)[[1]]
 
   if (length(match) == 0) {
-    stopc("Unrecognized repo format: ", url)
+    stop("Unrecognized repo format: ", url)
   }
 
   paste0(match[2], "/", match[3])
@@ -205,7 +207,7 @@ encode_private_key <- function(key) {
 #' @rdname ssh_key_helpers
 check_private_key_name <- function(string) {
   if (grepl("[ ]", string)) {
-    stopc("Name contains whitespaces. Please supply a name without whitespaces.") # nolint
+    stop("Name contains whitespaces. Please supply a name without whitespaces.") # nolint
   }
   return(invisible(TRUE))
 }
@@ -227,7 +229,7 @@ auth_github <- function() {
     cli::cli_alert_danger("{.pkg travis}: Call
       {.code usethis::browse_github_token()} and follow the instructions.
       Then restart the session and try again.", wrap = TRUE)
-    stopc("Environment variable 'GITHUB_PAT' not set.")
+    stop("Environment variable 'GITHUB_PAT' not set.")
   }
 }
 
@@ -255,13 +257,15 @@ get_user <- function() {
 #' - `get_repo()`: Returns the repo name of a Github repo for a given remote.
 #'
 #' @template remote
+#' @template token
 #' @rdname github_helpers
-get_repo <- function(remote = "origin") {
+get_repo <- function(remote = "origin", .token = NULL) {
   withr::with_options(
     list(usethis.quiet = TRUE),
     github_info(
       path = usethis::proj_get(),
-      remote = remote
+      remote = remote,
+      .token = .token
     )$name
   )
 }
