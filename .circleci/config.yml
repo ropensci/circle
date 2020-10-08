@@ -28,10 +28,6 @@ jobs:
             R -q -e 'install.packages("remotes")'
             R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
             R -q -e 'remotes::install_github("ropensci/tic", upgrade = "always"); print(tic::dsl_load()); tic::prepare_all_stages()'
-            while read -r cmd
-            do
-               eval sudo $cmd
-            done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "18.04"))')
             R -q -e 'tic::before_install()'
             R -q -e 'tic::install()'
 
