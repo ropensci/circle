@@ -1,4 +1,4 @@
 library(testthat)
 library(circle)
 
-test_check("circle")
+test_package("circle")
