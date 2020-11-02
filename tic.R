@@ -1,4 +1,4 @@
-do_package_checks(codecov = FALSE)
+do_package_checks()
 
 if (ci_on_circle()) {
   get_stage("before_deploy") %>%
