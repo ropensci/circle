@@ -76,7 +76,7 @@ To enable deployment, a "user-key" is needed.
 This key type also has "write" permissions and can be added using `use_circle_deploy()`.
 `use_circle_deploy()` will add a so called "user key" to the settings of the repo on Circle CI.
 The private key will be added to your Github profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
-See also [the section about deployment](circle/deployment.html).
+See also [the Circle CI section about deployment](https://circleci.com/docs/2.0/deployment-integrations/#section=deployment).
 
 ---
 
