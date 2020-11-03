@@ -1,5 +1,3 @@
-# context("print S3 methods")
-
 vcr::use_cassette("s3-print-circle_pipeline", {
   test_that("s3 print method for 'circle_pipeline' works", {
     skip_on_cran()

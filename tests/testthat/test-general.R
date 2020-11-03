@@ -1,5 +1,3 @@
-context("general")
-
 vcr::use_cassette("get_circle_user()", {
   test_that("get_circle_user() works", {
     skip_on_cran()

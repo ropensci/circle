@@ -8,7 +8,7 @@ vcr::use_cassette("get_jobs()", {
     # calls `get_workflows()` and `get_pipelines()` internally
     out <- suppressMessages(get_jobs(repo = "circle", user = "ropenscilabs"))
 
-    expect_is(out, "circle_collection")
+    expect_s3_class(out, "circle_collection")
   })
 })
 

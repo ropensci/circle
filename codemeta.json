@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "circle",
-  "description": "Tools for interacting with the 'Circle CI' API.\n    Besides executing common tasks such as querying build logs and\n    restarting builds, this package also helps setting up permissions to\n    deploy from builds.",
+  "description": "Tools for interacting with the 'Circle CI' API.  Besides\n    executing common tasks such as querying build logs and restarting\n    builds, this package also helps setting up permissions to deploy from\n    builds.",
   "name": "circle: R client package for the Circle CI API",
   "codeRepository": "https://github.com/ropenscilabs/circle",
   "relatedLink": [
@@ -141,6 +141,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
+      "version": ">= 3.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -232,7 +233,7 @@
   ],
   "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
-  "fileSize": "1803.755KB",
+  "fileSize": "1803.778KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
