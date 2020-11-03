@@ -1,2 +1,37 @@
 template:
   package: rotemplate
+
+authors:
+  Patrick Schratz:
+    href: https://pat-s.me
+
+reference:
+  - title: Authentication
+    contents:
+      - get_circle_user
+      - enable_repo
+      - browse_circle_token
+      - github_info
+  - title: Builds & Jobs
+    contents:
+      - circle
+      - get_pipelines
+      - get_jobs
+      - contains("workflow")
+      - contains("build")
+  - title: Manage Environment Variables
+    contents:
+      - get_env_vars
+      - set_env_var
+  - title: Deployment
+    contents:
+      - use_circle_deploy
+  - title: Manage API Keys
+    contents:
+      - contains("key")
+  - title: Miscellaneous
+    contents:
+      - circle-package
+      - circleci
+      - edit_circle_config
+      - list_projects
