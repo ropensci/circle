@@ -5,11 +5,12 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "circle",
-  "description": "Tools for interacting with the 'Circle CI' API.  Besides\n    executing common tasks such as querying build logs and restarting\n    builds, this package also helps setting up permissions to deploy from\n    builds.",
+  "description": "Tools for interacting with the 'Circle CI' API.\n    Besides executing common tasks such as querying build logs and\n    restarting builds, this package also helps setting up permissions to\n    deploy from builds.",
   "name": "circle: R client package for the Circle CI API",
   "codeRepository": "https://github.com/ropenscilabs/circle",
   "relatedLink": [
-    "https://ropenscilabs.github.io/circle"
+    "https://ropenscilabs.github.io/circle",
+    "https://docs.ropensci.org/circle"
   ],
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.5.0.9002",
@@ -233,7 +234,7 @@
   ],
   "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
-  "fileSize": "1803.778KB",
+  "fileSize": "2272.726KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -250,5 +251,6 @@
   ],
   "issueTracker": "https://github.com/ropenscilabs/circle/issues",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "contIntegration": ["https://circleci.com/gh/ropenscilabs/circle", "https://codecov.io/gh/ropenscilabs/circle"]
+  "contIntegration": ["https://circleci.com/gh/ropenscilabs/circle", "https://codecov.io/gh/ropenscilabs/circle"],
+  "keywords": ["continuous-integration", "circle-ci", "api-client", "continuous-deployment"]
 }
