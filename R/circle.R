@@ -1,17 +1,3 @@
-#' Circle CI client package for R
-#'
-#' Use [github_repo()] to get the name of the current repository
-#' as determined from the `origin` remote.
-#' The following functions simplify integrating R package testing and deployment
-#' with GitHub and Circle CI:
-#' - [circle_enable()] enables Circle CI for your repository,
-#' - [use_circle_deploy()] installs a public deploy key on GitHub and the
-#'   corresponding private key on Circle CI to simplify deployments to GitHub
-#'   from Circle CI.
-#' @docType package
-#' @name circle-package
-NULL
-
 #' @title Circle CI HTTP Requests
 #'
 #' @description Workhorse function for executing API requests to

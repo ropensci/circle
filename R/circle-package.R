@@ -14,6 +14,12 @@
 #'   users will be guided through the creation of a key,
 #'   API keys are disposable, but should still be treated securely.
 #'
+#'   The following functions simplify integrating R package testing and
+#'   deployment with GitHub and Circle CI:
+#' - [enable_repo()] enables Circle CI for your repository,
+#' - [use_circle_deploy()] installs a public deploy key on GitHub and the
+#'   corresponding private key on Circle CI to simplify deployments to GitHub
+#'   from Circle CI.
 #' @examples
 #' \dontrun{
 #' # check to see if you've authenticated correctly
