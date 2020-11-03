@@ -3,8 +3,7 @@
 [![tic](https://github.com/ropenscilabs/circle/workflows/tic/badge.svg?branch=master)](https://github.com/ropenscilabs/circle/actions)
 [![CircleCI](https://img.shields.io/circleci/build/gh/ropenscilabs/circle/master?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropenscilabs/circle)
 [![codecov](https://codecov.io/gh/ropenscilabs/circle/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/circle)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 <!-- badges: end -->
 
@@ -12,31 +11,22 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 
 R client package for the Circle CI REST API
 
-This package aims to execute tasks such as build restarts, log queries
-or setting environment variables for the CI service provider [Circle
-CI](https://circleci.com/) from within R. It also simplifies the setup
-process for build deployments via `use_circle_deploy()`.
+This package aims to execute tasks such as build restarts, log queries or setting environment variables for the CI service provider [Circle CI](https://circleci.com/) from within R.
+It also simplifies the setup process for build deployments via `use_circle_deploy()`.
 
 {circle} does not come with an option to setup Circle CI YAML files.
-Please see the related [{tic}](https://github.com/ropensci/tic) package
-for such functionality.
+Please see the related [{tic}](https://github.com/ropensci/tic) package for such functionality.
 
 ## API versions
 
-All functionality uses the Circle CI [API
-v2](https://github.com/CircleCI-Public/api-preview-docs) which follows
-the **pipelines** -&gt; **workflows** -&gt; **jobs** approach. This API
-version is still in beta and might undergo some changes in the near
-future.
+All functionality uses the Circle CI [API v2](https://github.com/CircleCI-Public/api-preview-docs) which follows the **pipelines** ->; **workflows** ->; **jobs** approach.
+This API version is still in beta and might undergo some changes in the near future.
 
-Some functions can also be used via API versions v1.1 and v1 via the
-`api_version` argument. However, this will only work if the respective
-endpoints are available for both API versions. Usually, there should be
-no need in practice to fall back to API version &lt; 2.
+Some functions can also be used via API versions v1.1 and v1 via the `api_version` argument.
+However, this will only work if the respective endpoints are available for both API versions.
+Usually, there should be no need in practice to fall back to API version < 2.
 
-If you want to get more information, have a look at the [document
-explaining changes between v1.1 and
-v2](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
+If you want to get more information, have a look at the [document explaining changes between v1.1 and v2](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md#endpoints-likely-being-removed-in-api-v2-still-available-in-v11-for-now).
 
 ## Installation
 
@@ -48,9 +38,7 @@ remotes::install_github("ropenscilabs/circle")
 
 ## Get Started
 
-See the [Getting
-Started](https://ropenscilabs.github.io/circle/articles/circle.html)
-vignette for an introduction.
+See the [Getting Started](https://ropenscilabs.github.io/circle/articles/circle.html) vignette for an introduction.
 
 ## Note to Developers
 
@@ -59,10 +47,4 @@ See [CONTRIBUTING.md#testing-the-package](https://github.com/ropenscilabs/circle
 
 # Acknowledgments
 
-This package was inspired by the work of [Thomas J.
-Leeper](https://github.com/leeper) on the (discontinued)
-[cloudyr/circleci](https://github.com/cloudyr/circleci) package and by
-the [ropenscilabs/travis](https://github.com/ropenscilabs/travis)
-package.
-
-[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
+This package was inspired by the work of [Thomas J. Leeper](https://github.com/leeper) on the (discontinued) [cloudyr/circleci](https://github.com/cloudyr/circleci) package and by the [ropenscilabs/travis](https://github.com/ropenscilabs/travis) package.
