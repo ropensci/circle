@@ -18,7 +18,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 Patched (2020-06-30 r78761)",
+  "runtimePlatform": "R version 4.0.3 Patched (2020-10-27 r79379)",
   "author": [
     {
       "@type": "Person",
@@ -67,6 +67,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "gert",
+      "name": "gert",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=gert"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "gh",
       "name": "gh",
       "provider": {
@@ -76,18 +88,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=gh"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "git2r",
-      "name": "git2r",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=git2r"
     },
     {
       "@type": "SoftwareApplication",
@@ -232,7 +232,7 @@
   ],
   "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
-  "fileSize": "1250.642KB",
+  "fileSize": "1803.755KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
