@@ -89,7 +89,7 @@ get_build_artifacts <- function(job_id = NULL,
 #' @template user
 #' @template vcs
 #' @param branch A character string specifying the repository branch.
-#' @seealso [retry_build()]
+#' @seealso [retry_workflow()]
 #' @examples
 #' \dontrun{
 #' new_build()

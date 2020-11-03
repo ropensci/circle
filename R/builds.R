@@ -46,7 +46,7 @@ get_pipelines <- function(repo = NULL,
   return(new_circle_pipelines(content(resp$response)))
 }
 
-#' @param pipeline_id [string]\cr
+#' @param pipeline_id `[character]`\cr
 #'   A Circle CI pipeline ID.
 #' @rdname builds
 get_workflows <- function(pipeline_id = NULL,
@@ -85,7 +85,7 @@ get_workflows <- function(pipeline_id = NULL,
   return(resp)
 }
 
-#' @param workflow_id [string]\cr
+#' @param workflow_id `[character]`\cr
 #'   A Circle CI workflow ID.
 #' @rdname builds
 get_jobs <- function(workflow_id = NULL,

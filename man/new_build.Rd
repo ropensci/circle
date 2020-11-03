@@ -35,5 +35,5 @@ new_build()
 }
 }
 \seealso{
-\code{\link[=retry_build]{retry_build()}}
+\code{\link[=retry_workflow]{retry_workflow()}}
 }

@@ -49,7 +49,7 @@ Defaults to "gh" (Github).}
 A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 
-\item{pipeline_id}{\link{string}\cr
+\item{pipeline_id}{\verb{[character]}\cr
 A Circle CI pipeline ID.}
 
 \item{workflow_id}{\verb{[character]}\cr
