@@ -6,7 +6,8 @@ vcr::use_cassette("set_env_var()", {
     # fail to lookup the git repo when running code coverage
 
     out <- set_env_var(
-      repo = "circle", user = "ropenscilabs",
+      repo = Sys.getenv("CIRCLE_REPO"),
+      user = Sys.getenv("CIRCLE_OWNER"),
       list(foo = "test"),
       quiet = TRUE
     )
@@ -22,7 +23,10 @@ vcr::use_cassette("get_env_vars()", {
     # fail to lookup the git repo when running code coverage
 
     expect_silent(
-      get_env_vars(repo = "circle", user = "ropenscilabs")
+      get_env_vars(
+        repo = Sys.getenv("CIRCLE_REPO"),
+        user = Sys.getenv("CIRCLE_OWNER")
+      )
     )
   })
 })
@@ -36,7 +40,8 @@ vcr::use_cassette("delete_env_var()", {
 
     expect_silent(
       delete_env_var(
-        repo = "circle", user = "ropenscilabs",
+        repo = Sys.getenv("CIRCLE_REPO"),
+        user = Sys.getenv("CIRCLE_OWNER"),
         var = "foo", quiet = TRUE
       )
     )

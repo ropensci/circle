@@ -13,7 +13,7 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 R client package for the Circle CI REST API
 
 This package aims to execute tasks such as build restarts, log queries
-or setting environment variables for the CI service provider [Circlei
+or setting environment variables for the CI service provider [Circle
 CI](https://circleci.com/) from within R. It also simplifies the setup
 process for build deployments via `use_circle_deploy()`.
 
@@ -52,12 +52,10 @@ See the [Getting
 Started](https://ropenscilabs.github.io/circle/articles/circle.html)
 vignette for an introduction.
 
-## Note to developers
+## Note to Developers
 
-This packages relies on using API keys to test its functionality. Please
-have a look at section [“Testing the
-package”](https://github.com/ropenscilabs/circle/blob/master/.github/CONTRIBUTING.md#testing-the-package)
-for more information.
+This packages relies on private API keys for local testing.
+See [CONTRIBUTING.md#testing-the-package](https://github.com/ropenscilabs/circle/blob/master/.github/CONTRIBUTING.md#testing-the-package) for detailed instructions.
 
 # Acknowledgments
 
@@ -67,4 +65,4 @@ Leeper](https://github.com/leeper) on the (discontinued)
 the [ropenscilabs/travis](https://github.com/ropenscilabs/travis)
 package.
 
-[![rOpenSci footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
+[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

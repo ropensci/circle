@@ -18,24 +18,24 @@ http_interactions:
       access-control-allow-origin: '*'
       content-encoding: gzip
       content-type: application/json;charset=utf-8
-      date: Tue, 03 Nov 2020 11:30:21 GMT
+      date: Tue, 03 Nov 2020 11:39:40 GMT
       server: nginx
-      set-cookie: ring-session=UxO8%2F1FHeguMufqKYh%2FnxsxeXvr8wPV0FG5b%2BcVoGBlm0fzs%2B3XV6XzeKUyKmiPNz5c5FOcNHBrGMdE%2FxMNzHVD2k1iqnuRS2ZtdpUCmx2W4zFoPOFbapLCu8Q7tS41gGZNLyfsIc4qM9LtOTG3axMitXRgLrsS2b8l8Unvcn82RbOlFTObYi76i2w9Md0jVBzx6aX5TVIRItglZQww6XzczTRvQYkB7yB8%2Fmltf8vI%3D--f3dmGgZ7JE%2F26HyAEPHaXHvsAIe%2Fo8D1wKaLg%2FYQua8%3D;Path=/;HttpOnly;Expires=Tue,
-        02 Nov 2021 23:42:07 +0000;Max-Age=1209600;Secure
+      set-cookie: ring-session=9K%2FLdob6RzkqWMOQ3ka5w9%2F4mi7%2FATI17oacP3MmqkVbvpU%2FKHJdH0Z4MVRKLKncQp6Lr7%2Fb6UnY%2BT%2BDfHbcX9lA1HY%2B7bNd6AUTDMcWn6JOrXEGImEOypyV9YYVyQJPzxeNK3h58pK2j%2BZq6agbTDekqVinjF777%2BdHKZj5mTjM%2BtIbxpGom8zwWu9%2Bm1rAl0L%2Bfpu01Yf12rGHfjGKZT3VJ7x3yIWZ%2FfplNNRc47c%3D--cP8efX9P9mo%2FuglWxNtPhTJcb6rFTRGSLcaV%2BMnyGtM%3D;Path=/;HttpOnly;Expires=Tue,
+        02 Nov 2021 15:14:47 +0000;Max-Age=1209600;Secure
       strict-transport-security: max-age=15724800
       vary: Origin
-      x-circleci-identity: circle-www-api-v1-777c756979-ndgcz
+      x-circleci-identity: circle-www-api-v1-777c756979-2mkkb
       x-frame-options: DENY
       x-ratelimit-limit: '151'
       x-ratelimit-remaining: '150'
       x-ratelimit-reset: '0'
-      x-request-id: 87d53d68-279a-4f6d-b27e-fa1abff13a9a
+      x-request-id: 4066cbdf-d774-422e-8b8c-0d8899907385
       x-route: /api/v2/project/:project-slug/envvar
-      content-length: '114'
+      content-length: '123'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"next_page_token":null,"items":[{"name":"CIRCLE_CHECKOUT_KEY","value":"xxxx9e9f"},{"name":"R_CIRCLE","value":"xxxx892f"}]}'
-  recorded_at: 2020-11-03 11:30:21 GMT
+      string: '{"next_page_token":null,"items":[{"name":"CIRCLE_CHECKOUT_KEY","value":"xxxx9e9f"},{"name":"R_CIRCLE","value":"xxxx892f"},{"name":"foo","value":"xxxxst"}]}'
+  recorded_at: 2020-11-03 11:39:41 GMT
   recorded_with: vcr/0.5.4, webmockr/0.7.0

@@ -17,17 +17,17 @@ http_interactions:
     headers:
       content-encoding: gzip
       content-type: application/json;charset=utf-8
-      date: Tue, 03 Nov 2020 11:30:21 GMT
+      date: Tue, 03 Nov 2020 11:39:38 GMT
       server: nginx
-      set-cookie: ring-session=xbUGlPuyFaLjFIRmjQaKOvyz0LAtsV5eewi9QVe8pjurakY9AiPcC7QIjlctQBIZJG2UV4A8W%2FbDTur4IWll7jiECNsKWtrRNaVBZo28qrZRD%2BP4Dm99aD2xFX8lRX7btiE3DnSE%2BwX3ek4Pfmn07S0%2F1HXoncpTVtjw7ageROVMxBD7r0ZWP1Pnxsvd%2Bd0ZuwpxHRJp7Ykji9fKw76aUKwhTML8tsIUuaEDyZsjGQI%3D--aGhnfU1%2B6GZfOwvkCxZAeJeMIuh%2BLsVpvafLQMzXodk%3D;Path=/;HttpOnly;Expires=Tue,
-        02 Nov 2021 15:12:19 +0000;Max-Age=1209600;Secure
+      set-cookie: ring-session=E7wxR%2FtLgVjt%2FRKXmMOU98RpLd%2Buyyurc%2BqP6n7Sw2ahTz3BKC4wMUTflwqRhqif5HsDHluelrhjCcIJTUap4VTJdMh41PJDFsR9Rn4Q7iVAgakp4pY6ku1T4Pn8NeVPPuBDziSDs18iEs2IDkBVv78bMYEF611%2Fbncy%2B3OUilZFQCAppToOsZLsh%2FrrGGGwZxIshnAJJhnIrB2SOQ%2F7y3EIcJ%2FusK1UCygN4%2FiC%2BjA%3D--zA425wL655ZCLczf%2B6%2BFbEQyb6wCiDh2KxnB1nkn0HM%3D;Path=/;HttpOnly;Expires=Tue,
+        02 Nov 2021 15:19:06 +0000;Max-Age=1209600;Secure
       strict-transport-security: max-age=15724800
-      x-circleci-identity: circle-www-api-v1-777c756979-kqlvq
+      x-circleci-identity: circle-www-api-v1-777c756979-cb9sr
       x-frame-options: DENY
       x-ratelimit-limit: '151'
       x-ratelimit-remaining: '150'
       x-ratelimit-reset: '0'
-      x-request-id: 7e70cb36-bce1-4586-9513-19f9d8a437ae
+      x-request-id: 2dfe2dc3-9f75-4b8d-b76d-aa68fb3be3d5
       x-route: /api/v1.1/project/:vcs-type/:username/:repo/follow
       content-length: '71'
       connection: keep-alive
@@ -35,5 +35,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"following":true,"workflow":false,"first_build":null}'
-  recorded_at: 2020-11-03 11:30:21 GMT
+  recorded_at: 2020-11-03 11:39:39 GMT
   recorded_with: vcr/0.5.4, webmockr/0.7.0

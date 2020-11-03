@@ -5,7 +5,10 @@ vcr::use_cassette("s3-print-circle_pipeline", {
     # 'repo' and 'user' need to be set explicitly because `github_info()` will
     # fail to lookup the git repo when running code coverage
 
-    out <- get_pipelines(repo = "circle", user = "ropenscilabs")
+    out <- get_pipelines(
+      repo = Sys.getenv("CIRCLE_REPO"),
+      user = Sys.getenv("CIRCLE_OWNER")
+    )
     capture.output(expect_message(
       print(out),
       "A collection of 20 Circle CI pipelines"
@@ -20,10 +23,13 @@ vcr::use_cassette("s3-print-circle_collection", {
     # 'repo' and 'user' need to be set explicitly because `github_info()` will
     # fail to lookup the git repo when running code coverage
 
-    out <- get_workflows(repo = "circle", user = "ropenscilabs")
+    out <- get_workflows(
+      repo = Sys.getenv("CIRCLE_REPO"),
+      user = Sys.getenv("CIRCLE_OWNER")
+    )
     capture.output(expect_message(
       print(out),
-      "A collection of 11 Circle CI workflows"
+      "A collection of 10 Circle CI workflows"
     ))
   })
 })
@@ -35,7 +41,10 @@ vcr::use_cassette("s3-print-circle_workflow", {
     # 'repo' and 'user' need to be set explicitly because `github_info()` will
     # fail to lookup the git repo when running code coverage
 
-    wf <- get_workflows(repo = "circle", user = "ropenscilabs")
+    wf <- get_workflows(
+      repo = Sys.getenv("CIRCLE_REPO"),
+      user = Sys.getenv("CIRCLE_OWNER")
+    )
     capture.output(expect_message(
       print(wf[[1]]),
       "A Circle CI workflow:"
@@ -50,7 +59,10 @@ vcr::use_cassette("s3-print-circle_job", {
     # 'repo' and 'user' need to be set explicitly because `github_info()` will
     # fail to lookup the git repo when running code coverage
 
-    job <- get_jobs(repo = "circle", user = "ropenscilabs")
+    job <- get_jobs(
+      repo = Sys.getenv("CIRCLE_REPO"),
+      user = Sys.getenv("CIRCLE_OWNER")
+    )
     capture.output(expect_message(
       print(job[[1]]),
       "A Circle CI job:"

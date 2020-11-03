@@ -18,18 +18,18 @@ http_interactions:
       access-control-allow-origin: '*'
       content-encoding: gzip
       content-type: application/json;charset=utf-8
-      date: Wed, 23 Sep 2020 20:13:43 GMT
+      date: Tue, 03 Nov 2020 11:39:41 GMT
       server: nginx
-      set-cookie: ring-session=DMdpt5gLmHa0VmV5ez8h5y0YySFW1ySZv6gLvTNyIxH5H1aODR7jeq8EvWJa2NAfH%2FjEQO3zN3JnftTnTJF7Tc9qdDOgiS5loelx1B1E28ReS2V0FoT82cHGkLhqKA3unyPYLvce6gGyUJvAo1DZ5AH%2BqcEcSKLp%2FU8YB3WRCD3S194nFSuXfWkj4NBOnhmEQJSaF0mXiNyx%2BXSf%2F8Qi7KDDQ8EG6POMJjJnTWgBuZk%3D--R%2FdFHqls3b25KB1nUY%2BAt6Z%2FKeBEiTzkfeO%2Bxn%2BpT04%3D;Path=/;HttpOnly;Expires=Thu,
-        23 Sep 2021 15:13:41 +0000;Max-Age=1209600;Secure
+      set-cookie: ring-session=KCsTxxk9lwlIIBwtFFUCenLnQjwzCoLCVgaAwAfuf0CwXmXXm1nmqU%2BNgzst3otfS%2FDahw%2B8OuJdvUl%2B0sniroLaeYtF5aiO5Taa7%2FiG62btkSQnt70JlG2NAqQnl561jrhzyPT2CZDHXXdQf%2BSGmb1BYvaHlp1S7rT2HSoJLQ0qa7BHfUz%2BuNC%2BBoaw19AmVTH%2BrirP2i7Ie4J%2FFDucecGazZY2Huj%2FdqcqnlC0chU%3D--6t2jww05CLJanZfE%2FsRtpOqNUQGrMjTcQUZykYeDYCg%3D;Path=/;HttpOnly;Expires=Tue,
+        02 Nov 2021 15:19:02 +0000;Max-Age=1209600;Secure
       strict-transport-security: max-age=15724800
       vary: Origin
-      x-circleci-identity: circle-www-api-v1-7dd8b4687b-nprtm
+      x-circleci-identity: circle-www-api-v1-777c756979-dq2m7
       x-frame-options: DENY
       x-ratelimit-limit: '151'
       x-ratelimit-remaining: '150'
       x-ratelimit-reset: '0'
-      x-request-id: ef2d0def-6d4b-456a-8802-ff32e62f1063
+      x-request-id: 5a657624-5954-4826-bdd0-3e2d858642b7
       x-route: /api/v2/me
       content-length: '101'
       connection: keep-alive
@@ -37,5 +37,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"name":"Patrick Schratz","login":"pat-s","id":"9c373331-d0f7-45e1-afe6-4a5c75e00d10"}'
-  recorded_at: 2020-09-23 20:13:43 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-11-03 11:39:41 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
