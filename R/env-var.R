@@ -1,14 +1,14 @@
-#' @title Interact with Environment Variable(s)
-#' @description Add/Get/Set Circle CI environment variable(s) for a repo on
+#' @title Interact with Environment Variable(s) on Circle CI
+#' @description Add, get or set Circle CI environment variable(s) for a repo on
 #'   Circle CI.
-#' @param name Name of an environment variable. If not set, all env vars are
-#'   returned.
-#' @param repo The Circle CI project. By default the current directory name will
-#'   be used.
+#' @param name `[character]`\cr
+#'   Name of a specific environment variable.
+#'   If not set, all env vars are returned.
+#' @template repo
 #' @template user
 #' @template vcs
-#' @param var A list containing key-value pairs of environment variable
-#'   and its value.
+#' @param var `[list]`\cr
+#'   A list containing key-value pairs of environment variable and its value.
 #' @template api_version
 #' @template quiet
 #' @name env_var

@@ -234,7 +234,7 @@
   ],
   "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropenscilabs/circle/blob/master/README.md",
-  "fileSize": "2272.726KB",
+  "fileSize": "2275.849KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -252,5 +252,10 @@
   "issueTracker": "https://github.com/ropenscilabs/circle/issues",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "contIntegration": ["https://circleci.com/gh/ropenscilabs/circle", "https://codecov.io/gh/ropenscilabs/circle"],
-  "keywords": ["continuous-integration", "circle-ci", "api-client", "continuous-deployment"]
+  "keywords": [
+    "continuous-integration",
+    "circle-ci",
+    "api-client",
+    "continuous-deployment"
+  ]
 }

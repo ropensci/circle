@@ -6,7 +6,7 @@
 \alias{get_workflows}
 \alias{get_jobs}
 \alias{retry_workflow}
-\title{Get builds from Circle CI}
+\title{Retrieve Metadata from Circle CI Builds}
 \usage{
 get_pipelines(
   repo = NULL,
@@ -32,28 +32,32 @@ get_jobs(
 retry_workflow(workflow_id = NULL)
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{limit}{How many builds should be returned? Maximum allowed by Circle is
+\item{limit}{\verb{[integer]}\cr
+How many builds should be returned? Maximum allowed by Circle is
 30.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
-\item{api_version}{A character string specifying the Circle CI API version.
+\item{api_version}{\verb{[character]}\cr
+A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 
-\item{pipeline_id}{[string]\cr
+\item{pipeline_id}{\link{string}\cr
 A Circle CI pipeline ID.}
 
-\item{workflow_id}{[string]\cr
+\item{workflow_id}{\verb{[character]}\cr
 A Circle CI workflow ID.}
 }
 \description{
-Queries pipelines/workflows/jobs from Circle CI.
+Query information about pipelines, workflows or jobs on
+Circle CI.
 }
 \examples{
 \dontrun{

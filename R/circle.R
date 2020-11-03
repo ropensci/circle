@@ -14,23 +14,27 @@ NULL
 
 #' @title Circle CI HTTP Requests
 #'
-#' @description Workhorse function for executing API requests on
+#' @description Workhorse function for executing API requests to
 #'   Circle CI.
 #'
 #' @import httr
 #' @importFrom jsonlite fromJSON
 #'
-#' @details This is mostly an internal function for executing API requests. In
-#'   almost all cases, users do not need to access this directly.
+#' @details In almost all cases, users should not need to call this function.
 #'
-#' @param verb A character string containing an HTTP verb, defaulting to `GET`.
-#' @param path A character string with the API endpoint (should begin with a
-#'   slash).
-#' @param query A list specifying any query string arguments to pass to the API.
+#' @param verb `[character]`\cr
+#'   A character string containing an HTTP verb, defaulting to `GET`.
+#' @param path `[character]`\cr
+#'   A character string with the API endpoint (should begin with a slash).
+#' @param query `[character]`\cr
+#'   A list specifying any query string arguments to pass to the API.
 #'   This is used to pass the API token.
-#' @param body A named list or character string of what should be passed in the
-#'   request. Corresponds to the "-d" argument of the `curl` command.
-#' @param encode Encoding format. See [httr::POST].
+#' @param body `[character]`\cr
+#'   A named list or array of what should be passed in the
+#'   request.
+#'   Corresponds to the "-d" argument of the `curl` command.
+#' @param encode `[character]`\cr
+#'   Encoding format. See [httr::POST].
 #' @template api_version
 #'
 #' @return The JSON response, or the relevant error.

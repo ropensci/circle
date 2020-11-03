@@ -2,7 +2,7 @@
 % Please edit documentation in R/general.R
 \name{new_build}
 \alias{new_build}
-\title{Trigger build}
+\title{Trigger a New Build on Circle CI}
 \usage{
 new_build(
   repo = github_info()$name,
@@ -12,18 +12,19 @@ new_build(
 )
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
 \item{branch}{A character string specifying the repository branch.}
 }
 \description{
-Trigger a new build for a specific repo branch
+Triggers a new build for a specific repo branch.
 }
 \details{
 Trigger a new Circle CI build for a specific repo branch.
@@ -34,5 +35,5 @@ new_build()
 }
 }
 \seealso{
-[retry_build()]
+\code{\link[=retry_build]{retry_build()}}
 }

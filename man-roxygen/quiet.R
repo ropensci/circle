@@ -1,1 +1,2 @@
-#' @param quiet If `TRUE`, console output is suppressed.
+#' @param quiet `[logical]`\cr
+#' If `TRUE`, console output is suppressed.

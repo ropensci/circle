@@ -6,7 +6,7 @@
 \alias{get_checkout_keys}
 \alias{delete_checkout_key}
 \alias{has_checkout_key}
-\title{Generate/get or delete an checkout Key}
+\title{Add, Get or Delete a Checkout Keys on Circle CI}
 \usage{
 create_checkout_key(
   repo = github_info()$name,
@@ -37,33 +37,34 @@ has_checkout_key(
   user = github_info()$owner$login,
   type = "github-user-key",
   vcs_type = "gh",
-  preferred = "true"
+  preferred = TRUE
 )
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{type}{Type of key to add. Options are "user-key" and
-"deploy-key".}
+\item{type}{\verb{[character]}\cr
+Type of key to add. Options are "user-key" and "deploy-key".}
 
-\item{api_version}{A character string specifying the Circle CI API version.
+\item{api_version}{\verb{[character]}\cr
+A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
-\item{fingerprint}{The fingerprint of the checkout key which should be
-deleted.}
+\item{fingerprint}{\verb{[character]}\cr
+The fingerprint of the checkout key which should be deleted.}
 
-\item{preferred}{Checks whether the requested type is the "preferred" key.}
+\item{preferred}{\verb{[logical]}\cr
+Checks whether the requested type is the "preferred" key.}
 }
 \description{
 Functions to interact with "checkout keys" on Circle CI.
-
-Check if a specific key type exists in the Circle CI project
 }
 \examples{
 \dontrun{

@@ -1,11 +1,12 @@
-#' @title Get builds from Circle CI
-#' @description Queries pipelines/workflows/jobs from Circle CI.
+#' @title Retrieve Metadata from Circle CI Builds
+#' @description Query information about pipelines, workflows or jobs on
+#'   Circle CI.
 #'
-#' @param repo The Circle CI project. By default the current directory name will
-#'   be used.
+#' @template repo
 #' @template user
 #' @template vcs
-#' @param limit How many builds should be returned? Maximum allowed by Circle is
+#' @param limit `[integer]`\cr
+#'   How many builds should be returned? Maximum allowed by Circle is
 #'   30.
 #' @template api_version
 #'
@@ -125,7 +126,7 @@ get_jobs <- function(workflow_id = NULL,
   return(resp)
 }
 
-#' @param workflow_id [string]\cr
+#' @param workflow_id `[character]`\cr
 #'   A Circle CI workflow ID.
 #' @rdname builds
 retry_workflow <- function(workflow_id = NULL) {

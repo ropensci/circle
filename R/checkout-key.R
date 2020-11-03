@@ -1,13 +1,12 @@
-#' @title Generate/get or delete an checkout Key
+#' @title Add, Get or Delete a Checkout Keys on Circle CI
 #' @description Functions to interact with "checkout keys" on Circle CI.
-#' @param repo The Circle CI project. By default the current directory name will
-#'   be used.
+#' @template repo
 #' @template user
 #' @template vcs
-#' @param type Type of key to add. Options are "user-key" and
-#'   "deploy-key".
-#' @param fingerprint The fingerprint of the checkout key which should be
-#'   deleted.
+#' @param type `[character]`\cr
+#'   Type of key to add. Options are "user-key" and "deploy-key".
+#' @param fingerprint `[character]`\cr
+#'   The fingerprint of the checkout key which should be deleted.
 #' @template api_version
 #' @name checkout_key
 #' @export
@@ -54,8 +53,6 @@ create_checkout_key <- function(repo = github_info()$name,
   return(resp)
 }
 
-#' Get checkout key
-#'
 #' @rdname checkout_key
 #' @export
 #' @examples
@@ -83,8 +80,6 @@ get_checkout_keys <- function(repo = github_info()$name,
   return(resp)
 }
 
-#' Delete checkout key
-#'
 #' @rdname checkout_key
 #' @export
 #' @examples
@@ -130,10 +125,8 @@ delete_checkout_key <- function(fingerprint = NULL,
   return(resp)
 }
 
-#' Check SSH key existence
-#' @description Check if a specific key type exists in the Circle CI project
-#'
-#' @param preferred Checks whether the requested type is the "preferred" key.
+#' @param preferred `[logical]`\cr
+#'   Checks whether the requested type is the "preferred" key.
 #' @rdname checkout_key
 #' @export
 #' @examples
@@ -144,7 +137,7 @@ has_checkout_key <- function(repo = github_info()$name,
                              user = github_info()$owner$login,
                              type = "github-user-key",
                              vcs_type = "gh",
-                             preferred = "true") {
+                             preferred = TRUE) {
 
   info <- get_checkout_keys(repo = repo, user = user, vcs_type = vcs_type)
   key <- any(grepl(type, info))
@@ -156,6 +149,12 @@ has_checkout_key <- function(repo = github_info()$name,
     )
     return(FALSE)
   } # nocov end
+
+  if (preferred) {
+    preferred <- "true"
+  } else {
+    preferred <- "false"
+  }
 
   key_name <- purrr::map_chr(info$content$items, ~ .x$type)
   is_pref <- purrr::map_lgl(info$content$items, ~ .x$preferred)

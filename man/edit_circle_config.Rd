@@ -7,5 +7,5 @@
 edit_circle_config()
 }
 \description{
-Opens `~/.circleci/cli.yml`.
+Opens \verb{~/.circleci/cli.yml}.
 }

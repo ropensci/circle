@@ -12,19 +12,21 @@ enable_repo(
 )
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
-\item{api_version}{A character string specifying the Circle CI API version.
+\item{api_version}{\verb{[character]}\cr
+A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 }
 \description{
-Follows a repo on Circle CI so that builds can be triggered
+"Follows" a repo on Circle CI so that builds can be triggered.
 }
 \examples{
 \dontrun{

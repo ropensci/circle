@@ -7,38 +7,37 @@
 browse_circle_token()
 }
 \description{
-A circle API Key is needed to interact with the Circle CI API.
-  `browse_circle_token()` opens a browser window for the respective circle
-  endpoint. On this site, you can copy your personal API key and then follow
-  the instructions of the console output or the ones shown below.
+A Circle CI API token is needed to interact with the Circle CI API.
+\code{browse_circle_token()} opens a browser window for the respective Circle CI
+endpoint to retrieve the key.
 }
-\section{Store API Key}{
+\section{Store API token}{
 
 
-  The `circle` package supports two ways of storing the Circle API key(s):
+\code{circle} supports two ways of storing the Circle API tokens:
+\itemize{
+\item via env vars \code{R_CIRCLE}
+\item via \verb{~/.circleci/cli.yml}
+}
 
-  - via env vars `R_CIRCLE`
-  - via `~/.circleci/cli.yml`
+The latter should already be present if you already used the \code{circle} CLI
+tool at some point in the past. If not, its up to your preference which
+approach to use.
 
-  The latter should already be present if you already used the `circle` CLI
-  tool at some point in the past. If not, its up to your preference which
-  approach to use.
-
-  The following instructions should help to set up `~/.circleci/cli.yml`
-  correctly:
-  1. Copy the token from the browser window which just opened. You can use
-  `edit_circle_config()` to open `~/.circleci/cli.yml`.
-  2. The token should be stored using the following structure
-
-     ```
-     host: https://circleci.com
-     endpoint: graphql-unstable
-     token: <token>
-     ```
+The following instructions should help to set up \verb{~/.circleci/cli.yml}
+correctly:
+\enumerate{
+\item Copy the token from the browser after having called
+\code{browse_circle_token()}. You can use
+\code{edit_circle_config()} to open \verb{~/.circleci/cli.yml}.
+\item The token should be stored using the following structure\if{html}{\out{<div class="sh">}}\preformatted{host: https://circleci.com
+endpoint: graphql-unstable
+token: <token>
+}\if{html}{\out{</div>}}
+}
 }
 
 \examples{
-
 \dontrun{
 browse_github_token()
 

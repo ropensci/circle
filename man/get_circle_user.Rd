@@ -7,7 +7,7 @@
 get_circle_user()
 }
 \value{
-A list of class `circle_user`.
+A list of class \code{circle_user}.
 }
 \description{
 Retrieve details about the authenticated Circle CI user.

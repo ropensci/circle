@@ -2,29 +2,30 @@
 % Please edit documentation in R/general.R
 \name{list_projects}
 \alias{list_projects}
-\title{List repository}
+\title{List Circle CI Projects}
 \usage{
 list_projects(repo = github_info()$name, user = github_info()$owner$login)
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 }
 \value{
-An object of class `circle_api`.
+An object of class \code{circle_api}.
 }
 \description{
-Retrieve a list of Circle CI repository for the authenticated
-  user.
+Retrieve a list of Circle CI repositories for the authenticated
+user.
 }
 \details{
 Retrieves a very detailed list of repository and repo-related
-  information for all Circle CI repository attached to the current user.
+information for all Circle CI repository attached to the current user.
 
-  This endpoint uses API v1.1 and will probably be removed in the near
-  future.
+This endpoint uses API v1.1 and will probably be removed in the near
+future.
 }
 \examples{
 \dontrun{
@@ -32,5 +33,5 @@ list_projects()
 }
 }
 \seealso{
-[get_pipelines()], [get_workflows()], [get_jobs()]
+\code{\link[=get_pipelines]{get_pipelines()}}, \code{\link[=get_workflows]{get_workflows()}}, \code{\link[=get_jobs]{get_jobs()}}
 }

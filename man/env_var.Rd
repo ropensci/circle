@@ -5,7 +5,7 @@
 \alias{get_env_vars}
 \alias{set_env_var}
 \alias{delete_env_var}
-\title{Interact with Environment Variable(s)}
+\title{Interact with Environment Variable(s) on Circle CI}
 \usage{
 get_env_vars(
   name = NULL,
@@ -34,28 +34,32 @@ delete_env_var(
 )
 }
 \arguments{
-\item{name}{Name of an environment variable. If not set, all env vars are
-returned.}
+\item{name}{\verb{[character]}\cr
+Name of a specific environment variable.
+If not set, all env vars are returned.}
 
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
-\item{api_version}{A character string specifying the Circle CI API version.
+\item{api_version}{\verb{[character]}\cr
+A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 
-\item{var}{A list containing key-value pairs of environment variable
-and its value.}
+\item{var}{\verb{[list]}\cr
+A list containing key-value pairs of environment variable and its value.}
 
-\item{quiet}{If `TRUE`, console output is suppressed.}
+\item{quiet}{\verb{[logical]}\cr
+If \code{TRUE}, console output is suppressed.}
 }
 \description{
-Add/Get/Set Circle CI environment variable(s) for a repo on
-  Circle CI.
+Add, get or set Circle CI environment variable(s) for a repo on
+Circle CI.
 }
 \examples{
 \dontrun{

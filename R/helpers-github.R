@@ -9,8 +9,7 @@
 #'   The path to a GitHub-enabled Git repository (or a subdirectory thereof).
 #' @template token
 #' @template remote
-#' @name github_info
-#' @family GitHub functions
+#' @keywords internal
 github_info <- function(path = ".",
                         remote = "origin",
                         .token = NULL) {

@@ -11,7 +11,7 @@ reference:
       - get_circle_user
       - enable_repo
       - browse_circle_token
-      - github_info
+      - edit_circle_config
   - title: Builds & Jobs
     contents:
       - circle
@@ -32,6 +32,4 @@ reference:
   - title: Miscellaneous
     contents:
       - circle-package
-      - circleci
-      - edit_circle_config
       - list_projects

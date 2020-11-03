@@ -2,7 +2,7 @@
 % Please edit documentation in R/general.R
 \name{get_build_artifacts}
 \alias{get_build_artifacts}
-\title{Get build artifacts}
+\title{Get Build Artifacts of a Specific Job}
 \usage{
 get_build_artifacts(
   job_id = NULL,
@@ -13,27 +13,24 @@ get_build_artifacts(
 )
 }
 \arguments{
-\item{job_id}{A Circle CI job id.}
+\item{job_id}{\verb{[character]}\cr
+A Circle CI job id.}
 
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 
-\item{vcs_type}{The version control system to use. Defaults to "gh" (Github).
-Other possible values are "bitbucket".}
+\item{vcs_type}{\verb{[character]}\cr The version control system to use.
+Defaults to "gh" (Github).}
 
-\item{api_version}{A character string specifying the Circle CI API version.
+\item{api_version}{\verb{[character]}\cr
+A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
-}
-\value{
-A list of build artifacts
 }
 \description{
 Retrieve artifacts from a specific build.
-}
-\details{
-Retrieves details about artifacts from a specific build.
 }
 \examples{
 \dontrun{

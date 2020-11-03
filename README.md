@@ -19,7 +19,7 @@ Please see the related [{tic}](https://github.com/ropensci/tic) package for such
 
 ## API versions
 
-All functionality uses the Circle CI [API v2](https://github.com/CircleCI-Public/api-preview-docs) which follows the **pipelines** ->; **workflows** ->; **jobs** approach.
+All functionality uses the Circle CI [API v2](https://github.com/CircleCI-Public/api-preview-docs) which follows the **pipelines** -> **workflows** -> **jobs** approach.
 This API version is still in beta and might undergo some changes in the near future.
 
 Some functions can also be used via API versions v1.1 and v1 via the `api_version` argument.

@@ -7,13 +7,13 @@
 github_info(path = ".", remote = "origin", .token = NULL)
 }
 \arguments{
-\item{path}{`[string]`\cr
+\item{path}{\verb{[string]}\cr
 The path to a GitHub-enabled Git repository (or a subdirectory thereof).}
 
-\item{remote}{`[string]`\cr
-The Github remote which should be used. Defaults to "origin".}
+\item{remote}{\verb{[character]}\cr
+The Github remote which should be used.}
 
-\item{.token}{`[character]`\cr
+\item{.token}{\verb{[character]}\cr
 Authentication token. Defaults to GITHUB_PAT or GITHUB_TOKEN environment
 variables, in this order if any is set. See gh_token() if you need more
 flexibility, e.g. different tokens for different GitHub Enterprise
@@ -22,6 +22,6 @@ deployments.}
 \description{
 Retrieves metadata about a Git repository from GitHub.
 
-`github_info()` returns a list as obtained from the GET "/repos/:repo" API.
+\code{github_info()} returns a list as obtained from the GET "/repos/:repo" API.
 }
-\concept{GitHub functions}
+\keyword{internal}

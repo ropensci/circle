@@ -2,31 +2,34 @@
 % Please edit documentation in R/use-circle-deploy.R
 \name{use_circle_deploy}
 \alias{use_circle_deploy}
-\title{Set up deployment between Circle CI builds and Github repositories}
+\title{Set Up Deployment Between Circle CI And Github}
 \usage{
 use_circle_deploy(repo = github_info()$name, user = github_info()$owner$login)
 }
 \arguments{
-\item{repo}{The Circle CI project. By default the current directory name will
-be used.}
+\item{repo}{\verb{[character]}\cr
+The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
-\item{user}{The username for the repository. By default queried using `get_user()`.}
+\item{user}{\verb{[character]}\cr
+The username for the repository. By default queried using \code{get_user()}.}
 }
 \description{
-Checks and eventually creates a "user-key" to enable
-  deployment from Circle CI builds.
+Creates a "user-key" (if none exists yet) to enable
+deployment from Circle CI builds to GitHub.
 }
 \details{
 The easiest way to achieve a deployment from Circle CI builds to a Github
-repo is by creating a so called "user-key" with your Circle CI
-account. Essentially, this is a SSH key pair.
+repo is by creating a so called "user-key" (i.e. an SSH key pair) on
+Circle CI.
 
-This function checks for the presence of such and, if missing, creates one.
+\code{use_circle_deploy()} tries to be smart by exiting early if such a key is
+already present.
 
-If the repo has not been enabled yet on Circle CI, please run `enable_repo()`
-first. Also to be able to log in to Github, you will need to have a
-`GITHUB_TOKEN` being set as an environment variable. If you are unsure
-if you have done this already, call `usethis::github_token()`.
+If the repo has not been enabled yet on Circle CI, please run \code{enable_repo()}
+first.
+Also to be able to authenticate to Github in the first place a personal
+access token needs to be set (via env var \code{GITHUB_TOKEN}).
+\code{usethis::github_token()} can be used to check if one is already set.
 If none is set, this function will prompt you to create one.
 }
 \examples{
