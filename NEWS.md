@@ -1,12 +1,23 @@
+# circle 0.6.0
+
+- Copy over GitHub auth and SSH helpers from {travis}
+- Print informative message when creating a user key errors with status code 500
+- `*_env_var()`: Use owner info instead of user info to query repo
+- Use {vcr} for http testing
+- Add pkgdown reference structure
+- Added pre-commit hooks
+- Added codemeta
+- Use roxygen markdown
+- Added parameter types to help pages
+
 # circle 0.5.0.9002
 
 - Copy over GitHub auth and SSH helpers from {travis}
 - print informative message when creating a user key errors with status code 500
 
-
 # circle 0.5.0.9001
 
-* `*_env_var()`: Use owner info instead of user info to query repo
+- `*_env_var()`: Use owner info instead of user info to query repo
 
 # circle 0.5.0
 
@@ -23,7 +34,7 @@
 
 ## Bugfixes
 
-- Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing. 
+- Pipelines without a workflow ID caused `get_builds()` to error. Now pipelines without a workflow ID are removed internally before continuing.
 - setting env vars now works
 - make `create_checkout_key()` work with API v2
 
@@ -48,4 +59,4 @@
 
 # circleci 0.1.0
 
-* First working version
+- First working version
