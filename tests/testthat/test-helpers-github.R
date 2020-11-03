@@ -2,7 +2,7 @@ test_that("github helper functions work", {
   unlink(paste0(tempdir(), "/circle"), recursive = TRUE)
   gert::git_clone(
     "https://github.com/ropenscilabs/circle.git",
-    tempdir(check = TRUE)
+    paste0(tempdir(), "/circle")
   )
 
   withr::with_dir(paste0(tempdir(), "/circle"), {
