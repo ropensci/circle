@@ -1,8 +1,8 @@
 test_that("github helper functions work", {
   unlink(paste0(tempdir(), "/circle"), recursive = TRUE)
-  usethis::create_from_github("ropenscilabs/circle",
-    destdir = tempdir(check = TRUE), open = FALSE,
-    auth_token = Sys.getenv("PAT_GITHUB")
+  gert::git_clone(
+    "https://github.com/ropenscilabs/circle.git",
+    tempdir(check = TRUE)
   )
 
   withr::with_dir(paste0(tempdir(), "/circle"), {
