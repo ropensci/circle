@@ -15,7 +15,6 @@
 #' create_checkout_key()
 #'
 #' # create only a 'deploy key' pair
-#'
 #' create_checkout_key(type = "deploy-key")
 #' }
 create_checkout_key <- function(repo = github_info()$name,

@@ -71,7 +71,6 @@ Functions to interact with "checkout keys" on Circle CI.
 create_checkout_key()
 
 # create only a 'deploy key' pair
-
 create_checkout_key(type = "deploy-key")
 }
 \dontrun{

@@ -39,7 +39,7 @@ token: <token>
 
 \examples{
 \dontrun{
-browse_github_token()
+browse_circle_token()
 
 edit_circle_config()
 }

@@ -19,3 +19,5 @@ knitreadme.sh
 ^pkgdown$
 ^\.ccache$
 ^docs$
+^\.vscode$
+^debug\.R$
