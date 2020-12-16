@@ -47,7 +47,7 @@ Circle CI.
 In almost all cases, users should not need to call this function.
 }
 \examples{
-\donttest{
+\dontrun{
 circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
 }
 }

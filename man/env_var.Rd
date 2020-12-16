@@ -62,7 +62,7 @@ Add, get or set Circle CI environment variable(s) for a repo on
 Circle CI.
 }
 \examples{
-\donttest{
+\dontrun{
 # get env var
 get_env_vars()
 

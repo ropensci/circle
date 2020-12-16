@@ -67,19 +67,19 @@ Checks whether the requested type is the "preferred" key.}
 Functions to interact with "checkout keys" on Circle CI.
 }
 \examples{
-\donttest{
+\dontrun{
 create_checkout_key()
 
 # create only a 'deploy key' pair
 create_checkout_key(type = "deploy-key")
 }
-\donttest{
+\dontrun{
 get_checkout_keys()
 }
-\donttest{
+\dontrun{
 delete_checkout_key()
 }
-\donttest{
+\dontrun{
 has_checkout_key()
 }
 }

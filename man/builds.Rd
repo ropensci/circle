@@ -60,7 +60,7 @@ Query information about pipelines, workflows or jobs on
 Circle CI.
 }
 \examples{
-\donttest{
+\dontrun{
 pipelines <- get_pipelines()
 
 workflows <- get_workflows()

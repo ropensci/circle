@@ -30,7 +30,7 @@ Triggers a new build for a specific repo branch.
 Trigger a new Circle CI build for a specific repo branch.
 }
 \examples{
-\donttest{
+\dontrun{
 new_build()
 }
 }

@@ -38,7 +38,7 @@ token: <token>
 }
 
 \examples{
-\donttest{
+\dontrun{
 browse_circle_token()
 
 edit_circle_config()

@@ -14,7 +14,7 @@
 #' @name env_var
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # get env var
 #' get_env_vars()
 #'

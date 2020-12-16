@@ -13,7 +13,7 @@
 #' @name builds
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' pipelines <- get_pipelines()
 #'
 #' workflows <- get_workflows()

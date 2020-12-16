@@ -20,7 +20,7 @@
 #' If none is set, this function will prompt you to create one.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' use_circle_deploy()
 #' }
 #' @export
