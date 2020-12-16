@@ -13,7 +13,7 @@
 #' @name builds
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' pipelines <- get_pipelines()
 #'
 #' workflows <- get_workflows()
@@ -49,6 +49,7 @@ get_pipelines <- function(repo = NULL,
 #' @param pipeline_id `[character]`\cr
 #'   A Circle CI pipeline ID.
 #' @rdname builds
+#' @export
 get_workflows <- function(pipeline_id = NULL,
                           repo = github_info()$name,
                           user = github_info()$owner$login) {
@@ -88,6 +89,7 @@ get_workflows <- function(pipeline_id = NULL,
 #' @param workflow_id `[character]`\cr
 #'   A Circle CI workflow ID.
 #' @rdname builds
+#' @export
 get_jobs <- function(workflow_id = NULL,
                      repo = github_info()$name,
                      user = github_info()$owner$login,
@@ -129,6 +131,7 @@ get_jobs <- function(workflow_id = NULL,
 #' @param workflow_id `[character]`\cr
 #'   A Circle CI workflow ID.
 #' @rdname builds
+#' @export
 retry_workflow <- function(workflow_id = NULL) {
 
   if (is.null(workflow_id)) { # nocov start

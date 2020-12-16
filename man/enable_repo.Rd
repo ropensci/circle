@@ -29,7 +29,7 @@ This usually does not need to be changed by the user.}
 "Follows" a repo on Circle CI so that builds can be triggered.
 }
 \examples{
-\dontrun{
+\donttest{
 enable_repo()
 }
 }

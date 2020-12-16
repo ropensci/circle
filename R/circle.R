@@ -27,7 +27,7 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
 #' }
 circle <- function(verb = "GET",

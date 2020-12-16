@@ -20,7 +20,7 @@
 #' If none is set, this function will prompt you to create one.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' use_circle_deploy()
 #' }
 #' @export
@@ -38,7 +38,7 @@ use_circle_deploy <- function(repo = github_info()$name,
     cli_alert_info(
       "No Github token found. Opening a browser window to create one."
     )
-    usethis::browse_github_token()
+    usethis::create_github_token()
     stop("Circle: Please restart your R session after setting the token and try again.") # nolint
   }
 

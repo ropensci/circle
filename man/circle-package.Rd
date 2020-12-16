@@ -30,7 +30,7 @@ from Circle CI.
 }
 }
 \examples{
-\dontrun{
+\donttest{
 # check to see if you've authenticated correctly
 get_circle_user()
 }

@@ -11,11 +11,10 @@
 #' @name checkout_key
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' create_checkout_key()
 #'
 #' # create only a 'deploy key' pair
-#'
 #' create_checkout_key(type = "deploy-key")
 #' }
 create_checkout_key <- function(repo = github_info()$name,
@@ -56,7 +55,7 @@ create_checkout_key <- function(repo = github_info()$name,
 #' @rdname checkout_key
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_checkout_keys()
 #' }
 get_checkout_keys <- function(repo = github_info()$name,
@@ -83,7 +82,7 @@ get_checkout_keys <- function(repo = github_info()$name,
 #' @rdname checkout_key
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' delete_checkout_key()
 #' }
 delete_checkout_key <- function(fingerprint = NULL,
@@ -130,7 +129,7 @@ delete_checkout_key <- function(fingerprint = NULL,
 #' @rdname checkout_key
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' has_checkout_key()
 #' }
 has_checkout_key <- function(repo = github_info()$name,

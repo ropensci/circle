@@ -33,7 +33,7 @@ access token needs to be set (via env var \code{GITHUB_TOKEN}).
 If none is set, this function will prompt you to create one.
 }
 \examples{
-\dontrun{
+\donttest{
 use_circle_deploy()
 }
 }

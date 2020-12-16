@@ -13,7 +13,7 @@ A list of class \code{circle_user}.
 Retrieve details about the authenticated Circle CI user.
 }
 \examples{
-\dontrun{
+\donttest{
 get_circle_user()
 }
 }

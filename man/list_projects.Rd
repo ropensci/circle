@@ -28,7 +28,7 @@ This endpoint uses API v1.1 and will probably be removed in the near
 future.
 }
 \examples{
-\dontrun{
+\donttest{
 list_projects()
 }
 }

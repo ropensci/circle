@@ -2,7 +2,7 @@
 #' @description Retrieve details about the authenticated Circle CI user.
 #' @return A list of class `circle_user`.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_circle_user()
 #' }
 #' @export
@@ -27,7 +27,7 @@ get_circle_user <- function() {
 #' @return An object of class `circle_api`.
 #' @seealso [get_pipelines()], [get_workflows()], [get_jobs()]
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' list_projects()
 #' }
 #' @export
@@ -55,7 +55,7 @@ list_projects <- function(repo = github_info()$name,
 #' @template vcs
 #' @template api_version
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' job_id <- get_jobs()[[1]]$id
 #' get_build_artifacts(job_id)
 #' }
@@ -91,7 +91,7 @@ get_build_artifacts <- function(job_id = NULL,
 #' @param branch A character string specifying the repository branch.
 #' @seealso [retry_workflow()]
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' new_build()
 #' }
 #' @export
@@ -125,7 +125,7 @@ new_build <- function(repo = github_info()$name,
 #' @template vcs
 #' @template api_version
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' enable_repo()
 #' }
 #' @export

@@ -38,8 +38,8 @@ token: <token>
 }
 
 \examples{
-\dontrun{
-browse_github_token()
+\donttest{
+browse_circle_token()
 
 edit_circle_config()
 }

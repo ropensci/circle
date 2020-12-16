@@ -33,7 +33,7 @@ This usually does not need to be changed by the user.}
 Retrieve artifacts from a specific build.
 }
 \examples{
-\dontrun{
+\donttest{
 job_id <- get_jobs()[[1]]$id
 get_build_artifacts(job_id)
 }
