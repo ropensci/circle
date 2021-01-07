@@ -1,3 +1,13 @@
+# circle 0.6.0.9000
+
+- document return values of all functions
+- be more chatty for side-effect functions
+- always return a `circle_api` object for consistency
+- Switch main branch from `master` to `main`
+- Escape examples
+- Require {usethis} >= 2.0.0
+
+
 # circle 0.6.0
 
 - Copy over GitHub auth and SSH helpers from {travis}

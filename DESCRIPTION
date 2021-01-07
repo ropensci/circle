@@ -1,6 +1,6 @@
 Package: circle
 Title: R Client Package for Circle CI
-Version: 0.6.0
+Version: 0.6.0.9000
 Authors@R:
     person(given = "Patrick",
            family = "Schratz",
