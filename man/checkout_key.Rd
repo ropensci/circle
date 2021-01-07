@@ -6,14 +6,15 @@
 \alias{get_checkout_keys}
 \alias{delete_checkout_key}
 \alias{has_checkout_key}
-\title{Add, Get or Delete a Checkout Keys on Circle CI}
+\title{Interact with Checkout Keys on Circle CI}
 \usage{
 create_checkout_key(
   repo = github_info()$name,
   user = github_info()$owner$login,
   type = "user-key",
   api_version = "v2",
-  vcs_type = "gh"
+  vcs_type = "gh",
+  quiet = FALSE
 )
 
 get_checkout_keys(
@@ -57,14 +58,27 @@ This usually does not need to be changed by the user.}
 \item{vcs_type}{\verb{[character]}\cr The version control system to use.
 Defaults to "gh" (Github).}
 
+\item{quiet}{\verb{[logical]}\cr
+If \code{TRUE}, console output is suppressed.}
+
 \item{fingerprint}{\verb{[character]}\cr
 The fingerprint of the checkout key which should be deleted.}
 
 \item{preferred}{\verb{[logical]}\cr
 Checks whether the requested type is the "preferred" key.}
 }
+\value{
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
+}
 \description{
-Functions to interact with "checkout keys" on Circle CI.
+Create, delete, query or check different types of checkout keys
+for a specific Circle CI project.
+Valid values for argument \code{type} are \code{"user-key"} or \code{"checkout-key"}.
 }
 \examples{
 \dontrun{

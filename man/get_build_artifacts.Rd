@@ -29,6 +29,14 @@ Defaults to "gh" (Github).}
 A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
 }
+\value{
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
+}
 \description{
 Retrieve artifacts from a specific build.
 }

@@ -7,7 +7,14 @@
 get_circle_user()
 }
 \value{
-A list of class \code{circle_user}.
+A named vector of class \code{circle_user} containing information about
+about the authenticated user:
+\itemize{
+\item Full name
+\item Username
+\item ID
+\item API endpoint
+}
 }
 \description{
 Retrieve details about the authenticated Circle CI user.

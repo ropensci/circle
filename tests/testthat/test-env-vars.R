@@ -11,7 +11,7 @@ vcr::use_cassette("set_env_var()", {
       list(foo = "test"),
       quiet = TRUE
     )
-    expect_true(out)
+    expect_s3_class(out, "circle_api")
   })
 })
 

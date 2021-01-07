@@ -1,6 +1,12 @@
 #' @title Get Circle CI user
 #' @description Retrieve details about the authenticated Circle CI user.
-#' @return A list of class `circle_user`.
+#' @return A named vector of class `circle_user` containing information about
+#'   about the authenticated user:
+#'
+#' - Full name
+#' - Username
+#' - ID
+#' - API endpoint
 #' @examples
 #' \dontrun{
 #' get_circle_user()
@@ -24,7 +30,10 @@ get_circle_user <- function() {
 #'
 #'   This endpoint uses API v1.1 and will probably be removed in the near
 #'   future.
-#' @return An object of class `circle_api`.
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @seealso [get_pipelines()], [get_workflows()], [get_jobs()]
 #' @examples
 #' \dontrun{
@@ -54,6 +63,10 @@ list_projects <- function(repo = github_info()$name,
 #' @template user
 #' @template vcs
 #' @template api_version
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @examples
 #' \dontrun{
 #' job_id <- get_jobs()[[1]]$id
@@ -88,6 +101,11 @@ get_build_artifacts <- function(job_id = NULL,
 #' @template repo
 #' @template user
 #' @template vcs
+#' @template quiet
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @param branch A character string specifying the repository branch.
 #' @seealso [retry_workflow()]
 #' @examples
@@ -98,7 +116,8 @@ get_build_artifacts <- function(job_id = NULL,
 new_build <- function(repo = github_info()$name,
                       user = github_info()$owner$login,
                       vcs_type = "gh",
-                      branch = "master") {
+                      branch = "master",
+                      quiet = FALSE) {
 
   resp <- circle("POST",
     path = sprintf(
@@ -114,6 +133,12 @@ new_build <- function(repo = github_info()$name,
     resp$response,
     sprintf("start a new build for repo %s/%s on Circle CI", user, repo)
   )
+
+  if (!quiet) { # nocov start
+    cli_alert_success("Successfully started a new build for project
+    {.field {user}/{repo}}.", wrap = TRUE)
+  }
+
   return(resp)
 }
 
@@ -124,6 +149,11 @@ new_build <- function(repo = github_info()$name,
 #' @template user
 #' @template vcs
 #' @template api_version
+#' @template quiet
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @examples
 #' \dontrun{
 #' enable_repo()
@@ -132,7 +162,8 @@ new_build <- function(repo = github_info()$name,
 enable_repo <- function(repo = github_info()$name,
                         user = github_info()$owner$login,
                         vcs_type = "gh",
-                        api_version = "v1.1") {
+                        api_version = "v1.1",
+                        quiet = FALSE) {
 
   resp <- circle("POST",
     path = sprintf(
@@ -149,7 +180,11 @@ enable_repo <- function(repo = github_info()$name,
     sprintf("enable repo %s on Circle CI", repo)
   )
 
-  cli::cli_text("Successfully enabled repo '{user}/{repo}' on Circle CI.")
+  if (!quiet) { # nocov start
+    cli_alert_success("Successfully enabled repo '{user}/{repo}' on Circle CI.",
+      wrap = TRUE
+    )
+  }
 
-  return(invisible(TRUE))
+  return(invisible(resp))
 }

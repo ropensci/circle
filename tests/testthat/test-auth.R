@@ -9,6 +9,6 @@ vcr::use_cassette("enable_repo()", record = "new_episodes", {
       user = Sys.getenv("CIRCLE_OWNER")
     ))
 
-    expect_true(foo)
+    expect_s3_class(foo, "circle_api")
   })
 })

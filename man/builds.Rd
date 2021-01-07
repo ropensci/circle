@@ -55,9 +55,27 @@ A Circle CI pipeline ID.}
 \item{workflow_id}{\verb{[character]}\cr
 A Circle CI workflow ID.}
 }
+\value{
+An object of class \code{circle_collection} containing list
+information on the queried Circle CI pipelines/workflows/jobs.
+}
 \description{
 Query information about pipelines, workflows or jobs on
 Circle CI.
+The S3 \code{print()} method for these functions returns the respective
+pipeline IDs.
+To inspect the details of each pipeline, save the return value in an object
+and inspect the respective sub-lists.
+
+If no pipeline or workflow is supplied to \code{get_workflows()}/\code{get_jobs()},
+the ten most recent pipelines/jobs are queried, respectively.
+}
+\details{
+While the \verb{get_*()} functions query information about the respective
+build level details (pipeline - workflow - job), \code{retry_workflow()} let's
+users rerun a specific workflow.
+By default, the workflow from the most recent pipeline will be rerun if
+no pipeline ID was supplied.
 }
 \examples{
 \dontrun{
@@ -66,5 +84,8 @@ pipelines <- get_pipelines()
 workflows <- get_workflows()
 
 jobs <- get_jobs()
+
+# rerun most recent workflow
+retry_workflow()
 }
 }

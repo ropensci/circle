@@ -1,14 +1,21 @@
-#' @title Add, Get or Delete a Checkout Keys on Circle CI
-#' @description Functions to interact with "checkout keys" on Circle CI.
+#' @title Interact with Checkout Keys on Circle CI
+#' @description Create, delete, query or check different types of checkout keys
+#'   for a specific Circle CI project.
+#'   Valid values for argument `type` are `"user-key"` or `"checkout-key"`.
 #' @template repo
 #' @template user
 #' @template vcs
+#' @template quiet
 #' @param type `[character]`\cr
 #'   Type of key to add. Options are "user-key" and "deploy-key".
 #' @param fingerprint `[character]`\cr
 #'   The fingerprint of the checkout key which should be deleted.
 #' @template api_version
 #' @name checkout_key
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @export
 #' @examples
 #' \dontrun{
@@ -21,7 +28,8 @@ create_checkout_key <- function(repo = github_info()$name,
                                 user = github_info()$owner$login,
                                 type = "user-key",
                                 api_version = "v2",
-                                vcs_type = "gh") {
+                                vcs_type = "gh",
+                                quiet = FALSE) {
 
   if (type == "deploy-key") { # nocov start
     cli_alert_warning("Note that, despite the name, a 'deploy-key' does not
@@ -40,6 +48,8 @@ create_checkout_key <- function(repo = github_info()$name,
       In your Circle CI project page (web), go to {.field 'Project Settings'
       -> 'SSH Keys' -> 'User Key' -> 'Authorize with GitHub'}.
       This should only be required once.
+      If you already added a user key once and see this error, remove all user
+      keys and re-authenticate on the web page.
       See {.url https://discuss.circleci.com/t/rest-api-cant-create-a-project-user-checkout-key/934/4}
       for more information.", wrap = TRUE)
   } # nocov end
@@ -49,7 +59,12 @@ create_checkout_key <- function(repo = github_info()$name,
     sprintf("create checkout keys for repo %s/%s on Circle CI", user, repo)
   )
 
-  return(resp)
+  if (!quiet) { # nocov start
+    cli_alert_success("Successfully added a {.field {type}} to project
+    {.field {user}/{repo}}.", wrap = TRUE)
+  }
+
+  return(invisible(resp))
 }
 
 #' @rdname checkout_key

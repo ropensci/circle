@@ -8,7 +8,8 @@ new_build(
   repo = github_info()$name,
   user = github_info()$owner$login,
   vcs_type = "gh",
-  branch = "master"
+  branch = "master",
+  quiet = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,17 @@ The username for the repository. By default queried using \code{get_user()}.}
 Defaults to "gh" (Github).}
 
 \item{branch}{A character string specifying the repository branch.}
+
+\item{quiet}{\verb{[logical]}\cr
+If \code{TRUE}, console output is suppressed.}
+}
+\value{
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
 }
 \description{
 Triggers a new build for a specific repo branch.

@@ -57,6 +57,14 @@ A list containing key-value pairs of environment variable and its value.}
 \item{quiet}{\verb{[logical]}\cr
 If \code{TRUE}, console output is suppressed.}
 }
+\value{
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
+}
 \description{
 Add, get or set Circle CI environment variable(s) for a repo on
 Circle CI.

@@ -1,6 +1,19 @@
 #' @title Retrieve Metadata from Circle CI Builds
 #' @description Query information about pipelines, workflows or jobs on
 #'   Circle CI.
+#'   The S3 `print()` method for these functions returns the respective
+#'   pipeline IDs.
+#'   To inspect the details of each pipeline, save the return value in an object
+#'   and inspect the respective sub-lists.
+#'
+#'   If no pipeline or workflow is supplied to `get_workflows()`/`get_jobs()`,
+#'   the ten most recent pipelines/jobs are queried, respectively.
+#'
+#' @details While the `get_*()` functions query information about the respective
+#'   build level details (pipeline - workflow - job), `retry_workflow()` let's
+#'   users rerun a specific workflow.
+#'   By default, the workflow from the most recent pipeline will be rerun if
+#'   no pipeline ID was supplied.
 #'
 #' @template repo
 #' @template user
@@ -9,6 +22,8 @@
 #'   How many builds should be returned? Maximum allowed by Circle is
 #'   30.
 #' @template api_version
+#' @return An object of class `circle_collection` containing list
+#'  information on the queried Circle CI pipelines/workflows/jobs.
 #'
 #' @name builds
 #' @export
@@ -19,6 +34,9 @@
 #' workflows <- get_workflows()
 #'
 #' jobs <- get_jobs()
+#'
+#' # rerun most recent workflow
+#' retry_workflow()
 #' }
 get_pipelines <- function(repo = github_info()$name,
                           user = github_info()$owner$login,

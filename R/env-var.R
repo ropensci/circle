@@ -12,6 +12,10 @@
 #' @template api_version
 #' @template quiet
 #' @name env_var
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #' @export
 #' @examples
 #' \dontrun{
@@ -54,15 +58,7 @@ get_env_vars <- function(name = NULL,
     sprintf("get env vars for repo %s/%s on Circle CI.", user, repo)
   )
 
-  if (!is.null(name)) {
-
-    env_var <- unlist(content(req$response)) # nocov
-
-  } else {
-    env_var <- unlist(content(req$response)[["items"]])
-  }
-
-  return(env_var)
+  return(req)
 
 }
 
@@ -104,7 +100,7 @@ set_env_var <- function(var,
     {.code {user}/{repo}} on Circle CI.", wrap = TRUE)
   } # nocov end
 
-  invisible(TRUE)
+  return(invisible(req))
 }
 
 #' @rdname env_var
@@ -133,6 +129,6 @@ delete_env_var <- function(var, repo = github_info()$name,
     {.code {user}/{repo}} on Circle CI.", wrap = TRUE)
   } # nocov end
 
-  return(invisible(TRUE))
+  return(invisible(req))
 
 }

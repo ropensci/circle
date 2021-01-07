@@ -37,14 +37,22 @@ This usually does not need to be changed by the user.}
 Encoding format. See \link[httr:POST]{httr::POST}.}
 }
 \value{
-The JSON response, or the relevant error.
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
 }
 \description{
 Workhorse function for executing API requests to
 Circle CI.
 }
 \details{
-In almost all cases, users should not need to call this function.
+In almost all cases, users should not need to execute API calls
+directly. However, if desired this functions makes it possible to issue
+any API request. If you experience calling a custom request heavily,
+consider opening a feature request on GitHub.
 }
 \examples{
 \dontrun{

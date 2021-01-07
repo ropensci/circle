@@ -6,7 +6,10 @@
 #' @import httr
 #' @importFrom jsonlite fromJSON
 #'
-#' @details In almost all cases, users should not need to call this function.
+#' @details In almost all cases, users should not need to execute API calls
+#'   directly. However, if desired this functions makes it possible to issue
+#'   any API request. If you experience calling a custom request heavily,
+#'   consider opening a feature request on GitHub.
 #'
 #' @param verb `[character]`\cr
 #'   A character string containing an HTTP verb, defaulting to `GET`.
@@ -23,7 +26,10 @@
 #'   Encoding format. See [httr::POST].
 #' @template api_version
 #'
-#' @return The JSON response, or the relevant error.
+#' @return An object of class `circle_api` with the following elements
+#' - `content` (queried content)
+#' - `path` (API request)
+#' - `response` (HTTP response information)
 #'
 #' @export
 #' @examples

@@ -8,7 +8,8 @@ enable_repo(
   repo = github_info()$name,
   user = github_info()$owner$login,
   vcs_type = "gh",
-  api_version = "v1.1"
+  api_version = "v1.1",
+  quiet = FALSE
 )
 }
 \arguments{
@@ -24,6 +25,17 @@ Defaults to "gh" (Github).}
 \item{api_version}{\verb{[character]}\cr
 A character string specifying the Circle CI API version.
 This usually does not need to be changed by the user.}
+
+\item{quiet}{\verb{[logical]}\cr
+If \code{TRUE}, console output is suppressed.}
+}
+\value{
+An object of class \code{circle_api} with the following elements
+\itemize{
+\item \code{content} (queried content)
+\item \code{path} (API request)
+\item \code{response} (HTTP response information)
+}
 }
 \description{
 "Follows" a repo on Circle CI so that builds can be triggered.

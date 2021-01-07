@@ -2,9 +2,13 @@
 % Please edit documentation in R/use-circle-deploy.R
 \name{use_circle_deploy}
 \alias{use_circle_deploy}
-\title{Set Up Deployment Between Circle CI And Github}
+\title{Set Up Build Deployment Between Circle CI And Github}
 \usage{
-use_circle_deploy(repo = github_info()$name, user = github_info()$owner$login)
+use_circle_deploy(
+  repo = github_info()$name,
+  user = github_info()$owner$login,
+  quiet = FALSE
+)
 }
 \arguments{
 \item{repo}{\verb{[character]}\cr
@@ -12,10 +16,13 @@ The repository slug to use. Must follow the "\code{user/repo}" structure.}
 
 \item{user}{\verb{[character]}\cr
 The username for the repository. By default queried using \code{get_user()}.}
+
+\item{quiet}{\verb{[logical]}\cr
+If \code{TRUE}, console output is suppressed.}
 }
 \description{
-Creates a "user-key" (if none exists yet) to enable
-deployment from Circle CI builds to GitHub.
+Creates a Circle CI "user-key" (= SSH key pair) if none exists
+yet to enable deployment from Circle CI builds to GitHub.
 }
 \details{
 The easiest way to achieve a deployment from Circle CI builds to a Github
