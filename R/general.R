@@ -137,7 +137,7 @@ new_build <- function(repo = github_info()$name,
   if (!quiet) { # nocov start
     cli_alert_success("Successfully started a new build for project
     {.field {user}/{repo}}.", wrap = TRUE)
-  }
+  } # nocov end
 
   return(resp)
 }
@@ -184,7 +184,7 @@ enable_repo <- function(repo = github_info()$name,
     cli_alert_success("Successfully enabled repo '{user}/{repo}' on Circle CI.",
       wrap = TRUE
     )
-  }
+  } # nocov end
 
   return(invisible(resp))
 }

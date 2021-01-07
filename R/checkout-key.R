@@ -62,7 +62,7 @@ create_checkout_key <- function(repo = github_info()$name,
   if (!quiet) { # nocov start
     cli_alert_success("Successfully added a {.field {type}} to project
     {.field {user}/{repo}}.", wrap = TRUE)
-  }
+  } # nocov end
 
   return(invisible(resp))
 }
