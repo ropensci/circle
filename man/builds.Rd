@@ -9,7 +9,7 @@
 \title{Retrieve Metadata from Circle CI Builds}
 \usage{
 get_pipelines(
-  repo = NULL,
+  repo = github_info()$name,
   user = github_info()$owner$login,
   limit = 30,
   vcs_type = "gh",

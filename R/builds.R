@@ -20,7 +20,7 @@
 #'
 #' jobs <- get_jobs()
 #' }
-get_pipelines <- function(repo = NULL,
+get_pipelines <- function(repo = github_info()$name,
                           user = github_info()$owner$login,
                           limit = 30,
                           vcs_type = "gh",
