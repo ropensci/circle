@@ -37,8 +37,8 @@ create_checkout_key <- function(repo = github_info()$name,
   if (status_code(resp$response) == 500) { # nocov start
     cli_alert_warning("This error usually occurs if authorization with GitHub
       was not yet granted for Circle CI projects.
-      Go to {.field Project Settings -> SSH Keys -> User Key ->
-      Authorize with GitHub}.
+      In your Circle CI project page (web), go to {.field 'Project Settings'
+      -> 'SSH Keys' -> 'User Key' -> 'Authorize with GitHub'}.
       This should only be required once.
       See {.url https://discuss.circleci.com/t/rest-api-cant-create-a-project-user-checkout-key/934/4}
       for more information.", wrap = TRUE)
