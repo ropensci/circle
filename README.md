@@ -13,18 +13,21 @@ R client package for the Continuous Integration (CI) provider 'Circle CI'.
 [Circle CI](https://circleci.com/) stands in line with [GitHub Actions](https://github.com/features/actions), [Travis CI](https://www.travis-ci.com/), [AppVeyor](https://ci.appveyor.com/login) and many more CI providers.
 [Circle CI](https://circleci.com/) heavily relies on Docker containers for runner execution.
 
-This package aims to execute tasks such as build restarts, log queries or setting environment variables for the CI service provider [Circle CI](https://circleci.com/) from within R.
-It also simplifies the setup process for build deployments via `use_circle_deploy()`.
-All functionality relies on calls to the Circle CI REST API.
+Continuous Integration (CI) / Continuous Deployment (CD) is heavily used in the IT world to automatically perform certain actions after a specific trigger (e.g. after each commit).
+When developing R packages the most common uses cases are to check the package on each commit for CRAN eligibility (by running `R CMD Check`) and to deploy a [{pkgdown}](https://github.com/r-lib/pkgdown) documentation page for the package.
+
+This package aims help to set up CI/CD with the service provider [Circle CI](https://circleci.com/) and provides R functions to execute CI specific tasks such as build restarts, log queries or setting environment variables from within R.
+It also simplifies the setup process for build deployments via [`use_circle_deploy()`](https://docs.ropensci.org/circle/reference/use_circle_deploy.html).
+All functionality relies on calls to the [Circle CI REST API](https://circleci.com/docs/api/v2/#circleci-api).
 
 There are two ways to use this package:
 
-- Via the high-level functions of this package wrapping common API calls
+- Via the high-level functions of this package which wrap common API calls:
   - `get_pipelines()`
   - `get_checkout_keys()`
   - `set_env_var()`
   - etc.
-- Via direct API calls through the workhorse function `circle()`
+- Via direct API calls through the workhorse function [`circle()`](https://docs.ropensci.org/circle/reference/circle.html).
 
 {circle} does not come with an option to setup Circle CI YAML files.
 Please see the related [{tic}](https://github.com/ropensci/tic) package for such functionality and more CI workflow related tools.
