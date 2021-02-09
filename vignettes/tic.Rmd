@@ -1,0 +1,138 @@
+---
+title: "Using {circle} with {tic}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette explains how {circle} can be used in conjunction with {tic} to set up a working CI environment to check an R package and build a pkgdown site.
+
+All following points assume you are in the project root of the R package.
+
+## Enabling the repository on Circle CI
+
+The first step is to enable/register your repository on Circle CI.
+To do this, `enable_repo()` can be called.
+Assuming you already have an account on Circle CI (authenticating with GitHub is recommended), this "follows" your repository on Circle CI so that builds can be triggered by pushes to the repository.
+
+## Creating the Circle CI YAML configuration file
+
+Next, a YAML file (`.circleci/config.yml`) needs to be created which lists the tasks which should be executed on Circle CI after a commit to the repository.
+
+This is where the [ropensci/tic](https://github.com/ropensci/tic) package comes into play which provides YAML templates for Circle CI.
+There are two ways to get the template via {tic}:
+
+- by going through the chatty `tic::use_tic()` wizard which asks some questions related to configuration and then writes/initiates multiple CI providers (based on the choices made).
+  This is a good choice if you want to understand in greater detail what {tic} is doing.
+- by calling `tic::use_circle_yml()` which (by default) writes a Circle CI configuration file that checks the R package via {rcmdcheck} and deploys a {pkgdown} site to the `gh-pages` branch of the repository.
+
+In addition some files will be added to `.Rbuildignore` and `.gitignore`.
+Also the CI-agnostic `tic.R` file will be created which lists the steps/macros that will be executed in a domain-specific language syntax.
+Please have a look at [the introduction vignette of the tic package](https://docs.ropensci.org/tic/articles/tic.html) to understand the role of `tic.R` in more detail.
+
+## Enabling deployment from builds
+
+To be able to push to the GitHub repository some setup work is required.
+Deployment is often done by creating a SSH key pair of which one part is stored on Circle CI and the other one on GitHub.
+To prevent having to add the SSH key parts to Circle CI and GitHub manually, `use_circle_deploy()` can be called to do all of this programmatically.
+See [the section on "Deployment" in the "Getting Started" vignette](https://docs.ropensci.org/circle/articles/circle.html#deployment-1) for more details on this process.
+
+## Understanding the YAML file
+
+The config file of this repo at [.circleci/config.yml](https://github.com/ropenscilabs/circle/blob/main/.circleci/config.yml) has also been set up with {tic}.
+
+Let's walk through it step by step to understand what is happening:
+
+```yml
+jobs:
+  r-release:
+    # r-release-env
+    environment:
+    docker:
+      - image: rocker/verse
+    steps:
+      - checkout
+```
+
+In this part we specify to use the [rocker/verse](https://hub.docker.com/r/rocker/verse) docker image as the base for the job.
+The first step is "checkout" which means the repository is cloned.
+
+---
+
+```yml
+      # create a unique env var for the cache. Unfortunately normal env vars
+      # are not picked up by the cache, therefore this workaround is needed.
+      # See https://discuss.circleci.com/t/cannot-use-circle-yml-environment-variables-in-cache-keys/10994/7
+      - run: echo "$(date '+%d-%m')-r-release" > /tmp/_tmp_file
+      - restore_cache:
+          key: R-package-library-{{ checksum "/tmp/_tmp_file" }}
+```
+
+Next, an action related to caching R packages is initiated.
+This saves some time in the future because once all R packages which the package needs have been installed once for a given day, they will be re-used in future builds of the day without having to be installed again.
+
+---
+
+```yml
+      # install deps and check pkg ---------------------------------------------
+      - run:
+          name: "[r-release] Install dependencies"
+          command: |
+            sudo apt update && sudo apt install -y ccache libgit2-dev libharfbuzz-dev libfribidi-dev
+            echo -e 'options(Ncpus = 4, repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
+            R -q -e 'install.packages("remotes")'
+            R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
+            R -q -e 'remotes::install_github("ropensci/tic", upgrade = "always"); print(tic::dsl_load()); tic::prepare_all_stages()'
+            R -q -e 'tic::before_install()'
+            R -q -e 'tic::install()'
+```
+
+Next, the {tic} package is installed and certain [tic steps](https://docs.ropensci.org/tic/articles/build-lifecycle.html) are run.
+These take care of installing the dependencies of the R package to be checked and prepare the environment of other subsequent steps.
+
+---
+
+```yml
+      - run:
+          name: "[r-release] R CMD Check"
+          no_output_timeout: 60m
+          command: |
+            R -q -e 'tic::before_script()'
+            R -q -e 'tic::script()'
+```
+
+This step checks the package for CRAN eligibility by making use of `rcmdcheck::rcmdcheck()` inside the `tic::script()` call.
+
+---
+
+```yml
+      # save R pkg cache -------------------------------------------------------
+      - save_cache:
+          key: R-package-library-{{ checksum "/tmp/_tmp_file" }}
+          paths:
+            - /usr/local/lib/R/site-library
+```
+
+Finally, the R package which was initiated earlier is saved.
+
+---
+
+The `deploy:` step following next is in most parts executing the same steps as just shown.
+In the end however, `tic::deploy()` is called which internally will build a {pkgdown} site of the package and then deploy this site to the `gh-pages` branch of the repository.
+
+## The first build
+
+After `.circleci/config.yml` and `tic.R` have been commited and pushed, the first build will start on Circle CI.
+
+Calling one of `get_pipelines()`, `get_workflows()` or `get_jobs()` should now return some content.
+
+In addition, you can directly browse the builds in the Circle CI web interface by calling `usethis::browse_circleci()`.
