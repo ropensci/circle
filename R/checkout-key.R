@@ -1,7 +1,14 @@
-#' @title Interact with Checkout Keys on Circle CI
+#' @title Interact with "Checkout Keys" on Circle CI
 #' @description Create, delete, query or check different types of checkout keys
 #'   for a specific Circle CI project.
 #'   Valid values for argument `type` are `"user-key"` or `"checkout-key"`.
+#'
+#' A "Checkout Key" on Circle CI is a specific SSH key which is used to checkout
+#' repositories into a Circle CI build and possible deploy changes to the
+#' repository.
+#' Circle CI subdivides "Checkout Keys" into "user key" and "deploy key".
+#'
+#' Please see "Deployment" section in the "Getting Started" vignette for more information.
 #' @template repo
 #' @template user
 #' @template vcs
@@ -19,9 +26,12 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # by default a "user-key" will be created which can also be used for build
+#' # deployments
 #' create_checkout_key()
 #'
-#' # create only a 'deploy key' pair
+#' # A "deploy key" can only be used to checkout code from the repository into
+#' # a Circle CI build
 #' create_checkout_key(type = "deploy-key")
 #' }
 create_checkout_key <- function(repo = github_info()$name,
