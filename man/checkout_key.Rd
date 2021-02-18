@@ -78,14 +78,15 @@ An object of class \code{circle_api} with the following elements
 \description{
 Create, delete, query or check different types of checkout keys
 for a specific Circle CI project.
-Valid values for argument \code{type} are \code{"user-key"} or \code{"checkout-key"}.
+Valid values for argument \code{type} are \code{"user-key"} or \code{"deploy-key"}.
 
 A "Checkout Key" on Circle CI is a specific SSH key which is used to checkout
 repositories into a Circle CI build and possible deploy changes to the
 repository.
-Circle CI subdivides "Checkout Keys" into "user key" and "deploy key".
+Circle CI subdivides "Checkout Keys" into "user-key" and "deploy-key".
 
-Please see "Deployment" section in the "Getting Started" vignette for more information.
+Please see "Deployment" section in the "Getting Started" vignette for more
+information.
 }
 \examples{
 \dontrun{
@@ -93,7 +94,7 @@ Please see "Deployment" section in the "Getting Started" vignette for more infor
 # deployments
 create_checkout_key()
 
-# A "deploy key" can only be used to checkout code from the repository into
+# A "deploy-key" can only be used to checkout code from the repository into
 # a Circle CI build
 create_checkout_key(type = "deploy-key")
 }
