@@ -1,11 +1,16 @@
-# circle 0.6.0.9000
+# circle 0.7.0
 
-- document return values of all functions
-- be more chatty for side-effect functions
-- always return a `circle_api` object for consistency
+Implement feedback from [ropensci review](https://github.com/ropensci/software-review/issues/356#):
+
+- Document return values of all functions
+- Refine {cli} console messages
+- Most functions gained a `quiet` argument to silence {cli} messages
+- Be more chatty for side-effect functions
+- Always return a `circle_api` object for consistency
 - Switch main branch from `master` to `main`
 - Escape examples
 - Require {usethis} >= 2.0.0
+- New vignette ["Using {circle} with {tic}"](https://docs.ropensci.org/circle/articles/tic.html)
 
 
 # circle 0.6.0
