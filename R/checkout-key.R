@@ -128,12 +128,14 @@ delete_checkout_key <- function(fingerprint = NULL,
   # the fingerprint or any other matching information. Issuing a warning..
   if (type == "deploy-key") { # nocov start
     cli_alert_warning("Make sure to also delete the corresponding SSH key on
-                    Github at {.url
-                    https://github.com/{user}/{repo}/settings/keys}!")
+      Github at {.url https://github.com/{user}/{repo}/settings/keys}!",
+      wrap = TRUE
+    )
   } else {
     cli_alert_warning("Make sure to also delete the corresponding SSH key on
-                    Github at {.url
-                    https://github.com/settings/keys}!")
+      Github at {.url https://github.com/settings/keys}!",
+      wrap = TRUE
+    )
   } # nocov end
 
   return(resp)

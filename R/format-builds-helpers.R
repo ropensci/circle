@@ -79,9 +79,11 @@ format.circle_collection <- function(x, ...) {
       }, character(1))
     }
 
+    cli::cli_text("")
     cli_text("A collection of {length(x)} Circle CI
     {strsplit(class(x[[1]]), '_')[[1]][2]}s:\n\n")
-    cli_par()
+    # cli_par()
+
     return(text)
   }
 }
@@ -144,5 +146,10 @@ print.circle_workflow <- function(x, ...) {
 #' @export
 print.circle_collection <- function(x, ...) {
   cat(format(x), sep = "")
+
+  cli::cli_text("")
+  cli::cli_alert_info("To view the details for a single item, print the
+    returned list item(s), e.g. {.code get_jobs()[[2]]} would show the
+    information for the second last job.", wrap = TRUE)
   invisible(x)
 }

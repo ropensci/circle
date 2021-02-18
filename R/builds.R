@@ -73,7 +73,7 @@ get_workflows <- function(pipeline_id = NULL,
                           user = github_info()$owner$login) {
 
   if (is.null(pipeline_id)) {
-    cli_text("{.fun get_pipelines}: ID not given, querying 10 most recent
+    cli::cli_ul("{.fun get_pipelines}: ID not given, querying {.field 10} most recent
              pipelines.")
 
     pipeline_id <- vapply(seq_along(1:10), function(x) {
@@ -114,7 +114,7 @@ get_jobs <- function(workflow_id = NULL,
                      vcs_type = "gh") {
 
   if (is.null(workflow_id)) {
-    cli_text("{.fun get_workflows}: ID not given, querying 10 most
+    cli::cli_ul("{.fun get_workflows}: ID not given, querying {.field 10} most
              recent workflows.")
 
     workflow_id <- get_workflows(repo = repo, user = user)
@@ -153,7 +153,7 @@ get_jobs <- function(workflow_id = NULL,
 retry_workflow <- function(workflow_id = NULL) {
 
   if (is.null(workflow_id)) { # nocov start
-    cli_text("{.fun retry_workflow}: ID not given, getting the last workflow.")
+    cli::cli_ul("{.fun retry_workflow}: ID not given, getting the last workflow.")
 
     workflow_id <- get_workflows(
       repo = github_info()$name,

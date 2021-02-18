@@ -37,7 +37,7 @@ use_circle_deploy <- function(repo = github_info()$name,
   # authenticate on github and circle and set up keys/vars
   token <- usethis::github_token()
   if (token == "") {
-    cli_alert_info(
+    cli::cli_alert_info(
       "No Github token found. Opening a browser window to create one."
     )
     usethis::create_github_token()
@@ -45,7 +45,7 @@ use_circle_deploy <- function(repo = github_info()$name,
   }
 
   if (has_checkout_key(preferred = TRUE)) {
-    cli_alert_info(
+    cli::cli_alert_info(
       "A {.field user-key} already exists and is set as 'preferred' in your
       Circle CI settings.
       You are all set for build deployment.",
@@ -53,9 +53,9 @@ use_circle_deploy <- function(repo = github_info()$name,
     )
   } else {
     create_checkout_key(user = user, repo = repo, type = "user-key")
-    rule()
+    cli::rule()
     if (!quiet) {
-      cli_alert_success(
+      cli::cli_alert_success(
         "Added a {.field user-key} to project .field {{user}/{repo}} on
         Circle CI.
         This enables deployment from builds.",
