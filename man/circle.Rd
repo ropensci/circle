@@ -56,6 +56,6 @@ consider opening a feature request on GitHub.
 }
 \examples{
 \dontrun{
-circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
+circle(verb = "GET", path = "/project/gh/ropensci/circle/checkout-key")
 }
 }

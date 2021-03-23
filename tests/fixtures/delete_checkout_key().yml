@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/checkout-key?circle-token=<<<R_CIRCLE>>>
+    uri: https://circleci.com/api/v2/project/gh/ropensci/circle/checkout-key?circle-token=<<<R_CIRCLE>>>
     body:
       encoding: ''
       string: ''
@@ -45,7 +45,7 @@ http_interactions:
   recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: delete
-    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/checkout-key/d3:28:47:34:73:54:db:88:58:ba:16:65:a5:03:79:4f?circle-token=<<<R_CIRCLE>>>
+    uri: https://circleci.com/api/v2/project/gh/ropensci/circle/checkout-key/d3:28:47:34:73:54:db:88:58:ba:16:65:a5:03:79:4f?circle-token=<<<R_CIRCLE>>>
     body:
       encoding: ''
       string: ''

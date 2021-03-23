@@ -48,7 +48,7 @@ See [the section on "Deployment" in the "Getting Started" vignette](https://docs
 
 ## Understanding the YAML file
 
-The config file of this repo at [.circleci/config.yml](https://github.com/ropenscilabs/circle/blob/main/.circleci/config.yml) has also been set up with {tic}.
+The config file of this repo at [.circleci/config.yml](https://github.com/ropensci/circle/blob/main/.circleci/config.yml) has also been set up with {tic}.
 
 Let's walk through it step by step to understand what is happening:
 

@@ -7,9 +7,9 @@
   "identifier": "circle",
   "description": "Tools for interacting with the 'Circle CI' API.\n    Besides executing common tasks such as querying build logs and\n    restarting builds, this package also helps setting up permissions to\n    deploy from builds.",
   "name": "circle: R Client Package for Circle CI",
-  "codeRepository": "https://github.com/ropenscilabs/circle",
+  "codeRepository": "https://github.com/ropensci/circle",
   "relatedLink": [
-    "https://ropenscilabs.github.io/circle",
+    "https://ropensci.github.io/circle",
     "https://docs.ropensci.org/circle",
     "https://docs.ropensci.org/circle/"
   ],
@@ -234,12 +234,12 @@
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     }
   ],
-  "releaseNotes": "https://github.com/ropenscilabs/circle/blob/master/NEWS.md",
-  "readme": "https://github.com/ropenscilabs/circle/blob/main/README.md",
+  "releaseNotes": "https://github.com/ropensci/circle/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/circle/blob/main/README.md",
   "fileSize": "2275.419KB",
-  "issueTracker": "https://github.com/ropenscilabs/circle/issues",
+  "issueTracker": "https://github.com/ropensci/circle/issues",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "contIntegration": ["https://circleci.com/gh/ropenscilabs/circle", "https://codecov.io/gh/ropenscilabs/circle"],
+  "contIntegration": ["https://circleci.com/gh/ropensci/circle", "https://codecov.io/gh/ropensci/circle"],
   "keywords": [
     "continuous-integration",
     "circle-ci",

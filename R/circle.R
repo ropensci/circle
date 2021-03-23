@@ -34,7 +34,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' circle(verb = "GET", path = "/project/gh/ropenscilabs/circle/checkout-key")
+#' circle(verb = "GET", path = "/project/gh/ropensci/circle/checkout-key")
 #' }
 circle <- function(verb = "GET",
                    path = "",
@@ -49,7 +49,7 @@ circle <- function(verb = "GET",
   query$"circle-token" <- circle_check_api_key() # nolint
 
   # set user agent
-  ua <- user_agent("http://github.com/ropenscilabs/circle")
+  ua <- user_agent("http://github.com/ropensci/circle")
 
   resp <- VERB(
     verb = verb, url = url, body = body,

@@ -1,8 +1,8 @@
 <!-- badges: start -->
 
-[![tic](https://github.com/ropenscilabs/circle/workflows/tic/badge.svg?branch=main)](https://github.com/ropenscilabs/circle/actions)
-[![CircleCI](https://img.shields.io/circleci/build/gh/ropenscilabs/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropenscilabs/circle)
-[![codecov](https://codecov.io/gh/ropenscilabs/circle/branch/main/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/circle)
+[![tic](https://github.com/ropensci/circle/workflows/tic/badge.svg?branch=main)](https://github.com/ropensci/circle/actions)
+[![CircleCI](https://img.shields.io/circleci/build/gh/ropensci/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropensci/circle)
+[![codecov](https://codecov.io/gh/ropensci/circle/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/circle)
 [![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 <!-- badges: end -->
@@ -49,17 +49,17 @@ For more information on the differences between the [Circle CI API](https://circ
 Development Version:
 
 ```r
-remotes::install_github("ropenscilabs/circle")
+remotes::install_github("ropensci/circle")
 ```
 
 ## Get Started
 
-See the [Getting Started](https://ropenscilabs.github.io/circle/articles/circle.html) vignette for an introduction.
+See the [Getting Started](https://ropensci.github.io/circle/articles/circle.html) vignette for an introduction.
 
 ## Note to Developers
 
 This packages relies on private API keys for local testing.
-See [CONTRIBUTING.md#testing-the-package](https://github.com/ropenscilabs/circle/blob/main/.github/CONTRIBUTING.md#testing-the-package) for detailed instructions.
+See [CONTRIBUTING.md#testing-the-package](https://github.com/ropensci/circle/blob/main/.github/CONTRIBUTING.md#testing-the-package) for detailed instructions.
 
 # Acknowledgments
 

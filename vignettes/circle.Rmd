@@ -84,7 +84,7 @@ attr(,"class")
 
 ```r
 circe::enable_repo()
-✔ Successfully enabled repo 'ropenscilabs/circle' on Circle CI.
+✔ Successfully enabled repo 'ropensci/circle' on Circle CI.
 ```
 
 After the repo has been enabled, it should be returned in `circle::list_projects()`.
@@ -146,4 +146,4 @@ Currently, `rocker` images need to be downloaded in every build again.
 
 {circle} does not come with a template for running R builds as it focuses on API and build metadata functionality.
 Instead, have a look at [ropensci/tic](https://docs.ropensci.org/tic) and its functions `tic::use_tic()` and `tic::use_circle_yml()` to quickly get R builds running on Circle CI.
-Alternatively you can borrow the config that is being used [in this repo](https://github.com/ropenscilabs/circle/blob/main/.circleci/config.yml) - which was also created via {tic}.
+Alternatively you can borrow the config that is being used [in this repo](https://github.com/ropensci/circle/blob/main/.circleci/config.yml) - which was also created via {tic}.

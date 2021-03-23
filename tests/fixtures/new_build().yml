@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?circle-token=<<<R_CIRCLE>>>
+    uri: https://circleci.com/api/v2/project/gh/ropensci/circle/pipeline?circle-token=<<<R_CIRCLE>>>
     body:
       encoding: ''
       string: '{"branch":"master"}'
@@ -38,7 +38,7 @@ http_interactions:
   recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: post
-    uri: https://circleci.com/api/v2/project/gh/ropenscilabs/circle/pipeline?circle-token=<<<R_CIRCLE>>>
+    uri: https://circleci.com/api/v2/project/gh/ropensci/circle/pipeline?circle-token=<<<R_CIRCLE>>>
     body:
       encoding: ''
       string: '{"branch":"master"}'

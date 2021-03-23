@@ -40,7 +40,7 @@ To test the package locally, the following conditions need to be met:
 1. An active repository on Circle CI with access rights
 
 Alternatively changes can be pushed to GitHub and being tested by the CI runner.
-The CI runner operates on the `ropenscilabs/circle` repo with access to the respective secrets during the run.
+The CI runner operates on the `ropensci/circle` repo with access to the respective secrets during the run.
 
 ### Code of Conduct
 
