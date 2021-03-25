@@ -12,4 +12,4 @@ vcr::check_cassette_names()
 
 # set repo with access right on Circle CI here for local testing
 Sys.setenv("CIRCLE_REPO" = "circle")
-Sys.setenv("CIRCLE_OWNER" = "ropenscilabs")
+Sys.setenv("CIRCLE_OWNER" = "ropensci")

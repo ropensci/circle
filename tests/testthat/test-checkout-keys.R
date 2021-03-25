@@ -34,7 +34,7 @@ vcr::use_cassette("delete_checkout_key()", {
     expect_s3_class(
       delete_checkout_key(
         fingerprint = fp,
-        repo = "circle", user = "ropenscilabs"
+        repo = "circle", user = "ropensci"
       ),
       "circle_api"
     )

@@ -19,6 +19,6 @@ test_that("github helper functions work", {
     }
     expect_s3_class(info, "gh_response")
     expect_equal(info$name, "circle")
-    expect_equal(info$owner$login, "ropenscilabs")
+    expect_equal(info$owner$login, "ropensci")
   })
 })

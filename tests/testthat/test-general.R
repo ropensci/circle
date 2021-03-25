@@ -36,7 +36,7 @@ vcr::use_cassette("new_build()", {
     # 'repo' and 'user' need to be set explicitly because `github_info()` will
     # fail to lookup the git repo when running code coverage
     resp <- new_build(
-      repo = "circle", user = "ropenscilabs"
+      repo = "circle", user = "ropensci"
     )
 
     expect_equal(status_code(resp$response), 201)
