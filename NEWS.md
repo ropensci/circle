@@ -1,3 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# circle 0.7.1
+
+- Same as previous version.
+
+
 # circle 0.7.0
 
 Implement feedback from [ropensci review](https://github.com/ropensci/software-review/issues/356#):
