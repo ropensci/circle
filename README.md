@@ -3,7 +3,7 @@
 [![tic](https://github.com/ropensci/circle/workflows/tic/badge.svg?branch=main)](https://github.com/ropensci/circle/actions)
 [![CircleCI](https://img.shields.io/circleci/build/gh/ropensci/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropensci/circle)
 [![codecov](https://codecov.io/gh/ropensci/circle/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/circle)
-[![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![](https://badges.ropensci.org/356_status.svg)](https://github.com/ropensci/software-review/issues/356)
 
 <!-- badges: end -->
@@ -64,4 +64,4 @@ See [CONTRIBUTING.md#testing-the-package](https://github.com/ropensci/circle/blo
 
 # Acknowledgments
 
-This package was inspired by the work of [Thomas J. Leeper](https://github.com/leeper) on the (discontinued) [cloudyr/circleci](https://github.com/cloudyr/circleci) package and by the (archived) [ropenscilabs/travis](https://github.com/ropenscilabs/travis) package.
+This package was inspired by the work of [Thomas J. Leeper](https://github.com/leeper) on the (discontinued) [cloudyr/circleci](https://github.com/cloudyr/circleci) package and by the (archived) [ropenscilabs/travis](https://github.com/ropensci-archive/travis) package.
