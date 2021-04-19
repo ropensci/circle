@@ -2,7 +2,7 @@
 
 # circle 0.7.1
 
-- Same as previous version.
+- Initial CRAN release
 
 
 # circle 0.7.0
