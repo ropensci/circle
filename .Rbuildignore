@@ -21,3 +21,4 @@ knitreadme.sh
 ^docs$
 ^\.vscode$
 ^debug\.R$
+^CRAN-RELEASE$

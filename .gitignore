@@ -102,3 +102,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows
 debug.R
 launch.json
+CRAN-RELEASE
