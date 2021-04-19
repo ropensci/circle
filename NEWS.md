@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# circle 0.7.1.9000
+
+- Same as previous version.
+
+
 # circle 0.7.1
 
 - Same as previous version.
