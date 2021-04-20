@@ -236,7 +236,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/circle/blob/main/README.md",
-  "fileSize": "2167.784KB",
+  "fileSize": "2167.786KB",
   "issueTracker": "https://github.com/ropensci/circle/issues",
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "contIntegration": ["https://circleci.com/gh/ropensci/circle", "https://codecov.io/gh/ropensci/circle"],
