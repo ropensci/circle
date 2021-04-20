@@ -19,6 +19,10 @@ variables, in this order if any is set. See gh_token() if you need more
 flexibility, e.g. different tokens for different GitHub Enterprise
 deployments.}
 }
+\value{
+Object of class \code{gh_response} (list type) with information about the
+queried repository.
+}
 \description{
 Retrieves metadata about a Git repository from GitHub.
 

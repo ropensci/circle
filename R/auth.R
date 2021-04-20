@@ -29,6 +29,7 @@
 #'      token: <token>
 #'      ```
 #' @export
+#' @return Returns `TRUE` (invisibly).
 #' @examples
 #' \dontrun{
 #' browse_circle_token()
@@ -52,6 +53,7 @@ browse_circle_token <- function() { # nocov start
 #' @title Open circle Configuration file
 #' @description
 #'   Opens `~/.circleci/cli.yml`.
+#' @return No return value, called for side effects.
 #' @export
 edit_circle_config <- function() { # nocov start
   usethis::edit_file("~/.circleci/cli.yml")
@@ -59,7 +61,6 @@ edit_circle_config <- function() { # nocov start
 
 # check if API key is stored in ~/.circleci/cli.yml
 circle_check_api_key <- function() {
-
   if (!Sys.getenv("R_CIRCLE") == "") {
     token <- Sys.getenv("R_CIRCLE")
 
@@ -71,7 +72,6 @@ circle_check_api_key <- function() {
     # some checks for ~/.circleci/cli.yml
 
     if (!file.exists("~/.circleci/cli.yml")) {
-
       cli::cli_alert_danger("To interact with the Circle CI API, an API token is
         required. Please call {.fun browse_circle_token} first.
         Alternatively, set the API key via env vars {.var R_CIRCLE}.",
@@ -91,7 +91,6 @@ circle_check_api_key <- function() {
 
     return(token)
   }
-
 } # nocov end
 
 is_token <- function(token) {

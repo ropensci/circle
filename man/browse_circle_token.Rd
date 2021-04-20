@@ -6,6 +6,9 @@
 \usage{
 browse_circle_token()
 }
+\value{
+Returns \code{TRUE} (invisibly).
+}
 \description{
 A Circle CI API token is needed to interact with the Circle CI API.
 \code{browse_circle_token()} opens a browser window for the respective Circle CI

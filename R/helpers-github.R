@@ -9,6 +9,8 @@
 #'   The path to a GitHub-enabled Git repository (or a subdirectory thereof).
 #' @template token
 #' @template remote
+#' @return Object of class `gh_response` (list type) with information about the
+#'   queried repository.
 #' @keywords internal
 github_info <- function(path = ".",
                         remote = "origin",

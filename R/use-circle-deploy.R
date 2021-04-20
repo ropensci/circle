@@ -20,6 +20,7 @@
 #' `usethis::github_token()` can be used to check if one is already set.
 #' If none is set, this function will prompt you to create one.
 #'
+#' @return No return value, called for side effects.
 #' @examples
 #' \dontrun{
 #' use_circle_deploy()

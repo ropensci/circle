@@ -20,6 +20,9 @@ The username for the repository. By default queried using \code{get_user()}.}
 \item{quiet}{\verb{[logical]}\cr
 If \code{TRUE}, console output is suppressed.}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Creates a Circle CI "user-key" (= SSH key pair) if none exists
 yet to enable deployment from Circle CI builds to GitHub.
