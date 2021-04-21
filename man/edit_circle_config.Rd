@@ -6,6 +6,9 @@
 \usage{
 edit_circle_config()
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Opens \verb{~/.circleci/cli.yml}.
 }

@@ -15,10 +15,10 @@ Authors@R:
              family = "Gelfand",
              role = "rev",
              comment = "Sharla reviewed the package for ropensci, see <https://github.com/ropensci/software-review/issues/356>"))
-Description: Tools for interacting with the 'Circle CI' API.  Besides
-    executing common tasks such as querying build logs and restarting
-    builds, this package also helps setting up permissions to deploy from
-    builds.
+Description: Tools for interacting with the 'Circle CI' API
+    (<https://circleci.com/docs/api/v2/>). Besides executing common tasks
+    such as querying build logs and restarting builds, this package also
+    helps setting up permissions to deploy from builds.
 License: GPL-3
 URL: https://docs.ropensci.org/circle/, https://github.com/ropensci/circle
 BugReports: https://github.com/ropensci/circle/issues
@@ -43,8 +43,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
-Config/testthat/parallel: false
+Config/testthat/parallel: true
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

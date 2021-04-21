@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "circle",
-  "description": "Tools for interacting with the 'Circle CI' API.  Besides\n    executing common tasks such as querying build logs and restarting\n    builds, this package also helps setting up permissions to deploy from\n    builds.",
+  "description": "Tools for interacting with the 'Circle CI' API\n    (<https://circleci.com/docs/api/v2/>). Besides executing common tasks\n    such as querying build logs and restarting builds, this package also\n    helps setting up permissions to deploy from builds.",
   "name": "circle: R Client Package for Circle CI",
   "codeRepository": "https://github.com/ropensci/circle",
   "relatedLink": [
@@ -14,13 +14,13 @@
     "https://docs.ropensci.org/circle/"
   ],
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.4 Patched (2021-02-17 r80031)",
+  "runtimePlatform": "R version 4.0.5 Patched (2021-03-31 r80136)",
   "author": [
     {
       "@type": "Person",
@@ -236,9 +236,9 @@
   ],
   "releaseNotes": "https://github.com/ropensci/circle/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/circle/blob/main/README.md",
-  "fileSize": "2167.154KB",
+  "fileSize": "2168.45KB",
   "issueTracker": "https://github.com/ropensci/circle/issues",
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "contIntegration": ["https://circleci.com/gh/ropensci/circle", "https://codecov.io/gh/ropensci/circle"],
   "keywords": [
     "continuous-integration",
