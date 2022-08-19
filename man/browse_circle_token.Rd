@@ -33,7 +33,9 @@ correctly:
 \item Copy the token from the browser after having called
 \code{browse_circle_token()}. You can use
 \code{edit_circle_config()} to open \verb{~/.circleci/cli.yml}.
-\item The token should be stored using the following structure\if{html}{\out{<div class="sh">}}\preformatted{host: https://circleci.com
+\item The token should be stored using the following structure
+
+\if{html}{\out{<div class="sourceCode sh">}}\preformatted{host: https://circleci.com
 endpoint: graphql-unstable
 token: <token>
 }\if{html}{\out{</div>}}

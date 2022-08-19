@@ -1,18 +1,12 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "circle",
-  "description": "Tools for interacting with the 'Circle CI' API\n    (<https://circleci.com/docs/api/v2/>). Besides executing common tasks\n    such as querying build logs and restarting builds, this package also\n    helps setting up permissions to deploy from builds.",
+  "description": "Tools for interacting with the 'Circle CI' API (<https://circleci.com/docs/api/v2/>). Besides executing common tasks such as querying build logs and restarting builds, this package also helps setting up permissions to deploy from builds.",
   "name": "circle: R Client Package for Circle CI",
+  "relatedLink": "https://docs.ropensci.org/circle/",
   "codeRepository": "https://github.com/ropensci/circle",
-  "relatedLink": [
-    "https://ropensci.github.io/circle",
-    "https://docs.ropensci.org/circle",
-    "https://docs.ropensci.org/circle/"
-  ],
+  "issueTracker": "https://github.com/ropensci/circle/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.7.1.9000",
   "programmingLanguage": {
@@ -20,7 +14,13 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.5 Patched (2021-03-31 r80136)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -30,9 +30,6 @@
       "@id": "https://orcid.org/0000-0003-0748-6624"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -195,8 +192,8 @@
       "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
@@ -209,7 +206,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=cli"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
@@ -221,7 +218,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -232,23 +229,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
-    }
-  ],
-  "releaseNotes": "https://github.com/ropensci/circle/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/circle/blob/main/README.md",
-  "fileSize": "2168.522KB",
-  "issueTracker": "https://github.com/ropensci/circle/issues",
-  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
-  "contIntegration": ["https://circleci.com/gh/ropensci/circle", "https://codecov.io/gh/ropensci/circle"],
-  "keywords": [
-    "continuous-integration",
-    "circle-ci",
-    "api-client",
-    "continuous-deployment"
-  ],
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/356",
-    "provider": "https://ropensci.org"
-  }
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "1288.484KB"
 }
