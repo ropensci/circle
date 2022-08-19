@@ -2,12 +2,7 @@
 
 # circle 0.7.2
 
-- Internal changes only.
-
-
-# circle 0.7.1.9000
-
-- Same as previous version.
+- CRAN documentation fixes
 
 
 # circle 0.7.1
