@@ -1,9 +1,9 @@
 <!-- badges: start -->
 
 [![tic](https://github.com/ropensci/circle/workflows/tic/badge.svg?branch=main)](https://github.com/ropensci/circle/actions)
-[![CircleCI](https://img.shields.io/circleci/build/gh/ropensci/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://circleci.com/gh/ropensci/circle)
+[![CircleCI](https://img.shields.io/circleci/build/gh/ropensci/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://app.circleci.com/pipelines/github/ropensci/circle)
 [![CRAN Status](https://www.r-pkg.org/badges/version-ago/circle)](https://cran.r-project.org/package=circle)
-[![codecov](https://codecov.io/gh/ropensci/circle/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/circle)
+[![codecov](https://app.codecov.io/gh/ropensci/circle/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/circle)
 [![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![](https://badges.ropensci.org/356_status.svg)](https://github.com/ropensci/software-review/issues/356)
 
