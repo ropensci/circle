@@ -2,7 +2,7 @@ library("vcr")
 invisible(vcr::vcr_configure(
   filter_sensitive_data = list(
     "<<<R_CIRCLE>>>" = Sys.getenv("R_CIRCLE"),
-    "<<<PAT_GITHUB>>>" = Sys.getenv("PAT_GITHUB")
+    "<<<CIRCLE_R_PACKAGE_GITHUB_PAT>>>" = Sys.getenv("CIRCLE_R_PACKAGE_GITHUB_PAT")
   ),
   dir = "../fixtures",
   log = FALSE,

@@ -1,5 +1,4 @@
 test_that("github helper functions work", {
-  # nocov start
   unlink(paste0(tempdir(), "/circle"), recursive = TRUE)
   gert::git_clone(
     sprintf(
@@ -13,7 +12,7 @@ test_that("github helper functions work", {
   withr::with_dir(paste0(tempdir(), sprintf("/%s", Sys.getenv("CIRCLE_REPO"))), {
     # github_info() ------------------------------------------------------------
     if (Sys.getenv("CI") != "") {
-      info <- github_info(.token = Sys.getenv("PAT_GITHUB"))
+      info <- github_info(.token = Sys.getenv("CIRCLE_R_PACKAGE_GITHUB_PAT"))
     } else {
       info <- github_info()
     }
@@ -22,4 +21,3 @@ test_that("github helper functions work", {
     expect_equal(info$owner$login, "ropensci")
   })
 })
-# nocov end

@@ -39,7 +39,7 @@ jobs:
       # [Custom env var] Circle CI API key
       CIRCLE_CHECKOUT_KEY: ${{ secrets.CIRCLE_CHECKOUT_KEY }}
       # [Custom env var] Circle CI GITHUB PAT
-      PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+      CIRCLE_R_PACKAGE_GITHUB_PAT: ${{ secrets.CIRCLE_R_PACKAGE_GITHUB_PAT }}
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
