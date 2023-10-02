@@ -1,0 +1,8 @@
+pandoc: 3.1.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  circle: circle.html
+  tic: tic.html
+last_built: 2023-10-02T08:14Z
+
