@@ -103,3 +103,5 @@ $RECYCLE.BIN/
 debug.R
 launch.json
 CRAN-RELEASE
+
+.envrc
