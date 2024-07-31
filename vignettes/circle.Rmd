@@ -42,7 +42,7 @@ To create an API key from the R console, `browse_circle_token()` can be used.
 {circle} scrapes information about the current repository by making API calls to GitHub.
 To be able to do this, a `GitHub_TOKEN` is needed (similar to the API requests for Circle CI).
 It is good practice to have such a token set for many purposes when using R with GitHub.
-Invoking `usethis::browse_GitHub_token()` is an easy way to create one if none exists yet.
+Invoking `usethis::create_github_token()` is an easy way to create one if none exists yet.
 
 # First steps
 
