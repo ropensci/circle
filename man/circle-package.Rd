@@ -36,3 +36,22 @@ get_circle_user()
 }
 
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://docs.ropensci.org/circle/}
+  \item \url{https://github.com/ropensci/circle}
+  \item Report bugs at \url{https://github.com/ropensci/circle/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Max Joseph (Max reviewed the package for ropensci, see <https://github.com/ropensci/software-review/issues/356>) [reviewer]
+  \item Sharla Gelfand (Sharla reviewed the package for ropensci, see <https://github.com/ropensci/software-review/issues/356>) [reviewer]
+}
+
+}

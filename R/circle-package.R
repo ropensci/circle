@@ -28,4 +28,4 @@
 #'
 #' @docType package
 #' @name circle-package
-NULL
+"_PACKAGE"

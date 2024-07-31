@@ -59,6 +59,7 @@ circle_no_attr <- function(x) {
   x[!is_attr]
 }
 
+#' @exportS3Method circle::format
 format.circle_collection <- function(x, ...) {
   if (length(x) == 0) {
     return(invisible(x)) # nocov
@@ -88,6 +89,7 @@ format.circle_collection <- function(x, ...) {
   }
 }
 
+#' @exportS3Method circle::format
 format.circle_workflow <- function(x, ...) {
 
   kv <- key_value(shorten(x, n_max = 10))
@@ -96,6 +98,7 @@ format.circle_workflow <- function(x, ...) {
 
 }
 
+#' @exportS3Method circle::format
 format.circle_job <- function(x, ...) {
 
   kv <- key_value(shorten(x, n_max = 10))
