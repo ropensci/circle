@@ -1,4 +1,21 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# circle 0.7.2.9000
+
+- [Release notes](https://github.com/actions/checkout/releases).
+
+- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md).
+
+- [Commits](https://github.com/actions/checkout/compare/v3...v4).
+
+- [Release notes](https://github.com/peter-evans/create-pull-request/releases).
+
+- [Commits](https://github.com/peter-evans/create-pull-request/compare/v4...v5).
+
+- [Release notes](https://github.com/actions/upload-artifact/releases).
+
+- [Commits](https://github.com/actions/upload-artifact/compare/v2...v3).
+
 
 # circle 0.7.2
 
