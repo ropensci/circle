@@ -4,6 +4,8 @@
 #' @template repo
 #' @template user
 #' @template quiet
+#' 
+#' @importFrom gh gh
 #'
 #' @details
 #' The easiest way to achieve a deployment from Circle CI builds to a Github
@@ -36,7 +38,7 @@ use_circle_deploy <- function(repo = github_info()$name,
   # nocov start
 
   # authenticate on github and circle and set up keys/vars
-  token <- usethis::github_token()
+  token <- gh::gh_token()
   if (token == "") {
     cli::cli_alert_info(
       "No Github token found. Opening a browser window to create one."
