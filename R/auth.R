@@ -94,7 +94,7 @@ circle_check_api_key <- function() {
 } # nocov end
 
 is_token <- function(token) {
-  grepl("^[0-9a-f]{40}$", token)
+  grepl("^[A-Za-z0-9_]+_[0-9a-f]{40}$", token)
 }
 
 read_token <- function() { # nocov start
