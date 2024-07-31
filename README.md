@@ -36,14 +36,14 @@ Please see the related [{tic}](https://github.com/ropensci/tic) package for such
 
 ## API versions
 
-All functionality uses the Circle CI [API v2](https://github.com/CircleCI-Public/api-preview-docs) which follows the **pipelines** -> **workflows** -> **jobs** approach.
+All functionality uses the Circle CI [API v2](https://github.com/CircleCI-Archived/api-preview-docs) which follows the **pipelines** -> **workflows** -> **jobs** approach.
 This API version is still in beta and might undergo some changes in the near future.
 
 Some functions/endpoints can also be used via API versions v1.1 and v1 by setting the `api_version` argument.
 However, this will only work if the respective API endpoint is available for the chosen API version.
 Usually, there should be no need in practice to fall back to API version < 2.
 
-For more information on the differences between the [Circle CI API](https://circleci.com/docs/api/v2/) versions, have a look at the [document explaining changes between v1.1 and v2](https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/api-changes.md).
+For more information on the differences between the [Circle CI API](https://circleci.com/docs/api/v2/) versions, have a look at the [document explaining changes between v1.1 and v2](https://github.com/CircleCI-Archived/api-preview-docs/blob/master/docs/api-changes.md).
 
 ## Installation
 
