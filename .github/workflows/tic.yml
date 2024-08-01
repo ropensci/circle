@@ -78,7 +78,7 @@ jobs:
 
       - name: "[Cache] Restore R package cache"
         if: runner.os != 'Windows'
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
@@ -88,7 +88,7 @@ jobs:
 
       - name: "[Cache] Save R package cache"
         if: runner.os != 'Windows' && always()
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
