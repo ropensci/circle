@@ -1,6 +1,6 @@
 <!-- badges: start -->
 
-[![tic](https://github.com/ropensci/circle/workflows/tic/badge.svg?branch=main)](https://github.com/ropensci/circle/actions)
+[![tic](https://github.com/ropensci/circle/workflows/tic/badge.svg)](https://github.com/ropensci/circle/actions)
 [![CircleCI](https://img.shields.io/circleci/build/gh/ropensci/circle/main?label=Linux&logo=circle&logoColor=green&style=flat-square)](https://app.circleci.com/pipelines/github/ropensci/circle)
 [![CRAN Status](https://www.r-pkg.org/badges/version-ago/circle)](https://cran.r-project.org/package=circle)
 [![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
