@@ -17,13 +17,11 @@ knitr::opts_chunk$set(
 
 This vignette explains how {circle} can be used in conjunction with {tic} to set up a working CI environment to check an R package and build a pkgdown site.
 
-All following points assume you are in the project root of the R package.
+Prerequisites: Please read the Getting Started vignette first for setup, authentication, and basic workflows:
 
-## Enabling the repository on Circle CI
+- Getting Started: https://docs.ropensci.org/circle/articles/circle.html
 
-The first step is to enable/register your repository on Circle CI.
-To do this, `enable_repo()` can be called.
-Assuming you already have an account on Circle CI (authenticating with GitHub is recommended), this "follows" your repository on Circle CI so that builds can be triggered by pushes to the repository.
+All following points assume you are in the project root of the R package and have already enabled your repository on CircleCI and configured credentials as described in Getting Started.
 
 ## Creating the Circle CI YAML configuration file
 

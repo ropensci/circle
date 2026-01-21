@@ -37,6 +37,9 @@ articles:
   - title: Getting started
     contents:
       - circle
+  - title: Advanced usage
+    contents:
+      - advanced
   - title: CI with tic
     contents:
       - tic
