@@ -93,6 +93,9 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
 
+      - name: "[Debug] Show resolved tic DSL"
+        run: Rscript -e "print(tic::dsl_get())"
+
       - name: "[Stage] Script"
         run: Rscript -e 'tic::script()'
 
