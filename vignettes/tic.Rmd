@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = !identical(Sys.getenv("CI"), "true") && !identical(Sys.getenv("CRAN"), "true")
 )
 ```
 

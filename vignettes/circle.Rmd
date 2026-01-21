@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = !identical(Sys.getenv("CI"), "true") && !identical(Sys.getenv("CRAN"), "true")
 )
 ```
 
@@ -83,8 +84,7 @@ attr(,"class")
 `enable_repo()` also uses the GitHub token.
 
 ```r
-circe::enable_repo()
-✔ Successfully enabled repo 'ropensci/circle' on Circle CI.
+circle::enable_repo()
 ```
 
 After the repo has been enabled, it should be returned in `circle::list_projects()`.

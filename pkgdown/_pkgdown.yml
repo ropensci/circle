@@ -33,3 +33,10 @@ reference:
     contents:
       - circle-package
       - list_projects
+articles:
+  - title: Getting started
+    contents:
+      - circle
+  - title: CI with tic
+    contents:
+      - tic
