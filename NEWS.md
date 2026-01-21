@@ -1,5 +1,28 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# circle 0.7.3.9000
+
+## Bug fixes
+
+- Rocker/verse:devel outdated.
+
+## Documentation
+
+- 📝 Clean up the tic badge link.
+
+## update
+
+- Add David a maintainer.
+
+- Add vignettes.
+
+## Uncategorized
+
+- Merge pull request #47 from ropensci/dependabot/github_actions/actions/checkout-5.
+
+  Bump actions/checkout from 4 to 5
+
+
 # circle 0.7.3
 
 - Account for deprecated `usethis` functions

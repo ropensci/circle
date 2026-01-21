@@ -1,6 +1,6 @@
 Package: circle
 Title: R Client Package for Circle CI
-Version: 0.7.3
+Version: 0.7.3.9000
 Authors@R: c(
     person("David", "Munoz Tord", , "david.munoztord@mailbox.org", role = c("cre", "ctb"),
     person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = c("aut"),
