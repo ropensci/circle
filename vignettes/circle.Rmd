@@ -131,14 +131,14 @@ To enable deployment to a repository however, a "user-key" is needed.
 This key type also has "write" permissions and can be added using `use_circle_deploy()`.
 `use_circle_deploy()` will add a so called "user key" to the settings of the repo on Circle CI.
 The private key will be added to your GitHub profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
-See also [the Circle CI section about deployment](https://circleci.com/docs/deployment-integrations/).
+See also [the Circle CI section about deployment](https://circleci.com/docs/guides/deploy/deployment-overview//).
 
 (If for some reasons you do not want to use `use_circle_deploy()` and go the manual way of adding a SSH key to Circle CI, please be aware of [this issue](https://discuss.circleci.com/t/adding-ssh-keys-fails/7747).)
 
 # Starting a Build
 
 As with almost every CI provider, a YAML configuration files is required to specify the tasks that should be executed during a build.
-Currently Circle CI does not come with official support for the R language but you can add [your vote here](https://ideas.circleci.com/images/p/add-official-support-for-r).
+Currently Circle CI does not come with official support for the R language but you can add [your vote here](https://ideas.circleci.com/cloud-feature-requests/p/add-official-support-for-r).
 Since Circle CI is heavily based on docker this is not really a problem.
 One can simply use the [rocker](https://github.com/rocker-org/rocker) R images to have first-class support with respect to R containers.
 Official support for R would mean that the images are cached on Circle CIs side and be directly available on build start.
