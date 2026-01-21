@@ -3,7 +3,7 @@ do_package_checks(codecov = FALSE)
 get_stage("script") %>%
   add_step(step_rcmdcheck(
     args = c("--as-cran", "--no-manual"),
-    error_on = "warning"
+    error_on = "error"
   ))
 
 if (ci_on_circle()) {
