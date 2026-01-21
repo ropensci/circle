@@ -1,16 +1,9 @@
-dsl_init()
-
-get_stage("install") %>%
-  add_step(step_install_deps(dependencies = TRUE)) %>%
-  add_step(step_session_info())
-
-get_stage("script") %>%
-  add_step(step_rcmdcheck(
-    args = c("--as-cran", "--no-manual"),
-    build_args = "--force",
-    error_on = "warning",
-    check_dir = "check"
-  ))
+do_package_checks(
+  codecov = FALSE,
+  args = c("--as-cran", "--no-manual"),
+  build_args = "--force",
+  error_on = "warning"
+)
 
 if (ci_on_circle()) {
   get_stage("before_deploy") %>%
