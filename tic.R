@@ -1,10 +1,9 @@
-do_package_checks(codecov = FALSE)
-
-get_stage("script") %>%
-  add_step(step_rcmdcheck(
-    args = c("--as-cran", "--no-manual"),
-    error_on = "warning"
-  ))
+do_package_checks(
+  codecov = FALSE,
+  args = c("--as-cran"),
+  build_args = "--force",
+  error_on = "warning"
+)
 
 if (ci_on_circle()) {
   get_stage("before_deploy") %>%
