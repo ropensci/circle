@@ -104,4 +104,5 @@ debug.R
 launch.json
 CRAN-RELEASE
 
+.idea
 .envrc
