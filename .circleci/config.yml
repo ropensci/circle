@@ -1,5 +1,5 @@
 ## tic Circle CI template: linux-matrix-deploy
-## revision date: 2022-08-28
+## revision date: 2026-01-21
 version: 2.1
 jobs:
   r-release:
@@ -64,7 +64,7 @@ jobs:
     # r-devel-env
     environment:
     docker:
-      - image: rocker/verse:devel
+      - image: rocker/tidyverse
     steps:
       - checkout
 

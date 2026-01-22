@@ -1,5 +1,26 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# circle 0.7.4
+
+## Bug fixes
+
+- Rocker/verse:devel outdated.
+
+## Documentation
+
+- 📝 Clean up the tic badge link.
+
+## update
+
+- Change maintainer.
+
+- Add vignettes.
+
+## Uncategorized
+
+-  Bump actions/checkout from 4 to 5
+
+
 # circle 0.7.3
 
 - Account for deprecated `usethis` functions

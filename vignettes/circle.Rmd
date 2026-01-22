@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = !identical(Sys.getenv("CI"), "true") && !identical(Sys.getenv("CRAN"), "true")
 )
 ```
 
@@ -50,10 +51,13 @@ By querying information about the user and enabling a project one can check if e
 
 `get_circle_user()` makes uses of the Circle CI API key.
 
-
-```r
+```{r, eval=FALSE}
 circle::get_circle_user()
+```
 
+Example output:
+
+```
 $content
 $content$name
 [1] "Patrick Schratz"
@@ -64,17 +68,15 @@ $content$login
 $content$id
 [1] "9c373331-d0f7-45e1-afe6-4a5c75e00d10"
 
-
 $path
 [1] "/me"
 
 $response
-Response [https://circleci.com/api/v2/me?circle-token=39d697f345d8d8a92ab07c333405d9b0092d116c]
+Response [https://circleci.com/api/v2/me?circle-token=***]
   Date: 2021-01-07 20:07
   Status: 200
   Content-Type: application/json;charset=utf-8
   Size: 86 B
-
 
 attr(,"class")
 [1] "circle_user"
@@ -82,9 +84,8 @@ attr(,"class")
 
 `enable_repo()` also uses the GitHub token.
 
-```r
-circe::enable_repo()
-✔ Successfully enabled repo 'ropensci/circle' on Circle CI.
+```{r, eval=FALSE}
+circle::enable_repo()
 ```
 
 After the repo has been enabled, it should be returned in `circle::list_projects()`.
@@ -96,10 +97,14 @@ Configuring build deployments can be a bit tedious with respect to permissions.
 Here `circle::use_circle_deploy()` helps as it creates a SSH key pair which will enable deployment.
 The private key will be stored in GitHub (under "Settings -> SSH and GPG keys") and the public key on Circle CI (on the respective project page in "SSH Keys").
 
-```r
+```{r, eval=FALSE}
 circle::use_circle_deploy()
+```
+
+Example output:
+
+```
 ✖ No 'user-key' found.
-──────────────────────────────────────────────────────────────────────────────────────────────────
 ✔ Added a 'user key' to project '<repo-slug>' on Circle CI.
 This enables deployment from builds.
 ```
@@ -131,14 +136,14 @@ To enable deployment to a repository however, a "user-key" is needed.
 This key type also has "write" permissions and can be added using `use_circle_deploy()`.
 `use_circle_deploy()` will add a so called "user key" to the settings of the repo on Circle CI.
 The private key will be added to your GitHub profile under the "SSH and GPG keys" section with the title pointing to the respective repo.
-See also [the Circle CI section about deployment](https://circleci.com/docs/deployment-integrations/).
+See also [the Circle CI section about deployment](https://circleci.com/docs/guides/deploy/deployment-overview//).
 
 (If for some reasons you do not want to use `use_circle_deploy()` and go the manual way of adding a SSH key to Circle CI, please be aware of [this issue](https://discuss.circleci.com/t/adding-ssh-keys-fails/7747).)
 
 # Starting a Build
 
 As with almost every CI provider, a YAML configuration files is required to specify the tasks that should be executed during a build.
-Currently Circle CI does not come with official support for the R language but you can add [your vote here](https://ideas.circleci.com/images/p/add-official-support-for-r).
+Currently Circle CI does not come with official support for the R language but you can add [your vote here](https://ideas.circleci.com/cloud-feature-requests/p/add-official-support-for-r).
 Since Circle CI is heavily based on docker this is not really a problem.
 One can simply use the [rocker](https://github.com/rocker-org/rocker) R images to have first-class support with respect to R containers.
 Official support for R would mean that the images are cached on Circle CIs side and be directly available on build start.
@@ -147,3 +152,8 @@ Currently, `rocker` images need to be downloaded in every build again.
 {circle} does not come with a template for running R builds as it focuses on API and build metadata functionality.
 Instead, have a look at [ropensci/tic](https://docs.ropensci.org/tic/) and its functions `tic::use_tic()` and `tic::use_circle_yml()` to quickly get R builds running on Circle CI.
 Alternatively you can borrow the config that is being used [in this repo](https://github.com/ropensci/circle/blob/main/.circleci/config.yml) - which was also created via {tic}.
+
+# See also
+
+- Using {circle} with {tic}: https://docs.ropensci.org/circle/articles/tic.html
+- Advanced usage and {tic} integration: https://docs.ropensci.org/circle/articles/advanced.html
