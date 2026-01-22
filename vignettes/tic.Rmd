@@ -2,7 +2,7 @@
 title: "Using {circle} with {tic}"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{tic}
+  %\VignetteIndexEntry{Using {circle} with {tic}}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -2,7 +2,7 @@
 title: "Advanced usage and {tic} integration"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{advanced}
+  %\VignetteIndexEntry{Advanced usage and {tic} integration}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
