@@ -101,7 +101,7 @@ jobs:
 
       - name: "[Stage] Upload R CMD check artifacts"
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
